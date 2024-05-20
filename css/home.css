@@ -1,0 +1,199 @@
+.home {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 85vh;
+    height: auto;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--color-c1);
+}
+
+.home-foto {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.home-foto img {
+    width: auto;
+    max-width: 100%;
+}
+
+.home-info h1 {
+    font-size: 4em;
+    line-height: 1em;
+    max-width: 527px;
+    font-family: poppins;
+    font-weight: bold;
+    position: relative;
+    z-index: -1;
+}
+
+.home-info h1::before {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 2px;
+    background-image: url(/img/pingo-marca.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    left: -3%;
+    z-index: -1;
+}
+
+.home-info p {
+    font-size: 1.5em;
+    max-width: 648px;
+    margin-top: 10px;
+}
+
+.icones-sociais {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.icones-sociais a {
+    /* border: 1px solid; */
+    font-size: 25px;
+    padding: 2px 4px;
+    background-color: var(--color-c1);
+    color: var(--color-c6);
+    transition: all .3s;
+}
+
+.icones-sociais a:hover {
+    background-color: var(--color-p2);
+    color: var(--color-c13);
+    transition: all .3s;
+}
+
+@media (min-width: 768px) and (max-width:991px){
+    .home {
+        /* background-color: antiquewhite; */
+        grid-template-rows: auto;
+        min-height: 50vh;
+    }
+
+    .home-info h1 {
+        font-size: 3.0em;
+        line-height: 1.1em;
+        max-width: 381px;
+        font-family: poppins;
+        font-weight: bold;
+    }
+    
+    .home-info p {
+        font-size: 1.1em;
+        line-height: 1.6em;
+        max-width: 600px;
+        margin-top: 0px;
+    }
+
+}
+
+@media (min-width: 481px) and (max-width:767px){
+    .home {
+        /* background-color: yellowgreen; */
+        min-height: 80vh;
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 450px 250px;
+    }
+
+    .order1 {
+        order: 1;
+    }
+
+    .order2 {
+        order: 2;
+    }
+
+    .home-foto {
+        justify-content: center;
+    }
+
+    .home-foto img {
+        max-width: 350px;
+        height: auto;
+    }
+
+
+    .home-info h1 {
+        font-size: 3em;
+        line-height: 1.1em;
+        max-width: 381px;
+        font-family: poppins;
+        font-weight: bold;
+    }
+    
+    .home-info p {
+        font-size: 1.1em;
+        line-height: 1.6em;
+        max-width: 600px;
+        margin-top: 0px;
+    }
+
+    .icones-sociais {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+    }
+    .icones-sociais a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:480px){
+    .home {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 200px;
+    }
+
+    .order1 {
+        order: 1;
+    }
+
+    .order2 {
+        order: 2;
+    }
+
+    .home-foto {
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .home-foto img {
+        width: 226px;
+        height: auto;
+    }
+
+    .home-info h1 {
+        font-size: 2.25em;
+        line-height: 1.2em;
+        max-width: 381px;
+        font-family: poppins;
+        font-weight: bold;
+    }
+    
+    .home-info p {
+        font-size: .88em;
+        line-height: 1.6em;
+        max-width: 648px;
+        margin-top: 0px;
+    }
+
+    .icones-sociais {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+    }
+    .icones-sociais a {
+        font-size: 20px;
+    }
+
+
+}
