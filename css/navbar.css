@@ -1,5 +1,10 @@
 header {
     border-bottom: 1px solid var(--color-c2);
+    background-color: #fff;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    z-index: 999;
 }
 
 #logo2 {
