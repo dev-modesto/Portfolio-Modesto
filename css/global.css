@@ -1,6 +1,7 @@
 @import url(fonts.css);
 @import url(navbar.css);
 @import url(cor.css);
+@import url(home.css);
 
 body, h1, h2, p, ul, li, a {
     margin: 0px;
