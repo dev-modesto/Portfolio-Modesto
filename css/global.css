@@ -2,6 +2,7 @@
 @import url(navbar.css);
 @import url(cor.css);
 @import url(home.css);
+@import url(sobre.css);
 
 body, h1, h2, p, ul, li, a {
     margin: 0px;
@@ -14,4 +15,8 @@ a {
 
 ul {
     list-style: none;
+}
+
+html {
+    scroll-padding-top: 75px; 
 }
