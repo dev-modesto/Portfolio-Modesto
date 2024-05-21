@@ -3,6 +3,7 @@
 @import url(cor.css);
 @import url(home.css);
 @import url(sobre.css);
+@import url(habilidades.css);
 
 body, h1, h2, p, ul, li, a {
     margin: 0px;

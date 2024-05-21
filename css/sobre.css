@@ -2,11 +2,8 @@
     max-width: 1140px;
     margin: 0 auto;
     padding: 40px 10px;
-    /* background-color: tomato; */
-    height: 100vh;
     position: relative;
 }
-
 
 .texto-titulo {
     font-size: 2.5em;
@@ -42,10 +39,7 @@
 }
 
 @media (max-width:991px){
-    .sobre {
-        /* background-color: antiquewhite; */
-    }
-    
+   
     .texto-titulo {
         font-size: 2.0em;
         font-weight: bold;
