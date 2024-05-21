@@ -1,0 +1,160 @@
+.habilidades {
+    max-width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 40px 0px;
+    position: relative;
+}
+
+.habilidades h1 {
+    text-align: center;
+}
+
+.habilidades span {
+    background-color: var(--color-p4);
+    padding: 5px 5px;
+}
+
+.habilidades-containerExterno {
+    background-color: var(--color-s8);
+    min-height: 70vh;
+    margin: 0 auto;
+    padding: 0 calc((100% - 1140px)/2);
+    display: block;
+    justify-content: center;
+    align-content: center;
+}
+
+.habilidades h1 {
+    margin: 0;
+}
+
+.habilidades h2 {
+    font-family: inter ;
+    font-weight: 300;
+    font-size: 1.5em;
+    color: var(--color-c6);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.habilidades-containerTecnologias {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    padding: 0px 10px;
+}
+
+.habilidades-containerTecnologias::before {
+    content: '';
+    position: absolute;
+    bottom: 85%;
+    right: 10px;
+    width: 3px;
+    height: 200px;
+    background-color: var(--color-p4);
+}
+
+.habilidades-containerTecnologias::after {
+    content: '';
+    position: absolute;
+    top: 85%;
+    left: 10px;
+    width: 3px;
+    height: 200px;
+    background-color: var(--color-p4);
+}
+
+.habilidades-containerTecnologias h2 {
+    font-size: 1.25em;
+}
+
+.habilidades-principais-container, .habilidades-ferramentas-container {
+    min-height: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.habilidades-principais-container-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px 20px;
+    min-height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-icons {
+    height: 70px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container-icons::before {
+    content: attr(data-tech);
+    position: absolute;
+    display:inline-flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    width: 110%;
+    top: 130%;
+    font-size: .7em;
+    color: var(--color-c8);
+    font-weight: 500;
+    min-height: 25px;
+    opacity: 0;
+    pointer-events: none;
+    border-top: 1px solid var(--color-p4);
+    padding: 5px;
+    white-space: nowrap;
+
+}
+
+.container-icons:hover::before {
+    opacity: 1; 
+}
+
+
+@media (max-width: 481px){
+    .habilidades-containerTecnologias {
+        gap: 40px;
+    }
+
+    .habilidades-containerTecnologias h2 {
+        font-size: 1em;
+    }
+
+    .habilidades-principais-container-icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px 20px;
+        min-height: 70px;
+        align-items: center;
+        justify-content: center;
+        /* background-color: aqua; */
+    }
+
+    .habilidades-principais-container, .habilidades-ferramentas-container {
+        min-height: 150px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* background-color: aquamarine; */
+    }
+
+    .container-icons {
+        height: 50px;
+        /* background-color: tomato; */
+    }
+
+}
