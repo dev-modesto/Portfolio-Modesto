@@ -4,6 +4,7 @@
 @import url(home.css);
 @import url(sobre.css);
 @import url(habilidades.css);
+@import url(projetos-destaque.css);
 
 body, h1, h2, p, ul, li, a {
     margin: 0px;
