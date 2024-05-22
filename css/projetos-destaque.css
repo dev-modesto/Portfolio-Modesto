@@ -34,6 +34,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 130px 40px;
+    position: relative;
 }
 
 .projetoDestaque-cards {
@@ -243,6 +244,47 @@
     color: var(--color-p3);
 }
 
+.projetosDestaque-btn-visualizar-todos {
+    display: flex;
+    max-width: 300px;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: poppins, sans-serif;
+    font-size: 1.25em;
+    color:  var(--color-c6);
+    border-bottom: 1px solid;
+    border-color: rgba(93, 96, 108, 20%);
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 3%);
+    transition: all .3s;
+    margin: 80px auto;
+}
+
+.projetosDestaque-btn-visualizar-todos:hover {
+    color: var(--color-c10);
+    border-image: linear-gradient(to bottom right, var(--color-p4), var(--color-s23)) 10;
+    transition: all .3s;
+}
+
+    .projetosDestaque-btn-visualizar-todos:hover span {
+        color: var(--color-p4);
+    }
+
+.projetosDestaque-container-cards::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 14px);
+    height: 100%;
+    left: -7px;
+    top: -80px;
+    z-index: 0;
+    background-image: url(/img/forma-background.svg);
+    background-size: contain;
+    background-position: initial;
+    background-repeat: repeat-x;
+}
+
 @media (min-width: 769px) and (max-width: 1023px) {
     .projetosDestaque-container-cards {
         margin-top: 150px;
@@ -435,6 +477,10 @@
         font-weight: 500;
     }
 
+    .projetosDestaque-container-cards::before {
+        background-repeat: repeat-y;
+    }
+
 }
 
 
@@ -485,6 +531,21 @@
     .techs-verso::before {
         border: 1px solid transparent;
         color: var(--color-c2);
+    }
+
+    .projetosDestaque-btn-visualizar-todos {
+        max-width: 100%;
+        height: 40px;
+        font-size: .88em;
+        margin: 70px auto;
+    }
+
+    .projetosDestaque-btn-visualizar-todos span {
+        font-size: 1.25em;
+    }
+
+    .projetosDestaque-container-cards::before {
+        background-repeat: repeat-y;
     }
 
 }
@@ -555,6 +616,8 @@
         border-color: rgba(93, 96, 108, 20%);
     }
     
-
+    .projetosDestaque-container-cards::before {
+        background-repeat: repeat-y;
+    }
 }
 
