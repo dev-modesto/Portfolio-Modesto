@@ -1,6 +1,5 @@
 .formacao {
     width: 100%;
-    /* height: 100vh; */
     background-color: var(--color-s8);
     display: flex;
     flex-direction: column;
@@ -15,19 +14,46 @@
     margin-bottom: 300px;
     margin-top: 60px;
     padding-left: 64px;
-    /* background-color: cadetblue; */
+    padding-left: 0px;
 }
+
+
 
 .formacao-academica-container .texto-titulo {
     color:  #fff;
 }
 
+.container-titulo-formacao-academica {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+
+    .container-titulo-formacao-academica h1 {
+        margin: 0px;
+    }
+
+    .titulo-formacao-academica {
+        width: 100%;
+        max-width: 1010px;
+    }
+
 .formacao-academica-cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(150px, 490px) minmax(150px, 490px);
     flex-direction: column;
     gap: 34px;
     margin-top: 54px;
     position: relative;
+    padding: 0px 20px;
+    justify-content: center;
+}
+
+.card-grid-academico {
+    grid-column: 1;
 }
 
     .formacao-academica-cards::before {
@@ -36,12 +62,12 @@
         box-sizing: border-box;
         width: 100%;
         max-width: 619px;
-        height: 100%;
+        height: calc(100% - 36px);
         background-color: var(--color-s7);
         border: 1px solid var(--color-s6);
         border-radius: 5px;
-        top: -40px;
-        left: -64px;
+        top: -10px;
+        left: 0px;
         z-index: 0;
     }
 
@@ -55,7 +81,7 @@
         background-color: var(--color-s3);
         border-radius: 5px;
         bottom: -80px;
-        left: -54px;
+        left: 10px;
         z-index: 0;
     }
 
@@ -68,7 +94,7 @@
         height: 2px;
         background-color: var(--color-s3);
         z-index: 0;
-        left: -54px;
+        left: 10px;
         top: 50px;
         }
 
@@ -80,7 +106,7 @@
             width: 2px;
             height: 580px;
             top: -20px;
-            left: 20px;
+            left: 10px;
         }
 
         .formacao-academica-linesx::before {
@@ -96,7 +122,7 @@
 
 
 .card-formacao {
-    max-width: 490px;
+    width: 100%;
     height: 100px;
     border: 1px solid;
     border-radius: 5px;
@@ -171,6 +197,12 @@
             gap: 10px;
         }
 
+        .card-formacao-horas {
+            font-size: .75em;
+            font-weight: 400;
+            display: flex;
+            gap: 10px;
+        }
 
 
     
@@ -178,9 +210,7 @@
 .card-formacao-verso {
     display: none;
     box-sizing: border-box;
-    /* background-color: tomato; */
     background-color: rgba(000, 000, 000, 95%);
-    /* filter: blur(0px); */
     position: absolute;
     top: 0px;
     width: 100%;
@@ -217,10 +247,12 @@
 
 /* certificados */
 .formacao-academica-container-certificados {
-    /* background-color: tomato; */
     margin-top: 180px;
     margin-bottom: 50px;
-    /* background-color: tomato; */
+}
+
+.formacao-academica-container-certificados  h1 {
+    text-align: center;
 }
 
 .certificados-cards {
@@ -228,9 +260,12 @@
     display: grid;
     grid-template-columns: minmax(150px, 490px) minmax(150px, 490px);
     gap: 30px;
-    margin-top: 54px;
+    margin-top: 84px;
     position: relative;
-    /* display: none; */
+    padding: 0px 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
 }
 
     .certificados-cards::before {
@@ -238,38 +273,689 @@
         position: absolute;
         box-sizing: border-box;
         width: calc(100% + 64px);
+        width: 100%;
         height: 100%;
         background-color: var(--color-s7);
         border: 1px solid var(--color-s6);
         border-radius: 5px;
         top: -40px;
-        left: -64px;
+        left: 0px;
         /* left: 0px; */
         z-index: 0;
         /* display: none; */
     }
 
 
+.form-filtro-certificados {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+.filtro-certificados {
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+    .filtro-certificados-button {
+        height: 100%;
+        border: 0px;
+        color: var(--color-c2);
+        background-color: var(--color-s5);
+        border: 1px solid transparent;
+        border-radius: 5px;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        transition: all .3s;
+    }
+
+    .filtro-certificados-button:hover {
+        background-color: var(--color-s3);
+        transition: all .3s;
+    }
+
+    .filtro-certificados-button:focus {
+        outline: none;
+        border: 1px solid;
+        border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+    }
+
+
+.filtro-certificados-mobile {
+    display: none;
+}
+
+    #filtro-mobile-select {
+        height: 35px;
+        background-color: var(--color-s6);
+        border: none;
+        color: var(--color-c2);
+        font-family: poppins, sans-serif;
+        font-weight: 600;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        padding: 0px 10px;
+        width: 100%;
+    }
+
+    #filtro-mobile-select:focus-visible {
+        background-color: var(--color-s6);
+        outline: none;
+        border: 1px solid;
+        border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+    }
+
+    /* #fitro-mobile-select  */
+
+    .filtro-mobile-button {
+        height: 35px;
+        border: 0px;
+        color: var(--color-c2);
+        background-color: var(--color-s6);
+        border: 1px solid transparent;
+        display: none;
+    }
+
+        .filtro-mobile-button:focus-visible {
+            border: 1px solid;
+            outline: none;
+            border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+        }
+
+
+        #filtro-mobile-select option {
+            color: #000;
+            font-family: poppins, sans-serif;
+            font-weight: 600;
+            background-color: var(--color-c2);
+        }
 
 
 
+@media (min-width: 848px ) and (max-width: 1024px) {
+    .formacao-academica-container {
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 1140px;
+        background-color: var(--color-s8);
+        margin-bottom: 300px;
+        margin-top: 60px;
+        padding-left: 0px;
+    }
 
     
+.formacao-academica-cards {
+    display: grid;
+    grid-template-columns: minmax(150px, 490px) minmax(150px, 490px);
+    flex-direction: column;
+    gap: 34px;
+    margin-top: 54px;
+    position: relative;
+    padding: 0px 20px;
+}
 
-@media (max-width: 1139px) {
-    .certificados-cards {
+    .formacao-academica-cards::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        max-width: 45%;
+        width: calc(100% - 140px);
+        height: calc(100% + 60px);
+        background-color: var(--color-s7);
+        border: 1px solid var(--color-s6);
+        border-radius: 5px;
+        top: 0px;
+        left: 70px;
+    }
+
+    .formacao-academica-cards::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
         width: 100%;
-        display: grid;
-        grid-template-columns: minmax(150px, 490px);
-        gap: 30px;
-        margin-top: 54px;
-        position: relative;
+        max-width: 420px;
+        height: 2px;
+        background-color: var(--color-s3);
+        border-radius: 5px;
+        bottom: -80px;
+        left: 10px;
+        z-index: 0;
+    }
+
+.card-grid-academico {
+    grid-column: 1;
+}
+    .formacao-academica-lines {
+        position: absolute;
+        display: flex;
+        box-sizing: border-box;
+        width: 90%;
+        height: 2px;
+        background-color: var(--color-s3);
+        z-index: 0;
+        left: 10px;
+        top: 50px;
+    }
+
+        .formacao-academica-lines::before {
+            height: 480px;
+            top: -30px;
+            left: 35px;
+        }
+
+        .formacao-academica-linesx::before {
+            content: '';
+            position: absolute;
+            height: 500px;
+            width: 2px;
+            right: 150px;
+            top: -200px;
+            background-color: var(--color-p6);
+            z-index: 2;
+        }
+
+
+
+.card-formacao {
+    width: 100%;
+    height: 100px;
+}
+
+    .card-formacao::before {
+        width: 88px;
+        top: calc(-27px/2);
+        height: 27px;
+        font-size: .71em;
+    }
+    
+    .card-formacao-texto {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+        .card-formacao--instituicao {
+            font-size: .71em;
+        }
+
+        .card-formacao--curso {
+            font-size: .71em;
+        }
+
+        .card-formacao-periodo {
+            font-size: .71em;
+        }
+
+        .card-formacao-horas {
+            font-size: .71em;
+        }
+
+.card-formacao-verso--status a {
+    gap: 10px;
+    font-size: .71em;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.card-formacao-verso--status span {
+    font-size: 2.2em;
+}
+
+.form-filtro-certificados {
+    margin-top: 36px;
+}
+
+.certificados-cards {
+    margin-top: 64px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+
+    .certificados-cards::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        max-width: 100%;
+        width: calc(100% - 140px);
+        height: calc(100% + 70px);
+        background-color: var(--color-s7);
+        border: 1px solid var(--color-s6);
+        border-radius: 5px;
+        top: -35px;
+        left: 70px;
+        z-index: 0;
         /* display: none; */
+    }
+
+
+#filtro-mobile-select {
+    height: 45px;
+    background-color: var(--color-s6);
+    border: none;
+    color: var(--color-c2);
+    font-family: poppins, sans-serif;
+    font-weight: 600;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    width: 100%;
+    max-width: 490px;
+}
+
+    .filtro-certificados-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 140px);
+    }
+
+    .filtro-certificados {
+        display: none;
     }
 }
 
+@media (min-width: 592px) and (max-width: 847px) {
+    
+    .formacao-academica-container {
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 1140px;
+        background-color: var(--color-s8);
+        margin-bottom: 300px;
+        margin-top: 60px;
+        padding-left: 0px;
+    }
+
+    .formacao-academica-container h1 {
+        text-align: center;
+    }
+    
+.formacao-academica-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    margin-top: 54px;
+    position: relative;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+    .formacao-academica-cards::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        width: calc(100% - 140px);
+        max-width: 280px;
+        max-width: 100%;
+        height: calc(100% + 40px);
+        background-color: var(--color-s7);
+        border: 1px solid var(--color-s6);
+        border-radius: 5px;
+        top: 0px;
+        left: 70px;
+        z-index: 0;
+    }
+
+    .formacao-academica-cards::after {
+        width: 100%;
+        max-width: 230px;
+        bottom: -60px;
+        left: 10px;
+        z-index: 0;
+    }
+
+
+    .formacao-academica-lines {
+            width: 0px;
+            left: 10px;
+            top: 50px;
+            opacity: 1;
+        }
+
+        .formacao-academica-lines::before {
+            height: 580px;
+            top: -30px;
+            left: 35px;
+        }
+
+        .formacao-academica-linesx::before {
+            height: 120px;
+            right: 10px;
+            z-index: 2;
+        }
+
+
+.card-formacao {
+    width: 100%;
+    max-width: calc(100% - 60px);
+    height: 130px;
+}
+
+
+
+    .card-formacao::before {
+        width: 108px;
+        top: calc(-37px/2);
+        height: 37px;
+        font-size: .95em;
+    }
+    
+    .card-formacao-img-logo {
+        max-width: 100px;
+        max-width: 100%;
+        max-height: 100%;         
+    }
+
+        .card-formacao-img-logo img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+    .card-formacao-texto {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+        .card-formacao--instituicao {
+            font-size: .95em;
+        }
+
+        .card-formacao--curso {
+            font-size: .95em;
+        }
+
+        .card-formacao-periodo {
+            font-size: .95em;
+        }
+
+        .card-formacao-horas {
+            font-size: .95em;
+        }
+
+.card-formacao-verso--status a {
+    gap: 10px;
+    font-size: .95em;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.card-formacao-verso--status span {
+    font-size: 2.2em;
+}
+        
+
+.form-filtro-certificados {
+    margin-top: 24px;
+}
+
+.certificados-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    margin-top: 54px;
+    position: relative;
+    align-items: center;
+    margin-top: 64px;
+    position: relative;
+
+}
+    .certificados-cards::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        max-width: 100%;
+        width: calc(100% - 140px);
+        height: calc(100% + 70px);
+        background-color: var(--color-s7);
+        border: 1px solid var(--color-s6);
+        border-radius: 5px;
+        top: -35px;
+        left: 70px;
+        z-index: 0;
+    }
+
+
+#filtro-mobile-select {
+    height: 45px;
+    background-color: var(--color-s6);
+    border: none;
+    color: var(--color-c2);
+    font-family: poppins, sans-serif;
+    font-weight: 600;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    width: 100%;
+    max-width: 490px;
+}
+
+
+
+    #filtro-mobile-select:focus-visible {
+        background-color: var(--color-s6);
+        outline: none;
+        border: 1px solid;
+        border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+    }
+
+    /* #fitro-mobile-select  */
+
+    .filtro-mobile-button {
+        height: 35px;
+        border: 0px;
+        color: var(--color-c2);
+        background-color: var(--color-s6);
+        border: 1px solid transparent;
+        display: none;
+    }
+
+        .filtro-mobile-button:focus-visible {
+            border: 1px solid;
+            outline: none;
+            border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+        }
+
+
+        #filtro-mobile-select option {
+            color: #000;
+            font-family: poppins, sans-serif;
+            font-weight: 600;
+            background-color: var(--color-c2);
+        }
+
+        .filtro-certificados-mobile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: calc(100% - 140px);
+        }
+    
+        .filtro-certificados {
+            display: none;
+        }
+}
+
+
+@media (min-width: 481px) and (max-width: 591px) {
+    
+    .formacao-academica-container {
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 1140px;
+        background-color: var(--color-s8);
+        margin-bottom: 300px;
+        margin-top: 60px;
+        padding-left: 0px;
+    }
+
+    .formacao-academica-container h1 {
+        text-align: center;
+    }
+    
+.formacao-academica-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    margin-top: 54px;
+    position: relative;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+    .formacao-academica-cards::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        width: calc(100% - 140px);
+        max-width: 280px;
+        max-width: 100%;
+        height: calc(100% + 40px);
+        background-color: var(--color-s7);
+        border: 1px solid var(--color-s6);
+        border-radius: 5px;
+        top: 0px;
+        left: 70px;
+        z-index: 0;
+    }
+
+    .formacao-academica-cards::after {
+        width: 100%;
+        max-width: 230px;
+        bottom: -60px;
+        left: 10px;
+        z-index: 0;
+    }
+
+
+    .formacao-academica-lines {
+            width: 0px;
+            left: 10px;
+            top: 50px;
+            opacity: 1;
+        }
+
+        .formacao-academica-lines::before {
+            height: 480px;
+            top: -30px;
+            left: 35px;
+        }
+
+        .formacao-academica-linesx::before {
+            height: 120px;
+            right: 10px;
+            z-index: 2;
+        }
+
+
+.card-formacao {
+    width: 100%;
+    max-width: calc(100% - 60px);
+    height: 100px;
+}
+
+
+
+    .card-formacao::before {
+        width: 88px;
+        top: calc(-27px/2);
+        height: 27px;
+        font-size: .71em;
+    }
+    
+    .card-formacao-texto {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+        .card-formacao--instituicao {
+            font-size: .71em;
+        }
+
+        .card-formacao--curso {
+            font-size: .71em;
+        }
+
+        .card-formacao-periodo {
+            font-size: .71em;
+        }
+
+        .card-formacao-horas {
+            font-size: .71em;
+        }
+
+.form-filtro-certificados {
+    margin-top: 36px;
+}
+
+.certificados-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    margin-top: 54px;
+    position: relative;
+    align-items: center;
+    margin-top: 64px;
+    position: relative;
+
+}
+    .certificados-cards::before {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        max-width: 100%;
+        width: calc(100% - 140px);
+        height: calc(100% + 70px);
+        background-color: var(--color-s7);
+        border: 1px solid var(--color-s6);
+        border-radius: 5px;
+        top: -35px;
+        left: 70px;
+        z-index: 0;
+    }
+
+
+#filtro-mobile-select {
+    height: 35px;
+    background-color: var(--color-s6);
+    border: none;
+    color: var(--color-c2);
+    font-family: poppins, sans-serif;
+    font-weight: 600;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    width: 100%;
+    max-width: 490px;
+}
+
+    .filtro-certificados-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 140px);
+    }
+
+    .filtro-certificados {
+        display: none;
+    }
+}
 
 @media (max-width:480px) {
+
+.texto-titulo {
+    font-size: 1.88em;
+}
 
     .formacao {
         width: 100%;
@@ -343,7 +1029,7 @@
         }
 
         .formacao-academica-linesx::before {
-            height: 120px;
+            height: 100px;
             right: 10px;
             z-index: 2;
         }
@@ -403,6 +1089,10 @@
                 font-size: .61em;
             }
 
+            .card-formacao-horas {
+                font-size: .61em;
+            }
+
 
 
 .card-formacao-verso--status a {
@@ -417,11 +1107,12 @@
 }
 
 .formacao-academica-container-certificados {
-    /* background-color: tomato; */
     position: relative;
 }
 
-
+.form-filtro-certificados {
+    margin-top: 10px;
+}
 
 .certificados-cards {
     width: 100%;
@@ -431,7 +1122,7 @@
     margin-top: 54px;
     position: relative;
     align-items: center;
-    margin-top: 54px;
+    margin-top: 64px;
     position: relative;
 
 }
@@ -439,9 +1130,8 @@
         content: '';
         position: absolute;
         box-sizing: border-box;
-        width: calc(100% - 140px);
-        max-width: 280px;
         max-width: 100%;
+        width: calc(100% - 140px);
         height: calc(100% + 70px);
         background-color: var(--color-s7);
         border: 1px solid var(--color-s6);
@@ -451,7 +1141,15 @@
         z-index: 0;
     }
 
+    .filtro-certificados-mobile {
+        display: block;
+        width: 100%;
+        width: calc(100% - 140px);
+    }
 
+    .filtro-certificados {
+        display: none;
+    }
 
 
 }

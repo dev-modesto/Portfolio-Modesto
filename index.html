@@ -327,13 +327,15 @@
 
         <section class="formacao">
             <div class="formacao-academica-container">
-                <h1 class="texto-titulo">Formação acadêmica</h1>
+                <div class="container-titulo-formacao-academica">
+                    <h1 class="texto-titulo titulo-formacao-academica">Formação acadêmica</h1>
+                </div>
                 <!-- container dos cards academicos -->
                 <div class="formacao-academica-cards">
                     <span class="formacao-academica-linesx"></span>
                     <span class="formacao-academica-lines"></span>
                     <!-- card completo -->
-                    <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                    <div class="card-formacao card-grid-academico" data-tag-name-course="TÉCNICO">
 
                         <!-- card frontal -->
                         <div class="card-formacao-frontal">
@@ -360,7 +362,7 @@
                     </div>
 
                     <!-- card completo -->
-                    <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                    <div class="card-formacao card-grid-academico" data-tag-name-course="TÉCNICO">
 
                         <!-- card frontal -->
                         <div class="card-formacao-frontal">
@@ -386,7 +388,7 @@
 
                     </div>
                     <!-- card completo -->
-                    <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                    <div class="card-formacao card-grid-academico" data-tag-name-course="TÉCNICO">
 
                         <!-- card frontal -->
                         <div class="card-formacao-frontal">
@@ -418,12 +420,42 @@
 
                 <div class="formacao-academica-container-certificados">
                     <h1 class="texto-titulo">Certificados</h1>
-          
+                    
+                    
+                    <form action="" class="form-filtro-certificados">
+
+                        <!-- filtro certificados -->
+                        <div class="filtro-certificados" role="group">
+                            <button type="submit" name="categoria" value="todos" class="filtro-certificados-button">TODOS</button>
+                            <button type="submit" name="categoria" value="frontEnd" class="filtro-certificados-button">FRONT-END</button>
+                            <button type="submit" name="categoria" value="analiseDados" class="filtro-certificados-button">ANÁLISE DE DADOS</button>
+                            <button type="submit" name="categoria" value="redesInfra" class="filtro-certificados-button">REDES E INFRA.</button>
+                            <button type="submit" name="categoria" value="logicaProgramacao" class="filtro-certificados-button">ALGORIT. E LÓG. DE PROGRAMAÇÃO</button>
+                        </div>
+
+                        <!-- filtro certificados - mobile -->
+                        <div class="filtro-certificados-mobile">
+                            <select name="filtro-mobile-select" id="filtro-mobile-select">
+                                <option value="todos">TODOS</option>
+                                <option value="frontEnd">FRONT-END</option>
+                                <option value="analiseDados">ANÁLISE DE DADOS</option>
+                                <option value="redesInfra">REDES E INFRA.</option>
+                                <option value="logicaProgramacao">ALGORIT. E LÓG. DE PROGRAMAÇÃO</option>
+                            </select>
+                            <button type="submit" class="filtro-mobile-button">Filtrar</button>
+                        </div>
+
+
+
+
+
+                    </form>
+
                     <!-- container dos cards certificados -->
                     <div class="certificados-cards">
     
                         <!-- card completo -->
-                        <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                        <div class="card-formacao" data-tag-name-course="CURSO">
     
                             <!-- card frontal -->
                             <div class="card-formacao-frontal">
@@ -434,23 +466,23 @@
                                     <p class="card-formacao--instituicao">Senac RJ</p>
                                     <h3 class="card-formacao--curso">Técnico em Informática (Desenvolvimento Web)</h3>
                                     <div class="card-formacao-periodo">
-                                        <p class="card-formacao-periodo--inicio">Ago/2022</p>
-                                        <p class="card-formacao-periodo--termino">Jan/2024</p>
+                                        <p class="card-formacao-periodo--conclusao">Ago/2022</p>
                                     </div>
+                                    <p class="card-formacao-horas">240 horas</p>
                                 </div>
                             </div>
     
                             <!-- card verso -->
                             <div class="card-formacao-verso">
                                 <div class="card-formacao-verso--status">
-                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>    
                                 </div>
                             </div>
     
                         </div>
     
                         <!-- card completo -->
-                        <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                        <div class="card-formacao" data-tag-name-course="CURSO">
     
                             <!-- card frontal -->
                             <div class="card-formacao-frontal">
@@ -461,23 +493,23 @@
                                     <p class="card-formacao--instituicao">Senac RJ</p>
                                     <h3 class="card-formacao--curso">Técnico em Informática (Desenvolvimento Web)</h3>
                                     <div class="card-formacao-periodo">
-                                        <p class="card-formacao-periodo--inicio">Ago/2022</p>
-                                        <p class="card-formacao-periodo--termino">Jan/2024</p>
+                                        <p class="card-formacao-periodo--conclusao">Ago/2022</p>
                                     </div>
+                                    <p class="card-formacao-horas">240 horas</p>
                                 </div>
                             </div>
     
                             <!-- card verso -->
                             <div class="card-formacao-verso">
                                 <div class="card-formacao-verso--status">
-                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>    
                                 </div>
                             </div>
     
                         </div>
     
                         <!-- card completo -->
-                        <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                        <div class="card-formacao" data-tag-name-course="CURSO">
     
                             <!-- card frontal -->
                             <div class="card-formacao-frontal">
@@ -488,23 +520,23 @@
                                     <p class="card-formacao--instituicao">Senac RJ</p>
                                     <h3 class="card-formacao--curso">Técnico em Informática (Desenvolvimento Web)</h3>
                                     <div class="card-formacao-periodo">
-                                        <p class="card-formacao-periodo--inicio">Ago/2022</p>
-                                        <p class="card-formacao-periodo--termino">Jan/2024</p>
+                                        <p class="card-formacao-periodo--conclusao">Ago/2022</p>
                                     </div>
+                                    <p class="card-formacao-horas">240 horas</p>
                                 </div>
                             </div>
     
                             <!-- card verso -->
                             <div class="card-formacao-verso">
                                 <div class="card-formacao-verso--status">
-                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>    
                                 </div>
                             </div>
     
                         </div>
                         
                         <!-- card completo -->
-                        <div class="card-formacao" data-tag-name-course="TÉCNICO">
+                        <div class="card-formacao" data-tag-name-course="CURSO">
     
                             <!-- card frontal -->
                             <div class="card-formacao-frontal">
@@ -515,16 +547,16 @@
                                     <p class="card-formacao--instituicao">Senac RJ</p>
                                     <h3 class="card-formacao--curso">Técnico em Informática (Desenvolvimento Web)</h3>
                                     <div class="card-formacao-periodo">
-                                        <p class="card-formacao-periodo--inicio">Ago/2022</p>
-                                        <p class="card-formacao-periodo--termino">Jan/2024</p>
+                                        <p class="card-formacao-periodo--conclusao">Ago/2022</p>
                                     </div>
+                                    <p class="card-formacao-horas">240 horas</p>
                                 </div>
                             </div>
     
                             <!-- card verso -->
                             <div class="card-formacao-verso">
                                 <div class="card-formacao-verso--status">
-                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                    <a href="#"><!-- Informação do diploma if --> <span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>    
                                 </div>
                             </div>
     
@@ -534,7 +566,7 @@
     
                 </div>
 
-
+                
 
             </div>
 
