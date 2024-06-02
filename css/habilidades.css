@@ -70,6 +70,7 @@
 
 .habilidades-containerTecnologias h2 {
     font-size: 1.25em;
+    margin: 0px;
 }
 
 .habilidades-principais-container, .habilidades-ferramentas-container {
@@ -85,8 +86,23 @@
     flex-wrap: wrap;
     gap: 80px 20px;
     min-height: 100px;
-    align-items: center;
     justify-content: center;
+    margin-top: 30px;
+}
+
+@keyframes seta {
+    0% {
+        left: 20px;
+        opacity: 0;
+        width: 10px;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 0px;
+        opacity: 0;
+    }
 }
 
 .container-icons {
@@ -123,6 +139,50 @@
     opacity: 1; 
 }
 
+@media (max-width: 991px) {
+    .habilidades {
+        max-width: 100%;
+        height: 100%;
+        min-height: 450px;
+    }
+    
+    .habilidades-containerExterno {
+        height: 100%;
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 728px) {
+    .scroll-habilidades-principais {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 80px 20px;
+        padding: 20px 10px 60px 10px;
+        align-items: center;
+        justify-content: left;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch ;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        position: relative;
+        scrollbar-width: none;
+    }
+    
+    .scroll-habilidades-principais::after {
+        content: '';
+        content: 'keyboard_double_arrow_left';
+        font-family: 'Material Symbols Rounded'; 
+        font-size: 32px;
+        position: absolute;
+        width: 50px;
+        height: 10px;
+        border-radius: 30px;
+        color: rgba(255, 255, 255, .08);
+        top: -10px;
+        left: 20px;
+        animation: seta 1.5s ease-in-out 0s infinite;
+        opacity: 0; 
+    }
+}
 
 @media (max-width: 481px){
     .habilidades-containerTecnologias {
@@ -133,14 +193,15 @@
         font-size: 1em;
     }
 
-    .habilidades-principais-container-icons {
+    .scroll-habilidades-principais {
         display: flex;
-        flex-wrap: wrap;
+        padding: 10px;
         gap: 50px 20px;
-        min-height: 70px;
-        align-items: center;
-        justify-content: center;
-        /* background-color: aqua; */
+        min-height: 100px;
+        margin-top: 10px;
+        padding: 20px 10px 10px 10px;
+        align-items: initial;
+        justify-content: left;
     }
 
     .habilidades-principais-container, .habilidades-ferramentas-container {
@@ -149,12 +210,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* background-color: aquamarine; */
     }
 
     .container-icons {
         height: 50px;
-        /* background-color: tomato; */
     }
 
 }
