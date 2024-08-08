@@ -285,6 +285,12 @@
     background-repeat: repeat-x;
 }
 
+@media (max-width: 991px) {
+    .projetosDestaque {
+        margin-top: 40px;
+    }
+}
+
 @media (min-width: 769px) and (max-width: 1023px) {
     .projetosDestaque-container-cards {
         margin-top: 150px;
