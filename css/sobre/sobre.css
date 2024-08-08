@@ -1,0 +1,31 @@
+.sobre {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 40px 10px;
+    position: relative;
+}
+
+.font-1-h2-b {
+    margin-bottom: 20px;
+}
+
+.sobre-localizacao {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sobre-localizacao span {
+    font-size: 1.6em;
+}
+
+.sobre::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 26px;
+    background-color: var(--color-p4);
+    top: -20px;
+}
+

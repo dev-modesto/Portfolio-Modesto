@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.habilidades h1 {
+.habilidades .font-1-h2-b {
     text-align: center;
 }
 
@@ -25,14 +25,11 @@
     align-content: center;
 }
 
-.habilidades h1 {
+.habilidades .font-1-h2-b {
     margin: 0;
 }
 
-.habilidades h2 {
-    font-family: inter ;
-    font-weight: 300;
-    font-size: 1.5em;
+.habilidades .font-2-lg-r {
     color: var(--color-c6);
     margin-bottom: 20px;
     text-align: center;
@@ -66,11 +63,6 @@
     width: 3px;
     height: 200px;
     background-color: var(--color-p4);
-}
-
-.habilidades-containerTecnologias h2 {
-    font-size: 1.25em;
-    margin: 0px;
 }
 
 .habilidades-principais-container, .habilidades-ferramentas-container {
@@ -189,7 +181,7 @@
         gap: 40px;
     }
 
-    .habilidades-containerTecnologias h2 {
+    .habilidades .font-2-lg-r {
         font-size: 1em;
     }
 

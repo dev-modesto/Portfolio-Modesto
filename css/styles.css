@@ -1,1 +1,10 @@
-@import url(global.css);
+@import url(/css/global/global.css);
+@import url(/css/componentes/fonts.css);
+@import url(/css/componentes/componentes.css);
+@import url(/css/global/navbar.css);
+@import url(/css/componentes/cor.css);
+@import url(/css/home/home.css);
+@import url(/css/sobre/sobre.css);
+@import url(/css/habilidades/habilidades.css);
+@import url(/css/projetos/projetos-destaque.css);
+@import url(/css/formacao/formacao.css);

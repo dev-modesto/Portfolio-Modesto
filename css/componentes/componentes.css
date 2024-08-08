@@ -1,0 +1,88 @@
+/* botões */
+.container-btn-links-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-links-cards {
+    display: flex;
+    width: 130px;
+    height: 55px;
+    font-family: poppins;
+    font-weight: 400;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid;
+    border-color: rgba(93, 96, 108, 20%);
+    transition: all .3s;
+}
+
+    .btn-links-cards:hover {
+        color: var(--color-p4);
+        border-image: linear-gradient(to bottom right, var(--color-p4), var(--color-s23)) 10;
+        transition: all .3s;
+    }
+
+
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+    .container-btn-links-cards {
+        gap: 10px;
+    }
+    
+    .btn-links-cards {
+        width: 100px;
+        height: 45px;
+        font-size: .8em;
+        color: var(--color-c2);
+    }
+    
+        .btn-links-cards:hover {
+            color: var(--color-p4);
+            border-image: linear-gradient(to bottom right, var(--color-p4), var(--color-s23)) 10;
+            border-width: 1px;
+            border-style: solid;
+            transition: all .3s;
+        }
+
+}
+
+@media (min-width: 592px) and (max-width: 768px) {
+
+    .container-btn-links-cards {
+        gap: 10px;
+    }
+    
+    .btn-links-cards {
+        width: 120px;
+        height: 55px;
+        color: var(--color-c2);
+    }
+
+}
+
+@media (max-width: 591px) {
+    .btn-links-cards {
+        width: 110px;
+        height: 45px;
+        font-size: 1em;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .container-btn-links-cards {
+        gap: 10px;
+    }
+    
+    .btn-links-cards {
+        width: 80px;
+        height: 40px;
+        font-size: .625em;
+    }
+    
+}
+

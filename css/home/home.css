@@ -21,17 +21,13 @@
     max-width: 100%;
 }
 
-.home-info h1 {
-    font-size: 4em;
-    line-height: 1em;
+.font-1-h1-b {
     max-width: 527px;
-    font-family: poppins;
-    font-weight: bold;
     position: relative;
     z-index: -1;
 }
 
-.home-info h1::before {
+.font-1-h1-b::before {
     content: '';
     position: absolute;
     width: 1em;
@@ -44,9 +40,7 @@
     z-index: -1;
 }
 
-.home-info p {
-    font-size: 1.5em;
-    line-height: 1.5em;
+.font-2-xl-r {
     max-width: 648px;
     margin-top: 10px;
 }
@@ -58,11 +52,9 @@
 }
 
 .icones-sociais a {
-    /* border: 1px solid; */
     font-size: 25px;
     padding: 2px 4px;
     background-color: var(--color-c1);
-    color: var(--color-c6);
     transition: all .3s;
 }
 
@@ -74,22 +66,15 @@
 
 @media (min-width: 768px) and (max-width:991px){
     .home {
-        /* background-color: antiquewhite; */
         grid-template-rows: auto;
         min-height: 80vh;
     }
 
-    .home-info h1 {
-        font-size: 3.0em;
-        line-height: 1.1em;
+    .font-1-h1-b {
         max-width: 381px;
-        font-family: poppins;
-        font-weight: bold;
     }
     
-    .home-info p {
-        font-size: 1.1em;
-        line-height: 1.6em;
+    .font-2-xl-r {
         max-width: 600px;
         margin-top: 0px;
     }
@@ -98,7 +83,6 @@
 
 @media (min-width: 481px) and (max-width:767px){
     .home {
-        /* background-color: yellowgreen; */
         min-height: 80vh;
         height: auto;
         grid-template-columns: 1fr;
@@ -123,17 +107,12 @@
     }
 
 
-    .home-info h1 {
-        font-size: 3em;
-        line-height: 1.1em;
+    .font-1-h1-b  {
         max-width: 381px;
-        font-family: poppins;
-        font-weight: bold;
+        
     }
     
-    .home-info p {
-        font-size: 1.1em;
-        line-height: 1.6em;
+    .font-2-xl-r {
         max-width: 600px;
         margin-top: 0px;
     }
@@ -174,17 +153,11 @@
         height: auto;
     }
 
-    .home-info h1 {
-        font-size: 2.25em;
-        line-height: 1.2em;
+    .font-1-h1-b {
         max-width: 381px;
-        font-family: poppins;
-        font-weight: bold;
     }
     
-    .home-info p {
-        font-size: 1.1em;
-        line-height: 1.6em;
+    .font-2-xl-r {
         max-width: 648px;
         margin-top: 0px;
     }
