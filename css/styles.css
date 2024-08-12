@@ -1,10 +1,15 @@
-@import url(/css/global/global.css);
-@import url(/css/componentes/fonts.css);
-@import url(/css/componentes/componentes.css);
-@import url(/css/global/navbar.css);
-@import url(/css/componentes/cor.css);
-@import url(/css/home/home.css);
-@import url(/css/sobre/sobre.css);
-@import url(/css/habilidades/habilidades.css);
-@import url(/css/projetos/projetos-destaque.css);
-@import url(/css/formacao/formacao.css);
+@import url(global/global.css);
+@import url(navbar/navbar-lateral.css);
+@import url(navbar/navbar-top.css);
+
+@import url(global/global.css);
+@import url(componentes/fonts.css);
+@import url(componentes/componentes.css);
+@import url(componentes/cor.css);
+@import url(global/navbar.css);
+@import url(home/home.css);
+@import url(sobre/sobre.css);
+@import url(habilidades/habilidades.css);
+@import url(projetos/projetos-destaque.css);
+@import url(formacao/formacao.css);
+@import url(componentes/tabela.css);
