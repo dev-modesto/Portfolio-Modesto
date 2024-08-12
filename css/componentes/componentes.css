@@ -26,6 +26,36 @@
     }
 
 
+.container-button {
+    display: flex;
+    margin-bottom:30px ;
+}
+    
+/* .form-container-button {
+
+} */
+
+.btn-primary {
+    background-color: var(--color-s23);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    font: 400 1rem/1.35 "Poppins", sans-serif;
+    box-sizing: border-box;
+    border: 1px solid var(--color-s23);
+    color: var(--color-c0);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-s22);
+    border: 1px solid var(--color-s22);
+}
+
+.btn-primary:active {
+    background-color: var(--color-s3) !important;
+}
+
 
 @media (min-width: 769px) and (max-width: 1023px) {
 
