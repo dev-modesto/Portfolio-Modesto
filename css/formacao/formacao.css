@@ -176,6 +176,9 @@
     .card-formacao-texto {
         font-family: poppins, sans-serif;
         color: var(--color-c6);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
         .card-formacao--instituicao {
@@ -475,8 +478,6 @@
     }
     
     .card-formacao-texto {
-        display: flex;
-        flex-direction: column;
         gap: 3px;
     }
 
@@ -659,9 +660,7 @@
         }
 
     .card-formacao-texto {
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
+        gap: 10px;
     }
 
         .card-formacao--instituicao {
@@ -872,8 +871,6 @@
     }
     
     .card-formacao-texto {
-        display: flex;
-        flex-direction: column;
         gap: 3px;
     }
 
@@ -1072,9 +1069,7 @@
             }
     
         .card-formacao-texto {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
+            gap: 0px;
         }
     
             .card-formacao--instituicao {
