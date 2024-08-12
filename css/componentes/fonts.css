@@ -6,6 +6,9 @@ html {
     line-height: 16px;
 }
 
+.font-1-xxl-1 {
+    font: 600 1.5rem/1.5 "Poppins", sans-serif;
+  }
 
 .font-1-h1-b {
     font: 700 4rem/1em "Poppins", sans-serif;
@@ -43,6 +46,10 @@ html {
 .font-1-md-sb {
     font: 600 .88rem/1.5 "Poppins", sans-serif;
 }
+
+.font-1-s {
+    font: 400 1rem/1.5 "Poppins", sans-serif;
+  }
 
 .font-1-sm-sb {
     font: 500 .81rem/1 "Poppins", sans-serif;
