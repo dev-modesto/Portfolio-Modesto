@@ -1,6 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/include/menu/navbar.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/include/menu/sidebar.php";
 
     $sql = "SELECT * FROM tbl_formacao";
     $consultaFormacao = mysqli_query($con, $sql);
