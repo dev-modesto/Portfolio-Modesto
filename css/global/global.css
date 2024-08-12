@@ -1,3 +1,7 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
 body, h1, h2, p, ul, li, a {
     margin: 0px;
     padding: 0px;
@@ -13,4 +17,8 @@ ul {
 
 html {
     scroll-padding-top: 75px; 
+}
+
+em {
+    color: red;
 }
