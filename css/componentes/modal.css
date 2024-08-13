@@ -1,0 +1,68 @@
+.modal-content {
+    font-family: 'poppins';
+}
+
+.modal-body p {
+    text-align: center;
+}
+
+.body-alerta-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-footer  {
+    gap: 20px;
+    padding: 12px 0px;
+}
+
+.modal-footer.excluir {
+    background-color: rgb(245, 245, 245);
+    padding: 12px 12px;
+}
+
+.container-button-modal {
+    padding: 20px;
+}
+
+
+.modal-header-second {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.modal-header-second span {
+    color: #D77C7C;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icone-alerta-modal {
+    background-color: #FCEEEE;
+    box-shadow: 0px 0px 0px 8px #FDF4F4;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.btn-modal-cancelar {
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+    color: rgb(116, 116, 116);
+}
+
+.btn-modal-excluir {
+    background-color: #e05c5c;
+    border: #D77C7C;
+    color: white;
+}
+
+.btn-modal-excluir:hover {
+    background-color: #D77C7C;
+    border: #D77C7C;
+    color: white;
+}
