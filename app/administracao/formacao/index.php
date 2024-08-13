@@ -23,6 +23,22 @@
 
 <div class="conteudo">
 
+    <?php
+        if(isset($_GET['msg'])){
+            $msg = $_GET['msg'];
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert"> '. $msg .'
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+        }
+
+        if(isset($_GET['msgInvalida'])){
+            $msg = $_GET['msgInvalida'];
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert"> '. $msg .' 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+        }
+    ?>
+
     <div class="container-button">
         <button type="button" class="cadastrar-cliente btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Adicionar formação</button>
     </div>
@@ -46,6 +62,7 @@
                         $nroLinha = 1;
                         while($exibe = mysqli_fetch_array($consultaFormacao)){
                                 $idFormacao = $exibe['id_formacao'];
+
                             ?>
                             <tr data-id-formacao="<?php echo $idFormacao ?>">
                                 <td><?php echo $exibe['nome']?></td>
@@ -53,10 +70,10 @@
                                 <td><?php echo $exibe['categoria_curso']?></td>
                                 <td><?php echo $exibe['total_horas']?></td>
                                 <td><?php echo $exibe['status']?></td>
-                                <td class="td-icons">
+                                <td class="td-icons" data-id-formacao="222">
                                     <a class="btn-visualizar-info-cliente icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
                                     <a class="btn-editar-cliente icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-cliente icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                    <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                 </td>
                             </tr>
                             <?php
@@ -165,13 +182,16 @@
                     </div>
 
                     <div class="modal-footer form-container-button">
-                        <button type="button" class="btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                        <button class='btn btn-primary' type="submit">Cadastrar</button>
+                        <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button class='col btn btn-primary' type="submit">Cadastrar</button>
                     </div>
                 </form>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modalExcluir">
     </div>
 
 </div>
@@ -188,7 +208,24 @@
         var label = $(container).find('label')[0];
         var inputElement = $(container).find('input')[0];
         $(label).text('Pesquisar: ');
-    });
 
+        $('.btn-excluir-formacao').click(function (e) { 
+            e.preventDefault();
+            idFormacao = $(this).closest('tr').data('id-formacao');
+
+            $.ajax({
+                type: "POST",
+                url: "include/eModalExcluirFormacao.php",
+                data: {
+                    'click-excluir-formacao':true,
+                    'idPrincipal':idFormacao
+                },
+                success: function (response) {
+                    $('.modalExcluir').html(response);
+                    $('#modalExcluir').modal('show');
+                }
+            });
+        });
+    });
 
 </script>
