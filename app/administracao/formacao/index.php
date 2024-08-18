@@ -71,8 +71,8 @@
                                 <td><?php echo $exibe['total_horas']?></td>
                                 <td><?php echo $exibe['status']?></td>
                                 <td class="td-icons" data-id-formacao="222">
-                                    <a class="btn-visualizar-info-cliente icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-cliente icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                    <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
+                                    <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                     <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                 </td>
                             </tr>
@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form class="form-container" action="include/gFormacao.php" method="post" enctype="multipart/form-data">
+                <form class="form-container" action="include/gFormacao.php" method="post">
                     <div class="row mb-4">
                         <div class="col-md-6 mb-4">
                             <label class="font-1-s" for="nome-formacao">Nome formação <em>*</em></label><br>
@@ -191,9 +191,8 @@
         </div>
     </div>
 
-    <div class="modalExcluir">
+    <div class="modalExcluir modalEditarFormacao">
     </div>
-
 </div>
 
 <?php 
@@ -228,4 +227,24 @@
         });
     });
 
+    $(document).ready(function () {
+        $('.btn-editar-formacao').click(function (e) { 
+            e.preventDefault();
+            idFormacao = $(this).closest('tr').data('id-formacao');
+
+            $.ajax({
+                type: "POST",
+                url: "include/cModalEditarFormacao.php",
+                data: {
+                    'click-editar-formacao':true,
+                    'idPrincipal':idFormacao
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('.modalEditarFormacao').html(response);
+                    $('#modalEditarFormacao').modal('show');
+                }
+            });
+        });
+    });
 </script>
