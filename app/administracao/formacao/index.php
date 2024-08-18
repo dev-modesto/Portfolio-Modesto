@@ -40,7 +40,7 @@
     ?>
 
     <div class="container-button">
-        <button type="button" class="cadastrar-cliente btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Adicionar formação</button>
+        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar formação</button>
     </div>
 
     <div class="container-principal">
@@ -70,7 +70,7 @@
                                 <td><?php echo $exibe['categoria_curso']?></td>
                                 <td><?php echo $exibe['total_horas']?></td>
                                 <td><?php echo $exibe['status']?></td>
-                                <td class="td-icons" data-id-formacao="222">
+                                <td class="td-icons">
                                     <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
                                     <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                     <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
@@ -91,7 +91,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar projeto</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar formação</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -198,53 +198,3 @@
 <?php 
     include BASE_PATH . '/include/footer/footer-administracao.php';
 ?>
-
-
-<script>
-
-    $(document).ready(function () {
-        container = $('.dt-search')[0];
-        var label = $(container).find('label')[0];
-        var inputElement = $(container).find('input')[0];
-        $(label).text('Pesquisar: ');
-
-        $('.btn-excluir-formacao').click(function (e) { 
-            e.preventDefault();
-            idFormacao = $(this).closest('tr').data('id-formacao');
-
-            $.ajax({
-                type: "POST",
-                url: "include/eModalExcluirFormacao.php",
-                data: {
-                    'click-excluir-formacao':true,
-                    'idPrincipal':idFormacao
-                },
-                success: function (response) {
-                    $('.modalExcluir').html(response);
-                    $('#modalExcluir').modal('show');
-                }
-            });
-        });
-    });
-
-    $(document).ready(function () {
-        $('.btn-editar-formacao').click(function (e) { 
-            e.preventDefault();
-            idFormacao = $(this).closest('tr').data('id-formacao');
-
-            $.ajax({
-                type: "POST",
-                url: "include/cModalEditarFormacao.php",
-                data: {
-                    'click-editar-formacao':true,
-                    'idPrincipal':idFormacao
-                },
-                success: function (response) {
-                    console.log(response);
-                    $('.modalEditarFormacao').html(response);
-                    $('#modalEditarFormacao').modal('show');
-                }
-            });
-        });
-    });
-</script>
