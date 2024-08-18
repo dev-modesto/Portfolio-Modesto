@@ -15,6 +15,7 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
 
     <script src="<?php echo BASE_URL . '/js/table.js'?>"></script>
+    <script src="<?php echo BASE_URL . '/js/modal.js'?>"></script>
 </body>
 </html>
 
