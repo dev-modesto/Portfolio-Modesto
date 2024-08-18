@@ -6,7 +6,24 @@
     $sql = "SELECT * FROM tbl_formacao WHERE categoria_curso = 'Curso Livre'";
     $consulta = mysqli_query($con, $sql);
 
-    $sqlFormacao = "SELECT * FROM tbl_formacao WHERE categoria_curso != 'Curso Livre' ORDER BY id_formacao DESC";
+    $sqlFormacao = 
+        "SELECT 
+            f.id_formacao, 
+            f.nome, 
+            f.instituicao, 
+            f.categoria_curso,
+            f.dt_inicio, 
+            f.dt_fim, 
+            f.id_imagem,
+            i.caminho,
+            f.link_certificado 
+        FROM tbl_formacao f 
+        INNER JOIN tbl_imagem i
+        ON f.id_imagem = i.id_imagem
+        WHERE categoria_curso != 'Curso Livre' 
+        ORDER BY id_formacao DESC
+    ";
+    
     $consultaFormacao = mysqli_query($con, $sqlFormacao);
 
 ?>
@@ -357,6 +374,7 @@
                             $categoriaCursoFormacao = $arrayFormacao['categoria_curso'];
                             $dt_inicio = $arrayFormacao['dt_inicio'];
                             $dt_fim = $arrayFormacao['dt_fim'];
+                            $caminhoImagem = $arrayFormacao['caminho'];
                             $linkDiploma = $arrayFormacao['link_certificado'];
 
                             $dataFormacaoInicioFormatada = dataFormatadaMesAno($dt_inicio);
@@ -369,7 +387,7 @@
                                     <!-- card frontal -->
                                     <div class="card-formacao-frontal">
                                         <div class="card-formacao-img-logo">
-                                            <img src="assets/img/instituicoes/logo-senacrj.jpg" alt="">
+                                            <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
                                         </div>
                                         <div class="card-formacao-texto">
                                             <p class="card-formacao--instituicao"><?php echo $instituicaoFormacao ?></p>

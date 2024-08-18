@@ -12,11 +12,11 @@
             $erroUpload = $imagem['error'];
 
             if ($categoriaTipoImagem == 'projeto') {
-                $caminhoRelativo = "img/projetos/";
+                $caminhoRelativo = "/assets/img/projetos/";
                 $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/assets/img/projetos/";
                 
             } else {
-                $caminhoRelativo = "img/instituicoes/";
+                $caminhoRelativo = "/assets/img/instituicoes/";
                 $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/assets/img/instituicoes/";
             }
             
