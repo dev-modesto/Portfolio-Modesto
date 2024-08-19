@@ -22,3 +22,7 @@ html {
 em {
     color: red;
 }
+
+label {
+    padding: 5px 0px;
+  }
