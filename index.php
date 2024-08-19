@@ -3,7 +3,23 @@
     include ARQUIVO_CONEXAO;
     include FUNCAO_DATA;
 
-    $sql = "SELECT * FROM tbl_formacao WHERE categoria_curso = 'Curso Livre'";
+    $sql = "SELECT 
+            f.id_formacao, 
+            f.nome, 
+            f.instituicao, 
+            f.categoria_curso,
+            f.dt_inicio, 
+            f.dt_fim, 
+            f.id_imagem,
+            f.total_horas,
+            i.caminho,
+            f.link_certificado 
+        FROM tbl_formacao f 
+        INNER JOIN tbl_imagem i
+        ON f.id_imagem = i.id_imagem
+        WHERE categoria_curso = 'Curso Livre'
+    ";
+
     $consulta = mysqli_query($con, $sql);
 
     $sqlFormacao = 
@@ -394,7 +410,6 @@
                                             <h3 class="card-formacao--curso"><?php echo $nomeCursoFormacao ?></h3>
                                             <div class="card-formacao-periodo">
                                                 <p class="card-formacao-periodo--inicio"><?php echo $dataFormacaoInicioFormatada ?> - <?php echo $dataFormacaoFimFormatada ?> </p>
-                                                <!-- <p class="card-formacao-periodo--termino"><?php echo $dataFormacaoFimFormatada ?></p> -->
                                             </div>
                                         </div>
                                     </div>
@@ -453,6 +468,7 @@
                                 $categoriaCurso = $resultado['categoria_curso'];
                                 $totalHoras = $resultado['total_horas'];
                                 $dt_fim = $resultado['dt_fim'];
+                                $caminhoImagem = $resultado['caminho'];
                                 $linkCertificadoCurso = $resultado['link_certificado'];
                                 $dataCertificadoConclusao = dataFormatadaMesAno($dt_fim);
 
@@ -463,7 +479,7 @@
                                         <!-- card frontal -->
                                         <div class="card-formacao-frontal">
                                             <div class="card-formacao-img-logo">
-                                                <img src="assets/img/instituicoes/logo-senacrj.jpg" alt="">
+                                                <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
                                             </div>
                                             <div class="card-formacao-texto">
                                                 <p class="card-formacao--instituicao"><?php echo $instituicao ?></p>
