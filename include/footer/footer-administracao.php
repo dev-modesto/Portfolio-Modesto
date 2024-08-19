@@ -15,6 +15,20 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
 
     <script src="<?php echo BASE_URL . '/js/table.js'?>"></script>
+    <script src="<?php echo BASE_URL . '/js/modal.js'?>"></script>
+    <script>
+
+        new DataTable('#myTable', {
+            pagingType: 'simple_numbers',
+            language: {
+                url: '<?php echo BASE_URL ?>/config/pt_br.json'
+            },
+        });
+
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 </body>
 </html>
 
