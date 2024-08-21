@@ -13,7 +13,8 @@
             f.id_imagem,
             f.total_horas,
             i.caminho,
-            f.link_certificado 
+            f.link_certificado,
+            f.status
         FROM tbl_formacao f 
         INNER JOIN tbl_imagem i
         ON f.id_imagem = i.id_imagem
@@ -32,7 +33,8 @@
             f.dt_fim, 
             f.id_imagem,
             i.caminho,
-            f.link_certificado 
+            f.link_certificado,
+            f.status
         FROM tbl_formacao f 
         INNER JOIN tbl_imagem i
         ON f.id_imagem = i.id_imagem
@@ -392,6 +394,7 @@
                             $dt_fim = $arrayFormacao['dt_fim'];
                             $caminhoImagem = $arrayFormacao['caminho'];
                             $linkDiploma = $arrayFormacao['link_certificado'];
+                            $status = $arrayFormacao['status'];
 
                             $dataFormacaoInicioFormatada = dataFormatadaMesAno($dt_inicio);
                             $dataFormacaoFimFormatada = dataFormatadaMesAno($dt_fim);
@@ -417,10 +420,31 @@
                                     <!-- card verso -->
                                     <div class="card-formacao-verso">
                                         <div class="card-formacao-verso--status">
-                                            <a href="<?php echo $linkDiploma ?>"><span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                            <?php 
+                                                if ($status == 'Concluído') {
+                                                    ?>
+                                                        <a href="<?php echo $linkDiploma ?>"><span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                                        <?php
+                                                } else {
+                                                    ?>
+                                                        <a href="#" aria-disabled="true">FORMAÇÃO EM ANDAMENTO</a>    
+                                                    <?php
+                                                }
+                                            ?>
                                         </div>
                                     </div>
-
+                                    <div class="container-icone-status-formacao">
+                                       <?php 
+                                            if ($status == 'Concluído') {
+                                                $icone = 'check';
+                                                $classe = 'icone-concluido';
+                                            } else {
+                                                $icone = 'more_horiz';
+                                                $classe = 'icone-andamento';
+                                            }
+                                       ?> 
+                                        <span class="material-symbols-rounded <?php echo $classe ?>"><?php echo $icone ?></span>
+                                    </div>
                                 </div>
                             
                             <?php
@@ -471,6 +495,7 @@
                                 $caminhoImagem = $resultado['caminho'];
                                 $linkCertificadoCurso = $resultado['link_certificado'];
                                 $dataCertificadoConclusao = dataFormatadaMesAno($dt_fim);
+                                $status = $resultado['status'];
 
                                 ?>
                                     <!-- card completo -->
@@ -494,10 +519,31 @@
                                         <!-- card verso -->
                                         <div class="card-formacao-verso">
                                             <div class="card-formacao-verso--status">
-                                                <a href="<?php echo $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>    
+                                                <?php 
+                                                    if ($status == 'Concluído') {
+                                                        ?>
+                                                            <a href="<?php echo $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                            <a href="#" aria-disabled="true">CURSO EM ANDAMENTO</a>    
+                                                        <?php
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
-
+                                        <div class="container-icone-status-formacao">
+                                            <?php 
+                                                if ($status == 'Concluído') {
+                                                    $icone = 'check';
+                                                    $classe = 'icone-concluido';
+                                                } else {
+                                                    $icone = 'more_horiz';
+                                                    $classe = 'icone-andamento';
+                                                }
+                                            ?> 
+                                            <span class="material-symbols-rounded <?php echo $classe ?>"><?php echo $icone ?></span>
+                                        </div>
                                     </div>
                                 
                                 <?php

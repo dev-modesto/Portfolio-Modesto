@@ -56,6 +56,10 @@
     background-color: var(--color-s3) !important;
 }
 
+a[aria-disabled="true"] {
+    pointer-events: none;
+    cursor: default;
+}
 
 @media (min-width: 769px) and (max-width: 1023px) {
 
