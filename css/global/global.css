@@ -26,3 +26,8 @@ em {
 label {
     padding: 5px 0px;
   }
+
+textarea {
+    min-height: 100px !important;
+    max-height: 100px;
+}
