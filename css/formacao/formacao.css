@@ -150,6 +150,34 @@
         color: var(--color-c6);
         z-index: 1;
     }
+   
+    .container-icone-status-formacao {
+        position: absolute;
+        right: -12.5px;
+        bottom: -12.5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: var(--color-c12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container-icone-status-formacao .icone-concluido {
+        color: var(--color-p4);
+        font-size: 2rem;
+        left: 0px;
+        bottom: 0px;
+        position: absolute;
+    }
+
+    .container-icone-status-formacao .icone-andamento {
+        color: var(--color-c1);
+        left: 1px;
+        bottom: 1px;
+        position: absolute;
+    }
 
 .card-formacao-frontal {
     background-color: black;
