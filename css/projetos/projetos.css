@@ -1,0 +1,51 @@
+.container-tecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 0px;
+}
+
+.container-imagem-tecnologia {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s;
+    position: relative;
+    border: 1px solid var(--color-c4);
+}
+
+.container-imagem-tecnologia img {
+    max-width: 90px;
+    padding: 5px;
+    box-sizing: border-box;
+    transition: all .2s;
+}
+
+.container-imagem-tecnologia.selected img{
+    filter: blur(2px);
+    transition: all .2s;
+}
+
+.container-imagem-tecnologia.selected {
+    border-color: var(--color-p5);
+}
+
+.container-imagem-tecnologia.selected::after {
+    content: 'check_circle';
+    font-family: 'Material Symbols Rounded';
+    font-size: 2rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    right: 0px;
+    top: 0px;
+    color: var(--color-p6);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 10%);
+}
+

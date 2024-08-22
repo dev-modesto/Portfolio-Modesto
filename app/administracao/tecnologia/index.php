@@ -2,8 +2,8 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/include/menu/sidebar.php";
 
-    $sql = "SELECT * FROM tbl_imagem";
-    $consultaImagem = mysqli_query($con, $sql);
+    $sql = "SELECT * FROM tbl_tecnologia ORDER BY nome";
+    $consultarTecnologia = mysqli_query($con, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
     ?>
 
     <div class="container-button">
-        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar imagem</button>
+        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar tecnologia</button>
     </div>
 
     <div class="container-principal">
@@ -48,27 +48,24 @@
             <table id="myTable" class="table nowrap order-column table-hover text-left">
                 <thead class="">
                     <tr>
-                        <th scope="col">Nome imagem</th>
-                        <th scope="col">Caminho</th>
-                        <th scope="col">Categoria</th>
+                        <th scope="col">Nome tecnologia</th>
                         <th scope="col">Controle</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     <?php 
                         $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultaImagem)){
+                        while($exibe = mysqli_fetch_array($consultarTecnologia)){
+                                $idTecnologia = $exibe['id_tecnologia'];
                                 $idImagem = $exibe['id_imagem'];
 
                             ?>
-                            <tr data-id-imagem="<?php echo $idImagem ?>">
-                                <td><?php echo $exibe['nome_original']?></td>
-                                <td><?php echo $exibe['caminho_original']?></td>
-                                <td><?php echo $exibe['categoria']?></td>
+                            <tr data-id-tecnologia="<?php echo $idTecnologia ?>">
+                                <td><?php echo $exibe['nome']?></td>
                                 <td class="td-icons">
-                                    <a class="btn-visualizar-info-imagem icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-imagem icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-imagem icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                    <a class="btn-visualizar-info-tecnologia icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
+                                    <a class="btn-editar-tecnologia icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                    <a class="btn-excluir-tecnologia icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                 </td>
                             </tr>
                             <?php
@@ -83,24 +80,25 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar imagem</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar tecnologia</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                <form class="form-container" action="include/gImagem.php" method="post" enctype="multipart/form-data">
+                <form class="form-container" action="include/gTecnologia.php" method="post" enctype="multipart/form-data">
                     <div class="mb-4">
-                        <label class="font-1-s" for="imagem">Img logo <em>*</em></label>
-                        <input class="form-control" type="file" name="imagem" id="imagem" required>
+                        <label class="font-1-s" for="nome-tecnologia">Nome tecnologia <em>*</em></label>
+                        <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="categoria-tipo-imagem">Categoria tipo da imagem <em>*</em></label>
-                        <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem" value="" required>
-                            <option value="" selected>Selecione uma opção</option>
-                            <option value="projeto">Projeto</option>
-                            <option value="logo">Logo</option>
-                        </select>
+                        <label class="font-1-s" for="imagem-original">Img. Original <em>*</em></label>
+                        <input class="form-control" type="file" name="imagem-original" id="imagem-original" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="font-1-s" for="imagem-plain">Img. Plain (simplificada) <em>*</em></label>
+                        <input class="form-control" type="file" name="imagem-plain" id="imagem-plain" required>
                     </div>
 
                     <div class="modal-footer form-container-button">
@@ -113,7 +111,7 @@
         </div>
     </div>
 
-    <div class="modalExcluir modalEditarImagem">
+    <div class="modalExcluir modaEditarTecnologia">
     </div>
 </div>
 
