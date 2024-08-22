@@ -62,8 +62,8 @@
 
                             ?>
                             <tr data-id-imagem="<?php echo $idImagem ?>">
-                                <td><?php echo $exibe['nome']?></td>
-                                <td><?php echo $exibe['caminho']?></td>
+                                <td><?php echo $exibe['nome_original']?></td>
+                                <td><?php echo $exibe['caminho_original']?></td>
                                 <td><?php echo $exibe['categoria']?></td>
                                 <td class="td-icons">
                                     <a class="btn-visualizar-info-imagem icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>

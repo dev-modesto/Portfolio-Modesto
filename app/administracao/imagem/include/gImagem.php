@@ -38,8 +38,8 @@
             $sql = mysqli_prepare(
                 $con,
                 "INSERT INTO tbl_imagem (
-                    nome, 
-                    caminho, 
+                    nome_original, 
+                    caminho_original, 
                     categoria)
                 VALUES (?, ?, ?)
             ");
