@@ -12,7 +12,7 @@
             f.dt_fim, 
             f.id_imagem,
             f.total_horas,
-            i.caminho,
+            i.caminho_original,
             f.link_certificado,
             f.status
         FROM tbl_formacao f 
@@ -32,7 +32,7 @@
             f.dt_inicio, 
             f.dt_fim, 
             f.id_imagem,
-            i.caminho,
+            i.caminho_original,
             f.link_certificado,
             f.status
         FROM tbl_formacao f 
@@ -392,7 +392,7 @@
                             $categoriaCursoFormacao = $arrayFormacao['categoria_curso'];
                             $dt_inicio = $arrayFormacao['dt_inicio'];
                             $dt_fim = $arrayFormacao['dt_fim'];
-                            $caminhoImagem = $arrayFormacao['caminho'];
+                            $caminhoImagem = $arrayFormacao['caminho_original'];
                             $linkDiploma = $arrayFormacao['link_certificado'];
                             $status = $arrayFormacao['status'];
 
@@ -492,7 +492,7 @@
                                 $categoriaCurso = $resultado['categoria_curso'];
                                 $totalHoras = $resultado['total_horas'];
                                 $dt_fim = $resultado['dt_fim'];
-                                $caminhoImagem = $resultado['caminho'];
+                                $caminhoImagem = $resultado['caminho_original'];
                                 $linkCertificadoCurso = $resultado['link_certificado'];
                                 $dataCertificadoConclusao = dataFormatadaMesAno($dt_fim);
                                 $status = $resultado['status'];
