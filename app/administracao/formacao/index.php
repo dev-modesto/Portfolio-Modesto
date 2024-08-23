@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 </head>
 <body>
+<?php
+    include BASE_PATH . '/include/pre-load/pre-load.php';
+?>
 
 <div class="conteudo">
 
