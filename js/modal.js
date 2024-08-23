@@ -28,3 +28,6 @@ abrirModal('.btn-editar-autor', 'tr', 'id-autor', 'include/cModalEditarAutor.php
 
 abrirModal('.btn-editar-projeto', 'tr', 'id-projeto', 'include/cModalEditarProjeto.php', 'click-editar-projeto', '.modalEditarProjeto', '#modalEditarProjeto');
 abrirModal('.btn-excluir-projeto', 'tr', 'id-projeto', 'include/cModalExcluirProjeto.php', 'click-excluir-projeto', '.modalExcluir', '#modalExcluir');
+
+abrirModal('.btn-editar-area-formacao', 'tr', 'id-area-formacao', 'include/cModalEditarAreaFormacao.php', 'click-editar-area-formacao', '.modalEditarAreaFormacao', '#modalEditarAreaFormacao');
+abrirModal('.btn-excluir-area-formacao', 'tr', 'id-area-formacao', 'include/cModalExcluirAreaFormacao.php', 'click-excluir-area-formacao', '.modalExcluir', '#modalExcluir');
