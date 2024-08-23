@@ -157,11 +157,11 @@
                         <select class="form-select" name="img-formacao" id="img-formacao">
                             <option value="" selected>Escolha a imagem</option>
                             <?php 
-                                $sql = "SELECT * FROM tbl_imagem";
+                                $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'logo'";
                                 $consulta = mysqli_query($con, $sql);
                                 
                                 while($row = mysqli_fetch_assoc($consulta)){
-                                    echo "<option value='" . $row['id_imagem'] . "'>" . $row['nome'] . "</option>";
+                                    echo "<option value='" . $row['id_imagem'] . "'>" . $row['nome_original'] . "</option>";
                                 }
                             ?>
                         </select>
