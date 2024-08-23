@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>-</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -62,8 +62,8 @@
 
                             ?>
                             <tr data-id-imagem="<?php echo $idImagem ?>">
-                                <td><?php echo $exibe['nome']?></td>
-                                <td><?php echo $exibe['caminho']?></td>
+                                <td><?php echo $exibe['nome_original']?></td>
+                                <td><?php echo $exibe['caminho_original']?></td>
                                 <td><?php echo $exibe['categoria']?></td>
                                 <td class="td-icons">
                                     <a class="btn-visualizar-info-imagem icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>

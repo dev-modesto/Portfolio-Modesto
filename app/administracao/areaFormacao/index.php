@@ -2,8 +2,8 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/include/menu/sidebar.php";
 
-    $sql = "SELECT * FROM tbl_autor ORDER BY nome";
-    $consultaAutor = mysqli_query($con, $sql);
+    $sql = "SELECT * FROM tbl_area_formacao ORDER BY nome";
+    $consultaAreaFormacao = mysqli_query($con, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
     ?>
 
     <div class="container-button">
-        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar Autor</button>
+        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar Área</button>
     </div>
 
     <div class="container-principal">
@@ -49,37 +49,29 @@
             <table id="myTable" class="table nowrap order-column table-hover text-left">
                 <thead class="">
                     <tr>
-                        <th scope="col">Nome Autor</th>
-                        <th scope="col">LinkedIn</th>
-                        <th scope="col">GitHub</th>
+                        <th scope="col">Nome área</th>
                         <th scope="col">Controle</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     <?php 
                         $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultaAutor)){
-                                $idAutor = $exibe['id_autor'];
-
+                        while($exibe = mysqli_fetch_array($consultaAreaFormacao)){
+                                $idArea = $exibe['id_area_formacao'];
                             ?>
-                            <tr data-id-autor="<?php echo $idAutor ?>">
+                            <tr data-id-area-formacao="<?php echo $idArea ?>">
                                 <td><?php echo $exibe['nome']?></td>
-                                <td><?php echo $exibe['link_linkedin']?></td>
-                                <td><?php echo $exibe['link_github']?></td>
                                 <td class="td-icons">
-                                    <a class="btn-visualizar-info-autor icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-autor icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-autor icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                    <a class="btn-editar-area-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                    <a class="btn-excluir-area-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                 </td>
                             </tr>
                             <?php
                         }
                     ?>
                 </tbody>
-
             </table>
         </div>
-        
     </div>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -87,25 +79,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Autor</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Área</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-container" action="include/gAutor.php" method="post">
+                    <form class="form-container" action="include/gAreaFormacao.php" method="post">
                         <div class="mb-4">
-                            <label class="font-1-s" for="instituicao-ensino">Nome Autor<em>*</em></label><br>
-                            <input class="form-control" type="text" name="nome-autor" id="nome-autor" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="font-1-s" for="link-linkedin">LinkedIn<em>*</em></label><br>
-                            <input class="form-control" type="text" name="link-linkedin" id="link-linkedin" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="font-1-s" for="link-github">GitHub<em>*</em></label><br>
-                            <input class="form-control" type="text" name="link-github" id="link-github" required>
+                            <label class="font-1-s" for="area-formacao">Nome área de formação<em>*</em></label><br>
+                            <input class="form-control" type="text" name="area-formacao" id="area-formacao" required>
                         </div>
 
                         <div class="modal-footer form-container-button">
@@ -118,7 +100,7 @@
         </div>
     </div>
 
-    <div class="modalExcluir modalEditarAutor">
+    <div class="modalExcluir modalEditarAreaFormacao">
     </div>
 </div>
 
