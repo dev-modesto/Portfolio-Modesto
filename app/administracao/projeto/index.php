@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-lateral.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-top.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/projetos/projetos.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/tabela.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/modal.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/pre-loader.css">

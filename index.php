@@ -53,6 +53,7 @@
     <title>Portfólio | Modesto</title>
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/home/home.css">
