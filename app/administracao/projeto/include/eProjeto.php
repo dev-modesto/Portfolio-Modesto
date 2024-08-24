@@ -36,22 +36,40 @@
             $caminhoImagemRelativo = $array['caminho_original'];
             $caminhoImagemAbsoluto = BASE_PATH . $caminhoImagemRelativo;
 
-            excluirImagemPasta($caminhoImagemAbsoluto);
-
         } else {
             $mensagem = 'Ocorreu um erro. Não foi possível prosseguir com a exclusão.';
             die();
         }
 
-        $sql = mysqli_prepare($con, "DELETE FROM tbl_projeto WHERE id_projeto = ? ");
-        mysqli_stmt_bind_param($sql, "i", $idProjeto);
-        mysqli_stmt_execute($sql);
 
-        $mensagem = 'Excluído com sucesso!';
-        header('location: ../index.php?msg=' . $mensagem);
+        mysqli_begin_transaction($con);
+        try {
+
+            $sql = mysqli_prepare($con, "DELETE FROM tbl_projeto WHERE id_projeto = ? ");
+            mysqli_stmt_bind_param($sql, "i", $idProjeto);
+            mysqli_stmt_execute($sql);
+
+            $sqlImagem = mysqli_prepare($con, "DELETE FROM tbl_imagem WHERE id_imagem = ? ");
+            mysqli_stmt_bind_param($sqlImagem, "i", $idImagemProjeto);
+            mysqli_stmt_execute($sqlImagem);
+
+            excluirImagemPasta($caminhoImagemAbsoluto);
+
+            $mensagem = 'Excluído com sucesso!';
+            header('location: ../index.php?msg=' . $mensagem);
+            mysqli_commit($con);
+
+        } catch (Exception $e) {
+            mysqli_rollback($con);
+            $mensagem = "Ocorreu um erro. Não foi possível excluir." . $e->getMessage();
+            header('location: ../index.php?msgInvalida=' . $mensagem);
+
+        } finally {
+            mysqli_close($con);
+        }
 
     } else {
-        header('Location: ../index.php');
+        header('location: ../index.php');
     }
 
 ?>
