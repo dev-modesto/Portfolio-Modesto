@@ -1,6 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . '/portfolio-modesto/config/config.php';
-    include ARQUIVO_CONEXAO;
+    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
     include FUNCAO_DATA;
 
     $sql = "SELECT 
@@ -52,8 +51,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | Modesto</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/home/home.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/sobre/sobre.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/habilidades/habilidades.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/projetos/projetos-destaque.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/formacao/formacao.css">
 
     <!-- meus icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
