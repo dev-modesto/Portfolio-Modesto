@@ -342,7 +342,7 @@
                                                 <div class="container-buttons-link-logo">
                                                     <div class="conteudo-buttons-link-logo">
                                                         <a href="#">
-                                                            <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="">
+                                                            <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="" width="90" height="90">
                                                         </a>
                                                     </div>
                                                 </div>
