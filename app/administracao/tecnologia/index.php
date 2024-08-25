@@ -61,7 +61,7 @@
             <table id="myTable" class="table nowrap order-column table-hover text-left">
                 <thead class="">
                     <tr>
-                        <th scope="col">Nome tecnologia</th>
+                        <th scope="col">Nome tec./ ferramenta</th>
                         <th scope="col">Controle</th>
                     </tr>
                 </thead>
@@ -93,17 +93,45 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar tecnologia</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar tec. ou ferramenta</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                 <form class="form-container" action="include/gTecnologia.php" method="post" enctype="multipart/form-data">
+
                     <div class="mb-4">
-                        <label class="font-1-s" for="nome-tecnologia">Nome tecnologia <em>*</em></label>
+                        <label class="font-1-s" for="nome-tecnologia">Nome <em>*</em></label>
                         <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia" required>
                     </div>
 
+                    <div class="mb-4">
+                        <label class="font-1-s" for="habilidade">Exibir em Habilidades?<em>*</em></label><br>
+                        <div class="container-check">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="habilidade-nao">Não</label>
+                                <input class="form-check-input" type="radio" name="habilidade" id="habilidade-nao" value="oculto" checked>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="habilidade-sim">Sim</label>
+                                <input class="form-check-input" type="radio" name="habilidade" id="habilidade-sim" value="visivel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="font-1-s" for="categoria-tecnologia">Categoria<em>*</em></label><br>
+                        <div class="container-check">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="categoria-tecnologia-tec">Tecnologia</label>
+                                <input class="form-check-input" type="radio" name="categoria-tecnologia" id="categoria-tecnologia-tec" value="tecnologia" checked>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="categoria-tecnologia-ferramenta">Ferramenta</label>
+                                <input class="form-check-input" type="radio" name="categoria-tecnologia" id="categoria-tecnologia-ferramenta" value="ferramenta">
+                            </div>
+                        </div>
+                    </div>
                     <div class="mb-4">
                         <label class="font-1-s" for="imagem-original">Img. Original <em>*</em></label>
                         <input class="form-control" type="file" name="imagem-original" id="imagem-original" required>

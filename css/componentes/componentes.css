@@ -3,6 +3,7 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-content: start;
 }
 
 .btn-links-cards {
@@ -61,10 +62,67 @@ a[aria-disabled="true"] {
     cursor: default;
 }
 
+.invalid {
+    color: red;
+}
+
+.btn:disabled {
+    border-color: var(--color-c4);
+    background-color: var(--color-c4) !important;
+}
+
+.btn-outline-success {
+    border: 1px solid var(--color-a-green4) !important;
+}
+
+.btn-outline-danger {
+    border: 1px solid var(--color-a-red3) !important;
+}
+
+.btn-check:checked+.btn-outline-danger {
+    background-color: var(--color-a-red3) !important;
+}
+
+.btn-check:checked+.btn-outline-success {
+    background-color: var(--color-a-green4) !important;
+}
+
+.container-check {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #dee2e6;
+    border-radius: .375rem;
+    padding-left: 10px;
+    padding: 10px 10px;
+}
+
+.form-check-inline {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-check {
+    padding-left: 0px;
+}
+
+.form-check-input {
+    border: 1px solid;
+    height: 18px;
+    width: 18px;
+    padding: 5px 0px;
+    margin-top: 0px;
+}
+
+.form-check .form-check-input {
+    margin-left: 0px;
+}
+
 @media (min-width: 769px) and (max-width: 1023px) {
 
     .container-btn-links-cards {
-        gap: 10px;
+        gap: 20px;
     }
     
     .btn-links-cards {
@@ -87,7 +145,7 @@ a[aria-disabled="true"] {
 @media (min-width: 592px) and (max-width: 768px) {
 
     .container-btn-links-cards {
-        gap: 10px;
+        gap: 20px;
     }
     
     .btn-links-cards {
@@ -99,6 +157,10 @@ a[aria-disabled="true"] {
 }
 
 @media (max-width: 591px) {
+    .container-btn-links-cards {
+        gap: 10px;
+    }
+    
     .btn-links-cards {
         width: 110px;
         height: 45px;
