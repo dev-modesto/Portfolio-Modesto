@@ -43,6 +43,21 @@
     
     $consultaFormacao = mysqli_query($con, $sqlFormacao);
 
+    $sqlProjeto = "SELECT 
+            id_projeto, 
+            nome_projeto, 
+            descricao, 
+            descricao_tipo_projeto,
+            tipo_projeto, 
+            dt_desenvolvimento, 
+            link_deploy,
+            link_figma,
+            link_repositorio
+        FROM tbl_projeto  
+        WHERE destaque = 'sim'
+    ";
+
+    $consultaProjeto = mysqli_query($con, $sqlProjeto);
 ?>
 
 <!DOCTYPE html>
@@ -215,166 +230,140 @@
 
             <div class="projetosDestaque-container-cards">
 
-                <!-- card completo  -->
-                <div class="projetoDestaque-cards">
-                    <!-- frente do card -->
-                    <div class="projetoDestaque-cards-frontal">
-                        <div class="projetoDestaque-cards--techs" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c6">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-img">
-                            <img src="assets/img/projetos/WorldTech.jpg" alt="">
-                            </div>
-                    </div>
+                <?php
 
-                    <!-- verso do card -->
-                    <div class="projetoDestaque-cards-verso">
-                        <div class="projetoDestaque-cards--techs techs-verso" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c2">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
-                            <div class="projetoDestaque-cards--conteudo-buttons">
-                                <div class="container-btn-links-cards">
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxs-pointer '></i>DEPLOY</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-figma'></i>FIGMA</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-github'></i>GITHUB</a>
-                                </div>
-                                <div class="conteudo-buttons-link-logo">
-                                    <a href="#">
-                                        <img src="assets/img/projetos/logo-worldtech.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="projetoDestaque-cards--conteudo-texto">
-                                <h3>Descrição</h3>
-                                <p class="font-2-md-r cor-c3">A WorldTech é um site de e-commerce, ao qual foi desenvolvido em sala de aula, no período de 5 aulas, com o propósito de avaliação final do módulo em Projeto Integrador.</p>
-                                <br>
-                                <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    if (mysqli_num_rows($consultaProjeto) > 0) {
+                        while ($arrayProjeto = mysqli_fetch_assoc($consultaProjeto)) {
+                            $idProjeto = $arrayProjeto['id_projeto']; 
+                            $nomeProjeto = $arrayProjeto['nome_projeto']; 
+                            $descricao = $arrayProjeto['descricao']; 
+                            $descricaoTpProjeto = $arrayProjeto['descricao_tipo_projeto'];
+                            $tipoProjeto = $arrayProjeto['tipo_projeto']; 
+                            $dataLancamento = $arrayProjeto['dt_desenvolvimento']; 
+                            $linkDeploy = $arrayProjeto['link_deploy'];
+                            $linkFigma = $arrayProjeto['link_figma'];
+                            $linkRepositorio = $arrayProjeto['link_repositorio'];
 
-                <!-- card completo  -->
-                <div class="projetoDestaque-cards">
-                    <!-- frente do card -->
-                    <div class="projetoDestaque-cards-frontal">
-                        <div class="projetoDestaque-cards--techs" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c6">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-img">
-                            <img src="assets/img/projetos/WorldTech.jpg" alt="">
-                        </div>
-                    </div>
+                            $sqlImagensProjeto = 
+                                "SELECT 
+                                    ip.id_projeto,
+                                    ip.id_imagem,
+                                    i.nome_original,
+                                    i.caminho_original,
+                                    i.texto_alt,
+                                    i.categoria
+                                FROM tbl_imagem_projeto ip
+                                INNER JOIN tbl_imagem i
+                                ON ip.id_imagem = i.id_imagem
+                                WHERE ip.id_projeto = '$idProjeto' AND i.categoria = 'projeto'
+                            ";
 
-                    <!-- verso do card -->
-                    <div class="projetoDestaque-cards-verso">
-                        <div class="projetoDestaque-cards--techs techs-verso" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c2">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
-                            <div class="projetoDestaque-cards--conteudo-buttons">
-                                <div class="container-btn-links-cards">
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxs-pointer'></i>DEPLOY</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-figma'></i>FIGMA</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-github'></i>GITHUB</a>
-                                </div>
-                                <div class="conteudo-buttons-link-logo">
-                                    <a href="#">
-                                        <img src="assets/img/projetos/logo-worldtech.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="projetoDestaque-cards--conteudo-texto">
-                                <h3>Descrição</h3>
-                                <p class="font-2-md-r cor-c3">A WorldTech é um site de e-commerce, ao qual foi desenvolvido em sala de aula, no período de 5 aulas, com o propósito de avaliação final do módulo em Projeto Integrador.</p>
-                                <br>
-                                <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            $consultaImagensProjeto = mysqli_query($con, $sqlImagensProjeto);
+                            $arrayImagensProjeto = mysqli_fetch_assoc($consultaImagensProjeto);
 
-                <!-- card completo  -->
-                <div class="projetoDestaque-cards">
-                    <!-- frente do card -->
-                    <div class="projetoDestaque-cards-frontal">
-                        <div class="projetoDestaque-cards--techs" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c6">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-img">
-                            <img src="assets/img/projetos/WorldTech.jpg" alt="">
-                        </div>
-                    </div>
+                            $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
+                            $textoAlternativo = $arrayImagensProjeto['texto_alt'];
 
-                    <!-- verso do card -->
-                    <div class="projetoDestaque-cards-verso">
-                        <div class="projetoDestaque-cards--techs techs-verso" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c2">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
-                            <div class="projetoDestaque-cards--conteudo-buttons">
-                                <div class="container-btn-links-cards">
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxs-pointer'></i>DEPLOY</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-figma'></i>FIGMA</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-github'></i>GITHUB</a>
-                                </div>
-                                <div class="conteudo-buttons-link-logo">
-                                    <a href="#">
-                                        <img src="assets/img/projetos/logo-worldtech.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="projetoDestaque-cards--conteudo-texto">
-                                <h3>Descrição</h3>
-                                <p class="font-2-md-r cor-c3">A WorldTech é um site de e-commerce, ao qual foi desenvolvido em sala de aula, no período de 5 aulas, com o propósito de avaliação final do módulo em Projeto Integrador.</p>
-                                <br>
-                                <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            $sqlImagemLogoProjeto = 
+                                "SELECT 
+                                    ip.id_projeto,
+                                    ip.id_imagem,
+                                    i.nome_original,
+                                    i.caminho_original
+                                FROM tbl_imagem_projeto ip
+                                INNER JOIN tbl_imagem i
+                                ON ip.id_imagem = i.id_imagem
+                                WHERE ip.id_projeto = '$idProjeto' AND i.categoria = 'logo'
+                            ";
+                            
+                            $consultaImagemLogoProjeto = mysqli_query($con, $sqlImagemLogoProjeto);
+                            $arrayImagemLogoProjeto = mysqli_fetch_assoc($consultaImagemLogoProjeto);
+                            $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
 
-                <!-- card completo  -->
-                <div class="projetoDestaque-cards">
-                    <!-- frente do card -->
-                    <div class="projetoDestaque-cards-frontal">
-                        <div class="projetoDestaque-cards--techs" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c6">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-img">
-                            <img src="assets/img/projetos/WorldTech.jpg" alt="">
-                        </div>
-                    </div>
+                            $sqlTecnologiasProjeto = 
+                                "SELECT 
+                                    tec.nome 
+                                FROM tbl_tecnologia_projeto tecp  
+                                INNER JOIN tbl_tecnologia tec
+                                ON tecp.id_tecnologia = tec.id_tecnologia
+                                WHERE tecp.id_projeto = '$idProjeto'
+                                ORDER BY tecp.id_tecnologia DESC
+                            ";
+                            $consultaTecnologiasProjeto = mysqli_query($con, $sqlTecnologiasProjeto);
+                            $tecnologias = [];
 
-                    <!-- verso do card -->
-                    <div class="projetoDestaque-cards-verso">
-                        <div class="projetoDestaque-cards--techs techs-verso" data-name="WorldTech">
-                            <p class="font-1-md-sb cor-c2">PHP MYSQL JAVASCRIPT HTML CSS BOOTSTRAP</p>
-                        </div>
-                        <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
-                            <div class="projetoDestaque-cards--conteudo-buttons">
-                                <div class="container-btn-links-cards">
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxs-pointer'></i>DEPLOY</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-figma'></i>FIGMA</a>
-                                    <a class="btn-links-cards font-1-md-l cor-c2" href="#"><i class='bx bxl-github'></i>GITHUB</a>
+                            while ($arrayTecnologia = mysqli_fetch_assoc($consultaTecnologiasProjeto)) {
+                                $tecnologias[] = $arrayTecnologia['nome'];
+                            }
+
+                            $tecnologiasProjeto = implode(' - ', $tecnologias);
+        
+                        }
+
+                        ?>
+                            <!-- card completo  -->
+                            <div class="projetoDestaque-cards">
+                                <!-- frente do card -->
+                                <div class="projetoDestaque-cards-frontal">
+                                    <div class="projetoDestaque-cards--techs" data-name="<?php echo $nomeProjeto ?>">
+                                        <p class="font-1-md-sb cor-c6"><?php echo $tecnologiasProjeto ?></p>
+                                    </div>
+                                    <div class="projetoDestaque-cards--conteudo conteudo-img">
+                                        <img src="<?php echo BASE_URL . $caminhoOriginal ?>" alt="<?php echo $textoAlternativo ?>">
+                                    </div>
                                 </div>
-                                <div class="conteudo-buttons-link-logo">
-                                    <a href="#">
-                                        <img src="assets/img/projetos/logo-worldtech.png" alt="">
-                                    </a>
+
+                                <!-- verso do card -->
+                                <div class="projetoDestaque-cards-verso">
+                                    <div class="projetoDestaque-cards--techs techs-verso" data-name="<?php echo $nomeProjeto ?>">
+                                        <p class="font-1-md-sb cor-c2"><?php echo $tecnologiasProjeto ?></p>
+                                    </div>
+                                    <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
+                                        <div class="projetoDestaque-cards--conteudo-buttons">
+                                            <div class="container-btn-links-cards">
+                                                <?php 
+                                                    if (!$linkDeploy == "") {
+                                                        ?>
+                                                            <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
+                                                        <?php
+                                                    }
+                                                    
+                                                    if (!$linkFigma == "") {
+                                                        ?>
+                                                            <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
+                                                        <?php
+                                                    }
+                                                    
+                                                    if (!$linkRepositorio == "") {
+                                                        ?>
+                                                            <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
+                                                        <?php
+                                                    }
+                                                ?>
+                                            </div>
+                                            <div class="container-buttons-link-logo">
+                                                <div class="conteudo-buttons-link-logo">
+                                                    <a href="#">
+                                                        <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="projetoDestaque-cards--conteudo-texto">
+                                            <div class="conteudo-texto">
+                                                <h3>Descrição</h3>
+                                                <p class="font-2-md-r cor-c3"><?php echo $descricao ?></p>
+                                            </div>
+                                            <div class="container-button-saiba-mais">
+                                                <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="projetoDestaque-cards--conteudo-texto">
-                                <h3>Descrição</h3>
-                                <p class="font-2-md-r cor-c3">A WorldTech é um site de e-commerce, ao qual foi desenvolvido em sala de aula, no período de 5 aulas, com o propósito de avaliação final do módulo em Projeto Integrador.</p>
-                                <br>
-                                <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                        <?php
+                    } 
+                ?>
             </div>
 
             <a href="#" class="projetosDestaque-btn-visualizar-todos"><span class="material-symbols-rounded">folder_copy</span>Ver todos os projetos</a>

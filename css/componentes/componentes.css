@@ -3,6 +3,7 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-content: start;
 }
 
 .btn-links-cards {
@@ -61,10 +62,19 @@ a[aria-disabled="true"] {
     cursor: default;
 }
 
+.invalid {
+    color: red;
+}
+
+.btn:disabled {
+    border-color: var(--color-c4);
+    background-color: var(--color-c4) !important;
+}
+
 @media (min-width: 769px) and (max-width: 1023px) {
 
     .container-btn-links-cards {
-        gap: 10px;
+        gap: 20px;
     }
     
     .btn-links-cards {
@@ -87,7 +97,7 @@ a[aria-disabled="true"] {
 @media (min-width: 592px) and (max-width: 768px) {
 
     .container-btn-links-cards {
-        gap: 10px;
+        gap: 20px;
     }
     
     .btn-links-cards {
@@ -99,6 +109,10 @@ a[aria-disabled="true"] {
 }
 
 @media (max-width: 591px) {
+    .container-btn-links-cards {
+        gap: 10px;
+    }
+    
     .btn-links-cards {
         width: 110px;
         height: 45px;

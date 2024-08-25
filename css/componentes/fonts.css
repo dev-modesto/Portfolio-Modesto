@@ -124,8 +124,14 @@ html {
     }
 
     .font-2-md-r {
-        font-size: .625rem;
+        font-size: .75rem;
         line-height: 1.5em;
     }
 
+}
+
+@media (max-width:320px){
+    .font-2-md-r {
+        font-size: .625rem;
+    }
 }
