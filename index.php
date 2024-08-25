@@ -297,71 +297,70 @@
                             }
 
                             $tecnologiasProjeto = implode(' - ', $tecnologias);
-        
-                        }
 
-                        ?>
-                            <!-- card completo  -->
-                            <div class="projetoDestaque-cards">
-                                <!-- frente do card -->
-                                <div class="projetoDestaque-cards-frontal">
-                                    <div class="projetoDestaque-cards--techs" data-name="<?php echo $nomeProjeto ?>">
-                                        <p class="font-1-md-sb cor-c6"><?php echo $tecnologiasProjeto ?></p>
+                            ?>
+                                <!-- card completo  -->
+                                <div class="projetoDestaque-cards">
+                                    <!-- frente do card -->
+                                    <div class="projetoDestaque-cards-frontal">
+                                        <div class="projetoDestaque-cards--techs" data-name="<?php echo $nomeProjeto ?>">
+                                            <p class="font-1-md-sb cor-c6"><?php echo $tecnologiasProjeto ?></p>
+                                        </div>
+                                        <div class="projetoDestaque-cards--conteudo conteudo-img">
+                                            <img src="<?php echo BASE_URL . $caminhoOriginal ?>" alt="<?php echo $textoAlternativo ?>">
+                                        </div>
                                     </div>
-                                    <div class="projetoDestaque-cards--conteudo conteudo-img">
-                                        <img src="<?php echo BASE_URL . $caminhoOriginal ?>" alt="<?php echo $textoAlternativo ?>">
-                                    </div>
-                                </div>
 
-                                <!-- verso do card -->
-                                <div class="projetoDestaque-cards-verso">
-                                    <div class="projetoDestaque-cards--techs techs-verso" data-name="<?php echo $nomeProjeto ?>">
-                                        <p class="font-1-md-sb cor-c2"><?php echo $tecnologiasProjeto ?></p>
-                                    </div>
-                                    <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
-                                        <div class="projetoDestaque-cards--conteudo-buttons">
-                                            <div class="container-btn-links-cards">
-                                                <?php 
-                                                    if (!$linkDeploy == "") {
-                                                        ?>
-                                                            <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
-                                                        <?php
-                                                    }
-                                                    
-                                                    if (!$linkFigma == "") {
-                                                        ?>
-                                                            <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
-                                                        <?php
-                                                    }
-                                                    
-                                                    if (!$linkRepositorio == "") {
-                                                        ?>
-                                                            <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
-                                                        <?php
-                                                    }
-                                                ?>
+                                    <!-- verso do card -->
+                                    <div class="projetoDestaque-cards-verso">
+                                        <div class="projetoDestaque-cards--techs techs-verso" data-name="<?php echo $nomeProjeto ?>">
+                                            <p class="font-1-md-sb cor-c2"><?php echo $tecnologiasProjeto ?></p>
+                                        </div>
+                                        <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
+                                            <div class="projetoDestaque-cards--conteudo-buttons">
+                                                <div class="container-btn-links-cards">
+                                                    <?php 
+                                                        if (!$linkDeploy == "") {
+                                                            ?>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
+                                                            <?php
+                                                        }
+                                                        
+                                                        if (!$linkFigma == "") {
+                                                            ?>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
+                                                            <?php
+                                                        }
+                                                        
+                                                        if (!$linkRepositorio == "") {
+                                                            ?>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </div>
+                                                <div class="container-buttons-link-logo">
+                                                    <div class="conteudo-buttons-link-logo">
+                                                        <a href="#">
+                                                            <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="">
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="container-buttons-link-logo">
-                                                <div class="conteudo-buttons-link-logo">
-                                                    <a href="#">
-                                                        <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="">
-                                                    </a>
+                                            <div class="projetoDestaque-cards--conteudo-texto">
+                                                <div class="conteudo-texto">
+                                                    <h3>Descrição</h3>
+                                                    <p class="font-2-md-r cor-c3"><?php echo $descricao ?></p>
+                                                </div>
+                                                <div class="container-button-saiba-mais">
+                                                    <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="projetoDestaque-cards--conteudo-texto">
-                                            <div class="conteudo-texto">
-                                                <h3>Descrição</h3>
-                                                <p class="font-2-md-r cor-c3"><?php echo $descricao ?></p>
-                                            </div>
-                                            <div class="container-button-saiba-mais">
-                                                <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php
+                            <?php
+                        }
                     } 
                 ?>
             </div>
