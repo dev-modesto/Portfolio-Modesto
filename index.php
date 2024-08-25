@@ -341,7 +341,7 @@
                                                     }
                                                 ?>
                                             </div>
-                                            <div class="aaaa">
+                                            <div class="container-buttons-link-logo">
                                                 <div class="conteudo-buttons-link-logo">
                                                     <a href="#">
                                                         <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="">
