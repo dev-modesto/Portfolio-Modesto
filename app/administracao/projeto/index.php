@@ -109,12 +109,14 @@
 
                         <ul class="nav nav-underline">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="dados-pessoais-cliente-tab" data-bs-toggle="tab" data-bs-target="#dados-pessoais-cliente-tab-pane" type="button" role="tab" aria-controls="dados-pessoais-cliente-tab-pane" aria-selected="true">Dados pessoais</button>
+                                <button class="nav-link active" id="informacoes-iniciais" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane" type="button" role="tab" aria-controls="informacoes-iniciais-pane" aria-selected="true">Início</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="descricoes-tab" data-bs-toggle="tab" data-bs-target="#descricoes-tab-pane" type="button" role="tab" aria-controls="descricoes-tab-pane" aria-selected="false">Descrições</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
                             </li>
-
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
                             </li>
@@ -123,13 +125,56 @@
 
                         <div class="tab-content" id="myTabContent">
 
-                            <div class="tab-pane fade show active" id="dados-pessoais-cliente-tab-pane" role="tabpanel" aria-labelledby="dados-pessoais-cliente-tab" tabindex="0">
+                            <div class="tab-pane fade show active" id="informacoes-iniciais-pane" role="tabpanel" aria-labelledby="informacoes-iniciais" tabindex="0">
+                                <div class="mb-1 container-status-geral-projeto">
+                                    <div class="status-geral-projeto">
+                                        <input type="radio" class="danger-outlined btn-check" name="status-geral-projeto" id="danger-outlined" autocomplete="off" value="Inativo">
+                                        <label class="btn btn-outline-danger" for="danger-outlined">Inativo</label>
+                                        
+                                        <input type="radio" class="btn-check" name="status-geral-projeto" id="success-outlined" autocomplete="off" value="Ativo" checked>
+                                        <label class="btn btn-outline-success" for="success-outlined">Ativo</label>
+                                    </div>
+                                </div>
+
                                 <div class="row mb-4">
-                                    <div class="col-md-6 mb-4">
-                                        <label class="font-1-s nome-projeto" for="nome-formacao">Nome projeto <em>*</em></label><br>
+                                    <div class="col-md-12 mb-4">
+                                        <label class="font-1-s nome-projeto" for="nome-projeto">Nome projeto <em>*</em></label><br>
                                         <input class="form-control" type="text" name="nome-projeto" id="nome-projeto" required>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="projeto-destaque">Projeto em destaque? <em>*</em></label><br>
+                                        <div class="container-check">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="projeto-destaque-nao">Não</label>
+                                                <input class="form-check-input" type="radio" name="projeto-destaque" id="projeto-destaque-nao" value="Nao" checked>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="projeto-destaque-sim">Sim</label>
+                                                <input class="form-check-input" type="radio" name="projeto-destaque" id="projeto-destaque-sim" value="Sim">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="status-progresso-projeto">Progresso projeto<em>*</em></label><br>
+                                        <div class="container-check">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="status-progresso-projeto-andamento">Andamento</label>
+                                                <input class="form-check-input" type="radio" name="status-progresso-projeto" id="status-progresso-projeto-andamento" value="Andamento"  checked>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="status-progresso-concluido">Concluído</label>
+                                                <input class="form-check-input" type="radio" name="status-progresso-projeto" id="status-progresso-concluido" value="Concluido">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+      
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-4">
                                         <label class="font-1-s" class="font-1-s" for="tipo-projeto">Tipo projeto <em>*</em></label>
                                         <select class="form-select" name="tipo-projeto" id="tipo-projeto" required>
                                             <option value="" selected>Escolha o tipo de projeto</option>
@@ -138,22 +183,38 @@
                                             <option value="profissional">Profissional</option>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="row mb-4">
                                     <div class="col-md-6 mb-4">
                                         <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
                                         <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento">
                                     </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label class="font-1-s" for="imagem-projeto">Imagem do projeto <em>*</em></label>
-                                    <input class="form-control" type="file" name="imagem-projeto" id="imagem-projeto" required>
-                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="imagem-projeto">Imagem do projeto <em>*</em></label>
+                                        <input class="form-control" type="file" name="imagem-projeto" id="imagem-projeto" required>
+                                    </div>
 
-                                <div class="mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="logo-projeto">Logo<em>*</em></label>
+                                        <input class="form-control" type="file" name="logo-projeto" id="logo-projeto" required>
+                                    </div>
+
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="texto-alt">Texto Alternativo<em>*</em></label>
+                                        <input class="form-control" type="text" name="texto-alt" id="texto-alt" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="descricoes-tab-pane" role="tabpanel" aria-labelledby="descricoes" tabindex="0">
+                                <div class="mb-1">
                                     <label class="font-1-s" for="descricao-projeto">Descrição <em>*</em></label>
                                     <textarea class="form-control descricao-projeto" name="descricao-projeto" id="descricao-projeto"></textarea>
+                                    <div class="feedback-qnt-invalida" style="display: flex; justify-content: end; padding: 5px">
+                                        <span class="feedback-invalido">0</span>/190 caracteres
+                                    </div>
                                 </div>
 
                                 <div class="mb-4">
@@ -222,7 +283,7 @@
 
                         <div class="modal-footer form-container-button">
                             <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                            <button class='col btn btn-primary' type="submit">Cadastrar</button>
+                            <button class='col btn btn-primary cadastrar' type="submit">Cadastrar</button>
                         </div>
                     </form>
                 </div>
@@ -317,4 +378,26 @@ $(document).ready(function () {
             });
         });
     });
+
+    $(document).ready(function () {
+        
+        fedbackInvalido = $('.feedback-invalido').val();
+        btnCadastrar = $('.btn-primary.cadastrar')[0];
+
+        $('.descricao-projeto').keyup(function (e) { 
+            var texto = $(this).val();
+            var qntCaractere = texto.length;
+            $('.feedback-invalido').text(qntCaractere);
+            
+            if (qntCaractere > 190) {
+                $('.feedback-qnt-invalida').addClass('invalid');
+                $(btnCadastrar).attr('disabled', true);
+
+            } else {
+                $('.feedback-qnt-invalida').removeClass('invalid');
+                $(btnCadastrar).removeAttr('disabled', true);
+            }
+        });
+    });
+
 </script>
