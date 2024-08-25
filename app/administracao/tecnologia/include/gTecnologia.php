@@ -3,8 +3,8 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nomeTecnologia = $_POST['nome-tecnologia'];
-        $categoriaTipoImagem = 'tecnologia';
-        
+        $categoriaTipoImagem = $_POST['categoria-tecnologia'];
+        $habilidade = $_POST['habilidade'];
         $imagens = [
             'imagem-original' => [],
             'imagem-plain' => []
@@ -72,15 +72,17 @@
                 $con,
                 "INSERT INTO tbl_tecnologia(
                     nome, 
-                    id_imagem)
-                VALUES (?, ?)"
-            );
+                    id_imagem,
+                    visibilidade_habilidades)
+                VALUES (?, ?, ?)
+            ");
                 
             mysqli_stmt_bind_param(
                 $sqlTecnologia, 
-                "ss", 
+                "sss", 
                 $nomeTecnologia, 
-                $idImagem
+                $idImagem,
+                $habilidade
             );
 
             mysqli_stmt_execute($sqlTecnologia);

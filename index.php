@@ -175,49 +175,71 @@
                     <div class="habilidades-principais-container">
                         <h2 class="font-2-lg-r">Tecnologias que estou em aprendizado contínuo</h2>
                         <div class="habilidades-principais-container-icons scroll-habilidades-principais">
-                            
-                            <div class="container-icons" data-tech="JavaScript">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/javascript-plain.svg" alt="JavaScript" data-original="assets/img/tecnologias/javascript-original.svg" data-plain="assets/img/tecnologias/javascript-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="TypeScript">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/typescript-plain.svg" alt="TypeScript" data-original="assets/img/tecnologias/typescript-original.svg" data-plain="assets/img/tecnologias/typescript-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="PHP">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/php-plain.svg" alt="PHP" data-original="assets/img/tecnologias/php-original.svg" data-plain="assets/img/tecnologias/php-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="SQL (MySQL e SQL Server)">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/sql-plain.svg" alt="sql" data-original="assets/img/tecnologias/sql-original.svg" data-plain="assets/img/tecnologias/sql-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="React">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/react-plain.svg" alt="React" data-original="assets/img/tecnologias/react-original.svg" data-plain="assets/img/tecnologias/react-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="Node.js">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/nodejs-plain.svg" alt="Node.js" data-original="assets/img/tecnologias/nodejs-original.svg" data-plain="assets/img/tecnologias/nodejs-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="HTML5">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/html5-plain.svg" alt="HTML5" data-original="assets/img/tecnologias/html5-original.svg" data-plain="assets/img/tecnologias/html5-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="CSS3">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/css3-plain.svg" alt="CSS3" data-original="assets/img/tecnologias/css3-original.svg" data-plain="assets/img/tecnologias/css3-plain.svg">
-                            </div>
+                            <?php 
+                                $sqlTecnologias = "SELECT 
+                                    t.nome,
+                                    t.id_imagem,
+                                    t.visibilidade_habilidades,
+                                    i.nome_original,
+                                    i.caminho_original,
+                                    i.nome_plain,
+                                    i.caminho_plain,
+                                    i.categoria
+                                    FROM tbl_tecnologia t
+                                    INNER JOIN tbl_imagem i
+                                    ON t.id_imagem = i.id_imagem
+                                    WHERE t.visibilidade_habilidades = 'visivel' AND i.categoria = 'tecnologia'
+                                ";
 
+                                $consultaTecnologias = mysqli_query($con, $sqlTecnologias);
+                                while ($arrayTecFerramentas = mysqli_fetch_assoc($consultaTecnologias)) {
+
+                                    $nomeTec = $arrayTecFerramentas['nome'];
+                                    $caminhoOriginalTec = $arrayTecFerramentas['caminho_original'];
+                                    $caminhoPlainTec = $arrayTecFerramentas['caminho_plain'];
+
+                                    ?>
+                                        <div class="container-icons" data-tech="<?php echo $nomeTec ?>">
+                                            <img class="habilidades-icons" src="<?php echo BASE_URL . $caminhoPlainTec ?>" alt="<?php echo 'imagem do icone da tecnologia ' . $nomeTec?>" data-original="<?php echo BASE_URL . $caminhoOriginalTec ?>" data-plain="<?php echo BASE_URL . $caminhoPlainTec ?>">
+                                        </div>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="habilidades-ferramentas-container">
                        <h2 class="font-2-lg-r">Ferramentas que utilizo no dia a dia</h2>
                         <div class="habilidades-principais-container-icons">
-                            <div class="container-icons" data-tech="Git">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/git-plain.svg" alt="HTML5" data-original="assets/img/tecnologias/git-original.svg" data-plain="assets/img/tecnologias/git-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="GitHub">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/github-plain.svg" alt="HTML5" data-original="assets/img/tecnologias/github-original.svg" data-plain="assets/img/tecnologias/github-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="VS Code">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/vscode-plain.svg" alt="HTML5" data-original="assets/img/tecnologias/vscode-original.svg" data-plain="assets/img/tecnologias/vscode-plain.svg">
-                            </div>
-                            <div class="container-icons" data-tech="Figma">
-                                <img class="habilidades-icons" src="assets/img/tecnologias/figma-plain.svg" alt="HTML5" data-original="assets/img/tecnologias/figma-original.svg" data-plain="assets/img/tecnologias/figma-plain.svg">
-                            </div>
+                            <?php 
+                                $sqlFerramentas = "SELECT 
+                                    t.nome,
+                                    t.id_imagem,
+                                    t.visibilidade_habilidades,
+                                    i.nome_original,
+                                    i.caminho_original,
+                                    i.nome_plain,
+                                    i.caminho_plain,
+                                    i.categoria
+                                    FROM tbl_tecnologia t
+                                    INNER JOIN tbl_imagem i
+                                    ON t.id_imagem = i.id_imagem
+                                    WHERE t.visibilidade_habilidades = 'visivel' AND i.categoria = 'ferramenta'
+                                ";
+
+                                $consultaFerramentas = mysqli_query($con, $sqlFerramentas);
+                                while ($arrayFerramentas = mysqli_fetch_assoc($consultaFerramentas)) {
+
+                                    $nomeFerramenta = $arrayFerramentas['nome'];
+                                    $caminhoOriginalFerramenta = $arrayFerramentas['caminho_original'];
+                                    $caminhoPlainFerramenta = $arrayFerramentas['caminho_plain'];
+
+                                    ?>
+                                        <div class="container-icons" data-tech="<?php echo $nomeFerramenta ?>">
+                                            <img class="habilidades-icons" src="<?php echo BASE_URL . $caminhoPlainFerramenta ?>" alt="<?php echo 'imagem do icone da tecnologia ' . $nomeFerramenta?>" data-original="<?php echo BASE_URL . $caminhoOriginalFerramenta ?>" data-plain="<?php echo BASE_URL . $caminhoPlainFerramenta ?>">
+                                        </div>
+                                    <?php
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
