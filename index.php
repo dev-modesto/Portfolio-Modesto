@@ -1,66 +1,10 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
     include FUNCAO_DATA;
+    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
+    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
 
-    $sql = "SELECT 
-            f.id_formacao, 
-            f.nome,
-            f.id_area_formacao,
-            f.instituicao, 
-            f.categoria_curso,
-            f.dt_inicio, 
-            f.dt_fim, 
-            f.id_imagem,
-            f.total_horas,
-            i.caminho_original,
-            f.link_certificado,
-            f.status
-        FROM tbl_formacao f 
-        INNER JOIN tbl_imagem i
-        ON f.id_imagem = i.id_imagem
-        INNER JOIN tbl_area_formacao a
-        ON f.id_area_formacao = a.id_area_formacao
-        WHERE f.categoria_curso = 'Curso Livre'
-    ";
-
-    $consulta = mysqli_query($con, $sql);
-
-    $sqlFormacao = 
-        "SELECT 
-            f.id_formacao, 
-            f.nome, 
-            f.instituicao, 
-            f.categoria_curso,
-            f.dt_inicio, 
-            f.dt_fim, 
-            f.id_imagem,
-            i.caminho_original,
-            f.link_certificado,
-            f.status
-        FROM tbl_formacao f 
-        INNER JOIN tbl_imagem i
-        ON f.id_imagem = i.id_imagem
-        WHERE categoria_curso != 'Curso Livre' 
-        ORDER BY id_formacao DESC
-    ";
-    
-    $consultaFormacao = mysqli_query($con, $sqlFormacao);
-
-    $sqlProjeto = "SELECT 
-            id_projeto, 
-            nome_projeto, 
-            descricao, 
-            descricao_tipo_projeto,
-            tipo_projeto, 
-            dt_desenvolvimento, 
-            link_deploy,
-            link_figma,
-            link_repositorio
-        FROM tbl_projeto  
-        WHERE destaque = 'sim'
-    ";
-
-    $consultaProjeto = mysqli_query($con, $sqlProjeto);
 ?>
 
 <!DOCTYPE html>
@@ -179,23 +123,10 @@
                         <h2 class="font-2-lg-r">Tecnologias que estou em aprendizado contínuo</h2>
                         <div class="habilidades-principais-container-icons scroll-habilidades-principais">
                             <?php 
-                                $sqlTecnologias = "SELECT 
-                                    t.nome,
-                                    t.id_imagem,
-                                    t.visibilidade_habilidades,
-                                    i.nome_original,
-                                    i.caminho_original,
-                                    i.nome_plain,
-                                    i.caminho_plain,
-                                    i.categoria
-                                    FROM tbl_tecnologia t
-                                    INNER JOIN tbl_imagem i
-                                    ON t.id_imagem = i.id_imagem
-                                    WHERE t.visibilidade_habilidades = 'visivel' AND i.categoria = 'tecnologia'
-                                ";
+            
+                                $cTecnologia = cTecnologia($con, 'visivel', 'tecnologia');
 
-                                $consultaTecnologias = mysqli_query($con, $sqlTecnologias);
-                                while ($arrayTecFerramentas = mysqli_fetch_assoc($consultaTecnologias)) {
+                                while ($arrayTecFerramentas = mysqli_fetch_assoc($cTecnologia)) {
 
                                     $nomeTec = $arrayTecFerramentas['nome'];
                                     $caminhoOriginalTec = $arrayTecFerramentas['caminho_original'];
@@ -214,23 +145,10 @@
                        <h2 class="font-2-lg-r">Ferramentas que utilizo no dia a dia</h2>
                         <div class="habilidades-principais-container-icons">
                             <?php 
-                                $sqlFerramentas = "SELECT 
-                                    t.nome,
-                                    t.id_imagem,
-                                    t.visibilidade_habilidades,
-                                    i.nome_original,
-                                    i.caminho_original,
-                                    i.nome_plain,
-                                    i.caminho_plain,
-                                    i.categoria
-                                    FROM tbl_tecnologia t
-                                    INNER JOIN tbl_imagem i
-                                    ON t.id_imagem = i.id_imagem
-                                    WHERE t.visibilidade_habilidades = 'visivel' AND i.categoria = 'ferramenta'
-                                ";
 
-                                $consultaFerramentas = mysqli_query($con, $sqlFerramentas);
-                                while ($arrayFerramentas = mysqli_fetch_assoc($consultaFerramentas)) {
+                                $cTecnologia = cTecnologia($con, 'visivel', 'ferramenta');
+
+                                while ($arrayFerramentas = mysqli_fetch_assoc($cTecnologia)) {
 
                                     $nomeFerramenta = $arrayFerramentas['nome'];
                                     $caminhoOriginalFerramenta = $arrayFerramentas['caminho_original'];
@@ -257,8 +175,10 @@
 
                 <?php
 
-                    if (mysqli_num_rows($consultaProjeto) > 0) {
-                        while ($arrayProjeto = mysqli_fetch_assoc($consultaProjeto)) {
+                    $cProjeto = cProjeto($con, 'sim');
+
+                    if (mysqli_num_rows($cProjeto) > 0) {
+                        while ($arrayProjeto = mysqli_fetch_assoc($cProjeto)) {
                             $idProjeto = $arrayProjeto['id_projeto']; 
                             $nomeProjeto = $arrayProjeto['nome_projeto']; 
                             $descricao = $arrayProjeto['descricao']; 
@@ -269,55 +189,19 @@
                             $linkFigma = $arrayProjeto['link_figma'];
                             $linkRepositorio = $arrayProjeto['link_repositorio'];
 
-                            $sqlImagensProjeto = 
-                                "SELECT 
-                                    ip.id_projeto,
-                                    ip.id_imagem,
-                                    i.nome_original,
-                                    i.caminho_original,
-                                    i.texto_alt,
-                                    i.categoria
-                                FROM tbl_imagem_projeto ip
-                                INNER JOIN tbl_imagem i
-                                ON ip.id_imagem = i.id_imagem
-                                WHERE ip.id_projeto = '$idProjeto' AND i.categoria = 'projeto'
-                            ";
-
-                            $consultaImagensProjeto = mysqli_query($con, $sqlImagensProjeto);
-                            $arrayImagensProjeto = mysqli_fetch_assoc($consultaImagensProjeto);
-
+                            $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto, 'projeto');
+                            $arrayImagensProjeto = mysqli_fetch_assoc($cProjetoImagemProjeto);
                             $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
                             $textoAlternativo = $arrayImagensProjeto['texto_alt'];
 
-                            $sqlImagemLogoProjeto = 
-                                "SELECT 
-                                    ip.id_projeto,
-                                    ip.id_imagem,
-                                    i.nome_original,
-                                    i.caminho_original
-                                FROM tbl_imagem_projeto ip
-                                INNER JOIN tbl_imagem i
-                                ON ip.id_imagem = i.id_imagem
-                                WHERE ip.id_projeto = '$idProjeto' AND i.categoria = 'logo'
-                            ";
-                            
-                            $consultaImagemLogoProjeto = mysqli_query($con, $sqlImagemLogoProjeto);
-                            $arrayImagemLogoProjeto = mysqli_fetch_assoc($consultaImagemLogoProjeto);
+                            $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'logo');
+                            $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
                             $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
 
-                            $sqlTecnologiasProjeto = 
-                                "SELECT 
-                                    tec.nome 
-                                FROM tbl_tecnologia_projeto tecp  
-                                INNER JOIN tbl_tecnologia tec
-                                ON tecp.id_tecnologia = tec.id_tecnologia
-                                WHERE tecp.id_projeto = '$idProjeto'
-                                ORDER BY tecp.id_tecnologia DESC
-                            ";
-                            $consultaTecnologiasProjeto = mysqli_query($con, $sqlTecnologiasProjeto);
+                            $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
                             $tecnologias = [];
 
-                            while ($arrayTecnologia = mysqli_fetch_assoc($consultaTecnologiasProjeto)) {
+                            while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
                                 $tecnologias[] = $arrayTecnologia['nome'];
                             }
 
@@ -405,7 +289,10 @@
                     <span class="formacao-academica-lines"></span>
 
                     <?php
-                        while ($arrayFormacao = mysqli_fetch_assoc($consultaFormacao)) {
+
+                        $cFormacaoAcademico = cFormacaoAcademico($con);
+
+                        while ($arrayFormacao = mysqli_fetch_assoc($cFormacaoAcademico)) {
                             $idFormacao = $arrayFormacao['id_formacao'];
                             $nomeCursoFormacao = $arrayFormacao['nome'];
                             $instituicaoFormacao = $arrayFormacao['instituicao'];
@@ -475,7 +362,6 @@
                 <div class="formacao-academica-container-certificados">
                     <h1 class="font-1-h2-b cor-c3">Certificados</h1>
                     
-                    
                     <form class="form-filtro-certificados" id="filtrar-certificados">
 
                         <!-- filtro certificados -->
@@ -483,19 +369,18 @@
                             <button class="filtro-certificados-button active" name="categoria" value="0">TODOS</button>
 
                             <?php 
-                                $sqlAreaFormacao = "SELECT * FROM tbl_area_formacao";
-                                $consultaAreaFormacao = mysqli_query($con, $sqlAreaFormacao);
+                                $cAreaFormacao = cAreaFormacao($con);
 
-                                while ($arrayAreaFormacao = mysqli_fetch_assoc($consultaAreaFormacao)) {
+                                while ($arrayAreaFormacao = mysqli_fetch_assoc($cAreaFormacao)) {
+
                                     $idAreaFormacao = $arrayAreaFormacao['id_area_formacao'];
                                     $nomeAreaFormacao = $arrayAreaFormacao['nome'];
                                     $nomeAreaFormacao = strtoupper($nomeAreaFormacao);
                                     ?>
                                         <button class="filtro-certificados-button" name="categoria" value="<?php echo $idAreaFormacao ?>"><?php echo $nomeAreaFormacao?></button>
                                     <?php
-                                    
-                                }
 
+                                }
                             ?>
                         </div>
 
@@ -505,17 +390,17 @@
                                 <option class="" value="0">TODOS</option>
 
                                 <?php 
-                                    $sqlAreaFormacao2 = "SELECT * FROM tbl_area_formacao";
-                                    $consultaAreaFormacao2 = mysqli_query($con, $sqlAreaFormacao2);
-    
-                                    while ($arrayAreaFormacao2 = mysqli_fetch_assoc($consultaAreaFormacao2)) {
-                                        $idAreaFormacao2 = $arrayAreaFormacao2['id_area_formacao'];
-                                        $nomeAreaFormacao2 = $arrayAreaFormacao2['nome'];
-                                        $nomeAreaFormacao2 = strtoupper($nomeAreaFormacao2);
+                                  $cAreaFormacao = cAreaFormacao($con);
+
+                                    while ($arrayAreaFormacaoMin = mysqli_fetch_assoc($cAreaFormacao)) {
+
+                                        $idAreaFormacaoMin = $arrayAreaFormacaoMin['id_area_formacao'];
+                                        $nomeAreaFormacaoMin = $arrayAreaFormacaoMin['nome'];
+                                        $nomeAreaFormacaoMin = strtoupper($nomeAreaFormacaoMin);
                                         ?>
-                                            <option class="" value="<?php echo $idAreaFormacao2 ?>"><?php echo $nomeAreaFormacao2 ?></option>
+                                            <option class="" value="<?php echo $idAreaFormacaoMin ?>"><?php echo $nomeAreaFormacaoMin ?></option>
                                         <?php
-                                        
+
                                     }
                                 ?>
                             </select>
@@ -528,7 +413,9 @@
                     <div class="certificados-cards">
                         <?php 
 
-                            while ($resultado = mysqli_fetch_assoc($consulta)) {
+                            $cFormacaoCurso = cFormacaoCurso($con);
+
+                            while ($resultado = mysqli_fetch_assoc($cFormacaoCurso)) {
 
                                 $idFormacao = $resultado['id_formacao'];
                                 $nomeCurso = $resultado['nome'];
@@ -610,44 +497,3 @@
 
 </body>
 </html>
-<script>
-
-    $(document).ready(function () {
-    $('.filtro-certificados-button').click(function (e) { 
-        e.preventDefault();
-
-        $('.filtro-certificados-button').removeClass('active');
-        $(this).addClass('active');
-
-        let idFiltro = $(this).val();
-        $.ajax({
-            type: "POST",
-            url: "filtrarCertificados.php",
-            data: {
-                'click-btn-filtrar': true,
-                'idFiltro': idFiltro
-            },
-            success: function (response) {
-                $('.certificados-cards').html(response);
-            }
-        });
-    });
-
-        $('.filtro-certificados-button-min').change(function (e) { 
-            e.preventDefault();
-
-            let idFiltro = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: "filtrarCertificados.php",
-                data: {
-                    'click-btn-filtrar': true,
-                    'idFiltro': idFiltro
-                },
-                success: function (response) {
-                    $('.certificados-cards').html(response);
-                }
-            });
-        });
-    });
-</script>
