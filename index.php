@@ -4,7 +4,8 @@
 
     $sql = "SELECT 
             f.id_formacao, 
-            f.nome, 
+            f.nome,
+            f.id_area_formacao,
             f.instituicao, 
             f.categoria_curso,
             f.dt_inicio, 
@@ -17,7 +18,9 @@
         FROM tbl_formacao f 
         INNER JOIN tbl_imagem i
         ON f.id_imagem = i.id_imagem
-        WHERE categoria_curso = 'Curso Livre'
+        INNER JOIN tbl_area_formacao a
+        ON f.id_area_formacao = a.id_area_formacao
+        WHERE f.categoria_curso = 'Curso Livre'
     ";
 
     $consulta = mysqli_query($con, $sql);
@@ -473,25 +476,48 @@
                     <h1 class="font-1-h2-b cor-c3">Certificados</h1>
                     
                     
-                    <form action="" class="form-filtro-certificados">
+                    <form class="form-filtro-certificados" id="filtrar-certificados">
 
                         <!-- filtro certificados -->
                         <div class="filtro-certificados" role="group">
-                            <button type="submit" name="categoria" value="todos" class="filtro-certificados-button">TODOS</button>
-                            <button type="submit" name="categoria" value="frontEnd" class="filtro-certificados-button">FRONT-END</button>
-                            <button type="submit" name="categoria" value="analiseDados" class="filtro-certificados-button">ANÁLISE DE DADOS</button>
-                            <button type="submit" name="categoria" value="redesInfra" class="filtro-certificados-button">REDES E INFRA.</button>
-                            <button type="submit" name="categoria" value="logicaProgramacao" class="filtro-certificados-button">ALGORIT. E LÓG. DE PROGRAMAÇÃO</button>
+                            <button class="filtro-certificados-button active" name="categoria" value="0">TODOS</button>
+
+                            <?php 
+                                $sqlAreaFormacao = "SELECT * FROM tbl_area_formacao";
+                                $consultaAreaFormacao = mysqli_query($con, $sqlAreaFormacao);
+
+                                while ($arrayAreaFormacao = mysqli_fetch_assoc($consultaAreaFormacao)) {
+                                    $idAreaFormacao = $arrayAreaFormacao['id_area_formacao'];
+                                    $nomeAreaFormacao = $arrayAreaFormacao['nome'];
+                                    $nomeAreaFormacao = strtoupper($nomeAreaFormacao);
+                                    ?>
+                                        <button class="filtro-certificados-button" name="categoria" value="<?php echo $idAreaFormacao ?>"><?php echo $nomeAreaFormacao?></button>
+                                    <?php
+                                    
+                                }
+
+                            ?>
                         </div>
 
                         <!-- filtro certificados - mobile -->
                         <div class="filtro-certificados-mobile">
-                            <select name="filtro-mobile-select" id="filtro-mobile-select">
-                                <option value="todos">TODOS</option>
-                                <option value="frontEnd">FRONT-END</option>
-                                <option value="analiseDados">ANÁLISE DE DADOS</option>
-                                <option value="redesInfra">REDES E INFRA.</option>
-                                <option value="logicaProgramacao">ALGORIT. E LÓG. DE PROGRAMAÇÃO</option>
+                            <select name="filtro-mobile-select" class="filtro-certificados-button-min" id="filtro-mobile-select">
+                                <option class="" value="0">TODOS</option>
+
+                                <?php 
+                                    $sqlAreaFormacao2 = "SELECT * FROM tbl_area_formacao";
+                                    $consultaAreaFormacao2 = mysqli_query($con, $sqlAreaFormacao2);
+    
+                                    while ($arrayAreaFormacao2 = mysqli_fetch_assoc($consultaAreaFormacao2)) {
+                                        $idAreaFormacao2 = $arrayAreaFormacao2['id_area_formacao'];
+                                        $nomeAreaFormacao2 = $arrayAreaFormacao2['nome'];
+                                        $nomeAreaFormacao2 = strtoupper($nomeAreaFormacao2);
+                                        ?>
+                                            <option class="" value="<?php echo $idAreaFormacao2 ?>"><?php echo $nomeAreaFormacao2 ?></option>
+                                        <?php
+                                        
+                                    }
+                                ?>
                             </select>
                             <button type="submit" class="filtro-mobile-button">Filtrar</button>
                         </div>
@@ -503,6 +529,7 @@
                         <?php 
 
                             while ($resultado = mysqli_fetch_assoc($consulta)) {
+
                                 $idFormacao = $resultado['id_formacao'];
                                 $nomeCurso = $resultado['nome'];
                                 $instituicao = $resultado['instituicao'];
@@ -577,6 +604,50 @@
     </main>
 
 <script src="script.js"></script>
+<?php 
+    include BASE_PATH . "/include/footer/footer-scripts.php";
+?>
 
 </body>
 </html>
+<script>
+
+    $(document).ready(function () {
+    $('.filtro-certificados-button').click(function (e) { 
+        e.preventDefault();
+
+        $('.filtro-certificados-button').removeClass('active');
+        $(this).addClass('active');
+
+        let idFiltro = $(this).val();
+        $.ajax({
+            type: "POST",
+            url: "filtrarCertificados.php",
+            data: {
+                'click-btn-filtrar': true,
+                'idFiltro': idFiltro
+            },
+            success: function (response) {
+                $('.certificados-cards').html(response);
+            }
+        });
+    });
+
+        $('.filtro-certificados-button-min').change(function (e) { 
+            e.preventDefault();
+
+            let idFiltro = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "filtrarCertificados.php",
+                data: {
+                    'click-btn-filtrar': true,
+                    'idFiltro': idFiltro
+                },
+                success: function (response) {
+                    $('.certificados-cards').html(response);
+                }
+            });
+        });
+    });
+</script>
