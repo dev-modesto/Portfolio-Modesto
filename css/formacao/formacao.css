@@ -344,6 +344,7 @@
         padding: 0px 10px;
         box-sizing: border-box;
         transition: all .3s;
+        font-weight: 600;
     }
 
     .filtro-certificados-button:hover {
@@ -354,7 +355,13 @@
     .filtro-certificados-button:focus {
         outline: none;
         border: 1px solid;
-        border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+        /* border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10; */
+    }
+
+    .filtro-certificados-button.active {
+        background-color: var(--color-p4);
+        color: var(--color-c13);
+        font-weight: 600;
     }
 
 
