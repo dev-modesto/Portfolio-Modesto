@@ -2,6 +2,7 @@
     max-width: 1140px;
     margin: 0 auto;
     padding: 40px 10px;
+    padding: 40px 20px;
     position: relative;
 }
 
@@ -17,7 +18,8 @@
 }
 
 .sobre-localizacao span {
-    font-size: 1.6em;
+    font-size: 1.25rem;
+    color: var(--color-c13);
 }
 
 .sobre::before {

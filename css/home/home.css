@@ -7,6 +7,7 @@
     min-height: 85vh;
     height: auto;
     padding: 0 10px;
+    padding: 0 20px;
     border-bottom: 3px solid var(--color-c1);
 }
 
@@ -129,10 +130,10 @@
 
 @media (max-width:480px){
     .home {
-        min-height: 95vh;
+        min-height: 90vh;
         height: auto;
         grid-template-columns: 1fr;
-        grid-template-rows: 350px 290px;
+        grid-template-rows: 350px 230px;
     }
 
     .order1 {
@@ -145,7 +146,7 @@
 
     .home-foto {
         justify-content: center;
-        margin-top: 40px;
+        margin-top: 60px;
     }
 
     .home-foto img {
