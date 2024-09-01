@@ -1,5 +1,6 @@
 <?php 
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/funcoes/funcaoImagem.php";
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nomeTecnologia = $_POST['nome-tecnologia'];
@@ -10,37 +11,13 @@
             'imagem-plain' => []
         ];
         
-        function processarImagem($file, $caminhoRelativo, $caminhoPasta) {
-            if (isset($file)) {
-                $nomeImagem = $file['name'];
-                $caminhoTemporario = $file['tmp_name'];
-                $erroUpload = $file['error'];
-
-                if ($erroUpload !== 0) {
-                    $mensagem = 'Ocorreu um erro com o upload da imagem.';
-                    header('Location: ../index.php?msgInvalida=' . $mensagem);
-                    die();
-                }
-
-                $caminhoPastaSalvar = $caminhoPasta . $nomeImagem;
-                $caminhoRelativoImagem = $caminhoRelativo . $nomeImagem;
-                move_uploaded_file($caminhoTemporario, $caminhoPastaSalvar);
-
-                return [
-                    'nome' => $nomeImagem,
-                    'caminho' => $caminhoRelativoImagem
-                ];
-            }
-            return null;
-        }
-
         try {
             $caminhoRelativo = "/assets/img/tecnologias/";
             $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/tecnologias/";
             $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . $caminhoAbsoluto;
 
-            $imagens['imagem-original'] = processarImagem($_FILES['imagem-original'], $caminhoRelativo, $caminhoPasta);
-            $imagens['imagem-plain'] = processarImagem($_FILES['imagem-plain'], $caminhoRelativo, $caminhoPasta);
+            $imagens['imagem-original'] = salvarImagem($_FILES['imagem-original'], $caminhoRelativo, $caminhoPasta);
+            $imagens['imagem-plain'] = salvarImagem($_FILES['imagem-plain'], $caminhoRelativo, $caminhoPasta);
 
             mysqli_begin_transaction($con);
 
