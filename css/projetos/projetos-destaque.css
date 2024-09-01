@@ -3,6 +3,7 @@
     max-width: 1140px;
     margin: 110px auto;
     padding: 0 10px;
+    padding: 0 20px;
 }
 
 #activedrop {
@@ -40,6 +41,7 @@
 .projetoDestaque-cards {
     position: relative;
     width: 100%;
+    box-shadow: 1px 4px 30px 0px rgba(0, 0, 0, 10%);
 }
 
 .projetoDestaque-cards img {
@@ -255,6 +257,20 @@
     background-size: contain;
     background-position: initial;
     background-repeat: repeat-x;
+}
+
+.texto-destaque {
+    position: relative;
+}
+
+.projetosDestaque .texto-destaque::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 8px;
+    bottom: -30px;
+    left: 0px;
+    background-color: var(--color-p4);
 }
 
 @media (max-width: 991px) {
@@ -527,6 +543,16 @@
     
     .projetosDestaque-container-cards::before {
         background-repeat: repeat-y;
+    }
+
+    .projetosDestaque .texto-destaque::after {
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 3px;
+        bottom: -20px;
+        left: 0px;
+        background-color: var(--color-p4);
     }
 }
 
