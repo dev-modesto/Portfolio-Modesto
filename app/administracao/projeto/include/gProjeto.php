@@ -20,8 +20,8 @@
         $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/projetos/";
         $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . $caminhoAbsoluto;
 
-        $imagemLogoProjeto = processarImagem($_FILES['logo-projeto'], $caminhoRelativo, $caminhoPasta);
-        $imagemProjeto = processarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);
+        $imagemLogoProjeto = salvarImagem($_FILES['logo-projeto'], $caminhoRelativo, $caminhoPasta);
+        $imagemProjeto = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);
         
         $imagens = [
             [
