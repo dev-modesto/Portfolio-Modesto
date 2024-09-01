@@ -1,6 +1,6 @@
 <?php
 
-    function processarImagem($file, $caminhoRelativo, $caminhoPasta) {
+    function salvarImagem($file, $caminhoRelativo, $caminhoPasta) {
         if (isset($file)) {
             $nomeImagem = $file['name'];
             $caminhoTemporario = $file['tmp_name'];
@@ -14,11 +14,14 @@
 
             $caminhoPastaSalvar = $caminhoPasta . $nomeImagem;
             $caminhoRelativoImagem = $caminhoRelativo . $nomeImagem;
-
+           
             if (!move_uploaded_file($caminhoTemporario, $caminhoPastaSalvar)) {
                 $mensagem = 'Ocorreu um erro ao salvar a imagem.';
                 header('Location: ../index.php?msgInvalida=' . $mensagem);
                 die();
+            
+            } else {
+                move_uploaded_file($caminhoTemporario, $caminhoPastaSalvar);
             }
 
             return [
