@@ -24,6 +24,33 @@ function cProjeto ($con, $destaque) {
     return $consulta;
 }
 
+function cProjetoEspecifico ($con, $idProjeto) {
+    $sql = 
+        mysqli_prepare(
+        $con, 
+        "SELECT 
+            id_projeto,
+            nome_projeto, 
+            descricao, 
+            descricao_tipo_projeto,
+            tipo_projeto, 
+            dt_desenvolvimento, 
+            link_deploy,
+            link_figma,
+            link_repositorio,
+            destaque,
+            status_geral,
+            status
+        FROM tbl_projeto  
+        WHERE id_projeto = ?
+    ");
+
+    mysqli_stmt_bind_param($sql, 's', $idProjeto);
+    mysqli_stmt_execute($sql);
+    $consulta = mysqli_stmt_get_result($sql);
+    return $consulta;
+}
+
 function cProjetoImagem ($con, $idProjeto, $categoria) {
     $sql = 
         mysqli_prepare(
