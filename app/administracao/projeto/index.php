@@ -112,6 +112,9 @@
                                 <button class="nav-link active" id="informacoes-iniciais" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane" type="button" role="tab" aria-controls="informacoes-iniciais-pane" aria-selected="true">Início</button>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="imagens" data-bs-toggle="tab" data-bs-target="#imagens-pane" type="button" role="tab" aria-controls="imagens-pane" aria-selected="true">Imagens</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="descricoes-tab" data-bs-toggle="tab" data-bs-target="#descricoes-tab-pane" type="button" role="tab" aria-controls="descricoes-tab-pane" aria-selected="false">Descrições</button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -124,7 +127,6 @@
                         <br>
 
                         <div class="tab-content" id="myTabContent">
-
                             <div class="tab-pane fade show active" id="informacoes-iniciais-pane" role="tabpanel" aria-labelledby="informacoes-iniciais" tabindex="0">
                                 <div class="mb-1 container-status-geral-projeto">
                                     <div class="status-geral-projeto">
@@ -188,6 +190,9 @@
                                         <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento">
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="imagens-pane" role="tabpanel" aria-labelledby="imagens" tabindex="0">
                                 <div class="row mb-4">
                                     <div class="col-md-6 mb-4">
                                         <label class="font-1-s" for="imagem-projeto">Imagem do projeto <em>*</em></label>
@@ -198,7 +203,6 @@
                                         <label class="font-1-s" for="logo-projeto">Logo<em>*</em></label>
                                         <input class="form-control" type="file" name="logo-projeto" id="logo-projeto" required>
                                     </div>
-
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-6 mb-4">
@@ -331,33 +335,6 @@ $(document).ready(function () {
             $.ajax({
                 type: 'POST',
                 url: 'include/gProjeto.php',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    console.log(response);
-                    if (response.sucesso) {
-                        window.location.href = '../projeto/index.php?msg=' + encodeURIComponent(response.mensagem);
-
-                    } else {
-                        window.location.href = '../projeto/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
-                    }
-                },
-                
-                error: function(response) {
-                    window.location.href = '../projeto/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
-                }
-
-            });
-        });
-        $('#form-projeto-editar').submit(function (e) {
-            e.preventDefault();
-
-            var formData = new FormData(this);
-            
-            $.ajax({
-                type: 'POST',
-                url: 'include/aProjeto.php',
                 data: formData,
                 contentType: false,
                 processData: false,
