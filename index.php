@@ -180,7 +180,7 @@
 
                 <?php
 
-                    $cProjeto = cProjeto($con, 'sim');
+                    $cProjeto = cProjeto($con, 'Sim', 'Ativo');
 
                     if (mysqli_num_rows($cProjeto) > 0) {
                         while ($arrayProjeto = mysqli_fetch_assoc($cProjeto)) {
