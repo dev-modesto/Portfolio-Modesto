@@ -1,6 +1,6 @@
 <?php
 
-function cProjeto ($con, $destaque) {
+function cProjeto ($con, $destaque, $statusGeral) {
     $sql = 
         mysqli_prepare(
         $con, 
@@ -15,10 +15,10 @@ function cProjeto ($con, $destaque) {
             link_figma,
             link_repositorio
         FROM tbl_projeto  
-        WHERE destaque = ?
+        WHERE destaque = ? AND status_geral = ?
     ");
 
-    mysqli_stmt_bind_param($sql, 's', $destaque);
+    mysqli_stmt_bind_param($sql, 'ss', $destaque, $statusGeral);
     mysqli_stmt_execute($sql);
     $consulta = mysqli_stmt_get_result($sql);
     return $consulta;
