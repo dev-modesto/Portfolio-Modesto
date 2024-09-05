@@ -128,10 +128,11 @@ header {
 .menu-mobile {
     display: none;
     position: relative;
+    transition: all .5s;
 }
 
 .menu-mobile span {
-    font-size: 2.81em;
+    font-size: 2em;
     color: var(--color-s6);
 }
 
@@ -140,20 +141,25 @@ header {
     width: 100vw;
     height: calc(100vh - 45px);
     position: absolute;
-    top: 45px;
-    right: -10px;
+    top: -100vh;
+    right: -20px;
     margin: 0px;
     padding: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    display: none;
+    gap: 30px;
+    display: flex;
+    transition: all .3s;
+}
+
+.menu-mobile-itens.ativo {
+    top: 38px;
 }
 
 .menu-mobile-itens li {
-    width: 100%;
+    width: 80%;
     z-index: 2;
 }
 
@@ -173,7 +179,7 @@ header {
     position: absolute;
     height: 100%;
     width: 2px;
-    right: 30px;
+    right: 35px;
 }
 
 
