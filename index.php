@@ -180,7 +180,7 @@
 
                 <?php
 
-                    $cProjeto = cProjeto($con, 'sim');
+                    $cProjeto = cProjeto($con, 'Sim', 'Ativo');
 
                     if (mysqli_num_rows($cProjeto) > 0) {
                         while ($arrayProjeto = mysqli_fetch_assoc($cProjeto)) {
@@ -500,6 +500,24 @@
 <?php 
     include BASE_PATH . "/include/footer/footer-scripts.php";
 ?>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const icons = document.querySelectorAll(".habilidades-icons");
+
+        icons.forEach(icon => {
+            icon.addEventListener("mouseover", function() {
+                this.src = this.getAttribute("data-original");
+            });
+
+            icon.addEventListener("mouseout", function() {
+                this.src = this.getAttribute("data-plain");
+            });
+        });
+    });
+
+</script>
 
 </body>
 </html>

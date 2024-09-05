@@ -18,9 +18,7 @@ var navbar = document.getElementById('navbar');
 var logo1 = document.getElementById('logo1');
 var logo2 = document.getElementById('logo2');
 
-
 iconMobile.onclick = () => {
-    // alert('clicado!');
     
     if (menuMobile.style.display === 'flex'){
         menuMobile.style.display = 'none';
@@ -38,19 +36,3 @@ iconMobile.onclick = () => {
         logo2.style.display = 'block';
     }
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    const icons = document.querySelectorAll(".habilidades-icons");
-
-    icons.forEach(icon => {
-        icon.addEventListener("mouseover", function() {
-            this.src = this.getAttribute("data-original");
-        });
-
-        icon.addEventListener("mouseout", function() {
-            this.src = this.getAttribute("data-plain");
-        });
-    });
-});
-
-
