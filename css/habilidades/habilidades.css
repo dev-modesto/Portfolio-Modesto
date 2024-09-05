@@ -178,11 +178,12 @@
 
 @media (max-width: 481px){
     .habilidades-containerTecnologias {
-        gap: 40px;
+        gap: 0px;
+        margin-top: 30px;
     }
 
     .habilidades .font-2-lg-r {
-        font-size: 1em;
+        font-size: .8125rem;
     }
 
     .scroll-habilidades-principais {
@@ -205,7 +206,20 @@
     }
 
     .container-icons {
-        height: 50px;
+        height: 40px;
     }
+
+    .habilidades-containerTecnologias::before {
+        top: -100px;
+        height: 60px;
+    }
+
+    .habilidades-containerTecnologias::after {
+        top: 350px;
+        left: 10px;
+        width: 3px;
+        height: 60px;
+    }
+
 
 }

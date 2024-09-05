@@ -33,3 +33,5 @@ abrirModal('.btn-editar-area-formacao', 'tr', 'id-area-formacao', 'include/cModa
 abrirModal('.btn-excluir-area-formacao', 'tr', 'id-area-formacao', 'include/cModalExcluirAreaFormacao.php', 'click-excluir-area-formacao', '.modalExcluir', '#modalExcluir');
 
 abrirModal('.btn-excluir-tecnologia', 'tr', 'id-tecnologia', 'include/cModalExcluirTecnologia.php', 'click-excluir-tecnologia', '.modalExcluir', '#modalExcluir');
+
+abrirModal('.btn-editar-imagem', 'tr', 'id-imagem', 'include/cModalEditarImagem.php', 'click-editar-imagem', '.modalEditarImagem', '#modalEditarImagem');

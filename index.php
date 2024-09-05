@@ -28,6 +28,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
 </head>
+<style>
+    .tecnologia + .tecnologia {
+        margin-left: 15px;
+    }
+</style>
 <body>
     <header>
         <div class="navbar fixed-top" id="navbar">
@@ -169,13 +174,13 @@
 
         <section class="projetosDestaque" id="projetosDestaque">
             <h1 class="font-1-h2-b">Projetos em destaque</h1>
-            <p class="font-2-lg-r">Abaixo, encontram-se alguns dos melhores projetos. Fique à vontade para visualizar e explorá-los.</p>
+            <p class="font-2-lg-r texto-destaque">Abaixo, encontram-se alguns dos melhores projetos. Fique à vontade para visualizar e explorá-los.</p>
 
             <div class="projetosDestaque-container-cards">
 
                 <?php
 
-                    $cProjeto = cProjeto($con, 'sim');
+                    $cProjeto = cProjeto($con, 'Sim', 'Ativo');
 
                     if (mysqli_num_rows($cProjeto) > 0) {
                         while ($arrayProjeto = mysqli_fetch_assoc($cProjeto)) {
@@ -202,10 +207,12 @@
                             $tecnologias = [];
 
                             while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
-                                $tecnologias[] = $arrayTecnologia['nome'];
+                                // $tecnologias[] = $arrayTecnologia['nome'];
+                                $tecnologias[] = '<span class="tecnologia">' . htmlspecialchars($arrayTecnologia['nome']) . '</span>';
+                                
                             }
 
-                            $tecnologiasProjeto = implode(' - ', $tecnologias);
+                            $tecnologiasProjeto = implode('', $tecnologias);
 
                             ?>
                                 <!-- card completo  -->
@@ -490,10 +497,27 @@
 
     </main>
 
-<script src="script.js"></script>
 <?php 
     include BASE_PATH . "/include/footer/footer-scripts.php";
 ?>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const icons = document.querySelectorAll(".habilidades-icons");
+
+        icons.forEach(icon => {
+            icon.addEventListener("mouseover", function() {
+                this.src = this.getAttribute("data-original");
+            });
+
+            icon.addEventListener("mouseout", function() {
+                this.src = this.getAttribute("data-plain");
+            });
+        });
+    });
+
+</script>
 
 </body>
 </html>
