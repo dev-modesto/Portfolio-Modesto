@@ -51,10 +51,9 @@ function cProjetoEspecifico ($con, $idProjeto) {
     return $consulta;
 }
 
-function cProjetoImagem ($con, $idProjeto, $categoria) {
+function cProjetoImagem ($con, $idProjeto, $categoria = null) {
+
     $sql = 
-        mysqli_prepare(
-        $con, 
         "SELECT 
             ip.id_projeto,
             ip.id_imagem,
@@ -65,14 +64,26 @@ function cProjetoImagem ($con, $idProjeto, $categoria) {
         FROM tbl_imagem_projeto ip
         INNER JOIN tbl_imagem i
         ON ip.id_imagem = i.id_imagem
-        WHERE ip.id_projeto = ? AND i.categoria = ?
-    ");
+        WHERE ip.id_projeto = ?
+    ";
 
-    mysqli_stmt_bind_param($sql, 'is', $idProjeto, $categoria);
-    mysqli_stmt_execute($sql);
-    $consulta = mysqli_stmt_get_result($sql);
+    if ($categoria !== null) {
+        $sql .= 'AND i.categoria = ?';
+    }
+
+    $sqlPrepare = mysqli_prepare($con, $sql);
+
+    if ($categoria !== null) {
+        mysqli_stmt_bind_param($sqlPrepare, 'is', $idProjeto, $categoria);
+
+    } else {
+        mysqli_stmt_bind_param($sqlPrepare, 'i', $idProjeto);
+    }
+   
+    mysqli_stmt_execute($sqlPrepare);
+    $consulta = mysqli_stmt_get_result($sqlPrepare);
     return $consulta;
 }
- 
+
 
 ?>
