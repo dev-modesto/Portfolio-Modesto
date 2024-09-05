@@ -134,7 +134,7 @@
                                     <select class="form-select" name="tipo-projeto" id="tipo-projeto" required>
                                         <option value="livre" <?php echo $tipoProjeto == 'Livre' ? 'selected' : ''?>>Livre</option>
                                         <option value="academico" <?php echo $tipoProjeto == 'Acadêmico' ? 'selected' : ''?>>Acadêmico</option>
-                                        <option value="profissional" <?php echo $tipoProjeto == 'Profissioanl' ? 'selected' : ''?>>Profissional</option>
+                                        <option value="profissional" <?php echo $tipoProjeto == 'Profissional' ? 'selected' : ''?>>Profissional</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-4">
