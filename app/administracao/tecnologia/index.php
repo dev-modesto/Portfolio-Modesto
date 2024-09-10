@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <div class="modalExcluir modaEditarTecnologia">
+    <div class="modalExcluir modalEditarTecnologia">
     </div>
 </div>
 
