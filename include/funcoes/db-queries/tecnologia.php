@@ -43,5 +43,31 @@ function cTecnologiaProjeto ($con, $idProjeto) {
     $consulta = mysqli_stmt_get_result($sql);
     return $consulta;
 }
+
+function cTecnologiaInfoImagem($con, $idTecnologia) {
+            
+    $sql = mysqli_prepare(
+        $con, 
+        "SELECT 
+            t.id_tecnologia,
+            t.nome,
+            t.id_imagem,
+            t.visibilidade_habilidades,
+            i.nome_original,
+            i.caminho_original,
+            i.nome_plain,
+            i.caminho_plain,
+            i.categoria
+        FROM tbl_tecnologia t
+        INNER JOIN tbl_imagem i
+        ON t.id_imagem = i.id_imagem
+        WHERE t.id_tecnologia = ?
+    ");
+
+    mysqli_stmt_bind_param($sql, 'i', $idTecnologia);
+    mysqli_stmt_execute($sql);
+    $consulta = mysqli_stmt_get_result($sql);
+    return $consulta;
+}
  
 ?>
