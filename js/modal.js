@@ -3,6 +3,7 @@ function abrirModal(botaoClick, classIdTabela, idDataPesquisa, urlCaminho, class
         $(document).on('click', botaoClick, function (e) {
             e.preventDefault();
             var idPrincipal = $(this).closest(classIdTabela).data(idDataPesquisa);
+            // console.log(idPrincipal);
 
             $.ajax({
                 type: "POST",
@@ -35,3 +36,5 @@ abrirModal('.btn-excluir-area-formacao', 'tr', 'id-area-formacao', 'include/cMod
 abrirModal('.btn-excluir-tecnologia', 'tr', 'id-tecnologia', 'include/cModalExcluirTecnologia.php', 'click-excluir-tecnologia', '.modalExcluir', '#modalExcluir');
 
 abrirModal('.btn-editar-imagem', 'tr', 'id-imagem', 'include/cModalEditarImagem.php', 'click-editar-imagem', '.modalEditarImagem', '#modalEditarImagem');
+
+abrirModal('.btn-editar-tecnologia', 'tr', 'id-tecnologia', 'include/cModalEditarTecnologia.php', 'click-editar-tecnologia', '.modalEditarTecnologia', '#modalEditarTecnologia');
