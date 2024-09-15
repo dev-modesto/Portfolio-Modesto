@@ -57,7 +57,7 @@
             <div class="modal-body">
                 <form class="form-container" id="form-projeto-editar" enctype="multipart/form-data">
                     <input type="text" name="id" id="id" value="<?php echo $idProjeto ?>" hidden>
-                    <input type="hidden" name="tecnologias-editar" id="tecnologias-editar" value="<?php echo $tecnologiasId ?>">
+                    <input class="tecnologias-editar" type="hidden" name="tecnologias-editar" id="tecnologias-editar" value="<?php echo $tecnologiasId ?>">
                     <input type="hidden" name="id-projeto" id="id-projeto" value="1">
 
                     <ul class="nav nav-underline">
@@ -229,7 +229,7 @@
                                             $caminhoImagem = $row['caminho_original'];
                                             ?>
                                             
-                                                <div class="container-imagem-tecnologia" data-id-tecnologia="<?php echo $idTecnologia ?>">
+                                                <div class="container-imagem-tecnologia editar" data-id-tecnologia="<?php echo $idTecnologia ?>">
                                                     <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
                                                 </div>
                                                 
@@ -245,7 +245,7 @@
 
                     <div class="modal-footer form-container-button">
                         <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                        <button class='col btn btn-primary cadastrar'>Cadastrar</button>
+                        <button class='col btn btn-primary cadastrar'>Salvar</button>
                     </div>
                 </form>
             </div>
@@ -256,29 +256,6 @@
 <script>
 
     $(document).ready(function () {
-
-        var idTecAnt = $('#tecnologias-editar').val();
-        var array = idTecAnt ? idTecAnt.split(',').map(Number) : [];
-        // console.log(array);
-
-        $('body').on('click', '.container-imagem-tecnologia', function (e) { 
-            e.preventDefault();
-
-            var idImagem = $(this).data('id-imagem');
-            var idTecnologia = $(this).data('id-tecnologia');
-
-            if (array.includes(idTecnologia)) {
-                var index = array.indexOf(idTecnologia);
-                array.splice(index, 1);
-                $(this).removeClass('selected');
-
-            } else {
-                array.push(idTecnologia);
-                $(this).addClass('selected');
-            }
-
-            $('#tecnologias-editar').val(array.join(','));
-        });
 
         $('#form-projeto-editar').submit(function (e) {
             e.preventDefault();
