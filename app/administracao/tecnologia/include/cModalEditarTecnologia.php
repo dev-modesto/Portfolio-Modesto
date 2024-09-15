@@ -3,12 +3,10 @@
     include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
     
     if (isset($_POST['click-editar-tecnologia'])) {
-        $id = $_POST['idPrincipal'];
-        $cTecnologiaImagem = cTecnologiaInfoImagem($con, $id);
+        $idTecnologia = $_POST['idPrincipal'];
+        $cTecnologiaImagem = cTecnologiaInfoImagem($con, $idTecnologia);
         $array = mysqli_fetch_assoc($cTecnologiaImagem);
 
-        // echo "<pre>";
-        // print_r($array);
         $nomeTecnologia = $array['nome'];
         $idImagem = $array['id_imagem'];
         $visibilidadeHabilidade = $array['visibilidade_habilidades'];
@@ -16,7 +14,7 @@
         $nomePlain = $array['nome_plain'];
         $caminhoPlain = $array['caminho_plain'];
         $categoria = $array['categoria'];
-
+        $textoAlt = 'imagem da tecnologia/ferramenta: ' . $nomeTecnologia;
 
     } else {
         header('Location: ../index.php');
@@ -32,8 +30,9 @@
             </div>
 
             <div class="modal-body">
-            <form class="form-container" action="include/gTecnologia.php" method="post" enctype="multipart/form-data">
-
+            <form class="form-container" id="form-tecnologia-editar" enctype="multipart/form-data">
+                <input type="text" name="id-tecnologia" id="id-tecnologia" value="<?php echo $idTecnologia ?>" hidden>
+                <input type="text" name="id-imagem" id="id-imagem" value="<?php echo $idImagem ?>" hidden>
                 <div class="mb-4">
                     <label class="font-1-s" for="nome-tecnologia">Nome <em>*</em></label>
                     <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia" value="<?php echo $nomeTecnologia ?>" required>
@@ -44,11 +43,11 @@
                     <div class="container-check">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="habilidade-nao-editar">Não</label>
-                            <input class="form-check-input" type="radio" name="habilidade" id="habilidade-nao-editar" value="oculto" <?php echo $visibilidadeHabilidade == 'oculto' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="habilidade-editar" id="habilidade-nao-editar" value="oculto" <?php echo $visibilidadeHabilidade == 'oculto' ? 'checked' : '' ?>>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="habilidade-sim-editar">Sim</label>
-                            <input class="form-check-input" type="radio" name="habilidade" id="habilidade-sim-editar" value="visivel" <?php echo $visibilidadeHabilidade == 'visivel' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="habilidade-editar" id="habilidade-sim-editar" value="visivel" <?php echo $visibilidadeHabilidade == 'visivel' ? 'checked' : '' ?>>
                         </div>
                     </div>
                 </div>
@@ -58,11 +57,11 @@
                     <div class="container-check">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="categoria-tecnologia-tec-editar">Tecnologia</label>
-                            <input class="form-check-input" type="radio" name="categoria-tecnologia" id="categoria-tecnologia-tec-editar" value="tecnologia" <?php echo $categoria == 'tecnologia' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="categoria-tecnologia-editar" id="categoria-tecnologia-tec-editar" value="tecnologia" <?php echo $categoria == 'tecnologia' ? 'checked' : '' ?>>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="categoria-tecnologia-ferramenta-editar">Ferramenta</label>
-                            <input class="form-check-input" type="radio" name="categoria-tecnologia" id="categoria-tecnologia-ferramenta-editar" value="ferramenta" <?php echo $categoria == 'ferramenta' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="categoria-tecnologia-editar" id="categoria-tecnologia-ferramenta-editar" value="ferramenta" <?php echo $categoria == 'ferramenta' ? 'checked' : '' ?>>
                         </div>
                     </div>
                 </div>
@@ -83,13 +82,13 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="font-1-s" for="imagem-original">Img. Original <em>*</em></label>
-                    <input class="form-control" type="file" name="imagem-original" id="imagem-original" required>
+                    <label class="font-1-s" for="imagem-original">Img. Original</label>
+                    <input class="form-control" type="file" name="imagem-original" id="imagem-original">
                 </div>
 
                 <div class="mb-4">
-                    <label class="font-1-s" for="imagem-plain">Img. Plain (simplificada) <em>*</em></label>
-                    <input class="form-control" type="file" name="imagem-plain" id="imagem-plain" required>
+                    <label class="font-1-s" for="imagem-plain">Img. Plain (simplificada)</label>
+                    <input class="form-control" type="file" name="imagem-plain" id="imagem-plain">
                 </div>
 
                 <div class="modal-footer form-container-button">
@@ -101,3 +100,36 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#form-tecnologia-editar').submit(function (e) { 
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                type: "POST",
+                url: "include/aTecnologia.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+                    if (response.sucesso) {
+                        window.location.href = '../tecnologia/index.php?msg=' + encodeURIComponent(response.mensagem);
+                    } else {
+                        window.location.href = '../tecnologia/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
+                    }          
+                },
+
+                error: function(response) {
+                    window.location.href = '../tecnologia/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
+                }
+            });
+        });
+        
+    });
+</script>
