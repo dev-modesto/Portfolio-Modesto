@@ -271,7 +271,7 @@
                                                 $caminhoImagem = $row['caminho_original'];
                                                 ?>
                                                 
-                                                    <div class="container-imagem-tecnologia" data-id-tecnologia="<?php echo $idTecnologia ?>">
+                                                    <div class="container-imagem-tecnologia cadastrar" data-id-tecnologia="<?php echo $idTecnologia ?>">
                                                         <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
                                                     </div>
                                                     
@@ -305,10 +305,10 @@
 
 <script>
 
-$(document).ready(function () {
+    $(document).ready(function () {
         var array = [];
 
-        $('body').on('click', '.container-imagem-tecnologia', function (e) { 
+        $('body').on('click', '.container-imagem-tecnologia.cadastrar', function (e) { 
             e.preventDefault();
 
             var idImagem = $(this).data('id-imagem');
@@ -339,7 +339,6 @@ $(document).ready(function () {
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    console.log(response);
                     if (response.sucesso) {
                         window.location.href = '../projeto/index.php?msg=' + encodeURIComponent(response.mensagem);
 
@@ -354,9 +353,6 @@ $(document).ready(function () {
 
             });
         });
-    });
-
-    $(document).ready(function () {
         
         fedbackInvalido = $('.feedback-invalido').val();
         btnCadastrar = $('.btn-primary.cadastrar')[0];
