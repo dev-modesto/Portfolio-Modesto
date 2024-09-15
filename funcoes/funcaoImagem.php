@@ -9,7 +9,7 @@
             if ($erroUpload !== 0) {
                 $mensagem = 'Ocorreu um erro com o upload da imagem.';
                 header('Location: ../index.php?msgInvalida=' . $mensagem);
-                die();
+                return false;
             }
 
             $caminhoPastaSalvar = $caminhoPasta . $nomeImagem;
@@ -18,7 +18,7 @@
             if (!move_uploaded_file($caminhoTemporario, $caminhoPastaSalvar)) {
                 $mensagem = 'Ocorreu um erro ao salvar a imagem.';
                 header('Location: ../index.php?msgInvalida=' . $mensagem);
-                die();
+                return false;
             
             } else {
                 move_uploaded_file($caminhoTemporario, $caminhoPastaSalvar);
@@ -29,7 +29,6 @@
                 'caminho' => $caminhoRelativoImagem
             ];
         }
-        return null;
     }
 
     function excluirImagemPasta($caminhoImagemAbsoluto) {
@@ -37,7 +36,7 @@
         if(!file_exists($caminhoImagemAbsoluto)) {
             $mensagem = "O arquivo não foi localizado. Não foi possível prosseguir com a exclusão.";
             header('location: ../index.php?msgInvalida=' . $mensagem);
-            die();
+            return false;
         }
         unlink($caminhoImagemAbsoluto);
         return true;
