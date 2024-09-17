@@ -105,7 +105,7 @@
                 <div class="modal-body">
                     <form class="form-container" id="form-projeto" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="tecnologias" id="tecnologias" value="">
-                        <input type="hidden" name="id-projeto" id="id-projeto" value="1">
+                        <input type="hidden" name="autores" id="autores" value="">
 
                         <ul class="nav nav-underline">
                             <li class="nav-item" role="presentation">
@@ -119,6 +119,9 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="autores-projeto" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane" type="button" role="tab" aria-controls="autores-projeto-pane" aria-selected="false">Autores</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
@@ -242,6 +245,55 @@
                                     <label class="font-1-s" for="link-repositorio">Link repositório Github</label>
                                     <input class="form-control" type="text" name="link-repositorio" id="link-repositorio">
                                 </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="autores-projeto-pane" role="tabpanel" aria-labelledby="autores-projeto" tabindex="0">
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="projeto-equipe">Projeto em equipe? <em>*</em></label><br>
+                                    <div class="container-check">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="projeto-equipe-nao">Não</label>
+                                            <input class="form-check-input" type="radio" name="projeto-equipe" id="projeto-equipe-nao" value="Nao" checked>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="projeto-equipe-sim">Sim</label>
+                                            <input class="form-check-input" type="radio" name="projeto-equipe" id="projeto-equipe-sim" value="Sim">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-4">
+                                    <div class="mb-4">
+                                        <label class="font-1-s" for="autores-projeto">Autores do projeto</label>
+                                        <select class="form-select form-autores-projeto" name="autores-projeto" id="autores-projeto" required>
+                                            <option value="" selected>Informe o autor</option>
+
+                                            <?php
+                                    
+                                                $sqlAutor = "SELECT * FROM tbl_autor ORDER BY nome ASC";
+                                                $consultaAutor = mysqli_query($con, $sqlAutor);
+                                                $arrayAutores = mysqli_fetch_all($consultaAutor, MYSQLI_ASSOC);
+                                            
+                                                foreach ($arrayAutores as $chave => $valor) {
+                                                    $idAutor = $valor['id_autor'];
+                                                    $nomeAutor = $valor['nome'];
+
+                                                    ?>
+                                                        <option value="<?php echo $idAutor ?>"><?php echo $nomeAutor ?></option>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <button id="btn-adicionar-autor">Adicionar</button>
+                                    </div>
+                                </div>
+                                <div class="container-autores-projeto">
+                                    
+                                </div>
+
                             </div>
 
                             <div class="tab-pane fade" id="tab-tecnologias-tab-pane" role="tabpanel" aria-label="tab-tecnologias" tabindex="0">
@@ -371,6 +423,27 @@
                 $(btnCadastrar).removeAttr('disabled', true);
             }
         });
+
+        var arrayAutores = [];
+
+        $('#btn-adicionar-autor').click(function (e){
+            e.preventDefault();
+
+            var idAutor = $('.form-autores-projeto').val();
+            idAutor = Number(idAutor);
+
+            if (arrayAutores.includes(idAutor)) {
+                var indexAutor =  arrayAutores.indexOf(idAutor);
+                arrayAutores.splice(indexAutor, 1);
+
+            } else {
+                arrayAutores.push(idAutor);
+            }
+
+            $('#autores').val(arrayAutores.join(','));
+
+        });
+
     });
 
 </script>
