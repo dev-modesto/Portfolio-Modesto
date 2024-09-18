@@ -3,8 +3,28 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/funcoes/funcaoImagem.php";
     
     if(isset($_POST['tecnologias'])) {
+
+        $sqlMeuIdAutor = "SELECT id_autor FROM tbl_autor WHERE nome LIKE '%gabriel modesto%'";
+        $consultaMeuId = mysqli_query($con, $sqlMeuIdAutor);
+        $resultadoConsultaMeuId = mysqli_num_rows($consultaMeuId);
+
+        if ($resultadoConsultaMeuId == 0) {
+            $mensagem['mensagem'] = 'O autor Gabriel Modesto não foi encontrado.';
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        }
+
         $tecnologias = explode(',', $_POST['tecnologias']);
         $autores = explode(',', $_POST['autores']);
+
+        $arrayConsultaMeuId = mysqli_fetch_assoc($consultaMeuId);
+        $meuIdAutor = $arrayConsultaMeuId['id_autor'];
+
+        array_unshift($autores, $meuIdAutor);
+        $arrayAutores = array_filter($autores, function($array) {
+            return !empty($array);
+        });
 
         $nomeProjeto = trim($_POST['nome-projeto']);
         $tipoProjeto = $_POST['tipo-projeto'];
