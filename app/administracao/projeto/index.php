@@ -265,7 +265,7 @@
                                 <div class="container-principal-autores-projeto row mb-4">
                                     <div class="col-md-12 mb-4">
                                         <label class="font-1-s" for="autores-projeto">Autores do projeto</label>
-                                        <select class="form-select form-autores-projeto" name="autores-projeto" id="autores-projeto" required>
+                                        <select class="form-select form-autores-projeto" name="autores-projeto" id="autores-projeto">
                                             <option value="" selected>Informe o autor</option>
 
                                             <?php
