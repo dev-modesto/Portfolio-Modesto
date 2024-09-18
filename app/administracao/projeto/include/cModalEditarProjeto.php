@@ -18,6 +18,7 @@
         $linkRepositorio = $arrayProjeto['link_repositorio'];
         $projetoDestaque = $arrayProjeto['destaque'];
         $statusGeral = $arrayProjeto['status_geral'];
+        $projetoEquipe = $arrayProjeto['projeto_equipe'];
         $statusProgresso = $arrayProjeto['status'];
 
         $cProjetoImagemProjeto = cProjetoImagem($con,$idProjeto,'projeto');
@@ -211,11 +212,11 @@
                                 <div class="container-check">
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="projeto-equipe-nao-editar">Não</label>
-                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe" id="projeto-equipe-nao-editar" value="Nao" checked>
+                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-nao-editar" value="Nao" <?php echo $projetoEquipe == 'Nao' ? 'checked' : '' ?>>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="projeto-equipe-sim-editar">Sim</label>
-                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe" id="projeto-equipe-sim-editar" value="Sim">
+                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-sim-editar" value="Sim" <?php echo $projetoEquipe == 'Sim' ? 'checked' : '' ?>>
                                     </div>
                                 </div>
                             </div>
