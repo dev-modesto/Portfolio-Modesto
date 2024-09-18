@@ -12,6 +12,7 @@
         $nomeProjeto = trim($_POST['nome-projeto']);
         $projetoDestaque = $_POST['projeto-destaque'];
         $statusProjeto = $_POST['status-progresso-projeto'];
+        $projetoEquipe = $_POST['projeto-equipe-editar'];
         $statusGeralProjeto = $_POST['status-geral-projeto-editar'];
 
         $tipoProjeto = $_POST['tipo-projeto'];
@@ -149,13 +150,14 @@
                     link_repositorio = ?,
                     destaque = ?,
                     status_geral = ?,
+                    projeto_equipe = ?,
                     status = ?
                 WHERE id_projeto = '$idProjeto'
             ");
     
             mysqli_stmt_bind_param(
                 $sql, 
-                "ssssssssssss", 
+                "sssssssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
                 $descricaoTipoProjeto, 
@@ -167,6 +169,7 @@
                 $linkRepositorio,
                 $projetoDestaque,
                 $statusGeralProjeto,
+                $projetoEquipe,
                 $statusProjeto
             );
 
