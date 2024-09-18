@@ -54,3 +54,37 @@
     justify-content: end;
 }
 
+.container-autores-projeto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.autor-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icone-excluir-autor {
+    border: 1px solid var(--color-a-red4);
+    display: inline-flex;
+}
+
+.icone-excluir-autor span {
+    color: var(--color-a-red3);
+}
+
+.icone-excluir-autor:hover ~ .nome-autor{
+    color: var(--color-a-red4);
+}
+
+#btn-adicionar-autor {
+    background-color: var(--color-a-green4);
+    border: 1px solid var(--color-a-green4);
+}
+
+#btn-adicionar-autor:active {
+    background-color: var(--color-a-green3) !important;
+    border-color: inherit;
+}
