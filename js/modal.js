@@ -102,7 +102,7 @@ function abrirModalEditarProjeto(botaoClick, classIdTabela, idDataPesquisa, urlC
                     $(`.autor-item[data-id="${idAutor}"]`).remove();
                 });
 
-                var projetoEquipeEditar = $('.projeto-equipe-editar').val();
+                var projetoEquipeEditar = $('input[name="projeto-equipe-editar"]:checked').val();
                 var containerPrincipalAutoresEditar = $('.container-principal-autores-projeto.editar')[0];
 
                 function visibilidadeContainerAutoresEditar(projetoEquipeEditar) {
