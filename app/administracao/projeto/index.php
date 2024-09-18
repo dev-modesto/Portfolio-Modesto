@@ -253,16 +253,16 @@
                                     <div class="container-check">
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="projeto-equipe-nao">Não</label>
-                                            <input class="form-check-input" type="radio" name="projeto-equipe" id="projeto-equipe-nao" value="Nao" checked>
+                                            <input class="form-check-input projeto-equipe" type="radio" name="projeto-equipe" id="projeto-equipe-nao" value="Nao" checked>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="projeto-equipe-sim">Sim</label>
-                                            <input class="form-check-input" type="radio" name="projeto-equipe" id="projeto-equipe-sim" value="Sim">
+                                            <input class="form-check-input projeto-equipe" type="radio" name="projeto-equipe" id="projeto-equipe-sim" value="Sim">
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="row mb-4">
+                                <div class="container-principal-autores-projeto row mb-4">
                                     <div class="col-md-12 mb-4">
                                         <label class="font-1-s" for="autores-projeto">Autores do projeto</label>
                                         <select class="form-select form-autores-projeto" name="autores-projeto" id="autores-projeto" required>
@@ -286,16 +286,14 @@
                                         </select>
                                     </div>
 
-                                    <div>
+                                    <div class="mb-4">
                                         <button type="button" class="btn btn-primary" id="btn-adicionar-autor">Adicionar</button>
                                     </div>
-                                </div>
-                                <div class="container-autores-projeto mb-4">
+                                    <div class="container-autores-projeto mb-4">
                 
+                                    </div>
                                 </div>
-
                             </div>
-
                             <div class="tab-pane fade" id="tab-tecnologias-tab-pane" role="tabpanel" aria-label="tab-tecnologias" tabindex="0">
                                 <?php 
 
@@ -461,6 +459,26 @@
             $(`.autor-item[data-id="${idAutor}"]`).remove();
         });
 
+        var projetoEquipe = $('.projeto-equipe').val();
+        var containerPrincipalAutores = $('.container-principal-autores-projeto')[0];
+
+        function visibilidadeContainerAutores(projetoEquipe) {
+            if (projetoEquipe == 'Nao') {
+                containerPrincipalAutores.style.display = 'none';
+
+            } else {
+                containerPrincipalAutores.style.display = 'block';
+            }
+        }
+
+        $('.projeto-equipe').change(function (e) { 
+            e.preventDefault();
+            var projetoEquipe = $(this).val();
+            visibilidadeContainerAutores(projetoEquipe);
+
+        });
+
+        visibilidadeContainerAutores(projetoEquipe);
     });
 
 </script>
