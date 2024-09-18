@@ -36,6 +36,7 @@
         $statusGeralProjeto = $_POST['status-geral-projeto'];
         $projetoDestaque = $_POST['projeto-destaque'];
         $statusProjeto = $_POST['status-progresso-projeto'];
+        $projetoEquipe = $_POST['projeto-equipe'];
 
         $caminhoRelativo = "/assets/img/projetos/";
         $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/projetos/";
@@ -79,13 +80,14 @@
                     link_repositorio,
                     destaque,
                     status_geral,
+                    projeto_equipe,
                     status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
     
             mysqli_stmt_bind_param(
                 $sqlProjeto, 
-                "sssssssssss", 
+                "ssssssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
                 $descricaoTipoProjeto, 
@@ -96,6 +98,7 @@
                 $linkRepositorio,
                 $projetoDestaque,
                 $statusGeralProjeto,
+                $projetoEquipe,
                 $statusProjeto
             );
 
