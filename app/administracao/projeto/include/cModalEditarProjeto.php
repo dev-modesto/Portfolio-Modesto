@@ -249,7 +249,33 @@
                                     <button type="button" class="btn btn-primary" id="btn-adicionar-autor-editar">Adicionar</button>
                                 </div>
                                 <div class="container-autores-projeto editar mb-4">
-            
+
+                                    <?php
+                                    
+                                        $sqlAutorProjeto = 
+                                            "SELECT 
+                                                p.id_autor,
+                                                a.nome
+                                            FROM tbl_autor_projeto p 
+                                            INNER JOIN tbl_autor a
+                                            ON p.id_autor = a.id_autor
+                                            WHERE p.id_projeto = '$idProjeto'
+                                        ";
+
+                                        $consultaAutorProjeto = mysqli_query($con, $sqlAutorProjeto);
+                                        $arrayAutoresProjeto = mysqli_fetch_all($consultaAutorProjeto, MYSQLI_ASSOC);
+                                        
+                                        foreach ($arrayAutoresProjeto as $key => $value) {
+                                            $idAutorProjeto = $value['id_autor'];
+                                            $nomeAutorProjeto = $value['nome'];
+                                            ?>
+                                                <div class="autor-item" data-id="<?php echo $idAutorProjeto ?>">
+                                                    <a class="btn-remover-autor-editar icone-excluir-autor" href="#" data-id="<?php echo $idAutorProjeto ?>"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor"><?php echo $nomeAutorProjeto ?></span>
+                                                </div>
+                                            <?php
+                                        }
+
+                                    ?>
                                 </div>
                             </div>
                         </div>
