@@ -61,6 +61,66 @@ function abrirModalEditarProjeto(botaoClick, classIdTabela, idDataPesquisa, urlC
                     }
 
                     $('#tecnologias-editar').val(array.join(','));
+
+                });
+
+                var arrayAutores = [];
+
+                $('#btn-adicionar-autor-editar').click(function (e){
+
+                    e.preventDefault();
+
+                    var idAutor = $('.form-autores-projeto-editar').val();
+                    idAutor = Number(idAutor);
+                    var nomeAutor = $('#autores-projeto-editar option:selected').text();
+                    
+                    if (idAutor === 0 || arrayAutores.includes(idAutor)) {
+                        return;
+                        
+                    } else {
+                        arrayAutores.push(idAutor);
+                    }
+
+                    $('#autores-editar').val(arrayAutores.join(','));
+
+                    $('.container-autores-projeto.editar').append(`
+                        <div class="autor-item" data-id="${idAutor}">
+                            <a class="btn-remover-autor-editar icone-excluir-autor" href="#" data-id="${idAutor}"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor">${nomeAutor}</span>
+                        </div>
+                    `);
+                });
+
+                $(document).on('click', '.btn-remover-autor-editar', function () {
+                    var idAutor = $(this).data('id');
+
+                    arrayAutores = arrayAutores.filter(function (autor) {
+                        return autor !== idAutor;
+                    });
+
+                    $('#autores-editar').val(arrayAutores.join(','));
+
+                    $(`.autor-item[data-id="${idAutor}"]`).remove();
+                });
+
+                var projetoEquipeEditar = $('.projeto-equipe-editar').val();
+                var containerPrincipalAutoresEditar = $('.container-principal-autores-projeto.editar')[0];
+
+                function visibilidadeContainerAutoresEditar(projetoEquipeEditar) {
+                    if (projetoEquipeEditar == 'Nao') {
+                        containerPrincipalAutoresEditar.style.display = 'none';
+        
+                    } else {
+                        containerPrincipalAutoresEditar.style.display = 'block';
+                    }
+                }
+
+                visibilidadeContainerAutoresEditar(projetoEquipeEditar);
+
+                $('.projeto-equipe-editar').change(function (e) { 
+                    e.preventDefault();
+        
+                    var projetoEquipeEditar = $(this).val();
+                    visibilidadeContainerAutoresEditar(projetoEquipeEditar);
                 });
             }
         });
