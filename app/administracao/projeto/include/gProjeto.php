@@ -4,6 +4,7 @@
     
     if(isset($_POST['tecnologias'])) {
         $tecnologias = explode(',', $_POST['tecnologias']);
+        $autores = explode(',', $_POST['autores']);
 
         $nomeProjeto = trim($_POST['nome-projeto']);
         $tipoProjeto = $_POST['tipo-projeto'];
@@ -129,6 +130,21 @@
         
                 mysqli_stmt_bind_param($sqlTecnologiaProjeto, 'ii', $idProjeto, $idTecnologia);
                 mysqli_stmt_execute($sqlTecnologiaProjeto);
+            }
+
+            foreach ($autores as $idAutor) {
+                $idAutor = intval($idAutor);
+
+                $sqlAutoresProjeto =
+                    mysqli_prepare($con,
+                    "INSERT INTO tbl_autor_projeto(
+                        id_projeto, 
+                        id_autor) 
+                    VALUES(?, ?)
+                ");
+        
+                mysqli_stmt_bind_param($sqlAutoresProjeto, 'ii', $idProjeto, $idAutor);
+                mysqli_stmt_execute($sqlAutoresProjeto);
             }
     
             mysqli_commit($con);
