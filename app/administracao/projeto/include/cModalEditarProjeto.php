@@ -18,6 +18,7 @@
         $linkRepositorio = $arrayProjeto['link_repositorio'];
         $projetoDestaque = $arrayProjeto['destaque'];
         $statusGeral = $arrayProjeto['status_geral'];
+        $projetoEquipe = $arrayProjeto['projeto_equipe'];
         $statusProgresso = $arrayProjeto['status'];
 
         $cProjetoImagemProjeto = cProjetoImagem($con,$idProjeto,'projeto');
@@ -58,7 +59,7 @@
                 <form class="form-container" id="form-projeto-editar" enctype="multipart/form-data">
                     <input type="text" name="id" id="id" value="<?php echo $idProjeto ?>" hidden>
                     <input class="tecnologias-editar" type="hidden" name="tecnologias-editar" id="tecnologias-editar" value="<?php echo $tecnologiasId ?>">
-                    <input type="hidden" name="id-projeto" id="id-projeto" value="1">
+                    <input type="hidden" name="autores" id="autores-editar" value="">
 
                     <ul class="nav nav-underline">
                         <li class="nav-item" role="presentation">
@@ -73,6 +74,9 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="links-projeto-tab-editar" data-bs-toggle="tab" data-bs-target="#links-projeto-pane-editar" type="button" role="tab" aria-controls="links-projeto-pane-editar" aria-selected="false">Links</button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab-autores-projeto-editar" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane-editar" type="button" role="tab" aria-controls="autores-projeto-pane-editar" aria-selected="false">Autores</button>
+                            </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="tecnologias-tab-editar" data-bs-toggle="tab" data-bs-target="#tecnolgias-pane-editar" type="button" role="tab" aria-controls="tecnolgias-pane-editar" aria-selected="false">Tecnologias</button>
                         </li>
@@ -199,6 +203,80 @@
                             <div class="mb-4">
                                 <label class="font-1-s" for="link-repositorio">Link repositório Github</label>
                                 <input class="form-control" type="text" name="link-repositorio" id="link-repositorio" value="<?php echo $linkDeploy ?>">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="autores-projeto-pane-editar" role="tabpanel" aria-labelledby="tab-autores-projeto-editar" tabindex="0">
+                            <div class="mb-4">
+                                <label class="font-1-s" for="projeto-equipe-editar">Projeto em equipe? <em>*</em></label><br>
+                                <div class="container-check">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="projeto-equipe-nao-editar">Não</label>
+                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-nao-editar" value="Nao" <?php echo $projetoEquipe == 'Nao' ? 'checked' : '' ?>>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="projeto-equipe-sim-editar">Sim</label>
+                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-sim-editar" value="Sim" <?php echo $projetoEquipe == 'Sim' ? 'checked' : '' ?>>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="container-principal-autores-projeto editar row mb-4">
+                                <div class="col-md-12 mb-4">
+                                    <label class="font-1-s" for="autores-projeto-editar">Autores do projeto</label>
+                                    <select class="form-select form-autores-projeto-editar" name="autores-projeto-editar" id="autores-projeto-editar">
+                                        <option value="" selected>Informe o autor</option>
+
+                                        <?php
+                                
+                                            $sqlAutor = "SELECT * FROM tbl_autor WHERE NOT nome LIKE '%gabriel modesto%' ORDER BY nome ASC";
+                                            $consultaAutor = mysqli_query($con, $sqlAutor);
+                                            $arrayAutores = mysqli_fetch_all($consultaAutor, MYSQLI_ASSOC);
+                                        
+                                            foreach ($arrayAutores as $chave => $valor) {
+                                                $idAutor = $valor['id_autor'];
+                                                $nomeAutor = $valor['nome'];
+
+                                                ?>
+                                                    <option value="<?php echo $idAutor ?>"><?php echo $nomeAutor ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <button type="button" class="btn btn-primary" id="btn-adicionar-autor-editar">Adicionar</button>
+                                </div>
+                                <div class="container-autores-projeto editar mb-4">
+
+                                    <?php
+                                    
+                                        $sqlAutorProjeto = 
+                                            "SELECT 
+                                                p.id_autor,
+                                                a.nome
+                                            FROM tbl_autor_projeto p 
+                                            INNER JOIN tbl_autor a
+                                            ON p.id_autor = a.id_autor
+                                            WHERE p.id_projeto = '$idProjeto'
+                                        ";
+
+                                        $consultaAutorProjeto = mysqli_query($con, $sqlAutorProjeto);
+                                        $arrayAutoresProjeto = mysqli_fetch_all($consultaAutorProjeto, MYSQLI_ASSOC);
+                                        
+                                        foreach ($arrayAutoresProjeto as $key => $value) {
+                                            $idAutorProjeto = $value['id_autor'];
+                                            $nomeAutorProjeto = $value['nome'];
+                                            ?>
+                                                <div class="autor-item" data-id="<?php echo $idAutorProjeto ?>">
+                                                    <a class="btn-remover-autor-editar icone-excluir-autor" href="#" data-id="<?php echo $idAutorProjeto ?>"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor"><?php echo $nomeAutorProjeto ?></span>
+                                                </div>
+                                            <?php
+                                        }
+
+                                    ?>
+                                </div>
                             </div>
                         </div>
 

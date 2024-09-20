@@ -270,7 +270,7 @@
 
                                             <?php
                                     
-                                                $sqlAutor = "SELECT * FROM tbl_autor ORDER BY nome ASC";
+                                                $sqlAutor = "SELECT * FROM tbl_autor WHERE NOT nome LIKE '%gabriel modesto%' ORDER BY nome ASC";
                                                 $consultaAutor = mysqli_query($con, $sqlAutor);
                                                 $arrayAutores = mysqli_fetch_all($consultaAutor, MYSQLI_ASSOC);
                                             
