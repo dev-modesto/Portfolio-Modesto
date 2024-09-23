@@ -42,4 +42,11 @@
         return true;
     }
 
+    function consultarImagens($con){
+        $sql = "SELECT * FROM tbl_imagem";
+        $consulta = mysqli_query($con, $sql);
+        $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
+        return $array;
+    }
+
 ?>
