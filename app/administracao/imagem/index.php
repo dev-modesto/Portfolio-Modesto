@@ -1,8 +1,10 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
 
     $sql = "SELECT * FROM tbl_imagem";
     $consultaImagem = mysqli_query($con, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +91,36 @@
                     ?>
                 </tbody>
             </table>
+        </div>
+        <div class="container-imagem">
+            <?php
+                $arrayImagem = consultarImagens($con);
+                foreach ($arrayImagem as $valorImg) {
+                    $idImagem = $valorImg['id_imagem'];
+                    $nomeImagem = $valorImg['nome_original'];
+                    $caminhoOriginal = $valorImg['caminho_original'];
+                    $categoriaImgagem = $valorImg['categoria'];
+                    $caminhoAbsolutoImagem = BASE_PATH . $caminhoOriginal;
+
+                ?>
+                    <div class="card card-imagem-view"  style="width: 18rem;">
+                        <div class="card-titulo">
+                            <h6 class="titulo-imagem"><?php echo $nomeImagem?></h6>
+                        </div>
+                        <div class="card-body imagem">
+                            <div class="card-container-imagem">
+                                <img src="<?php echo BASE_URL . $caminhoOriginal?>" alt="">
+                            </div>
+                            <div class="gap-2 container-button-imagem">
+                                <a class="btn-editar-imagem icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                <a class="btn-excluir-imagem icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+            ?>
+            
         </div>
     </div>
 
