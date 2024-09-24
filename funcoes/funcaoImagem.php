@@ -42,8 +42,26 @@
         return true;
     }
 
-    function consultarImagens($con){
-        $sql = "SELECT * FROM tbl_imagem";
+    function consultarImagens($con, $categoriaImagem1 = null, $categoriaImagem2 = null){
+        
+        $where = "";
+        $condicao = [];
+
+        if (!empty($categoriaImagem1) || !empty($categoriaImagem2)) {
+            $where .= "WHERE ";
+            $conditions = [];
+    
+            if (!empty($categoriaImagem1)) {
+                $conditions[] = "categoria = '$categoriaImagem1'";
+            }
+            if (!empty($categoriaImagem2)) {
+                $conditions[] = "categoria = '$categoriaImagem2'";
+            }
+    
+            $where .= implode(' OR ', $conditions);
+        }
+        
+        $sql = "SELECT * FROM tbl_imagem $where";
         $consulta = mysqli_query($con, $sql);
         $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
         return $array;
