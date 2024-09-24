@@ -170,7 +170,7 @@
                         <select class="form-select" name="img-formacao" id="img-formacao">
                             <option value="" selected>Escolha a imagem</option>
                             <?php 
-                                $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'logo'";
+                                $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'instituicao'";
                                 $consulta = mysqli_query($con, $sql);
                                 
                                 while($row = mysqli_fetch_assoc($consulta)){
