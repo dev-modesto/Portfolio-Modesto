@@ -43,7 +43,6 @@
                     <div class="col-md-6">
                         <label class="font-1-s" class="font-1-s" for="area-formacao">Área formação <em>*</em></label><br>
                         <select class="form-select" name="area-formacao" id="area-formacao" required>
-                            <option value="">Escolha a área de formação</option>
                             <?php 
                                 $sql = "SELECT * FROM tbl_area_formacao";
                                 $consulta = mysqli_query($con, $sql);
@@ -78,7 +77,6 @@
                     <div class="col-md-6 mb-4">
                         <label class="font-1-s" for="categoria-curso">Categoria do Curso <em>*</em></label><br>
                         <select class="form-select" name="categoria-curso" id="" required >
-                            <option value="">Escolha a categoria do curso</option>
                             <option value="Curso Livre" <?php echo ($categoriaCurso == 'Curso livre') ? 'selected' : ''; ?>>Curso Livre</option>
                             <option value="Técnico" <?php echo ($categoriaCurso == 'Técnico') ? 'selected' : ''; ?>>Técnico</option>
                             <option value="Tecnólogo" <?php echo ($categoriaCurso == 'Tecnólogo') ? 'selected' : ''; ?>>Tecnólogo</option>
@@ -94,9 +92,8 @@
                 <div class="mb-4">
                     <label class="font-1-s" for="img-formacao">Imagem <em>*</em></label><br>
                     <select class="form-select" name="img-formacao" id="img-formacao">
-                        <option value="" selected>Escolha a imagem</option>
                         <?php 
-                            $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'logo'";
+                            $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'instituicao'";
                             $consulta = mysqli_query($con, $sql);
                             
                             while($row = mysqli_fetch_assoc($consulta)){
@@ -115,7 +112,6 @@
                 <div class="mb-4">
                     <label class="font-1-s" for="status-curso">Status <em>*</em></label><br>
                     <select class="form-select" name="status" id="" required>
-                        <option value="">Defina um status</option>
                         <option value="Concluído" <?php echo ($status == 'Concluído') ? 'selected' : '' ?>>Concluído</option>
                         <option value="Andamento" <?php echo ($status == 'Andamento') ? 'selected' : ''?>>Andamento</option>
                     </select>

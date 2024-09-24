@@ -1,8 +1,10 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
 
     $sql = "SELECT * FROM tbl_imagem";
     $consultaImagem = mysqli_query($con, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -52,43 +54,114 @@
         }
     ?>
 
-    <div class="container-button">
-        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar imagem</button>
-    </div>
-
     <div class="container-principal">
-        <div class="container-tabela">
-            <table id="myTable" class="table nowrap order-column table-hover text-left">
-                <thead class="">
-                    <tr>
-                        <th scope="col">Nome imagem</th>
-                        <th scope="col">Caminho</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Controle</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <?php 
-                        $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultaImagem)){
-                                $idImagem = $exibe['id_imagem'];
+ 
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="logos-tab" data-bs-toggle="tab" data-bs-target="#logos" type="button" role="tab" aria-controls="logos" aria-selected="true">Instituições</button>
+            </li>
 
-                            ?>
-                            <tr data-id-imagem="<?php echo $idImagem ?>">
-                                <td><?php echo $exibe['nome_original']?></td>
-                                <td><?php echo $exibe['caminho_original']?></td>
-                                <td><?php echo $exibe['categoria']?></td>
-                                <td class="td-icons">
-                                    <a class="btn-visualizar-info-imagem icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-imagem icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-imagem icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
-                                </td>
-                            </tr>
-                            <?php
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tecnologias-ferramentas-tab" data-bs-toggle="tab" data-bs-target="#tecnologias-ferramentas" type="button" role="tab" aria-controls="tecnologias-ferramentas" aria-selected="false">Tec./Ferramentas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="projetos-logos-tab" data-bs-toggle="tab" data-bs-target="#projetos-logos" type="button" role="tab" aria-controls="projetos-logos" aria-selected="false">Projetos/logos</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="logos" role="tabpanel" aria-labelledby="logos-tab" tabindex="0">
+
+                <div class="container-button logos">
+                    <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar img Instituição</button>
+                </div>
+
+                <div class="container-imagem">
+                    <?php
+                        $arrayImagem = consultarImagens($con, 'instituicao');
+                        foreach ($arrayImagem as $valorImg) {
+                            $idImagem = $valorImg['id_imagem'];
+                            $nomeImagem = $valorImg['nome_original'];
+                            $caminhoOriginal = $valorImg['caminho_original'];
+                            $categoriaImgagem = $valorImg['categoria'];
+                            $caminhoAbsolutoImagem = BASE_PATH . $caminhoOriginal;
+
+                        ?>
+                            <div class="card card-imagem-view"  style="width: 18rem;">
+                                <div class="card-titulo">
+                                    <h6 class="titulo-imagem"><?php echo $nomeImagem?></h6>
+                                </div>
+                                <div class="card-body imagem">
+                                    <div class="card-container-imagem">
+                                        <img src="<?php echo BASE_URL . $caminhoOriginal?>" alt="">
+                                    </div>
+                                    <div class="gap-2 container-button-imagem" data-id-imagem="<?php echo $idImagem ?>">
+                                        <a class="btn-editar-imagem icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                        <a class="btn-excluir-imagem icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
                         }
                     ?>
-                </tbody>
-            </table>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tecnologias-ferramentas" role="tabpanel" aria-labelledby="tecnologias-ferramentas-tab" tabindex="0">
+                <div class="container-imagem">
+                    <?php
+                        $arrayImagem = consultarImagens($con, 'tecnologia', 'ferramenta');
+                        foreach ($arrayImagem as $valorImg) {
+                            $idImagem = $valorImg['id_imagem'];
+                            $nomeImagem = $valorImg['nome_original'];
+                            $caminhoOriginal = $valorImg['caminho_original'];
+                            $categoriaImgagem = $valorImg['categoria'];
+                            $caminhoAbsolutoImagem = BASE_PATH . $caminhoOriginal;
+
+                        ?>
+                            <div class="card card-imagem-view"  style="width: 18rem;">
+                                <div class="card-titulo">
+                                    <h6 class="titulo-imagem"><?php echo $nomeImagem?></h6>
+                                </div>
+                                <div class="card-body imagem">
+                                    <div class="card-container-imagem">
+                                        <img src="<?php echo BASE_URL . $caminhoOriginal?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    ?>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="projetos-logos" role="tabpanel" aria-labelledby="projetos-logos-tab" tabindex="0">
+                <div class="container-imagem">
+                    <?php
+                        $arrayImagem = consultarImagens($con, 'projeto', 'logo');
+                        foreach ($arrayImagem as $valorImg) {
+                            $idImagem = $valorImg['id_imagem'];
+                            $nomeImagem = $valorImg['nome_original'];
+                            $caminhoOriginal = $valorImg['caminho_original'];
+                            $categoriaImgagem = $valorImg['categoria'];
+                            $caminhoAbsolutoImagem = BASE_PATH . $caminhoOriginal;
+
+                        ?>
+                            <div class="card card-imagem-view"  style="width: 18rem;">
+                                <div class="card-titulo">
+                                    <h6 class="titulo-imagem"><?php echo $nomeImagem?></h6>
+                                </div>
+                                <div class="card-body imagem">
+                                    <div class="card-container-imagem">
+                                        <img src="<?php echo BASE_URL . $caminhoOriginal?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -111,8 +184,7 @@
                         <label class="font-1-s" for="categoria-tipo-imagem">Categoria tipo da imagem <em>*</em></label>
                         <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem" value="" required>
                             <option value="" selected>Selecione uma opção</option>
-                            <option value="projeto">Projeto</option>
-                            <option value="logo">Logo</option>
+                            <option value="instituicao">Instituição</option>
                         </select>
                     </div>
 
