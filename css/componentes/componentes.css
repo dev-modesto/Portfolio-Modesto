@@ -182,3 +182,59 @@ a[aria-disabled="true"] {
     
 }
 
+/* estilização da área de imagens */
+.container-button.logos {
+    margin-top: 30px;
+}
+
+.card-imagem-view {
+    height: 250px;
+}
+
+.card-titulo {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.container-imagem {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+}
+
+.card-body.imagem {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-button-imagem {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 20%;
+}
+
+.container-button-imagem a {
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.card-container-imagem img {
+    width: 70px;
+    height: auto;
+}
+
+.card-container-imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}

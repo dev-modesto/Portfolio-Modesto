@@ -105,7 +105,7 @@
                 <div class="modal-body">
                     <form class="form-container" id="form-projeto" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="tecnologias" id="tecnologias" value="">
-                        <input type="hidden" name="id-projeto" id="id-projeto" value="1">
+                        <input type="hidden" name="autores" id="autores" value="">
 
                         <ul class="nav nav-underline">
                             <li class="nav-item" role="presentation">
@@ -119,6 +119,9 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tab-autores-projeto" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane" type="button" role="tab" aria-controls="autores-projeto-pane" aria-selected="false">Autores</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
@@ -244,6 +247,53 @@
                                 </div>
                             </div>
 
+                            <div class="tab-pane fade" id="autores-projeto-pane" role="tabpanel" aria-labelledby="tab-autores-projeto" tabindex="0">
+                                <div class="mb-4">
+                                    <label class="font-1-s" for="projeto-equipe">Projeto em equipe? <em>*</em></label><br>
+                                    <div class="container-check">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="projeto-equipe-nao">Não</label>
+                                            <input class="form-check-input projeto-equipe" type="radio" name="projeto-equipe" id="projeto-equipe-nao" value="Nao" checked>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="projeto-equipe-sim">Sim</label>
+                                            <input class="form-check-input projeto-equipe" type="radio" name="projeto-equipe" id="projeto-equipe-sim" value="Sim">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="container-principal-autores-projeto row mb-4">
+                                    <div class="col-md-12 mb-4">
+                                        <label class="font-1-s" for="autores-projeto">Autores do projeto</label>
+                                        <select class="form-select form-autores-projeto" name="autores-projeto" id="autores-projeto">
+                                            <option value="" selected>Informe o autor</option>
+
+                                            <?php
+                                    
+                                                $sqlAutor = "SELECT * FROM tbl_autor WHERE NOT nome LIKE '%gabriel modesto%' ORDER BY nome ASC";
+                                                $consultaAutor = mysqli_query($con, $sqlAutor);
+                                                $arrayAutores = mysqli_fetch_all($consultaAutor, MYSQLI_ASSOC);
+                                            
+                                                foreach ($arrayAutores as $chave => $valor) {
+                                                    $idAutor = $valor['id_autor'];
+                                                    $nomeAutor = $valor['nome'];
+
+                                                    ?>
+                                                        <option value="<?php echo $idAutor ?>"><?php echo $nomeAutor ?></option>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <button type="button" class="btn btn-primary" id="btn-adicionar-autor">Adicionar</button>
+                                    </div>
+                                    <div class="container-autores-projeto mb-4">
+                
+                                    </div>
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="tab-tecnologias-tab-pane" role="tabpanel" aria-label="tab-tecnologias" tabindex="0">
                                 <?php 
 
@@ -271,7 +321,7 @@
                                                 $caminhoImagem = $row['caminho_original'];
                                                 ?>
                                                 
-                                                    <div class="container-imagem-tecnologia" data-id-tecnologia="<?php echo $idTecnologia ?>">
+                                                    <div class="container-imagem-tecnologia cadastrar" data-id-tecnologia="<?php echo $idTecnologia ?>">
                                                         <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
                                                     </div>
                                                     
@@ -305,10 +355,10 @@
 
 <script>
 
-$(document).ready(function () {
+    $(document).ready(function () {
         var array = [];
 
-        $('body').on('click', '.container-imagem-tecnologia', function (e) { 
+        $('body').on('click', '.container-imagem-tecnologia.cadastrar', function (e) { 
             e.preventDefault();
 
             var idImagem = $(this).data('id-imagem');
@@ -339,7 +389,6 @@ $(document).ready(function () {
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    console.log(response);
                     if (response.sucesso) {
                         window.location.href = '../projeto/index.php?msg=' + encodeURIComponent(response.mensagem);
 
@@ -354,9 +403,6 @@ $(document).ready(function () {
 
             });
         });
-    });
-
-    $(document).ready(function () {
         
         fedbackInvalido = $('.feedback-invalido').val();
         btnCadastrar = $('.btn-primary.cadastrar')[0];
@@ -375,6 +421,64 @@ $(document).ready(function () {
                 $(btnCadastrar).removeAttr('disabled', true);
             }
         });
+
+        var arrayAutores = [];
+
+        $('#btn-adicionar-autor').click(function (e){
+            e.preventDefault();
+
+            var idAutor = $('.form-autores-projeto').val();
+            idAutor = Number(idAutor);
+            var nomeAutor = $('#autores-projeto option:selected').text();
+
+            if (idAutor === 0 || arrayAutores.includes(idAutor)) {
+                return;
+
+            } else {
+                arrayAutores.push(idAutor);
+            }
+
+            $('#autores').val(arrayAutores.join(','));
+
+            $('.container-autores-projeto').append(`
+                <div class="autor-item" data-id="${idAutor}">
+                    <a class="btn-remover-autor icone-excluir-autor" href="#" data-id="${idAutor}"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor">${nomeAutor}</span>
+                </div>
+            `);
+        });
+
+        $(document).on('click', '.btn-remover-autor', function () {
+            var idAutor = $(this).data('id');
+
+            arrayAutores = arrayAutores.filter(function (autor) {
+                return autor !== idAutor;
+            });
+
+            $('#autores').val(arrayAutores.join(','));
+
+            $(`.autor-item[data-id="${idAutor}"]`).remove();
+        });
+
+        var projetoEquipe = $('.projeto-equipe').val();
+        var containerPrincipalAutores = $('.container-principal-autores-projeto')[0];
+
+        function visibilidadeContainerAutores(projetoEquipe) {
+            if (projetoEquipe == 'Nao') {
+                containerPrincipalAutores.style.display = 'none';
+
+            } else {
+                containerPrincipalAutores.style.display = 'block';
+            }
+        }
+
+        $('.projeto-equipe').change(function (e) { 
+            e.preventDefault();
+            var projetoEquipe = $(this).val();
+            visibilidadeContainerAutores(projetoEquipe);
+
+        });
+
+        visibilidadeContainerAutores(projetoEquipe);
     });
 
 </script>

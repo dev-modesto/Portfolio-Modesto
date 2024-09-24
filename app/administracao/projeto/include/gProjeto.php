@@ -3,7 +3,28 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/funcoes/funcaoImagem.php";
     
     if(isset($_POST['tecnologias'])) {
+
+        $sqlMeuIdAutor = "SELECT id_autor FROM tbl_autor WHERE nome LIKE '%gabriel modesto%'";
+        $consultaMeuId = mysqli_query($con, $sqlMeuIdAutor);
+        $resultadoConsultaMeuId = mysqli_num_rows($consultaMeuId);
+
+        if ($resultadoConsultaMeuId == 0) {
+            $mensagem['mensagem'] = 'O autor Gabriel Modesto não foi encontrado.';
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        }
+
         $tecnologias = explode(',', $_POST['tecnologias']);
+        $autores = explode(',', $_POST['autores']);
+
+        $arrayConsultaMeuId = mysqli_fetch_assoc($consultaMeuId);
+        $meuIdAutor = $arrayConsultaMeuId['id_autor'];
+
+        array_unshift($autores, $meuIdAutor);
+        $arrayAutores = array_filter($autores, function($array) {
+            return !empty($array);
+        });
 
         $nomeProjeto = trim($_POST['nome-projeto']);
         $tipoProjeto = $_POST['tipo-projeto'];
@@ -15,6 +36,7 @@
         $statusGeralProjeto = $_POST['status-geral-projeto'];
         $projetoDestaque = $_POST['projeto-destaque'];
         $statusProjeto = $_POST['status-progresso-projeto'];
+        $projetoEquipe = $_POST['projeto-equipe'];
 
         $caminhoRelativo = "/assets/img/projetos/";
         $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/projetos/";
@@ -58,13 +80,14 @@
                     link_repositorio,
                     destaque,
                     status_geral,
+                    projeto_equipe,
                     status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
     
             mysqli_stmt_bind_param(
                 $sqlProjeto, 
-                "sssssssssss", 
+                "ssssssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
                 $descricaoTipoProjeto, 
@@ -75,6 +98,7 @@
                 $linkRepositorio,
                 $projetoDestaque,
                 $statusGeralProjeto,
+                $projetoEquipe,
                 $statusProjeto
             );
 
@@ -129,6 +153,21 @@
         
                 mysqli_stmt_bind_param($sqlTecnologiaProjeto, 'ii', $idProjeto, $idTecnologia);
                 mysqli_stmt_execute($sqlTecnologiaProjeto);
+            }
+
+            foreach ($autores as $idAutor) {
+                $idAutor = intval($idAutor);
+
+                $sqlAutoresProjeto =
+                    mysqli_prepare($con,
+                    "INSERT INTO tbl_autor_projeto(
+                        id_projeto, 
+                        id_autor) 
+                    VALUES(?, ?)
+                ");
+        
+                mysqli_stmt_bind_param($sqlAutoresProjeto, 'ii', $idProjeto, $idAutor);
+                mysqli_stmt_execute($sqlAutoresProjeto);
             }
     
             mysqli_commit($con);

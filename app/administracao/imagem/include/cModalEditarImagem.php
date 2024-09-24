@@ -39,9 +39,7 @@
                 <div class="mb-4">
                     <label class="font-1-s" for="categoria-tipo-imagem">Categoria tipo da imagem <em>*</em></label>
                     <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem" value="" required>
-                        <option value="" selected>Selecione uma opção</option>
-                        <option value="projeto" <?php echo $categoria == 'projeto' ? 'selected' : '' ?>>Projeto</option>
-                        <option value="logo" <?php echo $categoria == 'logo' ? 'selected' : '' ?>>Logo</option>
+                        <option value="instituicao" <?php echo $categoria == 'instituicao' ? 'selected' : '' ?>>Instituição</option>
                     </select>
                 </div>
                 <div class="mb-4">

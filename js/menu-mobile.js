@@ -20,19 +20,20 @@ var logo2 = document.getElementById('logo2');
 
 iconMobile.onclick = () => {
     
-    if (menuMobile.style.display === 'flex'){
-        menuMobile.style.display = 'none';
+    if (menuMobile.classList.contains('ativo')){
         iconMobile.innerHTML = 'menu';
         iconMobile.style.color = 'var(--color-s6)';
         navbar.style.backgroundColor = '#fff';
         logo1.style.display = 'block';
         logo2.style.display = 'none';
+        menuMobile.classList.remove('ativo');
+        
     } else {
-        menuMobile.style.display = 'flex';
         iconMobile.innerHTML = 'close';
         iconMobile.style.color = '#77FCED';
         navbar.style.backgroundColor = 'var(--color-s6)';
         logo1.style.display = 'none';
         logo2.style.display = 'block';
+        menuMobile.classList.add('ativo');
     }
 }

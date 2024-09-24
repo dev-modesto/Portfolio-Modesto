@@ -40,6 +40,7 @@ function cProjetoEspecifico ($con, $idProjeto) {
             link_repositorio,
             destaque,
             status_geral,
+            projeto_equipe,
             status
         FROM tbl_projeto  
         WHERE id_projeto = ?
