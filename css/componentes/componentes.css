@@ -182,12 +182,16 @@ a[aria-disabled="true"] {
     
 }
 
+/* estilização da área de imagens */
+.container-button.logos {
+    margin-top: 30px;
+}
+
 .card-imagem-view {
     height: 250px;
 }
 
 .card-titulo {
-    /* background-color: bisque; */
     height: 40px;
     display: flex;
     justify-content: center;
@@ -203,7 +207,6 @@ a[aria-disabled="true"] {
 }
 
 .card-body.imagem {
-    /* background-color: tomato; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -227,11 +230,9 @@ a[aria-disabled="true"] {
 .card-container-imagem img {
     width: 70px;
     height: auto;
-    
 }
 
 .card-container-imagem {
-    /* background-color: yellow; */
     display: flex;
     justify-content: center;
     align-items: center;
