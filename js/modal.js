@@ -142,5 +142,6 @@ abrirModal('.btn-excluir-area-formacao', 'tr', 'id-area-formacao', 'include/cMod
 abrirModal('.btn-excluir-tecnologia', 'tr', 'id-tecnologia', 'include/cModalExcluirTecnologia.php', 'click-excluir-tecnologia', '.modalExcluir', '#modalExcluir');
 
 abrirModal('.btn-editar-imagem', 'div', 'id-imagem', 'include/cModalEditarImagem.php', 'click-editar-imagem', '.modalEditarImagem', '#modalEditarImagem');
+abrirModal('.btn-excluir-imagem', 'div', 'id-imagem', 'include/cModalExcluirImagem.php', 'click-excluir-imagem', '.modalExcluir', '#modalExcluir');
 
 abrirModal('.btn-editar-tecnologia', 'tr', 'id-tecnologia', 'include/cModalEditarTecnologia.php', 'click-editar-tecnologia', '.modalEditarTecnologia', '#modalEditarTecnologia');
