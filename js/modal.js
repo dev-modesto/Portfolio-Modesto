@@ -90,15 +90,18 @@ function abrirModalEditarProjeto(botaoClick, classIdTabela, idDataPesquisa, urlC
                     `);
                 });
 
+                var idAutores = $('#autores-editar').val();
+                var arrayAutores = idAutores ? idAutores.split(',').map(Number) : [];
+
                 $(document).on('click', '.btn-remover-autor-editar', function () {
                     var idAutor = $(this).data('id');
-
-                    arrayAutores = arrayAutores.filter(function (autor) {
-                        return autor !== idAutor;
-                    });
+                    
+                    if (arrayAutores.includes(idAutor)) {
+                        const index = arrayAutores.indexOf(idAutor);
+                        arrayAutores.splice(index, 1);
+                    } 
 
                     $('#autores-editar').val(arrayAutores.join(','));
-
                     $(`.autor-item[data-id="${idAutor}"]`).remove();
                 });
 
