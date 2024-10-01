@@ -42,6 +42,33 @@
         $tecnologiasId = implode(',', $arrayTecProjeto);
 
 
+        function cAutorProjeto($con, $idProjeto) {
+            $sql = 
+                "SELECT 
+                    ap.id_projeto, 
+                    ap.id_autor,
+                    a.nome
+                FROM tbl_autor_projeto ap
+                INNER JOIN tbl_autor a
+                ON ap.id_autor = a.id_autor
+                WHERE ap.id_projeto = '$idProjeto' AND NOT a.nome  LIKE '%gabriel modesto%';
+            ";
+            $consulta = mysqli_query($con, $sql);
+            return $consulta;
+        }
+
+        $arrayAutoresProjeto = [];
+        $cAutorProjeto = cAutorProjeto($con, $idProjeto);
+        $consultaProjeto = mysqli_fetch_all($cAutorProjeto, MYSQLI_ASSOC);
+
+        foreach ($consultaProjeto as $valor) {
+            $idProjeto = $valor['id_projeto'];
+            $idAutor = $valor['id_autor'];
+            $arrayAutoresProjeto[] = $idAutor;
+        }
+
+        $autoresId = implode(',', $arrayAutoresProjeto);
+
     } else {
         header('Location: ../index.php');
     }
@@ -59,7 +86,7 @@
                 <form class="form-container" id="form-projeto-editar" enctype="multipart/form-data">
                     <input type="text" name="id" id="id" value="<?php echo $idProjeto ?>" hidden>
                     <input class="tecnologias-editar" type="hidden" name="tecnologias-editar" id="tecnologias-editar" value="<?php echo $tecnologiasId ?>">
-                    <input type="hidden" name="autores" id="autores-editar" value="">
+                    <input type="hidden" name="autores-editar" id="autores-editar" value="<?php echo $autoresId ?>">
 
                     <ul class="nav nav-underline">
                         <li class="nav-item" role="presentation">
@@ -252,22 +279,9 @@
 
                                     <?php
                                     
-                                        $sqlAutorProjeto = 
-                                            "SELECT 
-                                                p.id_autor,
-                                                a.nome
-                                            FROM tbl_autor_projeto p 
-                                            INNER JOIN tbl_autor a
-                                            ON p.id_autor = a.id_autor
-                                            WHERE p.id_projeto = '$idProjeto'
-                                        ";
-
-                                        $consultaAutorProjeto = mysqli_query($con, $sqlAutorProjeto);
-                                        $arrayAutoresProjeto = mysqli_fetch_all($consultaAutorProjeto, MYSQLI_ASSOC);
-                                        
-                                        foreach ($arrayAutoresProjeto as $key => $value) {
-                                            $idAutorProjeto = $value['id_autor'];
-                                            $nomeAutorProjeto = $value['nome'];
+                                        foreach ($consultaProjeto as $valor) {
+                                            $idAutorProjeto = $valor['id_autor'];
+                                            $nomeAutorProjeto = $valor['nome'];
                                             ?>
                                                 <div class="autor-item" data-id="<?php echo $idAutorProjeto ?>">
                                                     <a class="btn-remover-autor-editar icone-excluir-autor" href="#" data-id="<?php echo $idAutorProjeto ?>"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor"><?php echo $nomeAutorProjeto ?></span>
