@@ -10,6 +10,10 @@ html {
     font: 600 1.5rem/1.5 "Poppins", sans-serif;
   }
 
+  .font-1-xxl-2 {
+    font: 300 1.5rem/2.25rem "Poppins", sans-serif;
+  } 
+
 .font-1-h1-b {
     font: 700 4rem/1em "Poppins", sans-serif;
 }
@@ -128,7 +132,10 @@ html {
     .font-2-xl-r {
         font: 400 .875rem/1.6 "Inter", sans-serif;
     }
-    
+
+    .font-1-xxl-2 {
+        font: 300 1rem/1.5rem "Poppins", sans-serif;
+    } 
 
     .font-2-md-r {
         font-size: .75rem;
@@ -146,4 +153,8 @@ html {
     .font-2-md-r {
         font-size: .625rem;
     }
+
+    .font-1-xxl-2 {
+        font: 300 .75rem/1.125rem "Poppins", sans-serif;
+    } 
 }
