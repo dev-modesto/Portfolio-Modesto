@@ -2,8 +2,7 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
     include BASE_PATH . "/funcoes/funcaoImagem.php";
     include BASE_PATH . "/include/funcoes/db-queries/projeto.php";
-
-    ARQUIVO_CONEXAO;
+    include BASE_PATH . "/include/funcoes/db-queries/autor.php";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
@@ -36,6 +35,23 @@
             echo json_encode($mensagem);
             die();
         } 
+
+        $idGabriel = cIdgabriel($con);
+        
+        if($idGabriel === false) {
+            $mensagem['mensagem'] = 'O autor Gabriel Modesto não foi encontrado.';
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        } 
+
+        $idAutores = $_POST['autores-editar'];
+        $arrayAutores = explode(',', $idAutores);
+        
+        array_unshift($arrayAutores, $idGabriel);
+        $arrayFiltrado = array_filter($arrayAutores, function($array){
+            return !empty($array);
+        });
 
         $imagensEnvio = [
             'imagem-projeto' => [
@@ -114,6 +130,25 @@
         mysqli_begin_transaction($con);
 
         try {
+
+            $sqlRemoverAutores = mysqli_prepare($con, "DELETE FROM tbl_autor_projeto WHERE id_projeto = ?");
+            mysqli_stmt_bind_param($sqlRemoverAutores, "i", $idProjeto);
+            mysqli_stmt_execute($sqlRemoverAutores);
+    
+            foreach ($arrayFiltrado as $id) {
+                $idAutor = intval($id);
+    
+                $sql =
+                mysqli_prepare($con,
+                    "INSERT INTO tbl_autor_projeto(
+                        id_projeto, 
+                        id_autor) 
+                    VALUES(?, ?)
+                ");
+    
+                mysqli_stmt_bind_param($sql, 'ii', $idProjeto, $idAutor);
+                mysqli_stmt_execute($sql);
+            }
 
             $sqlRemoverTecnologias = mysqli_prepare($con, "DELETE FROM tbl_tecnologia_projeto WHERE id_projeto = ? ");
             mysqli_stmt_bind_param($sqlRemoverTecnologias, "i", $idProjeto);

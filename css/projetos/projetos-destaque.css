@@ -1,8 +1,7 @@
 .projetosDestaque {
-    min-height: 100vh;
+    height: auto;
     max-width: 1140px;
-    margin: 110px auto;
-    padding: 0 10px;
+    margin: 60px auto;
     padding: 0 20px;
 }
 
@@ -46,10 +45,6 @@
 
 .projetoDestaque-cards img {
     max-width: 100%;
-}
-
-.projetoDestaque-cards--tag {
-
 }
 
 .projetoDestaque-cards--techs {
@@ -201,10 +196,6 @@
     height: 100%;
 }
 
-.conteudo-texto {
-    /* background-color: tomato; */
-}
-
 .projetoDestaque-cards--conteudo-texto h3 {
     font-size: 1.5em;
     font-family: poppins;
@@ -275,7 +266,7 @@
 
 @media (max-width: 991px) {
     .projetosDestaque {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 }
 
@@ -305,7 +296,6 @@
         font-family: poppins;
         font-weight: 400;
         color: var(--color-c2);
-        /* margin: 5px 0px; */
     }
     
     .projetoDestaque-cards--conteudo-texto .font-1-md-l {

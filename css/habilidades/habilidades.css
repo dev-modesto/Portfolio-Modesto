@@ -1,8 +1,7 @@
 .habilidades {
     max-width: 100%;
-    height: 70vh;
-    margin: 0 auto;
-    padding: 40px 0px;
+    margin: 60px auto;
+    padding: 0px 0px;
     position: relative;
 }
 
@@ -17,12 +16,13 @@
 
 .habilidades-containerExterno {
     background-color: var(--color-s8);
-    min-height: 70vh;
+    min-height: 638px;
     margin: 0 auto;
     padding: 0 calc((100% - 1140px)/2);
     display: block;
     justify-content: center;
     align-content: center;
+    /* background-color: greenyellow; */
 }
 
 .habilidades .font-1-h2-b {
@@ -48,9 +48,9 @@
 .habilidades-containerTecnologias::before {
     content: '';
     position: absolute;
-    bottom: 85%;
+    bottom: 80%;
     right: 10px;
-    width: 3px;
+    width: 2px;
     height: 200px;
     background-color: var(--color-p4);
 }
@@ -58,9 +58,10 @@
 .habilidades-containerTecnologias::after {
     content: '';
     position: absolute;
-    top: 85%;
+    top: 80%;
     left: 10px;
-    width: 3px;
+    left: 10px;
+    width: 2px;
     height: 200px;
     background-color: var(--color-p4);
 }
@@ -77,7 +78,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 80px 20px;
-    min-height: 100px;
+    min-height: auto;
     justify-content: center;
     margin-top: 30px;
 }
@@ -133,30 +134,35 @@
 
 @media (max-width: 991px) {
     .habilidades {
-        max-width: 100%;
         height: 100%;
         min-height: 450px;
     }
-    
+
     .habilidades-containerExterno {
         height: 100%;
-        min-height: 450px;
     }
 }
 
 @media (max-width: 728px) {
+    .habilidades {
+        margin: 40px auto;
+        height: 100%;
+        min-height: 450px;
+    }
     .scroll-habilidades-principais {
         display: flex;
         flex-wrap: nowrap;
         gap: 80px 20px;
-        padding: 20px 10px 60px 10px;
-        align-items: center;
-        justify-content: left;
+        /* padding: 0px 10px 60px 10px; */
+        align-items: start;
+        justify-content: center;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch ;
         -ms-overflow-style: -ms-autohiding-scrollbar;
         position: relative;
         scrollbar-width: none;
+        height: 120px;
+        overflow-y: hidden;
     }
     
     .scroll-habilidades-principais::after {
@@ -174,6 +180,14 @@
         animation: seta 1.5s ease-in-out 0s infinite;
         opacity: 0; 
     }
+
+    .habilidades .font-2-lg-r {
+        margin-bottom: 0px;
+    }
+
+    .habilidades-containerExterno {
+        /* min-height: 450px; */
+    }
 }
 
 @media (max-width: 481px){
@@ -186,19 +200,25 @@
         font-size: .8125rem;
     }
 
+    .habilidades-containerExterno {
+        min-height: 450px;
+    }
+
     .scroll-habilidades-principais {
         display: flex;
         padding: 10px;
         gap: 50px 20px;
-        min-height: 100px;
         margin-top: 10px;
-        padding: 20px 10px 10px 10px;
+        padding: 10px 10px 0px 10px;
         align-items: initial;
-        justify-content: left;
+        justify-content: center;
+        height: 80px;
+        overflow-y: hidden;
     }
 
     .habilidades-principais-container, .habilidades-ferramentas-container {
-        min-height: 150px;
+        min-height: 100px;
+        height: 150px;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -220,6 +240,8 @@
         width: 3px;
         height: 60px;
     }
+
+
 
 
 }
