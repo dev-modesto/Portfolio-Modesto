@@ -12,7 +12,7 @@
     box-sizing: border-box;
     max-width: 1140px;
     background-color: var(--color-s8);
-    margin-bottom: 300px;
+    margin-bottom: 200px;
     margin-top: 60px;
     padding-left: 64px;
     padding-left: 0px;
@@ -421,7 +421,7 @@
         box-sizing: border-box;
         max-width: 1140px;
         background-color: var(--color-s8);
-        margin-bottom: 300px;
+        margin-bottom: 150px;
         margin-top: 60px;
         padding-left: 0px;
     }
@@ -602,7 +602,7 @@
         box-sizing: border-box;
         max-width: 1140px;
         background-color: var(--color-s8);
-        margin-bottom: 300px;
+        margin-bottom: 150px;
         margin-top: 60px;
         padding-left: 0px;
     }
@@ -826,7 +826,7 @@
         box-sizing: border-box;
         max-width: 1140px;
         background-color: var(--color-s8);
-        margin-bottom: 300px;
+        margin-bottom: 150px;
         margin-top: 60px;
         padding-left: 0px;
     }
@@ -1004,7 +1004,7 @@
         box-sizing: border-box;
         max-width: 1140px;
         background-color: var(--color-s8);
-        margin-bottom: 300px;
+        margin-bottom: 100px;
         margin-top: 60px;
         padding-left: 0px;
     }
