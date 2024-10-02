@@ -1,0 +1,121 @@
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 415px;
+    justify-content: center;
+    background-color: #000;
+
+}
+
+.footer-container {
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 40px);
+    height: 400px;
+    max-width: 1140px;
+    margin: 60px auto;
+    padding: 0 20px;
+
+}
+
+.container-info-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 0px;
+}
+
+.container-info-footer p{
+    word-wrap: break-word;
+    max-width: 460px;
+}
+
+.container-copyright {
+    width: 100%;
+    background-color: #000;
+    height: 75px;
+    border-top: 1px solid;
+    border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
+}
+
+.container-info-corpyright {
+    max-width: 1140px;
+    padding: 0 20px;
+    height: 100%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-logo-footer img {
+    width: 194px;
+    height: auto;
+}
+
+.container-info-corpyright p {
+    font: 300 16px/24px "Poppins", Sans-serif;
+    color: var(--color-c6);
+}
+
+.container-info-corpyright span {
+    font-weight: 500;
+}
+
+.icones-sociais.container-icones-footer a{
+    background-color: var(--color-c13);
+}
+
+.icones-sociais.container-icones-footer a:hover {
+    color:  var(--color-p2);
+}
+
+@media (max-width: 556px) {
+    .container-logo-footer img {
+        width: 100px;
+    }
+}
+
+@media (max-width:480px){
+    .container-info-footer p {
+        word-wrap: break-word;
+        max-width: 380px;
+    }
+
+    .container-info-corpyright p {
+        font: 300 .75em/1rem "Poppins", Sans-serif;
+        color: var(--color-c6);
+    }
+
+}
+
+@media (max-width: 390px) {
+    .container-copyright {
+        height: 120px;
+        padding: 10px 0px;
+    }
+
+    .container-info-corpyright {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 10px;
+    }
+    .container-logo-footer img {
+        width: 100px;
+    }
+    .container-info-corpyright p {
+        text-align: center;
+    }
+}
+
+@media (max-width:320px){
+    .container-info-footer p {
+        word-wrap: break-word;
+        max-width: 290px;
+    }
+    .container-info-corpyright p {
+        font: 300 .75em/1rem "Poppins", Sans-serif;
+        color: var(--color-c6);
+    }
+}
