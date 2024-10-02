@@ -97,7 +97,7 @@
         <section class="home">
             <div class="home-info order2">
                 <h1 class="font-1-h1-b">Web Developer Front End</h1>
-                <p class="font-2-xl-r">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
+                <p class="font-1-xxl-1">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
                 <div class="icones-sociais">
                     <a class="cor-c6" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
                     <a class="cor-c6" href="https://github.com/dev-modesto"><i class='bx bxl-github'></i></a>
@@ -501,7 +501,7 @@
                 <div class="container-info-footer">
                     <div>
                         <h1 class="font-1-h2-b cor-c1 titulo-formacao-academica">Siga-me nas redes</h1>
-                        <p class="font-1-xxl-2 cor-c1 ">Fique à vontade para contactar-me. Se gostou do meu trabalho, me envie um feedback. Ficarei feliz em ouvir.</p>
+                        <p class="font-2-lg-r peso-leve cor-c1 ">Fique à vontade para contactar-me. Se gostou do meu trabalho, me envie um feedback. Ficarei feliz em ouvir.</p>
                     </div>
                     <div class="icones-sociais container-icones-footer">
                         <a class="cor-c6" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
