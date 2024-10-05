@@ -1,6 +1,6 @@
-<?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
-    include FUNCAO_DATA;
+<?php
+    include 'config/base.php';
+    include BASE_PATH . '/funcoes/funcaoData.php';
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';

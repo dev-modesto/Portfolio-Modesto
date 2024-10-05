@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include '../../../../config/base.php';
     include BASE_PATH . '/funcoes/funcaoImagem.php';
     session_start();
 

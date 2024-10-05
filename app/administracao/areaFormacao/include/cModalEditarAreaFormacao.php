@@ -1,6 +1,6 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . "/portfolio-modesto/config/base.php";
-    
+    include '../../../../config/base.php';
+
     if (isset($_POST['click-editar-area-formacao'])) {
         $id = $_POST['idPrincipal'];
 

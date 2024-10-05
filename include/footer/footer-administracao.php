@@ -1,5 +1,5 @@
 <?php 
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/Portfolio-Modesto/config/config.php';
+    include_once '../../../config/base.php';
 ?>
 
 <script src="<?php echo BASE_URL . '/js/menu.js'?>"></script>

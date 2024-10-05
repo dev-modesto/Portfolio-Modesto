@@ -1,5 +1,5 @@
 <?php 
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/Portfolio-Modesto/config/config.php';
+    include_once '../../../config/base.php';
 ?>
 
 <body class="body-conteudo">

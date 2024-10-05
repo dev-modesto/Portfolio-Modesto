@@ -1,7 +1,7 @@
 <?php 
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include 'config/base.php';
     include_once FUNCAO_DATA;
-    
+
     $and = "";
 
     if (isset($_POST['click-btn-filtrar'])) {
