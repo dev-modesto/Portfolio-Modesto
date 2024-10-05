@@ -43,6 +43,8 @@
             mysqli_rollback($con);
             echo "Ocorreu um erro: " . $e->getMessage();
         }
+    } else {
+        header('Location: ../index.php');
     }
 ?>
     

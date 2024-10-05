@@ -1,5 +1,6 @@
 <?php
     include '../../../config/base.php';
+    include SEGURANCA;
     $sql = "SELECT * FROM tbl_tecnologia ORDER BY nome";
     $consultarTecnologia = mysqli_query($con, $sql);
 ?>

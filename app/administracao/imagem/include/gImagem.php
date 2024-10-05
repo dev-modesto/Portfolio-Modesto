@@ -67,7 +67,7 @@
         }
 
     } else {
-        $mensagem = "";
+        header('Location: ../index.php');
     }
 ?>
     

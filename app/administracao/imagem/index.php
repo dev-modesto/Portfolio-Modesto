@@ -1,5 +1,6 @@
 <?php
     include '../../../config/base.php';
+    include SEGURANCA;
     include BASE_PATH . '/funcoes/funcaoImagem.php';
 
     $sql = "SELECT * FROM tbl_imagem";

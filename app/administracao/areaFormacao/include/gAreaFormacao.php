@@ -25,5 +25,8 @@
             echo "Ocorreu um error: " . $e->getMessage();
         }
 
+    } else {
+        header('location: ../index.php');
     }
+
 ?>
