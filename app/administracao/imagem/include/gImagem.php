@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include '../../../../config/base.php';
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $categoriaTipoImagem = trim($_POST['categoria-tipo-imagem']);
@@ -13,11 +13,11 @@
 
             if ($categoriaTipoImagem == 'projeto') {
                 $caminhoRelativo = "/assets/img/projetos/";
-                $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/assets/img/projetos/";
+                $caminhoPasta = BASE_PATH . "/assets/img/projetos/";
                 
             } else {
                 $caminhoRelativo = "/assets/img/instituicoes/";
-                $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/assets/img/instituicoes/";
+                $caminhoPasta = BASE_PATH . "/assets/img/instituicoes/";
             }
             
             $caminhoPastaSalvar = $caminhoPasta . $nomeImagem ;

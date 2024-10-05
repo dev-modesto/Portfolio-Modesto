@@ -1,6 +1,7 @@
 <?php
+    include_once 'config.php';
+    require_once BASE_PATH . '/vendor/autoload.php';
 
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/portfolio-modesto/vendor/autoload.php';
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 

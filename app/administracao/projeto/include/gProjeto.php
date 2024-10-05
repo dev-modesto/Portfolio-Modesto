@@ -1,6 +1,6 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/funcoes/funcaoImagem.php";
+    include '../../../../config/base.php';
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
     
     if(isset($_POST['tecnologias'])) {
 
@@ -39,8 +39,8 @@
         $projetoEquipe = $_POST['projeto-equipe'];
 
         $caminhoRelativo = "/assets/img/projetos/";
-        $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/projetos/";
-        $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . $caminhoAbsoluto;
+        $caminhoAbsoluto = BASE_PATH . "/assets/img/projetos/";
+        $caminhoPasta = $caminhoAbsoluto;
 
         $imagemLogoProjeto = salvarImagem($_FILES['logo-projeto'], $caminhoRelativo, $caminhoPasta);
         $imagemProjeto = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);

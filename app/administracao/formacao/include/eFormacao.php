@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include '../../../../config/base.php';
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] = 'POST') {

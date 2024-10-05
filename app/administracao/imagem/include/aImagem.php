@@ -1,6 +1,6 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/funcoes/funcaoImagem.php";
+    include '../../../../config/base.php';
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
@@ -71,8 +71,8 @@
 
 
                 $caminhoRelativo = "/assets/img/instituicoes/";
-                $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/instituicoes/";
-                $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . $caminhoAbsoluto;
+                $caminhoAbsoluto = BASE_PATH . "/assets/img/instituicoes/";
+                $caminhoPasta = $caminhoAbsoluto;
 
                 $infoImagemSalva = salvarImagem($imagemEnvio, $caminhoRelativo, $caminhoPasta);
                 $nomeImagemSalva = $infoImagemSalva['nome'];

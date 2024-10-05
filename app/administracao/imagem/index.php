@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include '../../../config/base.php';
     include BASE_PATH . '/funcoes/funcaoImagem.php';
 
     $sql = "SELECT * FROM tbl_imagem";
@@ -33,7 +33,7 @@
 <body>
 <?php
     include BASE_PATH . '/include/pre-load/pre-load.php';
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/include/menu/sidebar.php";
+    include BASE_PATH . "/include/menu/sidebar.php";
 ?>
 
 <div class="conteudo">
