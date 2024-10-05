@@ -6,6 +6,8 @@
         $id = $_POST['idPrincipal'];
         $_SESSION['idSessao'] = $id;
         
+    } else {
+        header('Location: ../index.php');
     }
 
 ?>

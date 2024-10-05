@@ -1,5 +1,6 @@
 <?php
     include '../../../config/base.php';
+    include SEGURANCA;
     $sql = "SELECT * FROM tbl_formacao";
     $consultaFormacao = mysqli_query($con, $sql);
 ?>

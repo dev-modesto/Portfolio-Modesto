@@ -5,6 +5,8 @@
     if(isset($_POST['click-excluir-area-formacao'])){
         $id = $_POST['idPrincipal'];
         $_SESSION['idSessao'] = $id;
+    } else {
+        header('location: ../index.php');
     }
 
 ?>
