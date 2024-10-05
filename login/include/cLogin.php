@@ -4,8 +4,15 @@
     if(isset($_POST['click-login'])) {
         $login = $_POST['login-usuario'];
         $senha = trim($_POST['senha']);
+        
+        if(!is_numeric($login)) {
+            $mensagem['mensagem'] = "Ooops, isso não é possível.";
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        } 
+        
         $login = intval($login);
-
         $hash = password_hash($senha, PASSWORD_BCRYPT);
 
         $sql = mysqli_prepare($con, "SELECT * FROM tbl_login WHERE login = ?");
@@ -39,7 +46,7 @@
             }
 
         } else {
-            $mensagem['mensagem'] = 'Usuário não encontrado.';
+            $mensagem['mensagem'] = 'Usuário ou senha incorreta.';
             header('Content-Type: application/json');
             echo json_encode($mensagem);
             die();
