@@ -1,0 +1,154 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 800px;
+    height: 800px;
+    background-color: var(--color-s6);
+}
+
+.container-forma {
+    border: 1px solid var(--color-p4);
+    display: flex;
+    justify-content: center;
+    padding: 0px 20px;
+    width: 560px;
+    height: 560px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.container-login {
+    margin-top: 50px;
+    background-color: var(--color-c1);
+    max-width: 460px;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    height: 631px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.container-img {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.container-img img {
+    height: 35px;
+}
+.container-login h1 {
+    margin-top: 10px;
+    margin-bottom: 80px ;
+    font: 700 2.25em/2.87rem 'Poppins', sans-serif;
+}
+
+.container-formulario {
+    width: 100%;   
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.container-formulario label {
+    margin-bottom: 10px;
+}
+
+.container-formulario input {
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid;
+    border-color: var(--color-s1);
+    background-color: transparent;
+    padding-left: 40px;
+}
+
+.container-formulario input:focus {
+    box-shadow: 0px 0px 2px 2px var(--color-s21);
+}
+
+.container-button {
+    display: flex;
+    justify-content: end;
+}
+
+.btn-entrar {
+    width: 170px;
+    height: 48px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: var(--color-s4);
+    color: var(--color-c1);
+}
+
+.btn-entrar:hover {
+    background-color: var(--color-s2);
+}
+
+.btn-entrar:active {
+    background-color:  var(--color-p4);
+    color: var(--color-s6);
+}
+
+.container-input-usuario,
+.container-input-senha {
+    position: relative;
+}
+
+.icone-login {
+    z-index: 1;
+}
+
+.icone-matricula::after {
+    content: url(../../assets/img/outros/matricula.svg);
+    position: absolute;
+    left: 8px;
+    top: 10px;
+}
+
+.icone-senha::after {
+    content: url(../../assets/img/outros/password.svg);
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+
+.icone-ver-senha::before {
+    content: url(../../assets/img/outros/password-hidden.svg);
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    cursor: pointer;
+}
+
+.icone-ver-senha.visible::before {
+    content: url(../../assets/img/outros/password-visible.svg);
+}
+
+
+@media (max-width: 425px) {
+    body {
+        align-items: start;
+        margin-top: 0px;
+    }
+
+    .container-login {
+        height: 100vh;    
+        margin-top: 0px;
+    }
+
+    .container-forma {
+        width: 400px;
+        height: 400px;
+        padding: 0px;
+    }
+}
+
