@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include '../../../../config/base.php';
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nomeFormacao = trim($_POST['nome-formacao']);

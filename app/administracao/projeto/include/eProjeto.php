@@ -1,6 +1,7 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/funcoes/funcaoImagem.php";
+    include '../../../../config/base.php';
+    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] = 'POST') {

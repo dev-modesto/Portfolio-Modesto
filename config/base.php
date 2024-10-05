@@ -1,5 +1,4 @@
 <?php 
-     include $_SERVER['DOCUMENT_ROOT'] . '/Portfolio-Modesto/config/config.php';
+     include __DIR__ . '/config.php';
      include ARQUIVO_CONEXAO;
-
 ?>

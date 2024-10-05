@@ -1,6 +1,6 @@
-<?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
-    include FUNCAO_DATA;
+<?php
+    include 'config/base.php';
+    include BASE_PATH . '/funcoes/funcaoData.php';
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
@@ -13,17 +13,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | Modesto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- import das fontes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/animacoes.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/home/home.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/sobre/sobre.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/habilidades/habilidades.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/projetos/projetos-destaque.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/formacao/formacao.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/footer/footer.css">
+    
+
 
     <!-- meus icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -94,10 +103,12 @@
     </header>
 
     <main>
-        <section class="home">
+        <section class="home js-scroll">
             <div class="home-info order2">
-                <h1 class="font-1-h1-b">Web Developer Front End</h1>
-                <p class="font-1-xxl-1">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
+                <div class="texto-home">
+                    <h1 class="font-1-h1-b">Web Developer Front End</h1>
+                    <p class="font-1-xxl-1">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
+                </div>
                 <div class="icones-sociais">
                     <a class="cor-c6" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
                     <a class="cor-c6" href="https://github.com/dev-modesto"><i class='bx bxl-github'></i></a>
@@ -109,7 +120,7 @@
             </div>
         </section>
 
-        <section class="sobre" id="sobre">
+        <section class="sobre js-scroll" id="sobre">
             <h1 class="font-1-h2-b">Sobre</h1>
             <p class="font-2-lg-r">Estudante de Análise e Desenvolvimento de Sistemas na Faculdade Digital Descomplica e formado em Técnico em Informática (voltado ao desenvolvimento web) na instituição de ensino SENAC RJ.</p>
             <br>
@@ -121,7 +132,7 @@
             </div>
         </section>
 
-        <section class="habilidades" id="habilidades">
+        <section class="habilidades js-scroll" id="habilidades">
             <h1 class="font-1-h2-b">Minhas <span>habilidades</span></h1>
             <div class="habilidades-containerExterno">
                 <div class="habilidades-containerTecnologias">
@@ -173,7 +184,7 @@
             </div>
         </section>
 
-        <section class="projetosDestaque" id="projetosDestaque">
+        <section class="projetosDestaque js-scroll" id="projetosDestaque">
             <h1 class="font-1-h2-b">Projetos em destaque</h1>
             <p class="font-2-lg-r texto-destaque">Abaixo, encontram-se alguns dos melhores projetos. Fique à vontade para visualizar e explorá-los.</p>
 
@@ -286,7 +297,7 @@
 
         </section>
 
-        <section class="formacao">
+        <section class="formacao js-scroll" id="formacao">
             <div class="formacao-academica-container">
                 <div class="container-titulo-formacao-academica">
                     <h1 class="font-1-h2-b cor-c3 titulo-formacao-academica">Formação acadêmica</h1>
@@ -525,6 +536,8 @@
 <?php 
     include BASE_PATH . "/include/footer/footer-scripts.php";
 ?>
+
+<script src="js/animacoes.js"></script>
 
 <script>
 

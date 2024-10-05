@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT'] . "/Portfolio-Modesto/config/base.php";
+    include '../../../../config/base.php';
     include BASE_PATH . "/funcoes/funcaoImagem.php";
     include BASE_PATH . "/include/funcoes/db-queries/projeto.php";
     include BASE_PATH . "/include/funcoes/db-queries/tecnologia.php";
@@ -18,8 +18,8 @@
         $imagemPlain = $_FILES['imagem-plain'];
 
         $caminhoRelativo = "/assets/img/tecnologias/";
-        $caminhoAbsoluto = "/Portfolio-Modesto/assets/img/tecnologias/";
-        $caminhoPasta = $_SERVER['DOCUMENT_ROOT'] . $caminhoAbsoluto;
+        $caminhoAbsoluto = BASE_PATH . "/assets/img/tecnologias/";
+        $caminhoPasta = $caminhoAbsoluto;
 
         mysqli_begin_transaction($con);
         try {
