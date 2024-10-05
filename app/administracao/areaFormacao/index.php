@@ -1,5 +1,6 @@
 <?php
     include '../../../config/base.php';
+    include SEGURANCA;
 
     $sql = "SELECT * FROM tbl_area_formacao ORDER BY nome";
     $consultaAreaFormacao = mysqli_query($con, $sql);

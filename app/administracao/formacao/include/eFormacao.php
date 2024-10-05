@@ -28,6 +28,8 @@
         header('location: ../index.php?msg=' . $mensagem);
         die();
 
+    } else {
+        header('Location: ../index.php');
     }
 
 ?>
