@@ -1,11 +1,18 @@
 <?php
     include '../../config/base.php';
-  
+
     if(isset($_POST['click-login'])) {
         $login = $_POST['login-usuario'];
         $senha = trim($_POST['senha']);
+
+        if (empty($login) || empty($senha)) {
+            $mensagem['mensagem'] = "Não é possível o envio de campos vazios.";
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        }
         
-        if(!is_numeric($login)) {
+        if(!is_numeric($login) || strlen($login) < 5) {
             $mensagem['mensagem'] = "Ooops, isso não é possível.";
             header('Content-Type: application/json');
             echo json_encode($mensagem);

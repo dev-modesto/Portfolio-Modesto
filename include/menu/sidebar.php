@@ -28,7 +28,7 @@
                 </div>
                 <div class="usuario-logado-dropdown">
                     <ul class="dropwdown-logado" class="font-2-xs">
-                        <li><a href="<?php echo BASE_URL ?> /config/logoff.php"><span class="material-symbols-rounded">logout</span>Sair</a></li>
+                        <li><a href="<?php echo BASE_URL ?>/config/logoff.php"><span class="material-symbols-rounded">logout</span>Sair</a></li>
                     </ul>
                 </div>
             </div>
