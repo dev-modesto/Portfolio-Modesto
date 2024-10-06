@@ -49,7 +49,8 @@
                 ?>
             </div>
             <div class="rodape-login">
-                <span class="font-1-s peso-leve versao-portfolio">versão 2.0.0</span>
+                <span class="versao-portfolio">versão 2.0.0</span>
+                <p>© 2024 · Desenvolvido por <span>devModesto</span></p>
             </div>
         </div>
     </div>
@@ -108,6 +109,29 @@
                 iconVerSenha.classList.remove('visible');
             }
         });
+
+        function validaInput() {
+        
+            var valInputUsuario = $('#usuario').val();
+            var valInputSenha = $('#senha').val();
+
+            var usuarioValido = valInputUsuario !== "" && valInputUsuario.length > 4;
+            var senhaValida = valInputSenha !== "" && valInputSenha.length > 8;
+
+            if (usuarioValido && senhaValida) {
+                $('.btn-entrar').prop('disabled', false);
+
+            } else {
+                $('.btn-entrar').prop('disabled', true);
+            }
+
+            $('#usuario').toggleClass('is-invalid', !usuarioValido);
+            $('#senha').toggleClass('is-invalid', !senhaValida);
+        }
+
+        $('#usuario').on('keyup', validaInput);
+        $('#senha').on('keyup', validaInput);
+
     });
 
     $('#usuario').mask('0000000');
