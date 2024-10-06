@@ -31,8 +31,6 @@
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/projetos/projetos-destaque.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/formacao/formacao.css">
     <link rel="stylesheet" href="<?php echo BASE_URL?>/css/footer/footer.css">
-    
-
 
     <!-- meus icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -125,7 +123,7 @@
             <p class="font-2-lg-r">Estudante de Análise e Desenvolvimento de Sistemas na Faculdade Digital Descomplica e formado em Técnico em Informática (voltado ao desenvolvimento web) na instituição de ensino SENAC RJ.</p>
             <br>
             <p class="font-2-lg-r">
-            Como desenvolvedor Web, atuante em ambas as vertentes de desenvolvimento, meu foco principal está voltado ao <strong>Front-end</strong>, onde meu objetivo é o desenvolviemento de <strong>interfaces funcionais, seguras, otimizadas</strong>e, é claro, <strong>agradáveis.</strong> Viso a <strong>excelência</strong>, buscando superar sempres às expectativas das das partes interessadas, estando em constante aprendizado e aperfeiçoando técnicas a fim de oferecer ao usuário final uma <strong>melhor experiência</strong>.</p>
+            Como desenvolvedor Web, atuante em ambas as vertentes de desenvolvimento, meu foco principal está voltado ao <strong>Front-end</strong>, onde meu objetivo é o desenvolvimento de <strong>interfaces funcionais, seguras, otimizadas</strong> e, é claro, <strong>agradáveis.</strong> Viso a <strong>excelência</strong>, buscando superar sempres às expectativas das das partes interessadas, estando em constante aprendizado e aperfeiçoando técnicas a fim de oferecer ao usuário final uma <strong>melhor experiência</strong>.</p>
             <div class="sobre-localizacao">
                 <span  class="material-symbols-rounded cor-c13">location_on</span>
                 <p class="font-2-lg-r">Rio de Janeiro, RJ.</p>
@@ -524,7 +522,7 @@
             </div>
             <div class="container-copyright">
                 <div class="container-info-corpyright">
-                    <p>© 2024 · Desenvolvido por <span>Gabriel Modesto</span></p>
+                    <p>© 2024 · Desenvolvido por <span>devModesto</span></p>
                     <div class="container-logo-footer">
                        <img src="./assets/img/logo/logo-white.svg" alt="logo">
                     </div>

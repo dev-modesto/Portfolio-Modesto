@@ -1,8 +1,9 @@
 .projetosDestaque {
     height: auto;
     max-width: 1140px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding: 20px 20px;
 }
 
 #activedrop {
