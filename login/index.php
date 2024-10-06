@@ -21,7 +21,7 @@
         <div class="container-login">
             <div>      
                 <div class="container-img">
-                    <img src="../assets/img/logo/logo-black.svg" alt="logo">
+                    <a href="https://devmodesto.com.br"><img src="../assets/img/logo/logo-black.svg" alt="logo"></a>
                 </div>
                 <h1>Login</h1>
                 <form class="container-formulario">
@@ -120,9 +120,11 @@
 
             if (usuarioValido && senhaValida) {
                 $('.btn-entrar').prop('disabled', false);
+                $('.btn-entrar').css('cursor', 'pointer');
 
             } else {
                 $('.btn-entrar').prop('disabled', true);
+                $('.btn-entrar').css('cursor', 'not-allowed');
             }
 
             $('#usuario').toggleClass('is-invalid', !usuarioValido);
