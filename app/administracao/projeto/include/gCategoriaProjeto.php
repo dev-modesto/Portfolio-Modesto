@@ -25,6 +25,7 @@
         } catch (Exception $e) {
             mysqli_rollback($con);
             $mensagem = 'Ocorreu um error: ' . $e->getMessage();
+            header('location: ../index.php?msgInvalida=' . $mensagem);
 
         } finally {
             mysqli_close($con);
