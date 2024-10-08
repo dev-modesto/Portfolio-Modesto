@@ -136,7 +136,7 @@
                                     $nome = $valor['nome'];
 
                                     ?>
-                                        <tr data-id-projeto="<?php echo $idCategoriaProjeto ?>">
+                                        <tr data-id-categoria-projeto="<?php echo $idCategoriaProjeto ?>">
                                             <td><?php echo $nome ?></td>
                                             <td class="td-icons">
                                                 <a class="btn-editar-categoria-projeto icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
@@ -430,7 +430,7 @@
         </div>
     </div>
 
-    <div class="modalExcluir modalEditarProjeto">
+    <div class="modalExcluir modalEditarProjeto modalEditarCategoriaProjeto">
     </div>
 </div>
 
