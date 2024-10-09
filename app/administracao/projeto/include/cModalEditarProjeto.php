@@ -11,6 +11,7 @@
         $nomeProjeto = $arrayProjeto['nome_projeto'];
         $descricaoProjeto = $arrayProjeto['descricao'];
         $descricaoTipoProjeto = $arrayProjeto['descricao_tipo_projeto'];
+        $idCategoria = $arrayProjeto['id_categoria'];
         $tipoProjeto = $arrayProjeto['tipo_projeto'];
         $dtLancamento = $arrayProjeto['dt_desenvolvimento'];
         $linkDeploy = $arrayProjeto['link_deploy'];
@@ -123,9 +124,13 @@
                             </div>
 
                             <div class="row mb-4">
-                                <div class="col-md-12 mb-4">
+                                <div class="col-md-6 mb-4">
                                     <label class="font-1-s nome-projeto" for="nome-projeto">Nome projeto <em>*</em></label><br>
                                     <input class="form-control" type="text" name="nome-projeto" id="nome-projeto" value="<?php echo $nomeProjeto ?>" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
+                                    <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento" value="<?php echo $dtLancamento?>">
                                 </div>
                             </div>
 
@@ -169,8 +174,23 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
-                                    <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento" value="<?php echo $dtLancamento?>">
+                                    <label class="font-1-s" for="categoria-projeto">Categoria projeto<em>*</em></label><br>
+                                    <select class="form-select" name="id-categoria-projeto" id="categoria-projeto">
+                                        <?php
+                                            $cCategoriaProjeto = cCategoriaProjeto($con);
+                                            $idCategoriaProjeto = '';
+                                            foreach ($cCategoriaProjeto as $valor) {
+                                                $idCategoriaProjeto = $valor['id_categoria'];
+                                                $nome = $valor['nome'];
+
+                                                $selected = $idCategoria == $idCategoriaProjeto ? 'selected' : '';
+
+                                                ?>
+                                                    <option value="<?php echo $idCategoriaProjeto?>" <?php echo $selected ?>><?php echo $nome ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>   
                                 </div>
                             </div>
                         </div>
