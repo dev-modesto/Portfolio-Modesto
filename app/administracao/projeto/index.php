@@ -1,5 +1,6 @@
 <?php
     include '../../../config/base.php';
+    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include SEGURANCA;
 
     $sql = "SELECT * FROM tbl_projeto";
@@ -122,13 +123,6 @@
                         <tbody class="table-group-divider">
                             <?php 
 
-                                function cCategoriaProjeto($con){
-                                    $sql = "SELECT * FROM tbl_categoria_projeto";
-                                    $consulta = mysqli_query($con, $sql);
-                                    $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC); 
-                                    return $array;
-                                };
-
                                 $cCategoriaProjeto = cCategoriaProjeto($con);
 
                                 foreach ($cCategoriaProjeto as $valor) {
@@ -201,9 +195,13 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-md-12 mb-4">
+                                    <div class="col-md-6 mb-4">
                                         <label class="font-1-s nome-projeto" for="nome-projeto">Nome projeto <em>*</em></label><br>
                                         <input class="form-control" type="text" name="nome-projeto" id="nome-projeto" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
+                                        <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento">
                                     </div>
                                 </div>
 
@@ -248,8 +246,21 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6 mb-4">
-                                        <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
-                                        <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento">
+                                        <label class="font-1-s" for="categoria-projeto">Categoria projeto<em>*</em></label><br>
+                                        <select class="form-select" name="id-categoria-projeto" id="categoria-projeto">
+                                            <option value="" selected>Escolha uma categoria</option>
+                                            <?php
+
+                                               foreach ($cCategoriaProjeto as $valor) {
+                                                $idCategoriaProjeto = $valor['id_categoria'];
+                                                $nome = $valor['nome'];
+                                                ?>
+                                                    <option value="<?php echo $idCategoriaProjeto ?>"><?php echo $nome ?></option>
+                                                <?php
+                                               }
+                                            ?>
+
+                                        </select>                                        
                                     </div>
                                 </div>
                             </div>
