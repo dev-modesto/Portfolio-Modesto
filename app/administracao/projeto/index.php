@@ -54,44 +54,102 @@
         }
     ?>
 
-    <div class="container-button">
-        <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar projeto</button>
-    </div>
-
     <div class="container-principal">
-        <div class="container-tabela">
-            <table id="myTable" class="table nowrap order-column table-hover text-left">
-                <thead class="">
-                    <tr>
-                        <th scope="col">Nome Projeto</th>
-                        <th scope="col">Tipo projeto</th>
-                        <th scope="col">Data lançamento</th>
-                        <th scope="col">Controle</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <?php 
-                        $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultaProjeto)){
-                                $idProjeto = $exibe['id_projeto'];
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="projetos-tab" data-bs-toggle="tab" data-bs-target="#projetos" type="button" role="tab" aria-controls="projetos" aria-selected="true">Projetos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="categorias-projeto-tab" data-bs-toggle="tab" data-bs-target="#categorias-projeto" type="button" role="tab" aria-controls="categorias-projeto" aria-selected="false">Categorias</button>
+            </li>
+        </ul>
 
-                            ?>
-                            <tr data-id-projeto="<?php echo $idProjeto ?>">
-                                <td><?php echo $exibe['nome_projeto']?></td>
-                                <td><?php echo $exibe['tipo_projeto']?></td>
-                                <td><?php echo $exibe['dt_desenvolvimento']?></td>
-                                <td class="td-icons">
-                                    <a class="btn-visualizar-info-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-projeto icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-projeto icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
-                                </td>
+        <div class="tab-content">
+            <div class="tab-pane active" id="projetos" role="tabpanel" aria-labelledby="projetos-tab" tabindex="0">
+                <div class="mt-4 mb-4 container-button">
+                    <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar projeto</button>
+                </div>
+
+                <div class="container-tabela">
+                    <table class="myTable table nowrap order-column table-hover text-left">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">Nome Projeto</th>
+                                <th scope="col">Tipo projeto</th>
+                                <th scope="col">Data lançamento</th>
+                                <th scope="col">Controle</th>
                             </tr>
-                            <?php
-                        }
-                    ?>
-                </tbody>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php 
+                                $nroLinha = 1;
+                                while($exibe = mysqli_fetch_array($consultaProjeto)){
+                                        $idProjeto = $exibe['id_projeto'];
 
-            </table>
+                                    ?>
+                                    <tr data-id-projeto="<?php echo $idProjeto ?>">
+                                        <td><?php echo $exibe['nome_projeto']?></td>
+                                        <td><?php echo $exibe['tipo_projeto']?></td>
+                                        <td><?php echo $exibe['dt_desenvolvimento']?></td>
+                                        <td class="td-icons">
+                                            <a class="btn-visualizar-info-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
+                                            <a class="btn-editar-projeto icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                            <a class="btn-excluir-projeto icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="categorias-projeto" role="tabpanel" aria-labelledby="categorias-projeto-tab" tabindex="0">
+                <div class="mt-4 mb-4 container-button">
+                    <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#modalcadastrarCategoria"> <span class="material-symbols-rounded">add</span>Cadastrar categoria</button>
+                </div>
+
+                <div class="container-tabela">
+                    <table class="myTable table nowrap order-column table-hover text-left">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">Nome categoria</th>
+                                <th scope="col">Controle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php 
+
+                                function cCategoriaProjeto($con){
+                                    $sql = "SELECT * FROM tbl_categoria_projeto";
+                                    $consulta = mysqli_query($con, $sql);
+                                    $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC); 
+                                    return $array;
+                                };
+
+                                $cCategoriaProjeto = cCategoriaProjeto($con);
+
+                                foreach ($cCategoriaProjeto as $valor) {
+                                    $idCategoriaProjeto = $valor['id_categoria'];
+                                    $nome = $valor['nome'];
+
+                                    ?>
+                                        <tr data-id-categoria-projeto="<?php echo $idCategoriaProjeto ?>">
+                                            <td><?php echo $nome ?></td>
+                                            <td class="td-icons">
+                                                <a class="btn-editar-categoria-projeto icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                                <a class="btn-excluir-categoria-projeto icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -346,7 +404,33 @@
         </div>
     </div>
 
-    <div class="modalExcluir modalEditarProjeto">
+    <div class="modal fade" id="modalcadastrarCategoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalcadastrarCategoriaLabel" aria-hidden="true">
+        
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Categoria</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-container" action="include/gCategoriaProjeto.php" method="post">
+                        <div class="mb-4">
+                            <label class="font-1-s" for="nome-categoria">Nome Categoria<em>*</em></label><br>
+                            <input class="form-control" type="text" name="nome-categoria" id="nome-categoria" required>
+                        </div>
+
+                        <div class="modal-footer form-container-button">
+                            <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                            <button class='col btn btn-primary' type="submit">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modalExcluir modalEditarProjeto modalEditarCategoriaProjeto">
     </div>
 </div>
 

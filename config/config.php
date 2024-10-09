@@ -2,7 +2,7 @@
 
     $caminhoProjetoLocal = "/portfolio-modesto";
     $protocolo = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
-    $host = $_SERVER['HTTP_HOST'];
+    $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 
     if ($host === 'localhost') {
         define('PASTA_CONFIG', $_SERVER['DOCUMENT_ROOT'] . $caminhoProjetoLocal . '/config');

@@ -101,6 +101,10 @@ body {
     color: var(--color-s6);
 }
 
+.btn-entrar:disabled:active {
+    color: var(--color-c1);
+}
+
 .btn-entrar:disabled {
     background-color: var(--color-s1);
 }
