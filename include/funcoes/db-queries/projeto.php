@@ -33,6 +33,7 @@ function cProjetoEspecifico ($con, $idProjeto) {
             nome_projeto, 
             descricao, 
             descricao_tipo_projeto,
+            id_categoria,
             tipo_projeto, 
             dt_desenvolvimento, 
             link_deploy,
@@ -85,6 +86,13 @@ function cProjetoImagem ($con, $idProjeto, $categoria = null) {
     $consulta = mysqli_stmt_get_result($sqlPrepare);
     return $consulta;
 }
+
+function cCategoriaProjeto($con){
+    $sql = "SELECT * FROM tbl_categoria_projeto";
+    $consulta = mysqli_query($con, $sql);
+    $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC); 
+    return $array;
+};
 
 
 ?>

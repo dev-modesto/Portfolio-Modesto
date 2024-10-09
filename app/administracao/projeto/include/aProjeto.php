@@ -17,6 +17,19 @@
         $tipoProjeto = $_POST['tipo-projeto'];
         $descricaoProjeto = $_POST['descricao-projeto'];
         $descricaoTipoProjeto = $_POST['descricao-tipo-projeto'];
+
+        $idCategoria = $_POST['id-categoria-projeto'];
+
+        if (is_numeric($idCategoria)) {
+            $idCategoria = intval($idCategoria);
+        
+        } else {
+            $mensagem['mensagem'] = 'Ocorreu um erro. Não foi possível prosseguir com o cadastro do projeto.';
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        }
+        
         $dataDesenvolvimento = $_POST['data-desenvolvimento'];
         $textoAlternativo = trim($_POST['texto-alt']);
         $imagemProjeto = $_FILES['imagem-projeto'];
@@ -177,7 +190,8 @@
                     nome_projeto = ?, 
                     descricao = ?, 
                     descricao_tipo_projeto = ?, 
-                    tipo_projeto = ?, 
+                    id_categoria = ?, 
+                    tipo_projeto = ?,
                     dt_desenvolvimento = ?, 
                     id_imagem = ?, 
                     link_deploy = ?, 
@@ -192,10 +206,11 @@
     
             mysqli_stmt_bind_param(
                 $sql, 
-                "sssssssssssss", 
+                "sssissssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
-                $descricaoTipoProjeto, 
+                $descricaoTipoProjeto,
+                $idCategoria, 
                 $tipoProjeto, 
                 $dataDesenvolvimento, 
                 $idImagem, 

@@ -27,6 +27,18 @@
         });
 
         $nomeProjeto = trim($_POST['nome-projeto']);
+        $idCategoria = $_POST['id-categoria-projeto'];
+
+        if (is_numeric($idCategoria)) {
+            $idCategoria = intval($idCategoria);
+        
+        } else {
+            $mensagem['mensagem'] = 'Ocorreu um erro. Não foi possível prosseguir com o cadastro do projeto.';
+            header('Content-Type: application/json');
+            echo json_encode($mensagem);
+            die();
+        }
+
         $tipoProjeto = $_POST['tipo-projeto'];
         $descricaoProjeto = $_POST['descricao-projeto'];
         $descricaoTipoProjeto = $_POST['descricao-tipo-projeto'];
@@ -73,6 +85,7 @@
                     nome_projeto, 
                     descricao, 
                     descricao_tipo_projeto, 
+                    id_categoria,
                     tipo_projeto, 
                     dt_desenvolvimento, 
                     link_deploy, 
@@ -82,15 +95,16 @@
                     status_geral,
                     projeto_equipe,
                     status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
     
             mysqli_stmt_bind_param(
                 $sqlProjeto, 
-                "ssssssssssss", 
+                "sssisssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
                 $descricaoTipoProjeto, 
+                $idCategoria,
                 $tipoProjeto, 
                 $dataDesenvolvimento, 
                 $linkDeploy,
