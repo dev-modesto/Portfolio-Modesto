@@ -1,10 +1,34 @@
 <?php
 
-function cTecnologia ($con, $visibilidadeHabilidade, $categoria) {
+function cTecnologia ($con, $idTecnologia = null, $visibilidadeHabilidade = null, $categoria = null) {
+
+    $where = '';
+    $types = '';
+    $vars = [];
+
+    if (!empty($idTecnologia)) {
+        $where .= "AND t.id_tecnologia = ?";
+        $types .= 's';
+        $vars[] = $idTecnologia;
+    }
+
+    if (!empty($visibilidadeHabilidade)) {
+        $where .= " AND t.visibilidade_habilidades = ?";
+        $types .= 's';
+        $vars[] = $visibilidadeHabilidade;
+    }
+
+    if (!empty($categoria)) {
+        $where .= " AND I.categoria = ?";
+        $types .= 's';
+        $vars[] = $categoria;
+    }
+
     $sql = 
         mysqli_prepare(
         $con,
         "SELECT 
+            t.id_tecnologia,
             t.nome,
             t.id_imagem,
             t.visibilidade_habilidades,
@@ -16,10 +40,13 @@ function cTecnologia ($con, $visibilidadeHabilidade, $categoria) {
         FROM tbl_tecnologia t
         INNER JOIN tbl_imagem i
         ON t.id_imagem = i.id_imagem
-        WHERE t.visibilidade_habilidades = ? AND i.categoria = ?
+        $where
     ");
 
-    mysqli_stmt_bind_param($sql, 'ss', $visibilidadeHabilidade, $categoria);
+    if ($vars) {
+        mysqli_stmt_bind_param($sql, $types, ...$vars);
+    }
+
     mysqli_stmt_execute($sql);
     $consulta = mysqli_stmt_get_result($sql);
     return $consulta;
