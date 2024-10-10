@@ -42,23 +42,27 @@
         return true;
     }
 
-    function consultarImagens($con, $categoriaImagem1 = null, $categoriaImagem2 = null){
+    function consultarImagens($con, $idImagem = null, $categoriaImagem1 = null, $categoriaImagem2 = null){
         
         $where = "";
-        $condicao = [];
 
-        if (!empty($categoriaImagem1) || !empty($categoriaImagem2)) {
+        if (!empty($categoriaImagem1) || !empty($categoriaImagem2) || !empty($idImagem)) {
             $where .= "WHERE ";
-            $conditions = [];
+            $condicao = [];
+
+            if (!empty($idImagem)) {
+                $condicao[] = "id_imagem = '$idImagem'";
+            }
     
             if (!empty($categoriaImagem1)) {
-                $conditions[] = "categoria = '$categoriaImagem1'";
+                $condicao[] = "categoria = '$categoriaImagem1'";
             }
+
             if (!empty($categoriaImagem2)) {
-                $conditions[] = "categoria = '$categoriaImagem2'";
+                $condicao[] = "categoria = '$categoriaImagem2'";
             }
     
-            $where .= implode(' OR ', $conditions);
+            $where .= implode(' OR ', $condicao);
         }
         
         $sql = "SELECT * FROM tbl_imagem $where";

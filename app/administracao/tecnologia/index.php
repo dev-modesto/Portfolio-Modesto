@@ -1,8 +1,9 @@
 <?php
     include '../../../config/base.php';
     include SEGURANCA;
-    $sql = "SELECT * FROM tbl_tecnologia ORDER BY nome";
-    $consultarTecnologia = mysqli_query($con, $sql);
+    
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
 ?>
 
 <!DOCTYPE html>
@@ -56,38 +57,45 @@
         <button type="button" class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <span class="material-symbols-rounded">add</span>Cadastrar tecnologia</button>
     </div>
 
-    <div class="container-principal">
-        <div class="container-tabela">
-            <table id="myTable" class="table nowrap order-column table-hover text-left">
-                <thead class="">
-                    <tr>
-                        <th scope="col">Nome tec./ ferramenta</th>
-                        <th scope="col">Controle</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <?php 
-                        $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultarTecnologia)){
-                                $idTecnologia = $exibe['id_tecnologia'];
-                                $idImagem = $exibe['id_imagem'];
+    <div class="container-tecnologias">
+        <?php
+            
+            $cTecnologia = cTecnologia($con);
+            $cTecnologiaArray = mysqli_fetch_all($cTecnologia, MYSQLI_ASSOC);
 
-                            ?>
-                            <tr data-id-tecnologia="<?php echo $idTecnologia ?>">
-                                <td><?php echo $exibe['nome']?></td>
-                                <td class="td-icons">
-                                    <a class="btn-visualizar-info-tecnologia icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-tecnologia icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-tecnologia icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+            foreach ($cTecnologiaArray as $valor) {
+                $idTecnologia = $valor['id_tecnologia'];
+                $idImagem = $valor['id_imagem'];
+                $nomeTecnologia = $valor['nome'];
+                $visibilidadeHabilidades = $valor['visibilidade_habilidades'];
+                $indicadorClass = $visibilidadeHabilidades === 'visivel' ? 'sim' : '';
+                
+                $consultaImagem = consultarImagens($con, $idImagem);
+                foreach ($consultaImagem as $valor) {
+                    $caminhoOriginal = $valor['caminho_original'];
+                }
+
+                ?>
+                <div class="card card-imagem-view"  style="width: 18rem;">
+                    <div class="card-titulo">
+                        <h6 class="titulo-imagem"><?php echo $nomeTecnologia?></h6>
+                    </div>
+                    <div class="card-body imagem">
+                        <div class="card-container-imagem">
+                            <img src="<?php echo BASE_URL . $caminhoOriginal?>" alt="">
+                        </div>
+                        <div class="rodape-button-imagem">
+                            <p><span class="indicador-skill <?php echo $indicadorClass ?>"></span>Skill</p>
+                            <div class="gap-2 container-button-imagem" data-id-tecnologia="<?php echo $idTecnologia ?>">
+                                <a class="btn-editar-tecnologia icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                <a class="btn-excluir-tecnologia icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+        ?>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">

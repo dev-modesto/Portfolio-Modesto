@@ -142,12 +142,12 @@ abrirModal('.btn-excluir-projeto', 'tr', 'id-projeto', 'include/cModalExcluirPro
 abrirModal('.btn-editar-area-formacao', 'tr', 'id-area-formacao', 'include/cModalEditarAreaFormacao.php', 'click-editar-area-formacao', '.modalEditarAreaFormacao', '#modalEditarAreaFormacao');
 abrirModal('.btn-excluir-area-formacao', 'tr', 'id-area-formacao', 'include/cModalExcluirAreaFormacao.php', 'click-excluir-area-formacao', '.modalExcluir', '#modalExcluir');
 
-abrirModal('.btn-excluir-tecnologia', 'tr', 'id-tecnologia', 'include/cModalExcluirTecnologia.php', 'click-excluir-tecnologia', '.modalExcluir', '#modalExcluir');
+abrirModal('.btn-editar-tecnologia', 'div', 'id-tecnologia', 'include/cModalEditarTecnologia.php', 'click-editar-tecnologia', '.modalEditarTecnologia', '#modalEditarTecnologia');
+abrirModal('.btn-excluir-tecnologia', 'div', 'id-tecnologia', 'include/cModalExcluirTecnologia.php', 'click-excluir-tecnologia', '.modalExcluir', '#modalExcluir');
 
 abrirModal('.btn-editar-imagem', 'div', 'id-imagem', 'include/cModalEditarImagem.php', 'click-editar-imagem', '.modalEditarImagem', '#modalEditarImagem');
 abrirModal('.btn-excluir-imagem', 'div', 'id-imagem', 'include/cModalExcluirImagem.php', 'click-excluir-imagem', '.modalExcluir', '#modalExcluir');
 
-abrirModal('.btn-editar-tecnologia', 'tr', 'id-tecnologia', 'include/cModalEditarTecnologia.php', 'click-editar-tecnologia', '.modalEditarTecnologia', '#modalEditarTecnologia');
 
 abrirModal('.btn-editar-categoria-projeto', 'tr', 'id-categoria-projeto', 'include/cModalEditarCategoriaProjeto.php', 'click-editar-categoria-projeto', '.modalEditarCategoriaProjeto', '#modalEditarCategoriaProjeto');
 abrirModal('.btn-excluir-categoria-projeto', 'tr', 'id-categoria-projeto', 'include/cModalExcluirCategoriaProjeto.php', 'click-excluir-categoria-projeto', '.modalExcluir', '#modalExcluir');

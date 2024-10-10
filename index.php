@@ -139,7 +139,7 @@
                         <div class="habilidades-principais-container-icons scroll-habilidades-principais">
                             <?php 
             
-                                $cTecnologia = cTecnologia($con, 'visivel', 'tecnologia');
+                                $cTecnologia = cTecnologia($con, null, 'visivel', 'tecnologia');
 
                                 while ($arrayTecFerramentas = mysqli_fetch_assoc($cTecnologia)) {
 
@@ -161,7 +161,7 @@
                         <div class="habilidades-principais-container-icons">
                             <?php 
 
-                                $cTecnologia = cTecnologia($con, 'visivel', 'ferramenta');
+                                $cTecnologia = cTecnologia($con, null, 'visivel', 'ferramenta');
 
                                 while ($arrayFerramentas = mysqli_fetch_assoc($cTecnologia)) {
 
