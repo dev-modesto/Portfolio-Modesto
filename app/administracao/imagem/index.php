@@ -79,7 +79,7 @@
 
                 <div class="container-imagem">
                     <?php
-                        $arrayImagem = consultarImagens($con, 'instituicao');
+                        $arrayImagem = consultarImagens($con, null,'instituicao');
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
                             $nomeImagem = $valorImg['nome_original'];
@@ -111,7 +111,7 @@
             <div class="tab-pane" id="tecnologias-ferramentas" role="tabpanel" aria-labelledby="tecnologias-ferramentas-tab" tabindex="0">
                 <div class="container-imagem">
                     <?php
-                        $arrayImagem = consultarImagens($con, 'tecnologia', 'ferramenta');
+                        $arrayImagem = consultarImagens($con, null, 'tecnologia', 'ferramenta');
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
                             $nomeImagem = $valorImg['nome_original'];
@@ -139,7 +139,7 @@
             <div class="tab-pane" id="projetos-logos" role="tabpanel" aria-labelledby="projetos-logos-tab" tabindex="0">
                 <div class="container-imagem">
                     <?php
-                        $arrayImagem = consultarImagens($con, 'projeto', 'logo');
+                        $arrayImagem = consultarImagens($con, null, 'projeto', 'logo');
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
                             $nomeImagem = $valorImg['nome_original'];
