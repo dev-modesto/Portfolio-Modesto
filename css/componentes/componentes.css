@@ -199,7 +199,8 @@ a[aria-disabled="true"] {
     overflow: hidden;
 }
 
-.container-imagem {
+.container-imagem,
+.container-tecnologias {
     display: flex;
     gap: 20px;
     padding: 20px 0px;
@@ -212,7 +213,8 @@ a[aria-disabled="true"] {
     justify-content: space-between;
 }
 
-.container-button-imagem {
+.container-button-imagem,
+.rodape-button-imagem {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -225,6 +227,31 @@ a[aria-disabled="true"] {
     justify-content: center;
     align-items: center;
     padding: 5px;
+}
+
+.rodape-button-imagem {
+    justify-content: space-between;
+}
+
+.rodape-button-imagem p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-c4);
+}
+
+.indicador-skill {
+    border: 1px solid var(--color-c6);
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--color-c2);
+}
+
+.indicador-skill.sim {
+    border: 1px solid transparent;
+    background-color: var(--color-a-green4);
 }
 
 .card-container-imagem img {
