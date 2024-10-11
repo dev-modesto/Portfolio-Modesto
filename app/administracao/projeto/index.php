@@ -6,6 +6,7 @@
 
     $sql = "SELECT * FROM tbl_projeto";
     $consultaProjeto = mysqli_query($con, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +21,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-lateral.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-top.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/projetos/projetos.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/tabela.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/modal.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/pre-loader.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-lateral.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-top.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/projetos/projetos.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
 </head>
 <body>
 <?php
@@ -78,10 +79,10 @@
                                         $idProjeto = $exibe['id_projeto'];
 
                                     ?>
-                                    <tr data-id-projeto="<?php echo $idProjeto ?>">
-                                        <td><?php echo $exibe['nome_projeto']?></td>
-                                        <td><?php echo $exibe['tipo_projeto']?></td>
-                                        <td><?php echo $exibe['dt_desenvolvimento']?></td>
+                                    <tr data-id-projeto="<?= $idProjeto ?>">
+                                        <td><?= $exibe['nome_projeto']?></td>
+                                        <td><?= $exibe['tipo_projeto']?></td>
+                                        <td><?= $exibe['dt_desenvolvimento']?></td>
                                         <td class="td-icons">
                                             <a class="btn-visualizar-info-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
                                             <a class="btn-editar-projeto icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
@@ -120,8 +121,8 @@
                                     $nome = $valor['nome'];
 
                                     ?>
-                                        <tr data-id-categoria-projeto="<?php echo $idCategoriaProjeto ?>">
-                                            <td><?php echo $nome ?></td>
+                                        <tr data-id-categoria-projeto="<?= $idCategoriaProjeto ?>">
+                                            <td><?= $nome ?></td>
                                             <td class="td-icons">
                                                 <a class="btn-editar-categoria-projeto icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                                 <a class="btn-excluir-categoria-projeto icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
@@ -245,7 +246,7 @@
                                                 $idCategoriaProjeto = $valor['id_categoria'];
                                                 $nome = $valor['nome'];
                                                 ?>
-                                                    <option value="<?php echo $idCategoriaProjeto ?>"><?php echo $nome ?></option>
+                                                    <option value="<?= $idCategoriaProjeto ?>"><?= $nome ?></option>
                                                 <?php
                                                }
                                             ?>
@@ -339,7 +340,7 @@
                                                     $nomeAutor = $valor['nome'];
 
                                                     ?>
-                                                        <option value="<?php echo $idAutor ?>"><?php echo $nomeAutor ?></option>
+                                                        <option value="<?= $idAutor ?>"><?= $nomeAutor ?></option>
                                                     <?php
                                                 }
                                             ?>
@@ -381,8 +382,8 @@
                                                 $caminhoImagem = $row['caminho_original'];
                                                 ?>
                                                 
-                                                    <div class="container-imagem-tecnologia cadastrar" data-id-tecnologia="<?php echo $idTecnologia ?>">
-                                                        <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
+                                                    <div class="container-imagem-tecnologia cadastrar" data-id-tecnologia="<?= $idTecnologia ?>">
+                                                        <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
                                                     </div>
                                                     
                                                 <?php

@@ -19,16 +19,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-lateral.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-top.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/tabela.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/modal.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/pre-loader.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-lateral.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-top.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
 </head>
 <body>
 <?php
@@ -66,10 +66,10 @@
                                 $idAutor = $exibe['id_autor'];
 
                             ?>
-                            <tr data-id-autor="<?php echo $idAutor ?>">
-                                <td><?php echo $exibe['nome']?></td>
-                                <td><?php echo $exibe['link_linkedin']?></td>
-                                <td><?php echo $exibe['link_github']?></td>
+                            <tr data-id-autor="<?= $idAutor ?>">
+                                <td><?= $exibe['nome']?></td>
+                                <td><?= $exibe['link_linkedin']?></td>
+                                <td><?= $exibe['link_github']?></td>
                                 <td class="td-icons">
                                     <a class="btn-visualizar-info-autor icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
                                     <a class="btn-editar-autor icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>

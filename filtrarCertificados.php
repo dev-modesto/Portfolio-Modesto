@@ -50,20 +50,20 @@
 
         ?>
             <!-- card completo -->
-            <div class="card-formacao" data-tag-name-course="<?php echo $categoriaCurso ?>">
+            <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>">
 
                 <!-- card frontal -->
                 <div class="card-formacao-frontal">
                     <div class="card-formacao-img-logo">
-                        <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
+                        <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
                     </div>
                     <div class="card-formacao-texto">
-                        <p class="card-formacao--instituicao"><?php echo $instituicao ?></p>
-                        <h3 class="card-formacao--curso"><?php echo $nomeCurso ?></h3>
+                        <p class="card-formacao--instituicao"><?= $instituicao ?></p>
+                        <h3 class="card-formacao--curso"><?= $nomeCurso ?></h3>
                         <div class="card-formacao-periodo">
-                            <p class="card-formacao-periodo--conclusao"><?php echo $dataCertificadoConclusao ?></p>
+                            <p class="card-formacao-periodo--conclusao"><?= $dataCertificadoConclusao ?></p>
                         </div>
-                        <p class="card-formacao-horas"><?php echo $totalHoras ?> horas</p>
+                        <p class="card-formacao-horas"><?= $totalHoras ?> horas</p>
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@
                         <?php 
                             if ($status == 'Concluído') {
                                 ?>
-                                    <a href="<?php echo $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
+                                    <a href="<?= $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
                                 <?php
                             } else {
                                 ?>
@@ -93,7 +93,7 @@
                             $classe = 'icone-andamento';
                         }
                     ?> 
-                    <span class="material-symbols-rounded <?php echo $classe ?>"><?php echo $icone ?></span>
+                    <span class="material-symbols-rounded <?= $classe ?>"><?= $icone ?></span>
                 </div>
             </div>
         <?php

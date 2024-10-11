@@ -31,11 +31,11 @@
 
             <div class="modal-body">
             <form class="form-container" id="form-tecnologia-editar" enctype="multipart/form-data">
-                <input type="text" name="id-tecnologia" id="id-tecnologia" value="<?php echo $idTecnologia ?>" hidden>
-                <input type="text" name="id-imagem" id="id-imagem" value="<?php echo $idImagem ?>" hidden>
+                <input type="text" name="id-tecnologia" id="id-tecnologia" value="<?= $idTecnologia ?>" hidden>
+                <input type="text" name="id-imagem" id="id-imagem" value="<?= $idImagem ?>" hidden>
                 <div class="mb-4">
                     <label class="font-1-s" for="nome-tecnologia">Nome <em>*</em></label>
-                    <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia" value="<?php echo $nomeTecnologia ?>" required>
+                    <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia" value="<?= $nomeTecnologia ?>" required>
                 </div>
 
                 <div class="mb-4">
@@ -43,11 +43,11 @@
                     <div class="container-check">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="habilidade-nao-editar">Não</label>
-                            <input class="form-check-input" type="radio" name="habilidade-editar" id="habilidade-nao-editar" value="oculto" <?php echo $visibilidadeHabilidade == 'oculto' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="habilidade-editar" id="habilidade-nao-editar" value="oculto" <?= $visibilidadeHabilidade == 'oculto' ? 'checked' : '' ?>>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="habilidade-sim-editar">Sim</label>
-                            <input class="form-check-input" type="radio" name="habilidade-editar" id="habilidade-sim-editar" value="visivel" <?php echo $visibilidadeHabilidade == 'visivel' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="habilidade-editar" id="habilidade-sim-editar" value="visivel" <?= $visibilidadeHabilidade == 'visivel' ? 'checked' : '' ?>>
                         </div>
                     </div>
                 </div>
@@ -57,11 +57,11 @@
                     <div class="container-check">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="categoria-tecnologia-tec-editar">Tecnologia</label>
-                            <input class="form-check-input" type="radio" name="categoria-tecnologia-editar" id="categoria-tecnologia-tec-editar" value="tecnologia" <?php echo $categoria == 'tecnologia' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="categoria-tecnologia-editar" id="categoria-tecnologia-tec-editar" value="tecnologia" <?= $categoria == 'tecnologia' ? 'checked' : '' ?>>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label" for="categoria-tecnologia-ferramenta-editar">Ferramenta</label>
-                            <input class="form-check-input" type="radio" name="categoria-tecnologia-editar" id="categoria-tecnologia-ferramenta-editar" value="ferramenta" <?php echo $categoria == 'ferramenta' ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="categoria-tecnologia-editar" id="categoria-tecnologia-ferramenta-editar" value="ferramenta" <?= $categoria == 'ferramenta' ? 'checked' : '' ?>>
                         </div>
                     </div>
                 </div>
@@ -70,13 +70,13 @@
                     <div class="col-md-6">
                         <label class="font-1-s" for="imagem">Img. Original atual  <em>*</em></label>
                         <div>
-                            <img src="<?php echo BASE_URL . $caminhoOriginal; ?>" alt="<?php echo $textoAlt; ?>" style="max-width: 100px; height: auto;">
+                            <img src="<?= BASE_URL . $caminhoOriginal; ?>" alt="<?= $textoAlt; ?>" style="max-width: 100px; height: auto;">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label class="font-1-s" for="imagem">Img. Plain atual<em>*</em></label>
                         <div>
-                            <img src="<?php echo BASE_URL . $caminhoPlain; ?>" alt="<?php echo $textoAlt; ?>" style="max-width: 100px; height: auto;">
+                            <img src="<?= BASE_URL . $caminhoPlain; ?>" alt="<?= $textoAlt; ?>" style="max-width: 100px; height: auto;">
                         </div>
                     </div>
                 </div>
