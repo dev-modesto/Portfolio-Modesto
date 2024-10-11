@@ -58,12 +58,28 @@
     align-items: center;
     box-sizing: border-box;
     position: relative;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+
+.cabecalho-techs-cards {
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.cabecalho-techs-cards img {
+    width: 23px;
+    height: 23px;
 }
 
 .projetoDestaque-cards--techs .font-1-md-sb {
-    padding: 0 30px;
     font-weight: 300;
     line-gap-override: 15px;
+}
+
+.projetoDestaque-cards--techs p {
+    color: var(--color-c4);
 }
 
 .projetoDestaque-cards--techs::before {
@@ -115,11 +131,6 @@
     justify-content: center;
     align-items: center;
 
-}
-
-.techs-verso .font-1-md-sb {
-    padding: 0 30px;
-    line-gap-override: 15px;
 }
 
 .projetoDestaque-cards-verso {
@@ -311,7 +322,6 @@
 
 
     .projetoDestaque-cards--techs .font-1-md-sb {
-        padding: 0 30px;
         color: var(--color-c6);
         font-size: .8em;
         line-gap-override: 15px;
@@ -479,6 +489,15 @@
     .conteudo-buttons-link-logo a {
         max-width: 70px;
         max-height: 70px;
+    }
+
+    .cabecalho-techs-cards {
+        gap: 5px;
+    }
+
+    .cabecalho-techs-cards img {
+        width: 16px;
+        height: 16px;
     }
 
 }
