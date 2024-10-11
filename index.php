@@ -213,24 +213,33 @@
                             $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
                             $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
 
-                            $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
-                            $tecnologias = [];
-
-                            while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
-                                // $tecnologias[] = $arrayTecnologia['nome'];
-                                $tecnologias[] = '<span class="tecnologia">' . htmlspecialchars($arrayTecnologia['nome']) . '</span>';
-                                
-                            }
-
-                            $tecnologiasProjeto = implode('', $tecnologias);
-
                             ?>
                                 <!-- card completo  -->
                                 <div class="projetoDestaque-cards">
                                     <!-- frente do card -->
                                     <div class="projetoDestaque-cards-frontal">
                                         <div class="projetoDestaque-cards--techs" data-name="<?php echo $nomeProjeto ?>">
-                                            <p class="font-1-md-sb cor-c6"><?php echo $tecnologiasProjeto ?></p>
+                                            <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
+                                            <div class="cabecalho-techs-cards">
+                                                <?php
+                                                    $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
+
+                                                    while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
+                                                        $nomeTecnologia = $arrayTecnologia['nome'];
+                                                        $idTecnologia = $arrayTecnologia['id_tecnologia'];
+                                                        $idImagem = $arrayTecnologia['id_imagem'];
+
+                                                        $cTecnologiaInfoImagem = cTecnologiaInfoImagem($con, $idTecnologia);
+
+                                                        while ($arrayInfoImagem = mysqli_fetch_assoc($cTecnologiaInfoImagem)) {
+                                                            $caminhoPlain = $arrayInfoImagem['caminho_plain'];
+                                                            ?>
+                                                                <img src="<?php echo BASE_URL . $caminhoPlain ?>" alt="icone <?php echo $nomeTecnologia ?>">
+                                                            <?php
+                                                        }
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="projetoDestaque-cards--conteudo conteudo-img">
                                             <img src="<?php echo BASE_URL . $caminhoOriginal ?>" alt="<?php echo $textoAlternativo ?>">
@@ -240,7 +249,27 @@
                                     <!-- verso do card -->
                                     <div class="projetoDestaque-cards-verso">
                                         <div class="projetoDestaque-cards--techs techs-verso" data-name="<?php echo $nomeProjeto ?>">
-                                            <p class="font-1-md-sb cor-c2"><?php echo $tecnologiasProjeto ?></p>
+                                            <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
+                                            <div class="cabecalho-techs-cards">
+                                                <?php 
+                                                    $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
+
+                                                    while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
+                                                        $nomeTecnologia = $arrayTecnologia['nome'];
+                                                        $idTecnologia = $arrayTecnologia['id_tecnologia'];
+                                                        $idImagem = $arrayTecnologia['id_imagem'];
+
+                                                        $cTecnologiaInfoImagem = cTecnologiaInfoImagem($con, $idTecnologia);
+
+                                                        while ($arrayInfoImagem = mysqli_fetch_assoc($cTecnologiaInfoImagem)) {
+                                                            $caminhoPlain = $arrayInfoImagem['caminho_plain'];
+                                                            ?>
+                                                                <img src="<?php echo BASE_URL . $caminhoPlain ?>" alt="icone <?php echo $nomeTecnologia ?>">
+                                                            <?php
+                                                        }
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
                                             <div class="projetoDestaque-cards--conteudo-buttons">
