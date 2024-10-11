@@ -85,9 +85,9 @@
 
             <div class="modal-body">
                 <form class="form-container" id="form-projeto-editar" enctype="multipart/form-data">
-                    <input type="text" name="id" id="id" value="<?php echo $idProjeto ?>" hidden>
-                    <input class="tecnologias-editar" type="hidden" name="tecnologias-editar" id="tecnologias-editar" value="<?php echo $tecnologiasId ?>">
-                    <input type="hidden" name="autores-editar" id="autores-editar" value="<?php echo $autoresId ?>">
+                    <input type="text" name="id" id="id" value="<?= $idProjeto ?>" hidden>
+                    <input class="tecnologias-editar" type="hidden" name="tecnologias-editar" id="tecnologias-editar" value="<?= $tecnologiasId ?>">
+                    <input type="hidden" name="autores-editar" id="autores-editar" value="<?= $autoresId ?>">
 
                     <ul class="nav nav-underline">
                         <li class="nav-item" role="presentation">
@@ -115,10 +115,10 @@
                         <div class="tab-pane fade show active" id="informacoes-iniciais-pane-editar" role="tabpanel" aria-labelledby="informacoes-iniciais-tab-editar" tabindex="0">
                             <div class="mb-1 container-status-geral-projeto">
                                 <div class="status-geral-projeto">
-                                    <input type="radio" class="danger-outlined btn-check" name="status-geral-projeto-editar" id="danger-outlined-editar" autocomplete="off" value="Inativo" <?php echo $statusGeral == 'Inativo' ? 'checked' : '' ?>>
+                                    <input type="radio" class="danger-outlined btn-check" name="status-geral-projeto-editar" id="danger-outlined-editar" autocomplete="off" value="Inativo" <?= $statusGeral == 'Inativo' ? 'checked' : '' ?>>
                                     <label class="btn btn-outline-danger" for="danger-outlined-editar">Inativo</label>
                                     
-                                    <input type="radio" class="btn-check" name="status-geral-projeto-editar" id="success-outlined-editar" autocomplete="off" value="Ativo" <?php echo $statusGeral == 'Ativo' ? 'checked' : '' ?>>
+                                    <input type="radio" class="btn-check" name="status-geral-projeto-editar" id="success-outlined-editar" autocomplete="off" value="Ativo" <?= $statusGeral == 'Ativo' ? 'checked' : '' ?>>
                                     <label class="btn btn-outline-success" for="success-outlined-editar">Ativo</label>
                                 </div>
                             </div>
@@ -126,11 +126,11 @@
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-4">
                                     <label class="font-1-s nome-projeto" for="nome-projeto">Nome projeto <em>*</em></label><br>
-                                    <input class="form-control" type="text" name="nome-projeto" id="nome-projeto" value="<?php echo $nomeProjeto ?>" required>
+                                    <input class="form-control" type="text" name="nome-projeto" id="nome-projeto" value="<?= $nomeProjeto ?>" required>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
-                                    <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento" value="<?php echo $dtLancamento?>">
+                                    <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento" value="<?= $dtLancamento?>">
                                 </div>
                             </div>
 
@@ -140,11 +140,11 @@
                                     <div class="container-check">
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="projeto-destaque-nao-editar">Não</label>
-                                            <input class="form-check-input" type="radio" name="projeto-destaque" id="projeto-destaque-nao-editar" value="Nao" <?php echo $projetoDestaque == 'Nao' ? 'checked' : '' ?>>
+                                            <input class="form-check-input" type="radio" name="projeto-destaque" id="projeto-destaque-nao-editar" value="Nao" <?= $projetoDestaque == 'Nao' ? 'checked' : '' ?>>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="projeto-destaque-sim-editar">Sim</label>
-                                            <input class="form-check-input" type="radio" name="projeto-destaque" id="projeto-destaque-sim-editar" value="Sim" <?php echo $projetoDestaque == 'Sim' ? 'checked' : '' ?>>
+                                            <input class="form-check-input" type="radio" name="projeto-destaque" id="projeto-destaque-sim-editar" value="Sim" <?= $projetoDestaque == 'Sim' ? 'checked' : '' ?>>
                                         </div>
                                     </div>
                                 </div>
@@ -154,11 +154,11 @@
                                     <div class="container-check">
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="status-progresso-projeto-andamento-editar">Andamento</label>
-                                            <input class="form-check-input" type="radio" name="status-progresso-projeto" id="status-progresso-projeto-andamento-editar" value="Andamento" <?php echo $statusProgresso == 'Andamento' ? 'checked' : '' ?>>
+                                            <input class="form-check-input" type="radio" name="status-progresso-projeto" id="status-progresso-projeto-andamento-editar" value="Andamento" <?= $statusProgresso == 'Andamento' ? 'checked' : '' ?>>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="status-progresso-concluido-editar">Concluído</label>
-                                            <input class="form-check-input" type="radio" name="status-progresso-projeto" id="status-progresso-concluido-editar" value="Concluido" <?php echo $statusProgresso == 'Concluido' ? 'checked' : '' ?>>
+                                            <input class="form-check-input" type="radio" name="status-progresso-projeto" id="status-progresso-concluido-editar" value="Concluido" <?= $statusProgresso == 'Concluido' ? 'checked' : '' ?>>
                                         </div>
                                     </div>
                                 </div>
@@ -168,9 +168,9 @@
                                 <div class="col-md-6 mb-4">
                                     <label class="font-1-s" class="font-1-s" for="tipo-projeto">Tipo projeto <em>*</em></label>
                                     <select class="form-select" name="tipo-projeto" id="tipo-projeto" required>
-                                        <option value="livre" <?php echo $tipoProjeto == 'Livre' ? 'selected' : ''?>>Livre</option>
-                                        <option value="academico" <?php echo $tipoProjeto == 'Acadêmico' ? 'selected' : ''?>>Acadêmico</option>
-                                        <option value="profissional" <?php echo $tipoProjeto == 'Profissional' ? 'selected' : ''?>>Profissional</option>
+                                        <option value="livre" <?= $tipoProjeto == 'Livre' ? 'selected' : ''?>>Livre</option>
+                                        <option value="academico" <?= $tipoProjeto == 'Acadêmico' ? 'selected' : ''?>>Acadêmico</option>
+                                        <option value="profissional" <?= $tipoProjeto == 'Profissional' ? 'selected' : ''?>>Profissional</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-4">
@@ -186,7 +186,7 @@
                                                 $selected = $idCategoria == $idCategoriaProjeto ? 'selected' : '';
 
                                                 ?>
-                                                    <option value="<?php echo $idCategoriaProjeto?>" <?php echo $selected ?>><?php echo $nome ?></option>
+                                                    <option value="<?= $idCategoriaProjeto?>" <?= $selected ?>><?= $nome ?></option>
                                                 <?php
                                             }
                                         ?>
@@ -199,7 +199,7 @@
                             <div class="mb-4">
                                 <label class="font-1-s" for="imagem">Imagem atual do projeto <em>*</em></label>
                                 <div>
-                                    <img src="<?php echo BASE_URL . $caminhoOriginal; ?>" alt="<?php echo $textoAlternativo; ?>" style="max-width: 100px; height: auto;">
+                                    <img src="<?= BASE_URL . $caminhoOriginal; ?>" alt="<?= $textoAlternativo; ?>" style="max-width: 100px; height: auto;">
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -209,7 +209,7 @@
                             <div class="mb-4">
                                 <label class="font-1-s" for="imagem">Logo atual <em>*</em></label>
                                 <div>
-                                    <img src="<?php echo BASE_URL . $caminhoOriginalLogo; ?>" alt="<?php echo $textoAlternativo; ?>" style="max-width: 100px; height: auto;">
+                                    <img src="<?= BASE_URL . $caminhoOriginalLogo; ?>" alt="<?= $textoAlternativo; ?>" style="max-width: 100px; height: auto;">
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -218,38 +218,38 @@
                             </div>
                             <div class="mb-4">
                                 <label class="font-1-s" for="texto-alt">Texto Alternativo<em>*</em></label>
-                                <input class="form-control" type="text" name="texto-alt" id="texto-alt" value="<?php echo $textoAlternativo ?>" required>
+                                <input class="form-control" type="text" name="texto-alt" id="texto-alt" value="<?= $textoAlternativo ?>" required>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="descricoes-pane-editar" role="tabpanel" aria-labelledby="descricoes-tab-editar" tabindex="0">
                             <div class="mb-1">
                                 <label class="font-1-s" for="descricao-projeto">Descrição <em>*</em></label>
-                                <textarea class="form-control descricao-projeto" name="descricao-projeto" id="descricao-projeto"><?php echo $descricaoProjeto?></textarea>
+                                <textarea class="form-control descricao-projeto" name="descricao-projeto" id="descricao-projeto"><?= $descricaoProjeto?></textarea>
                                 <div class="feedback-qnt-invalida" style="display: flex; justify-content: end; padding: 5px">
                                     <span class="feedback-invalido">0</span>/190 caracteres
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <label class="font-1-s" for="descricao-tipo-projeto">Descrição tipo de projeto <em>*</em></label>
-                                <textarea class="form-control" name="descricao-tipo-projeto" id="descricao-tipo-projeto"><?php echo $descricaoTipoProjeto?></textarea>
+                                <textarea class="form-control" name="descricao-tipo-projeto" id="descricao-tipo-projeto"><?= $descricaoTipoProjeto?></textarea>
                             </div>
                         </div>
     
                         <div class="tab-pane fade" id="links-projeto-pane-editar" role="tabpanel" aria-labelledby="links-projeto-tab-editar" tabindex="0">
                             <div class="mb-4">
                                 <label class="font-1-s" for="link-deploy">Link Deploy</label>
-                                <input class="form-control" type="text" name="link-deploy" id="link-deploy" value="<?php echo $linkDeploy ?>">
+                                <input class="form-control" type="text" name="link-deploy" id="link-deploy" value="<?= $linkDeploy ?>">
                             </div>
 
                             <div class="mb-4">
                                 <label class="font-1-s" for="link-figma">Link Figma</label>
-                                <input class="form-control" type="text" name="link-figma" id="link-figma" value="<?php echo $linkFigma ?>">
+                                <input class="form-control" type="text" name="link-figma" id="link-figma" value="<?= $linkFigma ?>">
                             </div>
 
                             <div class="mb-4">
                                 <label class="font-1-s" for="link-repositorio">Link repositório Github</label>
-                                <input class="form-control" type="text" name="link-repositorio" id="link-repositorio" value="<?php echo $linkDeploy ?>">
+                                <input class="form-control" type="text" name="link-repositorio" id="link-repositorio" value="<?= $linkDeploy ?>">
                             </div>
                         </div>
 
@@ -259,11 +259,11 @@
                                 <div class="container-check">
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="projeto-equipe-nao-editar">Não</label>
-                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-nao-editar" value="Nao" <?php echo $projetoEquipe == 'Nao' ? 'checked' : '' ?>>
+                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-nao-editar" value="Nao" <?= $projetoEquipe == 'Nao' ? 'checked' : '' ?>>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="projeto-equipe-sim-editar">Sim</label>
-                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-sim-editar" value="Sim" <?php echo $projetoEquipe == 'Sim' ? 'checked' : '' ?>>
+                                        <input class="form-check-input projeto-equipe-editar" type="radio" name="projeto-equipe-editar" id="projeto-equipe-sim-editar" value="Sim" <?= $projetoEquipe == 'Sim' ? 'checked' : '' ?>>
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +285,7 @@
                                                 $nomeAutor = $valor['nome'];
 
                                                 ?>
-                                                    <option value="<?php echo $idAutor ?>"><?php echo $nomeAutor ?></option>
+                                                    <option value="<?= $idAutor ?>"><?= $nomeAutor ?></option>
                                                 <?php
                                             }
                                         ?>
@@ -303,8 +303,8 @@
                                             $idAutorProjeto = $valor['id_autor'];
                                             $nomeAutorProjeto = $valor['nome'];
                                             ?>
-                                                <div class="autor-item" data-id="<?php echo $idAutorProjeto ?>">
-                                                    <a class="btn-remover-autor-editar icone-excluir-autor" href="#" data-id="<?php echo $idAutorProjeto ?>"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor"><?php echo $nomeAutorProjeto ?></span>
+                                                <div class="autor-item" data-id="<?= $idAutorProjeto ?>">
+                                                    <a class="btn-remover-autor-editar icone-excluir-autor" href="#" data-id="<?= $idAutorProjeto ?>"><span class="icon-btn-controle material-symbols-rounded">close</span></a><span class="nome-autor"><?= $nomeAutorProjeto ?></span>
                                                 </div>
                                             <?php
                                         }
@@ -341,8 +341,8 @@
                                             $caminhoImagem = $row['caminho_original'];
                                             ?>
                                             
-                                                <div class="container-imagem-tecnologia editar" data-id-tecnologia="<?php echo $idTecnologia ?>">
-                                                    <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
+                                                <div class="container-imagem-tecnologia editar" data-id-tecnologia="<?= $idTecnologia ?>">
+                                                    <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
                                                 </div>
                                                 
                                             <?php

@@ -24,7 +24,7 @@
             </div>
 
             <form class="was-validated form-container" action="include/eAreaFormacao.php" method="post">
-                <input type="text" name="id-area" id="id-area" value="<?php echo $id ?>" hidden>
+                <input type="text" name="id-area" id="id-area" value="<?= $id ?>" hidden>
                 <div class="modal-footer excluir form-container-button">
                     <button class="col btn btn-secondary btn-modal-cancelar" type="button" data-bs-dismiss="modal">Cancelar</button>
                     <button class="col btn btn-modal-excluir" type="submit">Excluir</button>

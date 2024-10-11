@@ -25,10 +25,10 @@
 
             <div class="modal-body">
                 <form class="form-container" action="include/aAreaFormacao.php" method="post">
-                    <input type="text" name="id" id="id" value="<?php echo $id ?>" hidden>
+                    <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
                     <div class="mb-4">
                         <label class="font-1-s" for="area-formacao">Nome área de formação<em>*</em></label><br>
-                        <input class="form-control" type="text" name="area-formacao" id="area-formacao" value="<?php echo $nome ?>" required>
+                        <input class="form-control" type="text" name="area-formacao" id="area-formacao" value="<?= $nome ?>" required>
                     </div>
 
                     <div class="modal-footer form-container-button">

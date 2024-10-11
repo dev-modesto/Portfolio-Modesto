@@ -18,16 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css"/>
 
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-lateral.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-top.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/tabela.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/modal.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/pre-loader.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-lateral.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-top.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
 </head>
 <body>
 <?php
@@ -67,15 +67,15 @@
                 ?>
                 <div class="card card-imagem-view"  style="width: 18rem;">
                     <div class="card-titulo">
-                        <h6 class="titulo-imagem"><?php echo $nomeTecnologia?></h6>
+                        <h6 class="titulo-imagem"><?= $nomeTecnologia?></h6>
                     </div>
                     <div class="card-body imagem">
                         <div class="card-container-imagem">
-                            <img src="<?php echo BASE_URL . $caminhoOriginal?>" alt="">
+                            <img src="<?= BASE_URL . $caminhoOriginal?>" alt="">
                         </div>
                         <div class="rodape-button-imagem">
-                            <p><span class="indicador-skill <?php echo $indicadorClass ?>"></span>Skill</p>
-                            <div class="gap-2 container-button-imagem" data-id-tecnologia="<?php echo $idTecnologia ?>">
+                            <p><span class="indicador-skill <?= $indicadorClass ?>"></span>Skill</p>
+                            <div class="gap-2 container-button-imagem" data-id-tecnologia="<?= $idTecnologia ?>">
                                 <a class="btn-editar-tecnologia icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                 <a class="btn-excluir-tecnologia icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                             </div>

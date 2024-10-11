@@ -24,10 +24,10 @@
 
             <div class="modal-body">
                 <form class="form-container" action="include/aCategoriaProjeto.php" method="post">
-                    <input type="text" name="id" id="id" value="<?php echo $id ?>" hidden>
+                    <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
                     <div class="mb-4">
                         <label class="font-1-s" for="nome-categoria">Nome Categoria<em>*</em></label><br>
-                        <input class="form-control" type="text" name="nome-categoria" id="nome-categoria" value="<?php echo $nome ?>" required>
+                        <input class="form-control" type="text" name="nome-categoria" id="nome-categoria" value="<?= $nome ?>" required>
                     </div>
 
                     <div class="modal-footer form-container-button">
