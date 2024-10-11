@@ -1,7 +1,8 @@
 <?php
     include '../../../config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include SEGURANCA;
+    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
 
     $sql = "SELECT * FROM tbl_projeto";
     $consultaProjeto = mysqli_query($con, $sql);
@@ -40,19 +41,8 @@
 <div class="conteudo">
 
     <?php
-        if(isset($_GET['msg'])){
-            $msg = $_GET['msg'];
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert"> '. $msg .'
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
-
-        if(isset($_GET['msgInvalida'])){
-            $msg = $_GET['msgInvalida'];
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert"> '. $msg .' 
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
+        mensagemValida();
+        mensagemInvalida();
     ?>
 
     <div class="container-principal">
