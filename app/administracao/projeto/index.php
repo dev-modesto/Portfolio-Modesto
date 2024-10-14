@@ -84,7 +84,7 @@
                                         <td><?= $exibe['tipo_projeto']?></td>
                                         <td><?= $exibe['dt_desenvolvimento']?></td>
                                         <td class="td-icons">
-                                            <a class="btn-visualizar-info-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
+                                            <a class="btn-galeria-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">photo_library</span></a>
                                             <a class="btn-editar-projeto icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                             <a class="btn-excluir-projeto icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                         </td>
@@ -568,4 +568,17 @@
         visibilidadeContainerAutores(projetoEquipe);
     });
 
+    $(document).ready(function () {
+        $('.btn-galeria-projeto').click(function (e) { 
+            e.preventDefault();
+            const idProjeto = $(this).closest('tr').data('id-projeto');
+            const queryString = $.param({
+                'click-galeria-projeto':true,
+                'id-projeto':idProjeto
+            });
+            
+            window.location.href = 'include/galeriaProjeto.php?' + queryString;
+            
+        });
+    });
 </script>
