@@ -57,7 +57,9 @@ function cTecnologiaProjeto ($con, $idProjeto) {
         mysqli_prepare(
         $con,
         "SELECT 
-            t.nome 
+            t.id_tecnologia,
+            t.nome,
+            t.id_imagem 
         FROM tbl_tecnologia_projeto tp
         INNER JOIN tbl_tecnologia t
         ON tp.id_tecnologia = t.id_tecnologia

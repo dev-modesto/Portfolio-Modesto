@@ -19,18 +19,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/animacoes.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/home/home.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/sobre/sobre.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/habilidades/habilidades.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/projetos/projetos-destaque.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/formacao/formacao.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/footer/footer.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/animacoes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/home/home.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/sobre/sobre.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/habilidades/habilidades.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/projetos/projetos-destaque.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/formacao/formacao.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/footer/footer.css">
 
     <!-- meus icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -148,8 +148,8 @@
                                     $caminhoPlainTec = $arrayTecFerramentas['caminho_plain'];
 
                                     ?>
-                                        <div class="container-icons" data-tech="<?php echo $nomeTec ?>">
-                                            <img class="habilidades-icons" src="<?php echo BASE_URL . $caminhoPlainTec ?>" alt="<?php echo 'imagem do icone da tecnologia ' . $nomeTec?>" data-original="<?php echo BASE_URL . $caminhoOriginalTec ?>" data-plain="<?php echo BASE_URL . $caminhoPlainTec ?>">
+                                        <div class="container-icons" data-tech="<?= $nomeTec ?>">
+                                            <img class="habilidades-icons" src="<?= BASE_URL . $caminhoPlainTec ?>" alt="<?= 'imagem do icone da tecnologia ' . $nomeTec?>" data-original="<?= BASE_URL . $caminhoOriginalTec ?>" data-plain="<?= BASE_URL . $caminhoPlainTec ?>">
                                         </div>
                                     <?php
                                 }
@@ -170,8 +170,8 @@
                                     $caminhoPlainFerramenta = $arrayFerramentas['caminho_plain'];
 
                                     ?>
-                                        <div class="container-icons" data-tech="<?php echo $nomeFerramenta ?>">
-                                            <img class="habilidades-icons" src="<?php echo BASE_URL . $caminhoPlainFerramenta ?>" alt="<?php echo 'imagem do icone da tecnologia ' . $nomeFerramenta?>" data-original="<?php echo BASE_URL . $caminhoOriginalFerramenta ?>" data-plain="<?php echo BASE_URL . $caminhoPlainFerramenta ?>">
+                                        <div class="container-icons" data-tech="<?= $nomeFerramenta ?>">
+                                            <img class="habilidades-icons" src="<?= BASE_URL . $caminhoPlainFerramenta ?>" alt="<?= 'imagem do icone da tecnologia ' . $nomeFerramenta?>" data-original="<?= BASE_URL . $caminhoOriginalFerramenta ?>" data-plain="<?= BASE_URL . $caminhoPlainFerramenta ?>">
                                         </div>
                                     <?php
                                 }
@@ -213,34 +213,63 @@
                             $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
                             $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
 
-                            $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
-                            $tecnologias = [];
-
-                            while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
-                                // $tecnologias[] = $arrayTecnologia['nome'];
-                                $tecnologias[] = '<span class="tecnologia">' . htmlspecialchars($arrayTecnologia['nome']) . '</span>';
-                                
-                            }
-
-                            $tecnologiasProjeto = implode('', $tecnologias);
-
                             ?>
                                 <!-- card completo  -->
                                 <div class="projetoDestaque-cards">
                                     <!-- frente do card -->
                                     <div class="projetoDestaque-cards-frontal">
-                                        <div class="projetoDestaque-cards--techs" data-name="<?php echo $nomeProjeto ?>">
-                                            <p class="font-1-md-sb cor-c6"><?php echo $tecnologiasProjeto ?></p>
+                                        <div class="projetoDestaque-cards--techs" data-name="<?= $nomeProjeto ?>">
+                                            <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
+                                            <div class="cabecalho-techs-cards">
+                                                <?php
+                                                    $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
+
+                                                    while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
+                                                        $nomeTecnologia = $arrayTecnologia['nome'];
+                                                        $idTecnologia = $arrayTecnologia['id_tecnologia'];
+                                                        $idImagem = $arrayTecnologia['id_imagem'];
+
+                                                        $cTecnologiaInfoImagem = cTecnologiaInfoImagem($con, $idTecnologia);
+
+                                                        while ($arrayInfoImagem = mysqli_fetch_assoc($cTecnologiaInfoImagem)) {
+                                                            $caminhoPlain = $arrayInfoImagem['caminho_plain'];
+                                                            ?>
+                                                                <img src="<?= BASE_URL . $caminhoPlain ?>" alt="icone <?= $nomeTecnologia ?>">
+                                                            <?php
+                                                        }
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="projetoDestaque-cards--conteudo conteudo-img">
-                                            <img src="<?php echo BASE_URL . $caminhoOriginal ?>" alt="<?php echo $textoAlternativo ?>">
+                                            <img src="<?= BASE_URL . $caminhoOriginal ?>" alt="<?= $textoAlternativo ?>">
                                         </div>
                                     </div>
 
                                     <!-- verso do card -->
                                     <div class="projetoDestaque-cards-verso">
-                                        <div class="projetoDestaque-cards--techs techs-verso" data-name="<?php echo $nomeProjeto ?>">
-                                            <p class="font-1-md-sb cor-c2"><?php echo $tecnologiasProjeto ?></p>
+                                        <div class="projetoDestaque-cards--techs techs-verso" data-name="<?= $nomeProjeto ?>">
+                                            <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
+                                            <div class="cabecalho-techs-cards">
+                                                <?php 
+                                                    $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
+
+                                                    while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
+                                                        $nomeTecnologia = $arrayTecnologia['nome'];
+                                                        $idTecnologia = $arrayTecnologia['id_tecnologia'];
+                                                        $idImagem = $arrayTecnologia['id_imagem'];
+
+                                                        $cTecnologiaInfoImagem = cTecnologiaInfoImagem($con, $idTecnologia);
+
+                                                        while ($arrayInfoImagem = mysqli_fetch_assoc($cTecnologiaInfoImagem)) {
+                                                            $caminhoPlain = $arrayInfoImagem['caminho_plain'];
+                                                            ?>
+                                                                <img src="<?= BASE_URL . $caminhoPlain ?>" alt="icone <?= $nomeTecnologia ?>">
+                                                            <?php
+                                                        }
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
                                         <div class="projetoDestaque-cards--conteudo conteudo-card-verso">
                                             <div class="projetoDestaque-cards--conteudo-buttons">
@@ -248,19 +277,19 @@
                                                     <?php 
                                                         if (!$linkDeploy == "") {
                                                             ?>
-                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
                                                             <?php
                                                         }
                                                         
                                                         if (!$linkFigma == "") {
                                                             ?>
-                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
                                                             <?php
                                                         }
                                                         
                                                         if (!$linkRepositorio == "") {
                                                             ?>
-                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?php echo $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
                                                             <?php
                                                         }
                                                     ?>
@@ -268,7 +297,7 @@
                                                 <div class="container-buttons-link-logo">
                                                     <div class="conteudo-buttons-link-logo">
                                                         <a href="#">
-                                                            <img src="<?php echo BASE_URL . $caminhoOriginalLogo ?>" alt="" width="90" height="90">
+                                                            <img src="<?= BASE_URL . $caminhoOriginalLogo ?>" alt="" width="90" height="90">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -276,7 +305,7 @@
                                             <div class="projetoDestaque-cards--conteudo-texto">
                                                 <div class="conteudo-texto">
                                                     <h3>Descrição</h3>
-                                                    <p class="font-2-md-r cor-c3"><?php echo $descricao ?></p>
+                                                    <p class="font-2-md-r cor-c3"><?= $descricao ?></p>
                                                 </div>
                                                 <div class="container-button-saiba-mais">
                                                     <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
@@ -325,18 +354,18 @@
 
                             ?>
                                 <!-- card completo -->
-                                <div class="card-formacao card-grid-academico" data-tag-name-course="<?php echo $categoriaCursoFormacao ?>">
+                                <div class="card-formacao card-grid-academico" data-tag-name-course="<?= $categoriaCursoFormacao ?>">
 
                                     <!-- card frontal -->
                                     <div class="card-formacao-frontal">
                                         <div class="card-formacao-img-logo">
-                                            <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
+                                            <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
                                         </div>
                                         <div class="card-formacao-texto">
-                                            <p class="card-formacao--instituicao"><?php echo $instituicaoFormacao ?></p>
-                                            <h3 class="card-formacao--curso"><?php echo $nomeCursoFormacao ?></h3>
+                                            <p class="card-formacao--instituicao"><?= $instituicaoFormacao ?></p>
+                                            <h3 class="card-formacao--curso"><?= $nomeCursoFormacao ?></h3>
                                             <div class="card-formacao-periodo">
-                                                <p class="card-formacao-periodo--inicio"><?php echo $dataFormacaoInicioFormatada ?> - <?php echo $dataFormacaoFimFormatada ?> </p>
+                                                <p class="card-formacao-periodo--inicio"><?= $dataFormacaoInicioFormatada ?> - <?= $dataFormacaoFimFormatada ?> </p>
                                             </div>
                                         </div>
                                     </div>
@@ -347,7 +376,7 @@
                                             <?php 
                                                 if ($status == 'Concluído') {
                                                     ?>
-                                                        <a href="<?php echo $linkDiploma ?>"><span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                                        <a href="<?= $linkDiploma ?>"><span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
                                                         <?php
                                                 } else {
                                                     ?>
@@ -367,7 +396,7 @@
                                                 $classe = 'icone-andamento';
                                             }
                                        ?> 
-                                        <span class="material-symbols-rounded <?php echo $classe ?>"><?php echo $icone ?></span>
+                                        <span class="material-symbols-rounded <?= $classe ?>"><?= $icone ?></span>
                                     </div>
                                 </div>
                             
@@ -394,7 +423,7 @@
                                     $nomeAreaFormacao = $arrayAreaFormacao['nome'];
                                     $nomeAreaFormacao = strtoupper($nomeAreaFormacao);
                                     ?>
-                                        <button class="filtro-certificados-button" name="categoria" value="<?php echo $idAreaFormacao ?>"><?php echo $nomeAreaFormacao?></button>
+                                        <button class="filtro-certificados-button" name="categoria" value="<?= $idAreaFormacao ?>"><?= $nomeAreaFormacao?></button>
                                     <?php
 
                                 }
@@ -415,7 +444,7 @@
                                         $nomeAreaFormacaoMin = $arrayAreaFormacaoMin['nome'];
                                         $nomeAreaFormacaoMin = strtoupper($nomeAreaFormacaoMin);
                                         ?>
-                                            <option class="" value="<?php echo $idAreaFormacaoMin ?>"><?php echo $nomeAreaFormacaoMin ?></option>
+                                            <option class="" value="<?= $idAreaFormacaoMin ?>"><?= $nomeAreaFormacaoMin ?></option>
                                         <?php
 
                                     }
@@ -447,20 +476,20 @@
 
                                 ?>
                                     <!-- card completo -->
-                                    <div class="card-formacao" data-tag-name-course="<?php echo $categoriaCurso ?>">
+                                    <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>">
                 
                                         <!-- card frontal -->
                                         <div class="card-formacao-frontal">
                                             <div class="card-formacao-img-logo">
-                                                <img src="<?php echo BASE_URL . $caminhoImagem ?>" alt="">
+                                                <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
                                             </div>
                                             <div class="card-formacao-texto">
-                                                <p class="card-formacao--instituicao"><?php echo $instituicao ?></p>
-                                                <h3 class="card-formacao--curso"><?php echo $nomeCurso ?></h3>
+                                                <p class="card-formacao--instituicao"><?= $instituicao ?></p>
+                                                <h3 class="card-formacao--curso"><?= $nomeCurso ?></h3>
                                                 <div class="card-formacao-periodo">
-                                                    <p class="card-formacao-periodo--conclusao"><?php echo $dataCertificadoConclusao ?></p>
+                                                    <p class="card-formacao-periodo--conclusao"><?= $dataCertificadoConclusao ?></p>
                                                 </div>
-                                                <p class="card-formacao-horas"><?php echo $totalHoras ?> horas</p>
+                                                <p class="card-formacao-horas"><?= $totalHoras ?> horas</p>
                                             </div>
                                         </div>
 
@@ -470,7 +499,7 @@
                                                 <?php 
                                                     if ($status == 'Concluído') {
                                                         ?>
-                                                            <a href="<?php echo $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
+                                                            <a href="<?= $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
                                                         <?php
                                                     } else {
                                                         ?>
@@ -490,7 +519,7 @@
                                                     $classe = 'icone-andamento';
                                                 }
                                             ?> 
-                                            <span class="material-symbols-rounded <?php echo $classe ?>"><?php echo $icone ?></span>
+                                            <span class="material-symbols-rounded <?= $classe ?>"><?= $icone ?></span>
                                         </div>
                                     </div>
                                 

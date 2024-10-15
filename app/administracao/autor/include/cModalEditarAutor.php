@@ -26,21 +26,21 @@
 
             <div class="modal-body">
                 <form class="form-container" action="include/aAutor.php" method="post">
-                    <input type="text" name="id" id="id" value="<?php echo $id ?>" hidden>
+                    <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
 
                     <div class="mb-4">
                         <label class="font-1-s" for="instituicao-ensino">Nome Autor<em>*</em></label><br>
-                        <input class="form-control" type="text" name="nome-autor" id="nome-autor" value="<?php echo $nome ?>" required>
+                        <input class="form-control" type="text" name="nome-autor" id="nome-autor" value="<?= $nome ?>" required>
                     </div>
 
                     <div class="mb-4">
                         <label class="font-1-s" for="link-linkedin">LinkedIn<em>*</em></label><br>
-                        <input class="form-control" type="text" name="link-linkedin" id="link-linkedin" value="<?php echo $linkedin ?>" required>
+                        <input class="form-control" type="text" name="link-linkedin" id="link-linkedin" value="<?= $linkedin ?>" required>
                     </div>
                     
                     <div class="mb-4">
                         <label class="font-1-s" for="link-github">GitHub<em>*</em></label><br>
-                        <input class="form-control" type="text" name="link-github" id="link-github" value="<?php echo $github ?>" required>
+                        <input class="form-control" type="text" name="link-github" id="link-github" value="<?= $github ?>" required>
                     </div>
 
                     <div class="modal-footer form-container-button">

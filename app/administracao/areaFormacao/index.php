@@ -1,6 +1,7 @@
 <?php
     include '../../../config/base.php';
     include SEGURANCA;
+    include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
 
     $sql = "SELECT * FROM tbl_area_formacao ORDER BY nome";
     $consultaAreaFormacao = mysqli_query($con, $sql);
@@ -18,16 +19,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-lateral.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/navbar/navbar-top.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/tabela.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/modal.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL?>/css/componentes/pre-loader.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-lateral.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-top.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
 </head>
 <body>
 <?php
@@ -38,19 +39,8 @@
 <div class="conteudo">
 
     <?php
-        if(isset($_GET['msg'])){
-            $msg = $_GET['msg'];
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert"> '. $msg .'
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
-
-        if(isset($_GET['msgInvalida'])){
-            $msg = $_GET['msgInvalida'];
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert"> '. $msg .' 
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
+        mensagemValida();
+        mensagemInvalida();
     ?>
 
     <div class="container-button">
@@ -73,8 +63,8 @@
                         while($exibe = mysqli_fetch_array($consultaAreaFormacao)){
                                 $idArea = $exibe['id_area_formacao'];
                             ?>
-                            <tr data-id-area-formacao="<?php echo $idArea ?>">
-                                <td><?php echo $exibe['nome']?></td>
+                            <tr data-id-area-formacao="<?= $idArea ?>">
+                                <td><?= $exibe['nome']?></td>
                                 <td class="td-icons">
                                     <a class="btn-editar-area-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                     <a class="btn-excluir-area-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
