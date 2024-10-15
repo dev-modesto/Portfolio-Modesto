@@ -1,8 +1,20 @@
 <?php
 
+    function verificaTipoArquivoEnvio($camminhoArquivo) {
+        $tiposPermitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
+        $tipoVerificado = mime_content_type($camminhoArquivo);
+
+        if (!in_array($tipoVerificado, $tiposPermitidos)) {
+            $mensagem = 'Tipo de arquivo inválido. Somente os tipos JPG, PNG e SVG são permitidos.';
+            return $mensagem;
+        }
+
+        return true;
+    }
+
     function salvarImagem($file, $caminhoRelativo, $caminhoPasta) {
         if (isset($file)) {
-            $nomeImagem = $file['name'];
+            $nomeImagemOriginal = $file['name'];
             $caminhoTemporario = $file['tmp_name'];
             $erroUpload = $file['error'];
 
@@ -12,8 +24,20 @@
                 return false;
             }
 
-            $caminhoPastaSalvar = $caminhoPasta . $nomeImagem;
-            $caminhoRelativoImagem = $caminhoRelativo . $nomeImagem;
+            if (($verificaTipo = verificaTipoArquivoEnvio($caminhoTemporario)) !== true) {
+                return $verificaTipo;
+            }
+
+            $path = pathinfo($nomeImagemOriginal);
+            $extensao = $path['extension'];
+            date_default_timezone_set('America/Sao_Paulo');
+            $data = new DateTime();
+            $dataFormatada = date_format($data, 'dmyHms');
+            
+            $nomeUnico = uniqid() . '_' . $dataFormatada . '.' . $extensao;
+
+            $caminhoPastaSalvar = $caminhoPasta . $nomeUnico;
+            $caminhoRelativoImagem = $caminhoRelativo . $nomeUnico;
            
             if (!move_uploaded_file($caminhoTemporario, $caminhoPastaSalvar)) {
                 $mensagem = 'Ocorreu um erro ao salvar a imagem.';
@@ -25,7 +49,7 @@
             }
 
             return [
-                'nome' => $nomeImagem,
+                'nome' => $nomeUnico,
                 'caminho' => $caminhoRelativoImagem
             ];
         }
@@ -35,8 +59,7 @@
 
         if(!file_exists($caminhoImagemAbsoluto)) {
             $mensagem = "O arquivo não foi localizado. Não foi possível prosseguir com a exclusão.";
-            header('location: ../index.php?msgInvalida=' . $mensagem);
-            return false;
+            return $mensagem;
         }
         unlink($caminhoImagemAbsoluto);
         return true;
