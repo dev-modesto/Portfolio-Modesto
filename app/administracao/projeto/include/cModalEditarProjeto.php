@@ -27,7 +27,7 @@
         $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
         $textoAlternativo = $arrayImagensProjeto['texto_alt'];
 
-        $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'logo');
+        $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'projeto', 'logo');
         $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
         $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
 
