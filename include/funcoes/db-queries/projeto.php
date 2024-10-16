@@ -97,7 +97,29 @@ function cProjetoEspecifico ($con, $idProjeto) {
     return $consulta;
 }
 
-function cProjetoImagem ($con, $idProjeto, $categoria = null) {
+function cProjetoImagem ($con, $idProjeto, $categoria = null, $tipo = null) {
+
+    $where = " WHERE 1=1";
+    $types = '';
+    $vars = [];
+
+    if ($idProjeto) {
+        $where .= ' AND ip.id_projeto = ?';
+        $types .= 'i';
+        $vars[] = $idProjeto;
+    }
+
+    if ($categoria !== null) {
+        $where .= ' AND i.categoria = ?';
+        $types .= 's';
+        $vars[] = $categoria;
+    }
+
+    if ($tipo !== null) {
+        $where .= ' AND i.tipo_imagem = ?';
+        $types .= 's';
+        $vars[] = $tipo;
+    }
 
     $sql = 
         "SELECT 
@@ -107,26 +129,16 @@ function cProjetoImagem ($con, $idProjeto, $categoria = null) {
             i.nome_original,
             i.caminho_original,
             i.texto_alt,
-            i.categoria
+            i.categoria,
+            i.tipo_imagem
         FROM tbl_imagem_projeto ip
         INNER JOIN tbl_imagem i
         ON ip.id_imagem = i.id_imagem
-        WHERE ip.id_projeto = ?
+        $where
     ";
 
-    if ($categoria !== null) {
-        $sql .= 'AND i.categoria = ?';
-    }
-
     $sqlPrepare = mysqli_prepare($con, $sql);
-
-    if ($categoria !== null) {
-        mysqli_stmt_bind_param($sqlPrepare, 'is', $idProjeto, $categoria);
-
-    } else {
-        mysqli_stmt_bind_param($sqlPrepare, 'i', $idProjeto);
-    }
-   
+    mysqli_stmt_bind_param($sqlPrepare, $types, ...$vars);
     mysqli_stmt_execute($sqlPrepare);
     $consulta = mysqli_stmt_get_result($sqlPrepare);
     return $consulta;
