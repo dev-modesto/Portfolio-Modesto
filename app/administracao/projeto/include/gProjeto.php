@@ -43,7 +43,10 @@
         $descricaoProjeto = $_POST['descricao-projeto'];
         $descricaoTipoProjeto = $_POST['descricao-tipo-projeto'];
         $dataDesenvolvimento = trim($_POST['data-desenvolvimento']);
-        $textoAlternativo = trim($_POST['texto-alt']);
+        $nomeTituloImgThumbnail = trim($_POST['nome-titulo-img-thumbnail']);
+        $nomeTituloImgLogo = trim($_POST['nome-titulo-img-logo']);
+        $textoAltImgLogo = trim($_POST['texto-alt-logo']);
+        $textoAltImgThumbnail = trim($_POST['texto-alt-thumbnail']);
 
         $statusGeralProjeto = $_POST['status-geral-projeto'];
         $projetoDestaque = $_POST['projeto-destaque'];
@@ -80,16 +83,18 @@
 
         $imagens = [
             [
+                'nome-titulo' => $nomeTituloImgThumbnail,
                 'nome' => $resultadoImagens['projeto']['nome'],
                 'caminho' => $resultadoImagens['projeto']['caminho'],
-                'texto-alternativo' => $textoAlternativo,
+                'texto-alternativo' => $textoAltImgThumbnail,
                 'categoria' => 'projeto',
                 'tipo-imagem' => 'thumbnail',
             ],
             [
+                'nome-titulo' => $nomeTituloImgLogo,
                 'nome' => $resultadoImagens['logo']['nome'],
                 'caminho' => $resultadoImagens['logo']['caminho'],
-                'texto-alternativo' => '',
+                'texto-alternativo' => $textoAltImgLogo,
                 'categoria' => 'projeto',
                 'tipo-imagem' => 'logo',
             ]
@@ -146,17 +151,19 @@
                 $sqlImagem = mysqli_prepare(
                     $con,
                     "INSERT INTO tbl_imagem(
+                        nome_titulo,
                         nome_original,
                         caminho_original,
                         texto_alt,
                         categoria,
                         tipo_imagem)
-                    VALUES (?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, ?)
                 ");
 
                 mysqli_stmt_bind_param(
                     $sqlImagem, 
-                    "sssss", 
+                    "ssssss",
+                    $imagem['nome-titulo'],
                     $imagem['nome'],
                     $imagem['caminho'],
                     $imagem['texto-alternativo'],
