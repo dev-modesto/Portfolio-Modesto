@@ -53,22 +53,45 @@
         $caminhoRelativo = "/assets/img/projetos/";
         $caminhoAbsoluto = BASE_PATH . "/assets/img/projetos/";
         $caminhoPasta = $caminhoAbsoluto;
-
-        $imagemLogoProjeto = salvarImagem($_FILES['logo-projeto'], $caminhoRelativo, $caminhoPasta);
-        $imagemProjeto = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);
         
+        $resultadoImagens = []; 
+        $resultadoImagens['logo'] = salvarImagem($_FILES['logo-projeto'], $caminhoRelativo, $caminhoPasta);
+        $resultadoImagens['projeto'] = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);
+        
+        $mensagem = [];
+        foreach ($resultadoImagens as $chave => $valor) {
+
+            if (is_string($valor)) {
+
+                foreach ($resultadoImagens as $imagem) {
+                    if (isset($imagem['caminho'])) {
+                        $caminhoImagem = $imagem['caminho'];
+                        $caminhoAbsolutoImgSemErro = BASE_PATH . $caminhoImagem;
+                        excluirImagemPasta($caminhoAbsolutoImgSemErro);
+                    } 
+                }
+
+                $mensagem['mensagem'] = $valor;
+                header('Content-Type: application/json');
+                echo json_encode($mensagem);
+                die();
+            }
+        }
+
         $imagens = [
             [
-                'nome' => $imagemProjeto['nome'],
-                'caminho' => $imagemProjeto['caminho'],
+                'nome' => $resultadoImagens['projeto']['nome'],
+                'caminho' => $resultadoImagens['projeto']['caminho'],
                 'texto-alternativo' => $textoAlternativo,
                 'categoria' => 'projeto',
+                'tipo-imagem' => 'thumbnail',
             ],
             [
-                'nome' => $imagemLogoProjeto['nome'],
-                'caminho' => $imagemLogoProjeto['caminho'],
+                'nome' => $resultadoImagens['logo']['nome'],
+                'caminho' => $resultadoImagens['logo']['caminho'],
                 'texto-alternativo' => '',
-                'categoria' => 'logo',
+                'categoria' => 'projeto',
+                'tipo-imagem' => 'logo',
             ]
         ];
 
@@ -126,17 +149,19 @@
                         nome_original,
                         caminho_original,
                         texto_alt,
-                        categoria)
-                    VALUES (?, ?, ?, ?)
+                        categoria,
+                        tipo_imagem)
+                    VALUES (?, ?, ?, ?, ?)
                 ");
 
                 mysqli_stmt_bind_param(
                     $sqlImagem, 
-                    "ssss", 
+                    "sssss", 
                     $imagem['nome'],
                     $imagem['caminho'],
                     $imagem['texto-alternativo'],
-                    $imagem['categoria']
+                    $imagem['categoria'],
+                    $imagem['tipo-imagem'],
                 );
 
                 mysqli_stmt_execute($sqlImagem);
@@ -169,7 +194,7 @@
                 mysqli_stmt_execute($sqlTecnologiaProjeto);
             }
 
-            foreach ($autores as $idAutor) {
+            foreach ($arrayAutores as $idAutor) {
                 $idAutor = intval($idAutor);
 
                 $sqlAutoresProjeto =
