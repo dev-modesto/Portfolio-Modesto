@@ -259,10 +259,9 @@
                             <div class="tab-pane fade" id="imagens-pane" role="tabpanel" aria-labelledby="imagens" tabindex="0">
                                 <div class="row mb-4">
                                     <div class="col-md-6 mb-4">
-                                        <label class="font-1-s" for="imagem-projeto">Imagem do projeto <em>*</em></label>
+                                        <label class="font-1-s" for="imagem-projeto">Thumbnail<em>*</em></label>
                                         <input class="form-control" type="file" name="imagem-projeto" id="imagem-projeto" required>
                                     </div>
-
                                     <div class="col-md-6 mb-4">
                                         <label class="font-1-s" for="logo-projeto">Logo<em>*</em></label>
                                         <input class="form-control" type="file" name="logo-projeto" id="logo-projeto" required>
@@ -270,8 +269,22 @@
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-6 mb-4">
-                                        <label class="font-1-s" for="texto-alt">Texto Alternativo<em>*</em></label>
-                                        <input class="form-control" type="text" name="texto-alt" id="texto-alt" required>
+                                        <label class="font-1-s" for="nome-titulo-img-thumbnail">Título img thumbnail<em>*</em></label><br>
+                                        <input class="form-control" type="text" name="nome-titulo-img-thumbnail" id="nome-titulo-img-thumbnail" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="nome-titulo-img-logo">Título img logo<em>*</em></label><br>
+                                        <input class="form-control" type="text" name="nome-titulo-img-logo" id="nome-titulo-img-logo" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="texto-alt-thumbnail">Texto Alt. thumbnail<em>*</em></label>
+                                        <input class="form-control" type="text" name="texto-alt-thumbnail" id="texto-alt-thumbnail" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="texto-alt-logo">Texto Alt. logo<em>*</em></label>
+                                        <input class="form-control" type="text" name="texto-alt-logo" id="texto-alt-logo" required>
                                     </div>
                                 </div>
                             </div>
