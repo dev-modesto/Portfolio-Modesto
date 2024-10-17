@@ -1,6 +1,7 @@
 <?php 
     include '../../../../config/base.php';
     include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -10,6 +11,28 @@
         $textoAlternativo = $_POST['texto-alt'];
         $categoria = 'projeto';
         $tipoImagem = $_POST['tipo-imagem-projeto'];
+
+        $cImagemVerifica = consultarImagens($con, $idImagem);
+
+        foreach ($cImagemVerifica as $valor) {
+            $tipoImagemVerifica = $valor['tipo_imagem'];
+
+            if ($tipoImagemVerifica == 'logo') {
+
+                if ($tipoImagem !== 'logo') {
+                    $cProjetoImagem = cProjetoImagem($con, $idProjeto, $categoria, 'logo');
+                    $qntImgLogo = mysqli_num_rows($cProjetoImagem);
+
+                    if ($qntImgLogo == 1) {
+                        $mensagem['mensagem'] = 'Não foi possível atualizar. O projeto deve haver ao menos uma imagem logo cadastrada.';
+                        $mensagem['id-projeto'] = $idProjeto;
+                        header('Content-Type: application/json');
+                        echo json_encode($mensagem);
+                        die();
+                    }
+                } 
+            }
+        }
 
         if (!empty($_FILES['imagem-projeto']['name'])) {
             $imagem = $_FILES['imagem-projeto'];
