@@ -2,6 +2,7 @@
     include '../../../../config/base.php';
     include BASE_PATH . '/funcoes/funcaoImagem.php';
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/include/funcoes/diversas/respostaJson.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -14,108 +15,99 @@
 
         $cImagemVerifica = consultarImagens($con, $idImagem);
 
-        foreach ($cImagemVerifica as $valor) {
-            $tipoImagemVerifica = $valor['tipo_imagem'];
-
-            if ($tipoImagemVerifica == 'logo') {
-
-                if ($tipoImagem !== 'logo') {
-                    $cProjetoImagem = cProjetoImagem($con, $idProjeto, $categoria, 'logo');
-                    $qntImgLogo = mysqli_num_rows($cProjetoImagem);
-
-                    if ($qntImgLogo == 1) {
-                        $mensagem['mensagem'] = 'Não foi possível atualizar. O projeto deve haver ao menos uma imagem logo cadastrada.';
-                        $mensagem['id-projeto'] = $idProjeto;
-                        header('Content-Type: application/json');
-                        echo json_encode($mensagem);
-                        die();
-                    }
-                } 
-            }
-        }
-
-        if (!empty($_FILES['imagem-projeto']['name'])) {
-            $imagem = $_FILES['imagem-projeto'];
-            $caminhoTemp = $imagem['tmp_name'];
-
-            $cImagem = consultarImagens($con, $idImagem);
-
-            foreach ($cImagem as $valor) {
-                $caminhoRelativoImagem = $valor['caminho_original'];
-            }
-
-            $caminhoRelativo = "/assets/img/projetos/";
-            $caminhoAbsoluto = BASE_PATH . "/assets/img/projetos/";
-            $caminhoPasta = $caminhoAbsoluto;
-            $imagemSalva = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta); 
-
-            if (is_string($imagemSalva)) {
-                $mensagem['mensagem'] = $imagemSalva;
-                header('Content-Type: application/json');
-                echo json_encode($mensagem);
-                die();
-            }
-
-            $caminhoAbsolutoImagem = BASE_PATH . $caminhoRelativoImagem;
-           
-            if (($excluirImagemPasta = excluirImagemPasta($caminhoAbsolutoImagem)) !== true) {
-                $mensagem['sucesso'] = false;
-                $mensagem['mensagem'] = $excluirImagemPasta;
-                header('Content-Type: application/json');
-                echo json_encode($mensagem);
-                die();
-            }
-                
-            mysqli_begin_transaction($con);
-
-            try {
-                
-                $sql = mysqli_prepare(
-                    $con,
-                    "UPDATE tbl_imagem 
-                    SET 
-                        nome_titulo = ?,
-                        nome_original = ?,
-                        caminho_original = ?,
-                        texto_alt = ?,
-                        tipo_imagem = ?
-                    WHERE id_imagem = '$idImagem'
-                ");
-                
-                mysqli_stmt_bind_param(
-                    $sql, 
-                    "sssss",
-                    $nomeTitulo,
-                    $imagemSalva['nome'],
-                    $imagemSalva['caminho'],
-                    $textoAlternativo,
-                    $tipoImagem
-                );
-    
-                mysqli_stmt_execute($sql);
-                mysqli_commit($con);
-                $mensagem['id-projeto'] = $idProjeto;
-                $mensagem['sucesso'] = "Imagem alterada com sucesso!";
-                $mensagem['id-projeto'] = $idProjeto;
-                header('Content-Type: application/json');
-                echo json_encode($mensagem);
-
-            } catch (Exception $e) {
-                mysqli_rollback($con);
-                $mensagem['mensagem'] = 'Ocorreu um error: ' . $e->getMessage();
-                $mensagem['id-projeto'] = $idProjeto;
-                header('Content-Type: application/json');
-                echo json_encode($mensagem);
-
-            } finally {
-                mysqli_close($con);
-                die();
-            }
-        } 
-
-        mysqli_begin_transaction($con);
-
         try {
+
+            foreach ($cImagemVerifica as $valor) {
+                $tipoImagemVerifica = $valor['tipo_imagem'];
+
+                if ($tipoImagemVerifica == 'logo') {
+
+                    if ($tipoImagem !== 'logo') {
+                        $cProjetoImagem = cProjetoImagem($con, $idProjeto, $categoria, 'logo');
+                        $qntImgLogo = mysqli_num_rows($cProjetoImagem);
+
+                        if ($qntImgLogo == 1) {
+                            $mensagem = [
+                                'mensagem' => 'Não foi possivel atualizar. O projeto deve haver ao menos uma imagem logo cadastrada.',
+                                'id-projeto' => $idProjeto,
+                            ];
+                            throw new Exception(json_encode($mensagem));
+                        }
+                    } 
+                }
+            }
+
+            if (!empty($_FILES['imagem-projeto']['name'])) {
+
+                try {
+
+                    $imagem = $_FILES['imagem-projeto'];
+                    $caminhoTemp = $imagem['tmp_name'];
+
+                    $cImagem = consultarImagens($con, $idImagem);
+
+                    foreach ($cImagem as $valor) {
+                        $caminhoRelativoImagem = $valor['caminho_original'];
+                    }
+
+                    $caminhoRelativo = "/assets/img/projetos/";
+                    $caminhoAbsoluto = BASE_PATH . "/assets/img/projetos/";
+                    $caminhoPasta = $caminhoAbsoluto;
+                    $imagemSalva = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta); 
+
+                    if (is_string($imagemSalva)) {
+                        $mensagem = ['mensagem' => $imagemSalva, 'id-projeto' => $idProjeto];
+                        throw new Exception(json_encode($mensagem));
+                    }
+
+                    $caminhoAbsolutoImagem = BASE_PATH . $caminhoRelativoImagem;
+                
+                    if (($excluirImagemPasta = excluirImagemPasta($caminhoAbsolutoImagem)) !== true) {
+                        $mensagem = ['mensagem' => $excluirImagemPasta, 'id-projeto' => $idProjeto];
+                        throw new Exception(json_encode($mensagem));
+                    }
+                        
+                    mysqli_begin_transaction($con);
+                    
+                    $sql = mysqli_prepare(
+                        $con,
+                        "UPDATE tbl_imagem 
+                        SET 
+                            nome_titulo = ?,
+                            nome_original = ?,
+                            caminho_original = ?,
+                            texto_alt = ?,
+                            tipo_imagem = ?
+                        WHERE id_imagem = '$idImagem'
+                    ");
+                    
+                    mysqli_stmt_bind_param(
+                        $sql, 
+                        "sssss",
+                        $nomeTitulo,
+                        $imagemSalva['nome'],
+                        $imagemSalva['caminho'],
+                        $textoAlternativo,
+                        $tipoImagem
+                    );
+        
+                    mysqli_stmt_execute($sql);
+                    mysqli_commit($con);
+                    $mensagem = ['sucesso' =>  'Imagem alterada com sucesso!', 'id-projeto' => $idProjeto];
+                    respostaJson($mensagem);
+
+                } catch (Exception $e) {
+                    mysqli_rollback($con);
+                    $respDecodificada = json_decode($e -> getMessage());
+                    respostaJson($respDecodificada);
+                    
+                } finally {
+                    mysqli_close($con);
+                    die();
+                }
+            } 
+
+            mysqli_begin_transaction($con);
 
             $sql = mysqli_prepare(
                 $con,
@@ -127,17 +119,18 @@
             mysqli_stmt_bind_param($sql, 'sss', $nomeTitulo, $textoAlternativo, $tipoImagem);
             mysqli_stmt_execute($sql);
             mysqli_commit($con);
-            $mensagem['sucesso'] = "Imagem alterada com sucesso!";
-            $mensagem['id-projeto'] = $idProjeto;
-            header('Content-Type: application/json');
-            echo json_encode($mensagem);
+
+            $mensagem = ['sucesso' => 'Imagem alterada com sucesso!', 'id-projeto' => $idProjeto];
+            respostaJson($mensagem);
 
         } catch (Exception $e) {
             mysqli_rollback($con);
-            $mensagem['mensagem'] = 'Ocorreu um error: ' . $e->getMessage();
-            $mensagem['id-projeto'] = $idProjeto;
-            header('Content-Type: application/json');
-            echo json_encode($mensagem);
+            $respDecodificada = json_decode($e -> getMessage());
+            respostaJson($respDecodificada);
+
+        } finally {
+            mysqli_close($con);
+            die();
         }
 
     } else {
