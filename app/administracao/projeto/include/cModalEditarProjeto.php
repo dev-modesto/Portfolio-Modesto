@@ -25,11 +25,14 @@
         $cProjetoImagemProjeto = cProjetoImagem($con,$idProjeto,'projeto');
         $arrayImagensProjeto = mysqli_fetch_assoc($cProjetoImagemProjeto);
         $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
-        $textoAlternativo = $arrayImagensProjeto['texto_alt'];
+        $nomeTituloImgThumbnail = $arrayImagensProjeto['nome_titulo'];
+        $textoAltImgThumbnail = $arrayImagensProjeto['texto_alt'];
 
         $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'projeto', 'logo');
         $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
         $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
+        $nomeTituloImgLogo = $arrayImagemLogoProjeto['nome_titulo'];
+        $textoAltImgLogo = $arrayImagemLogoProjeto['texto_alt'];
 
         $sqlConsultaTecProjeto = "SELECT id_tecnologia FROM tbl_tecnologia_projeto WHERE id_projeto = '$idProjeto'";
         $consultaTecProjeto = mysqli_query($con, $sqlConsultaTecProjeto);
@@ -196,29 +199,52 @@
                         </div>
 
                         <div class="tab-pane fade" id="imagens-pane-editar" role="tabpanel" aria-labelledby="imagens-tab-editar" tabindex="0">
-                            <div class="mb-4">
-                                <label class="font-1-s" for="imagem">Imagem atual do projeto <em>*</em></label>
-                                <div>
-                                    <img src="<?= BASE_URL . $caminhoOriginal; ?>" alt="<?= $textoAlternativo; ?>" style="max-width: 100px; height: auto;">
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="imagem">Imagem atual do projeto <em>*</em></label>
+                                    <div>
+                                        <img src="<?= BASE_URL . $caminhoOriginal; ?>" alt="<?= $textoAltImgThumbnail; ?>" style="max-width: 100px; height: auto;">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="imagem">Logo atual <em>*</em></label>
+                                    <div>
+                                        <img src="<?= BASE_URL . $caminhoOriginalLogo; ?>" alt="<?= $textoAltImgLogo; ?>" style="max-width: 100px; height: auto;">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <label class="font-1-s" for="imagem-projeto">Imagem do projeto <em>*</em></label>
-                                <input class="form-control" type="file" name="imagem-projeto" id="imagem-projeto">
-                            </div>
-                            <div class="mb-4">
-                                <label class="font-1-s" for="imagem">Logo atual <em>*</em></label>
-                                <div>
-                                    <img src="<?= BASE_URL . $caminhoOriginalLogo; ?>" alt="<?= $textoAlternativo; ?>" style="max-width: 100px; height: auto;">
+
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="imagem-projeto">Thumbnail<em>*</em></label>
+                                    <input class="form-control" type="file" name="imagem-projeto" id="imagem-projeto">
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="logo-projeto">Logo<em>*</em></label>
+                                    <input class="form-control" type="file" name="logo-projeto" id="logo-projeto">
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <label class="font-1-s" for="logo-projeto">Logo<em>*</em></label>
-                                <input class="form-control" type="file" name="logo-projeto" id="logo-projeto">
+                                            
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="nome-titulo-img-thumbnail">Título img thumbnail<em>*</em></label><br>
+                                    <input class="form-control" type="text" name="nome-titulo-img-thumbnail" id="nome-titulo-img-thumbnail" value="<?= $nomeTituloImgThumbnail?>" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="nome-titulo-img-logo">Título img logo<em>*</em></label><br>
+                                    <input class="form-control" type="text" name="nome-titulo-img-logo" id="nome-titulo-img-logo" value="<?= $nomeTituloImgLogo?>" required>
+                                </div>
                             </div>
-                            <div class="mb-4">
-                                <label class="font-1-s" for="texto-alt">Texto Alternativo<em>*</em></label>
-                                <input class="form-control" type="text" name="texto-alt" id="texto-alt" value="<?= $textoAlternativo ?>" required>
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="texto-alt-thumbnail">Texto Alt. thumbnail<em>*</em></label>
+                                    <input class="form-control" type="text" name="texto-alt-thumbnail" id="texto-alt-thumbnail" value="<?= $textoAltImgThumbnail?>" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="texto-alt-logo">Texto Alt. logo<em>*</em></label>
+                                    <input class="form-control" type="text" name="texto-alt-logo" id="texto-alt-logo" value="<?= $textoAltImgLogo?>" required>
+                                </div>
                             </div>
                         </div>
 

@@ -31,9 +31,13 @@
         }
         
         $dataDesenvolvimento = $_POST['data-desenvolvimento'];
-        $textoAlternativo = trim($_POST['texto-alt']);
         $imagemProjeto = $_FILES['imagem-projeto'];
         $logoProjeto = $_FILES['logo-projeto'];
+
+        $nomeTituloImgThumbnail = trim($_POST['nome-titulo-img-thumbnail']);
+        $nomeTituloImgLogo = trim($_POST['nome-titulo-img-logo']);
+        $textoAltImgLogo = trim($_POST['texto-alt-logo']);
+        $textoAltImgThumbnail = trim($_POST['texto-alt-thumbnail']);
 
         $linkDeploy = trim($_POST['link-deploy']);
         $linkFigma = trim($_POST['link-figma']);
@@ -48,7 +52,7 @@
             echo json_encode($mensagem);
             die();
         } 
-
+        
         $idGabriel = cIdgabriel($con);
         
         if($idGabriel === false) {
@@ -57,7 +61,7 @@
             echo json_encode($mensagem);
             die();
         } 
-
+        
         $idAutores = $_POST['autores-editar'];
         $arrayAutores = explode(',', $idAutores);
         
@@ -65,82 +69,146 @@
         $arrayFiltrado = array_filter($arrayAutores, function($array){
             return !empty($array);
         });
-
-        $imagensEnvio = [
-            'imagem-projeto' => [
-                'categoria' => 'projeto',
-                'texto-alternativo' => $textoAlternativo
-            ],
-
-            'logo-projeto' => [
-                'categoria' => 'logo',
-                'texto-alternativo' => ''
-            ]
-        ];
         
         $caminhoRelativo = "/assets/img/projetos/";
         $caminhoAbsoluto = BASE_PATH . "/assets/img/projetos/";
         $caminhoPasta = $caminhoAbsoluto;
 
+        $resultadoImagens = []; 
         
-        foreach ($imagensEnvio as $chaveImagem => $valorImagem) {
-            if (!empty($_FILES[$chaveImagem]['name'])) {
+        if (!empty($_FILES['imagem-projeto']['name'])) {
+            $resultadoImagens['imagem-projeto'] = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);
 
-                $categoria = $valorImagem['categoria'];
-                $textoAlt = $valorImagem['texto-alternativo'];
+            $detalhesImagensProjeto['imagem-projeto'] = [
+                'nome-titulo' => $nomeTituloImgThumbnail,
+                'nome' => $resultadoImagens['imagem-projeto']['nome'],
+                'caminho' => $resultadoImagens['imagem-projeto']['caminho'],
+                'texto-alternativo' => $textoAltImgThumbnail,
+                'categoria' => 'projeto',
+                'tipo-imagem' => 'thumbnail'
+            ];
+        } 
 
-                $cProjetoImagem = cProjetoImagem($con, $idProjeto, $categoria);
-                $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
+        if (!empty($_FILES['logo-projeto']['name'])) {
+            $resultadoImagens['logo-projeto'] = salvarImagem($_FILES['logo-projeto'], $caminhoRelativo, $caminhoPasta); 
 
-                $caminhoRelativoImagem = $arrayImagem['caminho_original'];
-                $caminhoAbsolutoImagem = BASE_PATH . $caminhoRelativoImagem;
-                $idImagem = $arrayImagem['id_imagem'];
+            $detalhesImagensProjeto['logo-projeto'] = [
+                'nome-titulo' => $nomeTituloImgLogo,
+                'nome' => $resultadoImagens['logo-projeto']['nome'],
+                'caminho' => $resultadoImagens['logo-projeto']['caminho'],
+                'texto-alternativo' => $textoAltImgLogo,
+                'categoria' => 'projeto',
+                'tipo-imagem' => 'logo',
+            ];
+        } 
 
-                excluirImagemPasta($caminhoAbsolutoImagem);
+        foreach ($resultadoImagens as $chave => $valor) {
 
-                $sqlImagem = mysqli_prepare($con, "DELETE FROM tbl_imagem WHERE id_imagem = ?");
-                mysqli_stmt_bind_param($sqlImagem, "i", $idImagem);
-                mysqli_stmt_execute($sqlImagem);
-        
-                $imagemSalva = salvarImagem($_FILES[$chaveImagem], $caminhoRelativo, $caminhoPasta);
-        
-                $imagens = [
-                    'nome' => $imagemSalva['nome'],
-                    'caminho' => $imagemSalva['caminho'],
-                    'texto-alternativo' => $textoAlt,
-                    'categoria' => $categoria
-                ];
-        
-                $sqlAdicionaImagem = mysqli_prepare(
-                    $con,
-                    "INSERT INTO tbl_imagem (nome_original, caminho_original, texto_alt, categoria)
-                    VALUES (?, ?, ?, ?)"
-                );
-        
-                mysqli_stmt_bind_param(
-                    $sqlAdicionaImagem, 
-                    "ssss", 
-                    $imagens['nome'],
-                    $imagens['caminho'],
-                    $imagens['texto-alternativo'],
-                    $imagens['categoria']
-                );
-        
-                mysqli_stmt_execute($sqlAdicionaImagem);
-                $idImagem = mysqli_insert_id($con);
-        
-                $sqlImagemProjeto = mysqli_prepare(
-                    $con, 
-                    "INSERT INTO tbl_imagem_projeto (id_projeto, id_imagem)
-                    VALUES (?, ?)"
-                );
-        
-                mysqli_stmt_bind_param($sqlImagemProjeto, "ii", $idProjeto, $idImagem);
-                mysqli_stmt_execute($sqlImagemProjeto);
+            if (is_string($valor)) {
+
+                foreach ($resultadoImagens as $imagem) {
+                    if (isset($imagem['caminho'])) {
+
+                        $caminhoImagem = $imagem['caminho'];
+                        $caminhoAbsolutoImgSemErro = BASE_PATH . $caminhoImagem;
+
+                        echo $caminhoAbsolutoImgSemErro;
+                        excluirImagemPasta($caminhoAbsolutoImgSemErro);
+                    } 
+                }
+
+                $mensagem['mensagem'] = $valor;
+                header('Content-Type: application/json');
+                echo json_encode($mensagem);
+                die();
             }
         }
 
-        mysqli_begin_transaction($con);
+        if (!empty($detalhesImagensProjeto)) {
+    
+            foreach ($detalhesImagensProjeto as $imagem) {
+    
+                $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $imagem['tipo-imagem']);
+                $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
+                $idImagem = $arrayImagem['id_imagem'];
+                $caminhoRelativoImagem = $arrayImagem['caminho_original'];
+                $caminhoAbsolutoImagem = BASE_PATH . $caminhoRelativoImagem;
+                
+                excluirImagemPasta($caminhoAbsolutoImagem);
+    
+                $sql = mysqli_prepare(
+                    $con, 
+                    "UPDATE tbl_imagem 
+                    SET 
+                        nome_titulo = ?,
+                        nome_original = ?,
+                        caminho_original = ?,
+                        texto_alt = ?,
+                        categoria = ?,
+                        tipo_imagem = ?
+                    WHERE id_imagem = '$idImagem'
+                ");
+                    
+                mysqli_stmt_bind_param(
+                    $sql, 
+                    'ssssss', 
+                    $imagem['nome-titulo'],
+                    $imagem['nome'],
+                    $imagem['caminho'],
+                    $imagem['texto-alternativo'],
+                    $imagem['categoria'],
+                    $imagem['tipo-imagem']
+                );
+                mysqli_stmt_execute($sql);
+    
+            }
+
+        } else {
+
+            $detalhesImagensProjeto = [
+                'imagem-projeto' => [
+                    'nome-titulo' => $nomeTituloImgThumbnail,
+                    'texto-alternativo' => $textoAltImgThumbnail,
+                    'categoria' => 'projeto',
+                    'tipo-imagem' => 'thumbnail'
+                ],
+                
+                'logo-projeto' => [
+                    'nome-titulo' => $nomeTituloImgLogo,
+                    'texto-alternativo' => $textoAltImgLogo,
+                    'categoria' => 'projeto',
+                    'tipo-imagem' => 'logo',
+                ]
+            ];
+
+            foreach ($detalhesImagensProjeto as $imagem) {
+    
+                $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $imagem['tipo-imagem']);
+                $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
+                $idImagem = $arrayImagem['id_imagem'];
+
+                $sql = mysqli_prepare(
+                    $con, 
+                    "UPDATE tbl_imagem 
+                    SET 
+                        nome_titulo = ?,
+                        texto_alt = ?,
+                        categoria = ?,
+                        tipo_imagem = ?
+                    WHERE id_imagem = '$idImagem'
+                ");
+                
+                mysqli_stmt_bind_param(
+                    $sql, 
+                    'ssss', 
+                    $imagem['nome-titulo'], 
+                    $imagem['texto-alternativo'], 
+                    $imagem['categoria'], 
+                    $imagem['tipo-imagem']
+                );
+                mysqli_stmt_execute($sql);
+            }
+        }
 
         try {
 

@@ -57,6 +57,10 @@ html {
     font: 400 .75rem/1.125 "Poppins", sans-serif;
 }
 
+.font-1-titulo-adm {
+    font: 600 1.75rem/1.75 "Poppins", sans-serif;
+}
+
 /* texto corpo */
 /* .font-2-xl-b {
     font: 700 1.5rem/2.25 "Inter", sans-serif;
