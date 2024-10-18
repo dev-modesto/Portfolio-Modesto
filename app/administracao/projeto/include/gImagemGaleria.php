@@ -1,6 +1,7 @@
 <?php
     include '../../../../config/base.php';
     include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/diversas/respostaJson.php';
 
     if (isset($_FILES['imagem-projeto'])) {
         $idProjeto = $_POST['id-projeto'];
@@ -14,12 +15,17 @@
         $caminhoPasta = $caminhoAbsoluto;
         $imagemProjeto = salvarImagem($_FILES['imagem-projeto'], $caminhoRelativo, $caminhoPasta);
 
-        $nomeImagemOriginal = $imagemProjeto['nome'];
-        $caminhoImagem = $imagemProjeto['caminho'];
-
-        mysqli_begin_transaction($con);
-
         try {
+
+            if (is_string($imagemProjeto)) {
+                $mensagem['mensagem'] = $imagemProjeto;
+                throw new Exception(json_encode($mensagem));
+            } 
+
+            $nomeImagemOriginal = $imagemProjeto['nome'];
+            $caminhoImagem = $imagemProjeto['caminho'];
+
+            mysqli_begin_transaction($con);
 
             $sqlImagem = mysqli_prepare(
                 $con,
@@ -58,17 +64,15 @@
             mysqli_stmt_bind_param($sqlImagemProjeto, "ii", $idProjeto, $idImagem);
             mysqli_stmt_execute($sqlImagemProjeto);
             mysqli_commit($con);
-            $mensagem['sucesso'] = 'Imagem salva com sucesso!';
-            $mensagem['id-projeto'] = $idProjeto;
-            header('Content-Type: application/json');
-            echo json_encode($mensagem);
+            $mensagem = ['sucesso' => true, 'mensagem' => 'Imagem salva com sucesso!', 'id-projeto' => $idProjeto];
+            respostaJson($mensagem);
 
         } catch (Exception $e) {
             mysqli_rollback($con);
-            $mensagem['mensagem'] = 'Ocorreu um error: ' . $e->getMessage();
+            $mensagem = json_decode($e->getMessage(), true);
             $mensagem['id-projeto'] = $idProjeto;
-            header('Content-Type: appplication/json');
-            echo json_encode($mensagem);
+            $respDecodificada = $mensagem;
+            respostaJson($respDecodificada);
 
         } finally {
             mysqli_close($con);
