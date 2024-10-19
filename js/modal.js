@@ -3,7 +3,6 @@ function abrirModal(botaoClick, classIdTabela, idDataPesquisa, urlCaminho, class
         $(document).on('click', botaoClick, function (e) {
             e.preventDefault();
             var idPrincipal = $(this).closest(classIdTabela).data(idDataPesquisa);
-            // console.log(idPrincipal);
 
             $.ajax({
                 type: "POST",
@@ -174,6 +173,7 @@ abrirModal('.btn-excluir-tecnologia', 'div', 'id-tecnologia', 'include/cModalExc
 abrirModal('.btn-editar-imagem', 'div', 'id-imagem', 'include/cModalEditarImagem.php', 'click-editar-imagem', '.modalEditarImagem', '#modalEditarImagem');
 abrirModal('.btn-excluir-imagem', 'div', 'id-imagem', 'include/cModalExcluirImagem.php', 'click-excluir-imagem', '.modalExcluir', '#modalExcluir');
 
+abrirModal('.btn-excluir-imagem-galeria', 'div', 'id-imagem', 'cModalExcluirImagemGaleria.php', 'click-excluir-imagem', '.modalExcluirImagemGaleria', '#modalExcluirImagemGaleria');
 
 abrirModal('.btn-editar-categoria-projeto', 'tr', 'id-categoria-projeto', 'include/cModalEditarCategoriaProjeto.php', 'click-editar-categoria-projeto', '.modalEditarCategoriaProjeto', '#modalEditarCategoriaProjeto');
 abrirModal('.btn-excluir-categoria-projeto', 'tr', 'id-categoria-projeto', 'include/cModalExcluirCategoriaProjeto.php', 'click-excluir-categoria-projeto', '.modalExcluir', '#modalExcluir');
