@@ -38,6 +38,32 @@ function abrirModalEditarProjeto(botaoClick, classIdTabela, idDataPesquisa, urlC
                 $(classModal).html(response);
                 $(idModal).modal('show');
 
+                $('#form-projeto-editar').submit(function (e) {
+                    e.preventDefault();
+        
+                    var formData = new FormData(this);
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: 'include/aProjeto.php',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            if (response.sucesso) {
+                                window.location.href = '../projeto/index.php?msg=' + encodeURIComponent(response.mensagem);
+        
+                            } else {
+                                window.location.href = '../projeto/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
+                            }
+                        },
+                        
+                        error: function(response) {
+                            window.location.href = '../projeto/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
+                        }
+                    });
+                });
+
                 var idTecAnt = $('.tecnologias-editar').val();
                 var array = idTecAnt ? idTecAnt.split(',').map(Number) : [];
                 

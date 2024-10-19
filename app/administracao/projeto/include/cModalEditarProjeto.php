@@ -22,17 +22,31 @@
         $projetoEquipe = $arrayProjeto['projeto_equipe'];
         $statusProgresso = $arrayProjeto['status'];
 
-        $cProjetoImagemProjeto = cProjetoImagem($con,$idProjeto,'projeto');
-        $arrayImagensProjeto = mysqli_fetch_assoc($cProjetoImagemProjeto);
-        $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
-        $nomeTituloImgThumbnail = $arrayImagensProjeto['nome_titulo'];
-        $textoAltImgThumbnail = $arrayImagensProjeto['texto_alt'];
+        $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto,'projeto', 'thumbnail');
+        $qntImgThumbnail = mysqli_num_rows($cProjetoImagemProjeto);
+        $caminhoOriginal = '/assets/img/outros/nao-encontrado-img-thumbnail.svg';
+        $textoAltImgThumbnail = 'imagem logo não encontrada';
+        $nomeTituloImgThumbnail = 'informações da imagem não encontradas.';
 
         $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'projeto', 'logo');
-        $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
-        $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
-        $nomeTituloImgLogo = $arrayImagemLogoProjeto['nome_titulo'];
-        $textoAltImgLogo = $arrayImagemLogoProjeto['texto_alt'];
+        $qntImgLogo = mysqli_num_rows($cProjetoImagemLogo);
+        $caminhoOriginalLogo = '/assets/img/outros/nao-encontrado-img-logo.svg';
+        $textoAltImgLogo = 'imagem logo não encontrada';
+        $nomeTituloImgLogo = 'informações da imagem não encontradas.';
+        
+        if ($qntImgThumbnail > 0) {
+            $arrayImagensProjeto = mysqli_fetch_assoc($cProjetoImagemProjeto);
+            $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
+            $textoAltImgThumbnail = $arrayImagensProjeto['texto_alt'];
+            $nomeTituloImgThumbnail = $arrayImagensProjeto['nome_titulo'];
+        } 
+
+        if ($qntImgLogo > 0) {
+            $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
+            $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
+            $textoAltImgLogo = $arrayImagemLogoProjeto['texto_alt'];
+            $nomeTituloImgLogo = $arrayImagemLogoProjeto['nome_titulo'];
+        } 
 
         $sqlConsultaTecProjeto = "SELECT id_tecnologia FROM tbl_tecnologia_projeto WHERE id_projeto = '$idProjeto'";
         $consultaTecProjeto = mysqli_query($con, $sqlConsultaTecProjeto);
@@ -390,38 +404,3 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    $(document).ready(function () {
-
-        $('#form-projeto-editar').submit(function (e) {
-            e.preventDefault();
-
-            var formData = new FormData(this);
-            
-            $.ajax({
-                type: 'POST',
-                url: 'include/aProjeto.php',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    // console.log(response);
-                    if (response.sucesso) {
-                        window.location.href = '../projeto/index.php?msg=' + encodeURIComponent(response.mensagem);
-
-                    } else {
-                        window.location.href = '../projeto/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
-                    }
-                },
-                
-                error: function(response) {
-                    window.location.href = '../projeto/index.php?msgInvalida=' + encodeURIComponent(response.mensagem);
-                }
-
-            });
-        });
-
-    });
-</script>
