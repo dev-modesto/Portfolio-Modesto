@@ -144,6 +144,9 @@
             </form>
         </div>
     </div>
+
+    <div class="modalExcluirImagemGaleria">
+    </div>
 </div>
 
 <?php 
@@ -165,14 +168,10 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    console.log(response);
                     const idProjeto = response['id-projeto'];
 
-
                     if (response.sucesso) {
-                        console.log(response.sucesso);
-
-                        window.location.href = `../include/galeriaProjeto.php?click-galeria-projeto=true&id-projeto=${idProjeto}&msg=`+ encodeURIComponent(response.sucesso);
+                        window.location.href = `../include/galeriaProjeto.php?click-galeria-projeto=true&id-projeto=${idProjeto}&msg=`+ encodeURIComponent(response.mensagem);
 
                     } else {
                          window.location.href = `../include/galeriaProjeto.php?click-galeria-projeto=true&id-projeto=${idProjeto}&msgInvalida=`+ encodeURIComponent(response.mensagem);
@@ -196,8 +195,6 @@
                     'idProjeto': idProjeto                 
                 },
                 success: function (response) {
-                    console.log(response);
-
                     $('.container-info').html(response);
                 }
             });
