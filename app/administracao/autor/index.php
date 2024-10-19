@@ -50,7 +50,7 @@
     <div class="container-principal">
 
         <div class="container-tabela">
-            <table id="myTable" class="table nowrap order-column table-hover text-left">
+            <table class="myTable table nowrap order-column table-hover text-left">
                 <thead class="">
                     <tr>
                         <th scope="col">Nome Autor</th>

@@ -4,7 +4,7 @@
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
-
+    include BASE_PATH . '/filtros.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@
     <title>Portfólio | Modesto</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- import das fontes -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
@@ -31,8 +30,6 @@
     <link rel="stylesheet" href="<?=BASE_URL?>/css/projetos/projetos-destaque.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/formacao/formacao.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/footer/footer.css">
-
-    <!-- meus icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
 </head>
@@ -69,7 +66,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="projetos.php">
                                     <span class="material-symbols-rounded">
                                         folder_copy
                                     </span><span class="menu-itens-dropdown-text">Visualizar todos</span>
@@ -190,7 +187,7 @@
 
                 <?php
 
-                    $cProjeto = cProjeto($con, 'Sim', 'Ativo');
+                    $cProjeto = cProjeto($con, null, null, null, 'Sim', 'Ativo');
 
                     if (mysqli_num_rows($cProjeto) > 0) {
                         while ($arrayProjeto = mysqli_fetch_assoc($cProjeto)) {
@@ -204,19 +201,30 @@
                             $linkFigma = $arrayProjeto['link_figma'];
                             $linkRepositorio = $arrayProjeto['link_repositorio'];
 
-                            $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto, 'projeto');
-                            $arrayImagensProjeto = mysqli_fetch_assoc($cProjetoImagemProjeto);
-                            $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
-                            $textoAlternativo = $arrayImagensProjeto['texto_alt'];
+                            $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto, 'projeto', 'thumbnail');
+                            $qntImgThumbnail = mysqli_num_rows($cProjetoImagemProjeto);
+                            $caminhoOriginal = '/assets/img/outros/nao-encontrado-img-thumbnail.svg';
+                            $textoAlternativo = 'imagem thumbnail não encontrada';
 
-                            $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'logo');
-                            $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
-                            $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
+                            $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'projeto', 'logo');
+                            $qntImgLogo= mysqli_num_rows($cProjetoImagemLogo);
+                            $caminhoOriginalLogo = '/assets/img/outros/nao-encontrado-img-logo.svg';
+                            $textoAlternativoLogo = 'imagem logo não encontrada';
+                            
+                            if ($qntImgThumbnail !== 0) {
+                                $arrayImagensProjeto = mysqli_fetch_assoc($cProjetoImagemProjeto);
+                                $caminhoOriginal = $arrayImagensProjeto['caminho_original'];
+                                $textoAlternativo = $arrayImagensProjeto['texto_alt'];
+                            } 
+                            
+                            if ($qntImgLogo !== 0) {
+                                $arrayImagemLogoProjeto = mysqli_fetch_assoc($cProjetoImagemLogo);
+                                $caminhoOriginalLogo = $arrayImagemLogoProjeto['caminho_original'];
+                                $textoAlternativoLogo = $arrayImagemLogoProjeto['texto_alt'];
+                            }
 
                             ?>
-                                <!-- card completo  -->
                                 <div class="projetoDestaque-cards">
-                                    <!-- frente do card -->
                                     <div class="projetoDestaque-cards-frontal">
                                         <div class="projetoDestaque-cards--techs" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
@@ -246,7 +254,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- verso do card -->
                                     <div class="projetoDestaque-cards-verso">
                                         <div class="projetoDestaque-cards--techs techs-verso" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
@@ -297,7 +304,7 @@
                                                 <div class="container-buttons-link-logo">
                                                     <div class="conteudo-buttons-link-logo">
                                                         <a href="#">
-                                                            <img src="<?= BASE_URL . $caminhoOriginalLogo ?>" alt="" width="90" height="90">
+                                                            <img src="<?= BASE_URL . $caminhoOriginalLogo ?>" alt="<?= $textoAlternativoLogo ?>" width="90" height="90">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -329,7 +336,7 @@
                 <div class="container-titulo-formacao-academica">
                     <h1 class="font-1-h2-b cor-c3 titulo-formacao-academica">Formação acadêmica</h1>
                 </div>
-                <!-- container dos cards academicos -->
+
                 <div class="formacao-academica-cards">
                     <span class="formacao-academica-linesx"></span>
                     <span class="formacao-academica-lines"></span>
@@ -353,10 +360,7 @@
                             $dataFormacaoFimFormatada = dataFormatadaMesAno($dt_fim);
 
                             ?>
-                                <!-- card completo -->
                                 <div class="card-formacao card-grid-academico" data-tag-name-course="<?= $categoriaCursoFormacao ?>">
-
-                                    <!-- card frontal -->
                                     <div class="card-formacao-frontal">
                                         <div class="card-formacao-img-logo">
                                             <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
@@ -370,7 +374,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- card verso -->
                                     <div class="card-formacao-verso">
                                         <div class="card-formacao-verso--status">
                                             <?php 
@@ -386,6 +389,7 @@
                                             ?>
                                         </div>
                                     </div>
+
                                     <div class="container-icone-status-formacao">
                                        <?php 
                                             if ($status == 'Concluído') {
@@ -409,53 +413,12 @@
                     <h1 class="font-1-h2-b cor-c3">Certificados</h1>
                     
                     <form class="form-filtro-certificados" id="filtrar-certificados">
-
-                        <!-- filtro certificados -->
-                        <div class="filtro-certificados" role="group">
-                            <button class="filtro-certificados-button active" name="categoria" value="0">TODOS</button>
-
-                            <?php 
-                                $cAreaFormacao = cAreaFormacao($con);
-
-                                while ($arrayAreaFormacao = mysqli_fetch_assoc($cAreaFormacao)) {
-
-                                    $idAreaFormacao = $arrayAreaFormacao['id_area_formacao'];
-                                    $nomeAreaFormacao = $arrayAreaFormacao['nome'];
-                                    $nomeAreaFormacao = strtoupper($nomeAreaFormacao);
-                                    ?>
-                                        <button class="filtro-certificados-button" name="categoria" value="<?= $idAreaFormacao ?>"><?= $nomeAreaFormacao?></button>
-                                    <?php
-
-                                }
-                            ?>
-                        </div>
-
-                        <!-- filtro certificados - mobile -->
-                        <div class="filtro-certificados-mobile">
-                            <select name="filtro-mobile-select" class="filtro-certificados-button-min" id="filtro-mobile-select">
-                                <option class="" value="0">TODOS</option>
-
-                                <?php 
-                                  $cAreaFormacao = cAreaFormacao($con);
-
-                                    while ($arrayAreaFormacaoMin = mysqli_fetch_assoc($cAreaFormacao)) {
-
-                                        $idAreaFormacaoMin = $arrayAreaFormacaoMin['id_area_formacao'];
-                                        $nomeAreaFormacaoMin = $arrayAreaFormacaoMin['nome'];
-                                        $nomeAreaFormacaoMin = strtoupper($nomeAreaFormacaoMin);
-                                        ?>
-                                            <option class="" value="<?= $idAreaFormacaoMin ?>"><?= $nomeAreaFormacaoMin ?></option>
-                                        <?php
-
-                                    }
-                                ?>
-                            </select>
-                            <button type="submit" class="filtro-mobile-button">Filtrar</button>
-                        </div>
-
+                        <?php 
+                            filtroCertificadosDesk($con);
+                            filtroCertificadosMobile($con);
+                        ?>
                     </form>
 
-                    <!-- container dos cards certificados -->
                     <div class="certificados-cards">
                         <?php 
 
@@ -475,10 +438,7 @@
                                 $status = $resultado['status'];
 
                                 ?>
-                                    <!-- card completo -->
                                     <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>">
-                
-                                        <!-- card frontal -->
                                         <div class="card-formacao-frontal">
                                             <div class="card-formacao-img-logo">
                                                 <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
@@ -493,7 +453,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- card verso -->
                                         <div class="card-formacao-verso">
                                             <div class="card-formacao-verso--status">
                                                 <?php 
@@ -509,6 +468,7 @@
                                                 ?>
                                             </div>
                                         </div>
+
                                         <div class="container-icone-status-formacao">
                                             <?php 
                                                 if ($status == 'Concluído') {
