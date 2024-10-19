@@ -120,63 +120,84 @@
                 
             } 
 
-            foreach ($resultadoImagens as $chave => $valor) {
-
-                if (is_string($valor)) {
-
-                    foreach ($resultadoImagens as $imagem) {
-                        if (isset($imagem['caminho'])) {
-
-                            $caminhoImagem = $imagem['caminho'];
-                            $caminhoAbsolutoImgSemErro = BASE_PATH . $caminhoImagem;
-
-                            echo $caminhoAbsolutoImgSemErro;
-                            excluirImagemPasta($caminhoAbsolutoImgSemErro);
-                        } 
-                    }
-
-                    $mensagem['mensagem'] = $valor;
-                    throw new Exception(json_encode($mensagem));
-                }
-            }
-
             if (!empty($detalhesImagensProjeto)) {
         
                 foreach ($detalhesImagensProjeto as $imagem) {
         
                     $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $imagem['tipo-imagem']);
-                    $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
-                    $idImagem = $arrayImagem['id_imagem'];
-                    $caminhoRelativoImagem = $arrayImagem['caminho_original'];
-                    $caminhoAbsolutoImagem = BASE_PATH . $caminhoRelativoImagem;
-                    
-                    excluirImagemPasta($caminhoAbsolutoImagem);
+                    $qntImagemEncontrada = mysqli_num_rows($cProjetoImagem);
+
+                    if ($qntImagemEncontrada !== 0) {
+                        $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
+                        $idImagem = $arrayImagem['id_imagem'];
+                        $caminhoRelativoImagem = $arrayImagem['caminho_original'];
+                        $caminhoAbsolutoImagem = BASE_PATH . $caminhoRelativoImagem;
+                        excluirImagemPasta($caminhoAbsolutoImagem);
+
+                        $sql = mysqli_prepare(
+                            $con, 
+                            "UPDATE tbl_imagem 
+                            SET 
+                                nome_titulo = ?,
+                                nome_original = ?,
+                                caminho_original = ?,
+                                texto_alt = ?,
+                                categoria = ?,
+                                tipo_imagem = ?
+                            WHERE id_imagem = '$idImagem'
+                        ");
+                            
+                        mysqli_stmt_bind_param(
+                            $sql, 
+                            'ssssss', 
+                            $imagem['nome-titulo'],
+                            $imagem['nome'],
+                            $imagem['caminho'],
+                            $imagem['texto-alternativo'],
+                            $imagem['categoria'],
+                            $imagem['tipo-imagem']
+                        );
+                        mysqli_stmt_execute($sql);
+
+                    } else {
+
+                        $sqlImagem = mysqli_prepare(
+                            $con,
+                            "INSERT INTO tbl_imagem(
+                                nome_titulo,
+                                nome_original,
+                                caminho_original,
+                                texto_alt,
+                                categoria,
+                                tipo_imagem)
+                            VALUES (?, ?, ?, ?, ?, ?)
+                        ");
         
-                    $sql = mysqli_prepare(
-                        $con, 
-                        "UPDATE tbl_imagem 
-                        SET 
-                            nome_titulo = ?,
-                            nome_original = ?,
-                            caminho_original = ?,
-                            texto_alt = ?,
-                            categoria = ?,
-                            tipo_imagem = ?
-                        WHERE id_imagem = '$idImagem'
-                    ");
-                        
-                    mysqli_stmt_bind_param(
-                        $sql, 
-                        'ssssss', 
-                        $imagem['nome-titulo'],
-                        $imagem['nome'],
-                        $imagem['caminho'],
-                        $imagem['texto-alternativo'],
-                        $imagem['categoria'],
-                        $imagem['tipo-imagem']
-                    );
-                    mysqli_stmt_execute($sql);
+                        mysqli_stmt_bind_param(
+                            $sqlImagem, 
+                            "ssssss",
+                            $imagem['nome-titulo'],
+                            $imagem['nome'],
+                            $imagem['caminho'],
+                            $imagem['texto-alternativo'],
+                            $imagem['categoria'],
+                            $imagem['tipo-imagem'],
+                        );
         
+                        mysqli_stmt_execute($sqlImagem);
+                        $idImagem = mysqli_insert_id($con);
+        
+                        $sqlImagemProjeto = mysqli_prepare(
+                            $con, 
+                            "INSERT INTO tbl_imagem_projeto(
+                                id_projeto,
+                                id_imagem)
+                            VALUES (?, ?)
+                        ");
+        
+                        mysqli_stmt_bind_param($sqlImagemProjeto, "ii", $idProjeto, $idImagem);
+                        mysqli_stmt_execute($sqlImagemProjeto);
+                    }
                 }
 
             } else {
@@ -200,29 +221,34 @@
                 foreach ($detalhesImagensProjeto as $imagem) {
         
                     $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $imagem['tipo-imagem']);
-                    $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
-                    $idImagem = $arrayImagem['id_imagem'];
 
-                    $sql = mysqli_prepare(
-                        $con, 
-                        "UPDATE tbl_imagem 
-                        SET 
-                            nome_titulo = ?,
-                            texto_alt = ?,
-                            categoria = ?,
-                            tipo_imagem = ?
-                        WHERE id_imagem = '$idImagem'
-                    ");
-                    
-                    mysqli_stmt_bind_param(
-                        $sql, 
-                        'ssss', 
-                        $imagem['nome-titulo'], 
-                        $imagem['texto-alternativo'], 
-                        $imagem['categoria'], 
-                        $imagem['tipo-imagem']
-                    );
-                    mysqli_stmt_execute($sql);
+                    $qntImagemEncontrada = mysqli_num_rows($cProjetoImagem);
+
+                    if ($qntImagemEncontrada !== 0) {
+                        $arrayImagem = mysqli_fetch_assoc($cProjetoImagem);
+                        $idImagem = $arrayImagem['id_imagem'];
+    
+                        $sql = mysqli_prepare(
+                            $con, 
+                            "UPDATE tbl_imagem 
+                            SET 
+                                nome_titulo = ?,
+                                texto_alt = ?,
+                                categoria = ?,
+                                tipo_imagem = ?
+                            WHERE id_imagem = '$idImagem'
+                        ");
+                        
+                        mysqli_stmt_bind_param(
+                            $sql, 
+                            'ssss', 
+                            $imagem['nome-titulo'], 
+                            $imagem['texto-alternativo'], 
+                            $imagem['categoria'], 
+                            $imagem['tipo-imagem']
+                        );
+                        mysqli_stmt_execute($sql);
+                    }
                 }
             }
 
@@ -310,7 +336,7 @@
             mysqli_commit($con);
             $mensagem['sucesso'] = true;
             $mensagem['mensagem'] = "Alterado com sucesso!";
-            throw new Exception(json_encode($mensagem));
+            respostaJson($mensagem);
         
         } catch (Exception $e) {
             mysqli_rollback($con);
