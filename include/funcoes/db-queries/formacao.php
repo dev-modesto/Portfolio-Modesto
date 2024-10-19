@@ -21,6 +21,7 @@ function cFormacaoCurso ($con) {
         INNER JOIN tbl_area_formacao a
         ON f.id_area_formacao = a.id_area_formacao
         WHERE f.categoria_curso = 'Curso Livre'
+        ORDER BY dt_fim DESC
     ";
 
     $consulta = mysqli_query($con, $sql);
@@ -44,7 +45,7 @@ function cFormacaoAcademico ($con) {
         INNER JOIN tbl_imagem i
         ON f.id_imagem = i.id_imagem
         WHERE categoria_curso != 'Curso Livre' 
-        ORDER BY id_formacao DESC
+        ORDER BY dt_fim DESC
     ";
 
     $consulta = mysqli_query($con, $sql);
