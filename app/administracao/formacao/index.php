@@ -2,8 +2,7 @@
     include '../../../config/base.php';
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
-    $sql = "SELECT * FROM tbl_formacao";
-    $consultaFormacao = mysqli_query($con, $sql);
+    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
 ?>
 
 <!DOCTYPE html>
@@ -48,45 +47,101 @@
 
     <div class="container-principal">
 
-        <div class="container-tabela">
-            <table class="myTable table nowrap order-column table-hover text-left">
-                <thead class="">
-                    <tr>
-                        <th scope="col">Nome Formação</th>
-                        <th scope="col">Institutição</th>
-                        <th scope="col">Categoria curso</th>
-                        <th scope="col">Total horas</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Controle</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <?php 
-                        $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultaFormacao)){
-                                $idFormacao = $exibe['id_formacao'];
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="educacao-formal-tab" data-bs-toggle="tab" data-bs-target="#educacao-formal" type="button" role="tab" aria-controls="educacao-formal" aria-selected="true">Educação Formal</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="cursos-livres-tab" data-bs-toggle="tab" data-bs-target="#cursos-livres" type="button" role="tab" aria-controls="cursos-livres" aria-selected="false">Cursos Livres</button>
+            </li>
+        </ul>
 
-                            ?>
-                            <tr data-id-formacao="<?= $idFormacao ?>">
-                                <td><?= $exibe['nome']?></td>
-                                <td><?= $exibe['instituicao']?></td>
-                                <td><?= $exibe['categoria_curso']?></td>
-                                <td><?= $exibe['total_horas']?></td>
-                                <td><?= $exibe['status']?></td>
-                                <td class="td-icons">
-                                    <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                    <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
-                                    <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
-                                </td>
+        <div class="tab-content">
+            <div class="tab-pane active" id="educacao-formal" role="tabpanel" aria-labelledby="educacao-formal-tab" tabindex="0">
+                <div class="container-tabela">
+                    <table class="myTable table nowrap order-column table-hover text-left">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome Formação</th>
+                                <th scope="col">Institutição</th>
+                                <th scope="col">Categoria curso</th>
+                                <th scope="col">Total horas</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Controle</th>
                             </tr>
-                            <?php
-                        }
-                    ?>
-                </tbody>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php 
 
-            </table>
+                                $categorias = ['Tecnólogo', 'Técnico'];
+                                $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
+                                $retorno = mysqli_fetch_all($cFormacaoAcademico, MYSQLI_ASSOC);
+
+                                foreach ($retorno as $chave => $exibe) {
+                                        $idFormacao = $exibe['id_formacao'];
+                                    ?>
+                                    <tr data-id-formacao="<?= $idFormacao ?>">
+                                        <td><?= $exibe['nome']?></td>
+                                        <td><?= $exibe['instituicao']?></td>
+                                        <td><?= $exibe['categoria_curso']?></td>
+                                        <td><?= $exibe['total_horas']?></td>
+                                        <td><?= $exibe['status']?></td>
+                                        <td class="td-icons">
+                                            <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
+                                            <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                            <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="cursos-livres" role="tabpanel" aria-labelledby="cursos-livres-tab" tabindex="0">
+                <div class="container-tabela">
+                    <table class="myTable table nowrap order-column table-hover text-left">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome Formação</th>
+                                <th scope="col">Institutição</th>
+                                <th scope="col">Categoria curso</th>
+                                <th scope="col">Total horas</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Controle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php 
+                                $categorias = ['Curso livre'];
+                                $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
+                                $retorno = mysqli_fetch_all($cFormacaoAcademico, MYSQLI_ASSOC);
+
+                                foreach ($retorno as $chave => $exibe) {
+                                        $idFormacao = $exibe['id_formacao'];
+                                    ?>
+                                    <tr data-id-formacao="<?= $idFormacao ?>">
+                                        <td><?= $exibe['nome']?></td>
+                                        <td><?= $exibe['instituicao']?></td>
+                                        <td><?= $exibe['categoria_curso']?></td>
+                                        <td><?= $exibe['total_horas']?></td>
+                                        <td><?= $exibe['status']?></td>
+                                        <td class="td-icons">
+                                            <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
+                                            <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                            <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
         </div>
-        
     </div>
 
     <div class="modal modal-lg fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -152,7 +207,6 @@
                             <label class="font-1-s" for="total-horas">Total horas <em>*</em></label><br>
                             <input class="form-control" type="text" name="total-horas" id="total-horas" required>
                         </div>
-
                     </div>
 
                     <div class="mb-4">
