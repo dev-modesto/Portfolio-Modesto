@@ -7,10 +7,9 @@
         $sql = "SELECT * FROM tbl_imagem WHERE id_imagem = '$id'";
         $consult = mysqli_query($con, $sql);
         $array = mysqli_fetch_assoc($consult);
+        $nomeTitulo = $array['nome_titulo'];
         $nomeOriginal = $array['nome_original'];
         $caminhoOriginal = $array['caminho_original'];
-        $nomePlain = $array['nome_plain'];
-        $caminhoPlain = $array['caminho_plain'];
         $textoAlt = $array['texto_alt'];
         $categoria = $array['categoria'];
 
@@ -28,29 +27,38 @@
             </div>
 
             <div class="modal-body">
-            <form class="form-container" action="include/aImagem.php" method="post" enctype="multipart/form-data">
-                <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
-                <div class="mb-4">
-                    <label class="font-1-s" for="imagem">Imagem atual <em>*</em></label>
-                    <div>
-                        <img src="<?= BASE_URL . $caminhoOriginal; ?>" alt="<?= $textoAlt; ?>" style="max-width: 100px; height: auto;">
+                <form class="form-container" action="include/aImagem.php" method="post" enctype="multipart/form-data">
+                    <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
+                    
+                    <div class="mb-4">
+                        <label class="font-1-s" for="imagem">Imagem atual <em>*</em></label>
+                        <div>
+                            <img src="<?= BASE_URL . $caminhoOriginal; ?>" alt="<?= $textoAlt; ?>" style="max-width: 100px; height: auto;">
+                        </div>
                     </div>
-                </div>
-                <div class="mb-4">
-                    <label class="font-1-s" for="categoria-tipo-imagem">Categoria tipo da imagem <em>*</em></label>
-                    <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem" value="" required>
-                        <option value="instituicao" <?= $categoria == 'instituicao' ? 'selected' : '' ?>>Instituição</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="font-1-s" for="imagem">Alterar imagem atual<em>*</em></label>
-                    <input class="form-control" type="file" name="imagem" id="imagem" value="<?= $nomeOriginal ?>">
-                </div>
-                <div class="modal-footer form-container-button">
-                    <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button class='col btn btn-primary' type="submit">Salvar</button>
-                </div>
-            </form>
+
+                    <div class="mb-4">
+                        <label class="font-1-s" for="categoria-tipo-imagem">Categoria tipo da imagem <em>*</em></label>
+                        <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem" value="" required>
+                            <option value="instituicao" <?= $categoria == 'instituicao' ? 'selected' : '' ?>>Instituição</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="font-1-s" for="titulo-imagem">Título img logo<em>*</em></label>
+                        <input class="form-control" type="text" name="titulo-imagem" id="titulo-imagem" value="<?= $nomeTitulo ?>" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="font-1-s" for="imagem">Alterar imagem atual<em>*</em></label>
+                        <input class="form-control" type="file" name="imagem" id="imagem" value="<?= $nomeOriginal ?>">
+                    </div>
+
+                    <div class="modal-footer form-container-button">
+                        <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button class='col btn btn-primary' type="submit">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

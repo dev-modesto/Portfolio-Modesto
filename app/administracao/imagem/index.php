@@ -72,6 +72,7 @@
                         $arrayImagem = consultarImagens($con, null,'instituicao');
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
+                            $nomeTitulo = $valorImg['nome_titulo'];
                             $nomeImagem = $valorImg['nome_original'];
                             $caminhoOriginal = $valorImg['caminho_original'];
                             $categoriaImgagem = $valorImg['categoria'];
@@ -80,7 +81,7 @@
                         ?>
                             <div class="card card-imagem-view"  style="width: 18rem;">
                                 <div class="card-titulo">
-                                    <h6 class="titulo-imagem"><?= $nomeImagem?></h6>
+                                    <h6 class="titulo-imagem"><?= $nomeTitulo?></h6>
                                 </div>
                                 <div class="card-body imagem">
                                     <div class="card-container-imagem">
@@ -169,6 +170,11 @@
                     <div class="mb-4">
                         <label class="font-1-s" for="imagem">Img logo <em>*</em></label>
                         <input class="form-control" type="file" name="imagem" id="imagem" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="font-1-s" for="titulo-imagem">Título img logo<em>*</em></label>
+                        <input class="form-control" type="text" name="titulo-imagem" id="titulo-imagem" required>
                     </div>
 
                     <div class="mb-4">
