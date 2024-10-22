@@ -5,6 +5,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
         $categoriaTipoImagem = trim($_POST['categoria-tipo-imagem']);
+        $nomeTitulo = trim($_POST['titulo-imagem']);
         $imagemEnvio = $_FILES['imagem'];
         $nomeImagemEnvio = $imagemEnvio['name'];
 
@@ -24,13 +25,14 @@
                 $sql = mysqli_prepare(
                     $con,
                     "UPDATE tbl_imagem 
-                    SET categoria = ?
+                    SET nome_titulo = ?, categoria = ? 
                     WHERE id_imagem = '$id'
                 ");
         
                 mysqli_stmt_bind_param(
                     $sql, 
-                    "s", 
+                    "ss", 
+                    $nomeTitulo,
                     $categoriaTipoImagem
                 );
         
@@ -69,7 +71,6 @@
                     die();
                 } 
 
-
                 $caminhoRelativo = "/assets/img/instituicoes/";
                 $caminhoAbsoluto = BASE_PATH . "/assets/img/instituicoes/";
                 $caminhoPasta = $caminhoAbsoluto;
@@ -85,7 +86,9 @@
                     $sql = mysqli_prepare(
                         $con,
                         "UPDATE tbl_imagem 
-                        SET nome_original = ?, 
+                        SET 
+                            nome_titulo ?,
+                            nome_original = ?, 
                             caminho_original = ?, 
                             categoria = ?
                         WHERE id_imagem = '$id'
@@ -93,7 +96,8 @@
             
                     mysqli_stmt_bind_param(
                         $sql, 
-                        "sss", 
+                        "ssss", 
+                        $nomeTitulo,
                         $nomeImagemSalva, 
                         $caminhoRelativoImagemSalva, 
                         $categoriaTipoImagem

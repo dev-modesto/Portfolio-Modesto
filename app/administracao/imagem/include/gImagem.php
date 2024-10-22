@@ -3,6 +3,7 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $categoriaTipoImagem = trim($_POST['categoria-tipo-imagem']);
+        $nomeTitulo = trim($_POST['titulo-imagem']);
     
         if (isset($_FILES['imagem'])) {
             $imagem = $_FILES['imagem'];
@@ -38,15 +39,17 @@
             $sql = mysqli_prepare(
                 $con,
                 "INSERT INTO tbl_imagem (
+                    nome_titulo,
                     nome_original, 
                     caminho_original, 
                     categoria)
-                VALUES (?, ?, ?)
+                VALUES (?, ?, ?, ?)
             ");
     
             mysqli_stmt_bind_param(
                 $sql, 
-                "sss", 
+                "ssss", 
+                $nomeTitulo,
                 $nomeImagem, 
                 $nomeCaminhoRelativo, 
                 $categoriaTipoImagem
