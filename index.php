@@ -343,9 +343,10 @@
 
                     <?php
 
-                        $cFormacaoAcademico = cFormacaoAcademico($con);
-
-                        while ($arrayFormacao = mysqli_fetch_assoc($cFormacaoAcademico)) {
+                        $categorias = ['Tecnólogo', 'Técnico'];
+                        $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
+                        foreach ($cFormacaoAcademico as $chave => $arrayFormacao) {
+                  
                             $idFormacao = $arrayFormacao['id_formacao'];
                             $nomeCursoFormacao = $arrayFormacao['nome'];
                             $instituicaoFormacao = $arrayFormacao['instituicao'];
@@ -422,9 +423,11 @@
                     <div class="certificados-cards">
                         <?php 
 
-                            $cFormacaoCurso = cFormacaoCurso($con);
+                            $cFormacaoAcademico = cFormacaoAcademico($con);
 
-                            while ($resultado = mysqli_fetch_assoc($cFormacaoCurso)) {
+                            $categorias = ['Curso Livre'];
+                            $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
+                            foreach ($cFormacaoAcademico as $chave => $resultado) {
 
                                 $idFormacao = $resultado['id_formacao'];
                                 $nomeCurso = $resultado['nome'];
