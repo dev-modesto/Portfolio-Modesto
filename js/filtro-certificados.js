@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    $('.filtro-certificados-button').click(function (e) { 
+    $('.filtro-button').click(function (e) { 
         e.preventDefault();
 
-        $('.filtro-certificados-button').removeClass('active');
+        $('.filtro-button').removeClass('active');
         $(this).addClass('active');
 
         let idFiltro = $(this).val();
@@ -19,7 +19,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.filtro-certificados-button-min').change(function (e) { 
+    $('.filtro-button-min').change(function (e) { 
         e.preventDefault();
 
         let idFiltro = $(this).val();

@@ -265,3 +265,83 @@ a[aria-disabled="true"] {
     align-items: center;
     height: 60%;
 }
+
+.container-filtro {
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.container-filtro-projetos {
+    width: auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.container-filtro.projetos {
+    margin-top: 64px;
+    justify-content: initial;
+    width: auto;
+    justify-content: initial;
+    position: relative;
+}
+
+.container-filtro.projetos::after{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 64px;
+    background-color: var(--color-p4);
+    right: -20px;
+    top: -10px;
+}
+
+.filtro-button {
+    height: 100%;
+    border: 0px;
+    color: var(--color-c2);
+    background-color: var(--color-s5);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    transition: all .3s;
+    font-weight: 600;
+}
+
+.filtro-button:hover {
+    background-color: var(--color-s3);
+    transition: all .3s;
+}
+
+.filtro-button:focus {
+    outline: none;
+    border: 1px solid;
+}
+
+.filtro-button.active {
+    background-color: var(--color-p4);
+    color: var(--color-c13);
+    font-weight: 600;
+}
+
+    .filtro-button.projeto {
+        background-color: transparent;
+        border: 1px solid var(--color-c3);
+        color: var(--color-c13);
+    }
+
+    .filtro-button.projeto.active {
+        background-color: var(--color-s5);
+        color: var(--color-c2);
+    }
+
+    .filtro-button.projeto:hover {
+        background-color: var(--color-s5);
+        transition: all .3s;
+        color: var(--color-c2);
+    }
