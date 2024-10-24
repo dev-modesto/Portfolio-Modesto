@@ -97,7 +97,7 @@ function cProjetoEspecifico ($con, $idProjeto) {
     return $consulta;
 }
 
-function cProjetoImagem ($con, $idProjeto, $categoria = null, $tipo = null) {
+function cProjetoImagem ($con, $idProjeto, $categoria = null, $tipoImagem = []) {
 
     $where = " WHERE 1=1";
     $types = '';
@@ -115,10 +115,11 @@ function cProjetoImagem ($con, $idProjeto, $categoria = null, $tipo = null) {
         $vars[] = $categoria;
     }
 
-    if ($tipo !== null) {
-        $where .= ' AND i.tipo_imagem = ?';
-        $types .= 's';
-        $vars[] = $tipo;
+    if (!empty($tipoImagem)) {
+        $placeholder = str_repeat('?,', count($tipoImagem) - 1) . '?';
+        $where .= " AND i.tipo_imagem IN ($placeholder)";
+        $types .= str_repeat('s', count($tipoImagem));
+        $vars = array_merge($vars, $tipoImagem);
     }
 
     $sql = 
