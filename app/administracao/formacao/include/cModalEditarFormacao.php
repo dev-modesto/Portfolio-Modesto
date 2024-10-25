@@ -98,7 +98,7 @@
                             
                             while($row = mysqli_fetch_assoc($consulta)){
                                 $selectedImg = $row['id_imagem'] == $idImagem ? 'selected' : '';
-                                echo "<option value='" . $row['id_imagem'] . "' $selectedImg >" . $row['nome_original'] . "</option>";
+                                echo "<option value='" . $row['id_imagem'] . "' $selectedImg >" . $row['nome_titulo'] . "</option>";
                             }
                         ?>
                     </select>

@@ -23,7 +23,8 @@
                 if ($tipoImagemVerifica == 'logo') {
 
                     if ($tipoImagem !== 'logo') {
-                        $cProjetoImagem = cProjetoImagem($con, $idProjeto, $categoria, 'logo');
+                        $tipoImagemLogo = ['logo'];
+                        $cProjetoImagem = cProjetoImagem($con, $idProjeto, $categoria, $tipoImagemLogo);
                         $qntImgLogo = mysqli_num_rows($cProjetoImagem);
 
                         if ($qntImgLogo == 1) {

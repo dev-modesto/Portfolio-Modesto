@@ -201,12 +201,14 @@
                             $linkFigma = $arrayProjeto['link_figma'];
                             $linkRepositorio = $arrayProjeto['link_repositorio'];
 
-                            $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto, 'projeto', 'thumbnail');
+                            $tipoImagemProjeto = ['thumbnail'];
+                            $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto, 'projeto', $tipoImagemProjeto);
                             $qntImgThumbnail = mysqli_num_rows($cProjetoImagemProjeto);
                             $caminhoOriginal = '/assets/img/outros/nao-encontrado-img-thumbnail.svg';
                             $textoAlternativo = 'imagem thumbnail não encontrada';
 
-                            $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'projeto', 'logo');
+                            $tipoImagemLogo = ['logo'];
+                            $cProjetoImagemLogo = cProjetoImagem($con, $idProjeto, 'projeto', $tipoImagemLogo);
                             $qntImgLogo= mysqli_num_rows($cProjetoImagemLogo);
                             $caminhoOriginalLogo = '/assets/img/outros/nao-encontrado-img-logo.svg';
                             $textoAlternativoLogo = 'imagem logo não encontrada';

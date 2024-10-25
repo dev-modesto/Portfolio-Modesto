@@ -218,7 +218,7 @@
                                 $consulta = mysqli_query($con, $sql);
                                 
                                 while($row = mysqli_fetch_assoc($consulta)){
-                                    echo "<option value='" . $row['id_imagem'] . "'>" . $row['nome_original'] . "</option>";
+                                    echo "<option value='" . $row['id_imagem'] . "'>" . $row['nome_titulo'] . "</option>";
                                 }
                             ?>
                         </select>

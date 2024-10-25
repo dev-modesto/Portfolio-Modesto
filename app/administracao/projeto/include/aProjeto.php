@@ -123,8 +123,8 @@
             if (!empty($detalhesImagensProjeto)) {
         
                 foreach ($detalhesImagensProjeto as $imagem) {
-        
-                    $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $imagem['tipo-imagem']);
+                    $tipoImagemProjeto = [$imagem['tipo-imagem']];
+                    $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $tipoImagemProjeto);
                     $qntImagemEncontrada = mysqli_num_rows($cProjetoImagem);
 
                     if ($qntImagemEncontrada !== 0) {
@@ -219,8 +219,9 @@
                 ];
 
                 foreach ($detalhesImagensProjeto as $imagem) {
+                    $tipoImagemProjeto = [$imagem['tipo-imagem']];
         
-                    $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $imagem['tipo-imagem']);
+                    $cProjetoImagem = cProjetoImagem($con, $idProjeto, $imagem['categoria'], $tipoImagemProjeto);
 
                     $qntImagemEncontrada = mysqli_num_rows($cProjetoImagem);
 
