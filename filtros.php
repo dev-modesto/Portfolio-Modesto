@@ -5,7 +5,7 @@ function filtroCertificadosDesk($con) {
 
     ?>
         <div class="container-filtro" role="group">
-            <button class="filtro-button active" name="categoria" value="0">TODOS</button>
+            <button class="filtro-btn filtro-btn-certificado active" name="categoria" value="0">TODOS</button>
 
             <?php 
                 $cAreaFormacao = cAreaFormacao($con);
@@ -16,7 +16,7 @@ function filtroCertificadosDesk($con) {
                     $nomeAreaFormacao = $arrayAreaFormacao['nome'];
                     $nomeAreaFormacao = strtoupper($nomeAreaFormacao);
                     ?>
-                        <button class="filtro-button" name="categoria" value="<?= $idAreaFormacao ?>"><?= $nomeAreaFormacao?></button>
+                        <button class="filtro-btn filtro-btn-certificado" name="categoria" value="<?= $idAreaFormacao ?>"><?= $nomeAreaFormacao?></button>
                     <?php
                 }
             ?>
@@ -29,7 +29,7 @@ function filtroCertificadosMobile($con) {
 
     ?>
         <div class="filtro-certificados-mobile">
-            <select name="filtro-mobile-select" class="filtro-button-min" id="filtro-mobile-select">
+            <select name="filtro-mobile-select" class="filtro-btn-min" id="filtro-mobile-select">
                 <option class="" value="0">TODOS</option>
 
                 <?php 
@@ -56,7 +56,7 @@ function filtroProjetosDesk($con) {
     
     ?>
         <div class="container-filtro projetos" role="group">
-            <button class="filtro-button projeto active" name="categoria" value="0">TODOS</button>
+            <button class="filtro-btn filtro-btn-projeto projeto active" name="categoria" value="0">TODOS</button>
 
             <?php 
                 $cCategoriaProjeto = cCategoriaProjeto($con);
@@ -66,7 +66,7 @@ function filtroProjetosDesk($con) {
                     $nomeCategoria = $valor['nome'];
                     $nomeCategoria = strtoupper($nomeCategoria);
                     ?>
-                        <button class="filtro-button projeto" name="categoria" value="<?= $idCategoria ?>"><?= $nomeCategoria?></button>
+                        <button class="filtro-btn filtro-btn-projeto" name="categoria" value="<?= $idCategoria ?>"><?= $nomeCategoria?></button>
                     <?php
                 }
             ?>
