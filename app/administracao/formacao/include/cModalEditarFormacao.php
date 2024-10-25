@@ -1,12 +1,12 @@
 <?php
     include '../../../../config/base.php';
+    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
     
     if (isset($_POST['click-editar-formacao'])) {
         $id = $_POST['idPrincipal'];
 
-        $sql = "SELECT * FROM tbl_formacao WHERE id_formacao = '$id'";
-        $consult = mysqli_query($con, $sql);
-        $array = mysqli_fetch_assoc($consult);
+        $cFormacacaoAcademica = cFormacaoAcademica($con, $id);
+        $array = mysqli_fetch_assoc($cFormacacaoAcademica);
         $nome = $array['nome'];
         $idAreaFormacao = $array['id_area_formacao'];
         $instituicao = $array['instituicao'];
@@ -44,10 +44,9 @@
                         <label class="font-1-s" class="font-1-s" for="area-formacao">Área formação <em>*</em></label><br>
                         <select class="form-select" name="area-formacao" id="area-formacao" required>
                             <?php 
-                                $sql = "SELECT * FROM tbl_area_formacao";
-                                $consulta = mysqli_query($con, $sql);
-                                
-                                while($row = mysqli_fetch_assoc($consulta)){
+
+                                $consultaAreaFormacao = cAreaFormacao($con);
+                                while($row = mysqli_fetch_assoc($consultaAreaFormacao)){
                                     $selected = $row['id_area_formacao'] == $idAreaFormacao ? 'selected' : '';
                                     echo "<option value='" . $row['id_area_formacao'] . "' $selected >" . $row['nome'] . "</option>";
                                 }

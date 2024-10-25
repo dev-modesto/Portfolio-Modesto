@@ -1,14 +1,13 @@
 <?php
     include '../../../../config/base.php';
+    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
 
     if (isset($_POST['click-editar-area-formacao'])) {
         $id = $_POST['idPrincipal'];
 
-        $sql = "SELECT * FROM tbl_area_formacao WHERE id_area_formacao = '$id'";
-        $consultaAreaFormacao = mysqli_query($con, $sql);
-        $consult = mysqli_query($con, $sql);
-        $array = mysqli_fetch_assoc($consult);
-        $nome = $array['nome'];
+        $consultaAreaFormacao = cAreaFormacao($con, $id);
+        $arrayConsultaAreaFormacao = mysqli_fetch_assoc($consultaAreaFormacao);
+        $nome = $arrayConsultaAreaFormacao['nome'];
 
     } else {
         header('Location: ../index.php');

@@ -1,9 +1,15 @@
 <?php
 
-function cFormacaoAcademico ($con, $categoriaFormacao = []) {
+function cFormacaoAcademica ($con, $idFormacao = null, $categoriaFormacao = []) {
     $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
+
+    if (!empty($idFormacao)) {
+        $where .= " AND f.id_formacao = ?";
+        $types .= 'i';
+        $vars[] = $idFormacao;
+    }
 
     if (!empty($categoriaFormacao)) {
         $placeholders = str_repeat('?,', count($categoriaFormacao) -1) . '?';
@@ -45,9 +51,25 @@ function cFormacaoAcademico ($con, $categoriaFormacao = []) {
     return $consulta;
 }
  
-function cAreaFormacao ($con) {
-    $sql = "SELECT * FROM tbl_area_formacao";
-    $consulta = mysqli_query($con, $sql);
+function cAreaFormacao ($con, $idAreaFormacao = null) {
+    $where = 'WHERE 1=1';
+    $types = '';
+    $vars = [];
+
+    if (!empty($idAreaFormacao)) {
+        $where .= ' AND id_area_formacao = ?';
+        $types .= 'i';
+        $vars[] = $idAreaFormacao; 
+    }
+
+    $sql = mysqli_prepare($con, "SELECT * FROM tbl_area_formacao $where");
+
+    if ($vars) {
+        mysqli_stmt_bind_param($sql, $types, ...$vars);
+    }
+
+    mysqli_stmt_execute($sql);
+    $consulta = mysqli_stmt_get_result($sql);
     return $consulta;
 }
 

@@ -74,8 +74,8 @@
                             <?php 
 
                                 $categorias = ['Tecnólogo', 'Técnico'];
-                                $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
-                                $retorno = mysqli_fetch_all($cFormacaoAcademico, MYSQLI_ASSOC);
+                                $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                                $retorno = mysqli_fetch_all($cFormacaoAcademica, MYSQLI_ASSOC);
 
                                 foreach ($retorno as $chave => $exibe) {
                                         $idFormacao = $exibe['id_formacao'];
@@ -116,8 +116,8 @@
                         <tbody class="table-group-divider">
                             <?php 
                                 $categorias = ['Curso livre'];
-                                $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
-                                $retorno = mysqli_fetch_all($cFormacaoAcademico, MYSQLI_ASSOC);
+                                $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                                $retorno = mysqli_fetch_all($cFormacaoAcademica, MYSQLI_ASSOC);
 
                                 foreach ($retorno as $chave => $exibe) {
                                         $idFormacao = $exibe['id_formacao'];
@@ -165,10 +165,9 @@
                             <select class="form-select" name="area-formacao" id="area-formacao" required>
                                 <option value="" selected>Escolha a area de formacao</option>
                                 <?php 
-                                    $sql = "SELECT * FROM tbl_area_formacao";
-                                    $consulta = mysqli_query($con, $sql);
-                                    
-                                    while($row = mysqli_fetch_assoc($consulta)){
+
+                                    $consultaAreaFormacao = cAreaFormacao($con);
+                                    while($row = mysqli_fetch_assoc($consultaAreaFormacao)){
                                         echo "<option value='" . $row['id_area_formacao'] . "'>" . $row['nome'] . "</option>";
                                     }
                                 ?>

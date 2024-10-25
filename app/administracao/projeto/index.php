@@ -3,9 +3,7 @@
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
-
-    $sql = "SELECT * FROM tbl_projeto";
-    $consultaProjeto = mysqli_query($con, $sql);
+    include BASE_PATH . '/include/funcoes/db-queries/autor.php';
 
 ?>
 
@@ -74,8 +72,8 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <?php 
-                                $nroLinha = 1;
-                                while($exibe = mysqli_fetch_array($consultaProjeto)){
+                                $cProjeto = cProjeto($con);
+                                while($exibe = mysqli_fetch_array($cProjeto)){
                                         $idProjeto = $exibe['id_projeto'];
 
                                     ?>
@@ -343,12 +341,9 @@
                                             <option value="" selected>Informe o autor</option>
 
                                             <?php
-                                    
-                                                $sqlAutor = "SELECT * FROM tbl_autor WHERE NOT nome LIKE '%gabriel modesto%' ORDER BY nome ASC";
-                                                $consultaAutor = mysqli_query($con, $sqlAutor);
-                                                $arrayAutores = mysqli_fetch_all($consultaAutor, MYSQLI_ASSOC);
-                                            
-                                                foreach ($arrayAutores as $chave => $valor) {
+
+                                                $cAutorDiferenteGabriel = cAutorDiferenteGabriel($con);
+                                                foreach ($cAutorDiferenteGabriel as $chave => $valor) {
                                                     $idAutor = $valor['id_autor'];
                                                     $nomeAutor = $valor['nome'];
 
