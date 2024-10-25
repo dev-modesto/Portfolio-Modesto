@@ -2,9 +2,7 @@
     include '../../../config/base.php';
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
-
-    $sql = "SELECT * FROM tbl_area_formacao ORDER BY nome";
-    $consultaAreaFormacao = mysqli_query($con, $sql);
+    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +57,8 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <?php 
-                        $nroLinha = 1;
+                        $consultaAreaFormacao = cAreaFormacao($con);
+
                         while($exibe = mysqli_fetch_array($consultaAreaFormacao)){
                                 $idArea = $exibe['id_area_formacao'];
                             ?>

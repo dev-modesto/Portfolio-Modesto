@@ -346,8 +346,8 @@
                     <?php
 
                         $categorias = ['Tecnólogo', 'Técnico'];
-                        $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
-                        foreach ($cFormacaoAcademico as $chave => $arrayFormacao) {
+                        $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                        foreach ($cFormacaoAcademica as $chave => $arrayFormacao) {
                   
                             $idFormacao = $arrayFormacao['id_formacao'];
                             $nomeCursoFormacao = $arrayFormacao['nome'];
@@ -425,11 +425,11 @@
                     <div class="certificados-cards">
                         <?php 
 
-                            $cFormacaoAcademico = cFormacaoAcademico($con);
+                            $cFormacaoAcademica = cFormacaoAcademica($con);
 
                             $categorias = ['Curso Livre'];
-                            $cFormacaoAcademico = cFormacaoAcademico($con, $categorias);
-                            foreach ($cFormacaoAcademico as $chave => $resultado) {
+                            $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                            foreach ($cFormacaoAcademica as $chave => $resultado) {
 
                                 $idFormacao = $resultado['id_formacao'];
                                 $nomeCurso = $resultado['nome'];
