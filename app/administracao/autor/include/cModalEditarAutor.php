@@ -1,15 +1,15 @@
 <?php
     include '../../../../config/base.php';
+    include BASE_PATH . '/include/funcoes/db-queries/autor.php';
     
     if (isset($_POST['click-editar-autor'])) {
         $id = $_POST['idPrincipal'];
 
-        $sql = "SELECT * FROM tbl_autor WHERE id_autor = '$id'";
-        $consult = mysqli_query($con, $sql);
-        $array = mysqli_fetch_assoc($consult);
-        $nome = $array['nome'];
-        $linkedin = $array['link_linkedin'];
-        $github = $array['link_github'];
+        $cAutor = cAutor($con, $id);
+        $arrayAutor = mysqli_fetch_assoc($cAutor);
+        $nome = $arrayAutor['nome'];
+        $linkedin = $arrayAutor['link_linkedin'];
+        $github = $arrayAutor['link_github'];
 
     } else {
         header('Location: ../index.php');
