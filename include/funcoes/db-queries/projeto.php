@@ -1,61 +1,41 @@
 <?php
 
 function cProjeto ($con, $idProjeto = null, $idCategoria = null, $tipoProjeto = null, $destaque = null, $statusGeral = null) {
-    $where = '';
+    $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
 
-    if (!empty($idProjeto) || !empty($idCategoria) || !empty($tipoProjeto) || !empty($destaque) || !empty($statusGeral)) {
-        $where .= " WHERE 1=1";
-    }
-
     if (!empty($idProjeto)) {
-        $where .= " AND prj.id_projeto = ?";
+        $where .= " AND id_projeto = ?";
         $types .= 'i';
         $vars[] = $idProjeto;
     }
 
     if (!empty($idCategoria)) {
-        $where .= " AND prj.id_categoria = ?";
+        $where .= " AND id_categoria = ?";
         $types .= 'i';
         $vars[] = $idCategoria;
     }
 
     if (!empty($tipoProjeto)) {
-        $where .= " AND prj.tipo_projeto = ?";
+        $where .= " AND tipo_projeto = ?";
         $types .= 's';
         $vars[] = $tipoProjeto;
     }
 
     if (!empty($destaque)) {
-        $where .= " AND prj.destaque = ?";
+        $where .= " AND destaque = ?";
         $types .= 's';
         $vars[] = $destaque;
     }
 
     if (!empty($statusGeral)) {
-        $where .= " AND prj.status_geral = ?";
+        $where .= " AND status_geral = ?";
         $types .= 's';
         $vars[] = $statusGeral;
     }
 
-    $sql = 
-     
-      mysqli_prepare(
-        $con,
-        "SELECT 
-            prj.id_projeto, 
-            prj.nome_projeto, 
-            prj.descricao, 
-            prj.descricao_tipo_projeto,
-            prj.tipo_projeto, 
-            prj.dt_desenvolvimento, 
-            prj.link_deploy,
-            prj.link_figma,
-            prj.link_repositorio
-        FROM tbl_projeto prj
-        $where
-    ");
+    $sql = mysqli_prepare($con, "SELECT * FROM tbl_projeto $where ");
 
     if ($vars) {
         mysqli_stmt_bind_param($sql, $types, ...$vars);
@@ -66,35 +46,6 @@ function cProjeto ($con, $idProjeto = null, $idCategoria = null, $tipoProjeto = 
 
     return $consulta;
 
-}
-
-function cProjetoEspecifico ($con, $idProjeto) {
-    $sql = 
-        mysqli_prepare(
-        $con, 
-        "SELECT 
-            id_projeto,
-            nome_projeto, 
-            descricao, 
-            descricao_tipo_projeto,
-            id_categoria,
-            tipo_projeto, 
-            dt_desenvolvimento, 
-            link_deploy,
-            link_figma,
-            link_repositorio,
-            destaque,
-            status_geral,
-            projeto_equipe,
-            status
-        FROM tbl_projeto  
-        WHERE id_projeto = ?
-    ");
-
-    mysqli_stmt_bind_param($sql, 's', $idProjeto);
-    mysqli_stmt_execute($sql);
-    $consulta = mysqli_stmt_get_result($sql);
-    return $consulta;
 }
 
 function cProjetoImagem ($con, $idProjeto, $categoria = null, $tipoImagem = []) {

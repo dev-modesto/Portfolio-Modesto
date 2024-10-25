@@ -1,11 +1,12 @@
 <?php
     include '../../../../config/base.php';
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/include/funcoes/db-queries/autor.php';
     
     if (isset($_POST['click-editar-projeto'])) {
         $idProjeto = $_POST['idPrincipal'];
 
-        $cProjeto = cProjetoEspecifico($con, $idProjeto);
+        $cProjeto = cProjeto($con, $idProjeto);
         $arrayProjeto = mysqli_fetch_assoc($cProjeto);
 
         $nomeProjeto = $arrayProjeto['nome_projeto'];
@@ -318,11 +319,8 @@
 
                                         <?php
                                 
-                                            $sqlAutor = "SELECT * FROM tbl_autor WHERE NOT nome LIKE '%gabriel modesto%' ORDER BY nome ASC";
-                                            $consultaAutor = mysqli_query($con, $sqlAutor);
-                                            $arrayAutores = mysqli_fetch_all($consultaAutor, MYSQLI_ASSOC);
-                                        
-                                            foreach ($arrayAutores as $chave => $valor) {
+                                            $cAutorDiferenteGabriel = cAutorDiferenteGabriel($con);
+                                            foreach ($cAutorDiferenteGabriel as $chave => $valor) {
                                                 $idAutor = $valor['id_autor'];
                                                 $nomeAutor = $valor['nome'];
 

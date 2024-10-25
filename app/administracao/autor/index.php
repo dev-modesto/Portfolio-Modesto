@@ -2,9 +2,7 @@
     include '../../../config/base.php';
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
-
-    $sql = "SELECT * FROM tbl_autor ORDER BY nome";
-    $consultaAutor = mysqli_query($con, $sql);
+    include BASE_PATH . '/include/funcoes/db-queries/autor.php';
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +59,8 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <?php 
-                        $nroLinha = 1;
-                        while($exibe = mysqli_fetch_array($consultaAutor)){
+                        $cAutor = cAutor($con);
+                        while($exibe = mysqli_fetch_array($cAutor)){
                                 $idAutor = $exibe['id_autor'];
 
                             ?>
