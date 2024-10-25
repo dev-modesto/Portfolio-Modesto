@@ -27,6 +27,24 @@
     }
 
 
+.btn-links-cards.projetos {
+    border: 1px solid;
+    border-color: rgba(93, 96, 108, 40%);
+    transition: all .3s;
+}
+
+.btn-links-cards.projetos.deploy {
+    border-image: linear-gradient(to bottom right, var(--color-p4), var(--color-s23)) 10;
+}
+
+    .btn-links-cards.projetos:hover {
+        color: var(--color-c1);
+        border-image: linear-gradient(to bottom right, var(--color-p4), var(--color-s23)) 10;
+        transition: all .3s;
+        background-color: var(--color-s6);
+    }
+
+
 .container-button {
     display: flex;
     margin-bottom:30px ;
@@ -300,7 +318,7 @@ a[aria-disabled="true"] {
     top: -10px;
 }
 
-.filtro-button {
+.filtro-btn {
     height: 100%;
     border: 0px;
     color: var(--color-c2);
@@ -313,34 +331,34 @@ a[aria-disabled="true"] {
     font-weight: 600;
 }
 
-.filtro-button:hover {
+.filtro-btn:hover {
     background-color: var(--color-s3);
     transition: all .3s;
 }
 
-.filtro-button:focus {
+.filtro-btn:focus {
     outline: none;
     border: 1px solid;
 }
 
-.filtro-button.active {
+.filtro-btn.active {
     background-color: var(--color-p4);
     color: var(--color-c13);
     font-weight: 600;
 }
 
-    .filtro-button.projeto {
+    .filtro-btn-projeto {
         background-color: transparent;
         border: 1px solid var(--color-c3);
         color: var(--color-c13);
     }
 
-    .filtro-button.projeto.active {
+    .filtro-btn-projeto.active {
         background-color: var(--color-s5);
         color: var(--color-c2);
     }
 
-    .filtro-button.projeto:hover {
+    .filtro-btn-projeto:hover {
         background-color: var(--color-s5);
         transition: all .3s;
         color: var(--color-c2);
