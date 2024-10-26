@@ -1,7 +1,7 @@
 <?php
     include '../../../config/base.php';
     include SEGURANCA;
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
     include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
 ?>

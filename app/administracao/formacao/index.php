@@ -3,7 +3,7 @@
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
 ?>
 
 <!DOCTYPE html>

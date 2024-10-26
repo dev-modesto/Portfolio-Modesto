@@ -1,7 +1,7 @@
 <?php
     include '../../../../config/base.php';
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
     
     if (isset($_POST['click-editar-formacao'])) {
         $id = $_POST['idPrincipal'];
