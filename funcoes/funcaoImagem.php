@@ -65,7 +65,7 @@
         return true;
     }
 
-    function consultarImagens($con, $idImagem = null, $categoriaImagem = []){
+    function cImagens($con, $idImagem = null, $categoriaImagem = []){
         
         $where = "WHERE 1=1";
         $types = '';
