@@ -9,11 +9,11 @@
         $imagemEnvio = $_FILES['imagem'];
         $nomeImagemEnvio = $imagemEnvio['name'];
 
-        $sql = "SELECT * FROM tbl_imagem WHERE id_imagem = '$id'";
-        $consult = mysqli_query($con, $sql);
-        $array = mysqli_fetch_assoc($consult);
-        $nomeOriginal = $array['nome_original'];
-        $caminhoImagemOriginalRelativo = $array['caminho_original'];
+        $consultaImagens = cImagens($con, $id);
+
+        $arrayImagem = mysqli_fetch_assoc($consultaImagens);
+        $nomeOriginal = $arrayImagem['nome_original'];
+        $caminhoImagemOriginalRelativo = $arrayImagem['caminho_original'];
         $caminhoImagemOriginalAbsoluto = BASE_PATH . $caminhoImagemOriginalRelativo;
 
         if ($nomeImagemEnvio == "") {
@@ -87,7 +87,7 @@
                         $con,
                         "UPDATE tbl_imagem 
                         SET 
-                            nome_titulo ?,
+                            nome_titulo = ?,
                             nome_original = ?, 
                             caminho_original = ?, 
                             categoria = ?
