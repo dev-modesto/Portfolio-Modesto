@@ -1,6 +1,6 @@
 <?php 
     include 'config/base.php';
-    include_once FUNCAO_DATA;
+    include BASE_PATH . '/include/funcoes/calendario-data/data.php';
 
     $and = "";
 
