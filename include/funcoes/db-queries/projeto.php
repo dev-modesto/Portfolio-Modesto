@@ -96,11 +96,26 @@ function cProjetoImagem ($con, $idProjeto, $categoria = null, $tipoImagem = []) 
     return $consulta;
 }
 
-function cCategoriaProjeto($con){
-    $sql = "SELECT * FROM tbl_categoria_projeto";
-    $consulta = mysqli_query($con, $sql);
-    $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC); 
-    return $array;
+function cCategoriaProjeto($con, $idCategoria = null){
+    $where = "WHERE 1=1";
+    $types = '';
+    $vars = [];
+
+    if (!empty($idCategoria)) {
+        $where .= " AND id_categoria = ?";
+        $types .= 's';
+        $vars[] = $idCategoria;
+    }
+    
+    $sql = mysqli_prepare($con, "SELECT * FROM tbl_categoria_projeto $where");
+
+    if ($vars) {
+        mysqli_stmt_bind_param($sql, $types, ...$vars);
+    }
+
+    mysqli_stmt_execute($sql);
+    $consulta = mysqli_stmt_get_result($sql);
+    return $consulta;
 };
 
 

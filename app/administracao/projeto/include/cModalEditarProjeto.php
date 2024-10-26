@@ -198,8 +198,9 @@
                                     <select class="form-select" name="id-categoria-projeto" id="categoria-projeto">
                                         <?php
                                             $cCategoriaProjeto = cCategoriaProjeto($con);
+                                            $arrayCategoriaProjeto = mysqli_fetch_all($cCategoriaProjeto, MYSQLI_ASSOC); 
                                             $idCategoriaProjeto = '';
-                                            foreach ($cCategoriaProjeto as $valor) {
+                                            foreach ($arrayCategoriaProjeto as $valor) {
                                                 $idCategoriaProjeto = $valor['id_categoria'];
                                                 $nome = $valor['nome'];
 

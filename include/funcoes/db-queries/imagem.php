@@ -65,33 +65,33 @@
         return true;
     }
 
-    function consultarImagens($con, $idImagem = null, $categoriaImagem1 = null, $categoriaImagem2 = null){
+    function cImagens($con, $idImagem = null, $categoriaImagem = []){
         
-        $where = "";
+        $where = "WHERE 1=1";
+        $types = '';
+        $vars = [];
 
-        if (!empty($categoriaImagem1) || !empty($categoriaImagem2) || !empty($idImagem)) {
-            $where .= "WHERE ";
-            $condicao = [];
-
-            if (!empty($idImagem)) {
-                $condicao[] = "id_imagem = '$idImagem'";
-            }
-    
-            if (!empty($categoriaImagem1)) {
-                $condicao[] = "categoria = '$categoriaImagem1'";
-            }
-
-            if (!empty($categoriaImagem2)) {
-                $condicao[] = "categoria = '$categoriaImagem2'";
-            }
-    
-            $where .= implode(' OR ', $condicao);
+        if (!empty($idImagem)) {
+            $where .= " AND id_imagem = ?";
+            $types .= 'i';
+            $vars[] = $idImagem;
         }
-        
-        $sql = "SELECT * FROM tbl_imagem $where";
-        $consulta = mysqli_query($con, $sql);
-        $array = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
-        return $array;
-    }
 
-?>
+        if (!empty($categoriaImagem)) {
+            $placeholders = str_repeat('?,', count($categoriaImagem) -1) . '?';
+            $where .= " AND categoria IN($placeholders)";
+            $types .= str_repeat('s', count($categoriaImagem));
+            $vars = array_merge($vars, $categoriaImagem);
+        }
+
+        $sql = mysqli_prepare($con, "SELECT * FROM tbl_imagem $where");
+
+        if ($vars) {
+            mysqli_stmt_bind_param($sql, $types, ...$vars);
+        }
+
+        mysqli_stmt_execute($sql);
+        $consulta = mysqli_stmt_get_result($sql);
+
+        return $consulta;
+    }

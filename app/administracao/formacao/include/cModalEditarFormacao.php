@@ -1,6 +1,7 @@
 <?php
     include '../../../../config/base.php';
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
     
     if (isset($_POST['click-editar-formacao'])) {
         $id = $_POST['idPrincipal'];
@@ -23,7 +24,6 @@
     }
 ?>
 
-<!-- modal editar formação -->
 <div class="modal modalEditarFormacao modal-lg fade" id="modalEditarFormacao" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEditarFormacao" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -92,10 +92,10 @@
                     <label class="font-1-s" for="img-formacao">Imagem <em>*</em></label><br>
                     <select class="form-select" name="img-formacao" id="img-formacao">
                         <?php 
-                            $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'instituicao'";
-                            $consulta = mysqli_query($con, $sql);
+                            $categoriaImagem = ['instituicao'];
+                            $consultaImagens = cImagens($con, null, $categoriaImagem);
                             
-                            while($row = mysqli_fetch_assoc($consulta)){
+                            while($row = mysqli_fetch_assoc($consultaImagens)){
                                 $selectedImg = $row['id_imagem'] == $idImagem ? 'selected' : '';
                                 echo "<option value='" . $row['id_imagem'] . "' $selectedImg >" . $row['nome_titulo'] . "</option>";
                             }

@@ -1,6 +1,6 @@
 <?php 
     include '../../../../config/base.php';
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
     include BASE_PATH . '/include/funcoes/diversas/respostaJson.php';
     
     if(isset($_POST['tecnologias'])) {

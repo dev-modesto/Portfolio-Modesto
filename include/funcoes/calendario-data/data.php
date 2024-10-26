@@ -22,5 +22,3 @@
         $dataFormatada = $mesesPtbr[$mes] . '/' . $ano;
         return $dataFormatada;
     }
-
-?>

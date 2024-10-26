@@ -1,11 +1,8 @@
 <?php
     include '../../../config/base.php';
     include SEGURANCA;
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
-
-    $sql = "SELECT * FROM tbl_imagem";
-    $consultaImagem = mysqli_query($con, $sql);
 
 ?>
 
@@ -69,7 +66,9 @@
 
                 <div class="container-imagem">
                     <?php
-                        $arrayImagem = consultarImagens($con, null,'instituicao');
+                        $categoriaImagem = ['instituicao'];
+                        $consultaImagens = cImagens($con, null, $categoriaImagem);
+                        $arrayImagem = mysqli_fetch_all($consultaImagens, MYSQLI_ASSOC);
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
                             $nomeTitulo = $valorImg['nome_titulo'];
@@ -102,7 +101,9 @@
             <div class="tab-pane" id="tecnologias-ferramentas" role="tabpanel" aria-labelledby="tecnologias-ferramentas-tab" tabindex="0">
                 <div class="container-imagem">
                     <?php
-                        $arrayImagem = consultarImagens($con, null, 'tecnologia', 'ferramenta');
+                        $categoriaImagem = ['tecnologia', 'ferramenta'];
+                        $consultaImagens = cImagens($con, null, $categoriaImagem);
+                        $arrayImagem = mysqli_fetch_all($consultaImagens, MYSQLI_ASSOC);
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
                             $nomeImagem = $valorImg['nome_original'];
@@ -130,7 +131,10 @@
             <div class="tab-pane" id="projetos-logos" role="tabpanel" aria-labelledby="projetos-logos-tab" tabindex="0">
                 <div class="container-imagem">
                     <?php
-                        $arrayImagem = consultarImagens($con, null, 'projeto', 'logo');
+                        $categoriaImagem = ['projeto', 'logo'];
+                        $consultaImagens = cImagens($con, null, $categoriaImagem);
+                        $arrayImagem = mysqli_fetch_all($consultaImagens, MYSQLI_ASSOC);
+
                         foreach ($arrayImagem as $valorImg) {
                             $idImagem = $valorImg['id_imagem'];
                             $nomeImagem = $valorImg['nome_original'];
