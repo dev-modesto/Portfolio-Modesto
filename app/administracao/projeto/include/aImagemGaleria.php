@@ -1,6 +1,6 @@
 <?php 
     include '../../../../config/base.php';
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
     include BASE_PATH . '/include/funcoes/diversas/respostaJson.php';
 
@@ -13,7 +13,7 @@
         $categoria = 'projeto';
         $tipoImagem = $_POST['tipo-imagem-projeto'];
 
-        $cImagemVerifica = consultarImagens($con, $idImagem);
+        $cImagemVerifica = cImagens($con, $idImagem);
 
         try {
 
@@ -45,7 +45,7 @@
                     $imagem = $_FILES['imagem-projeto'];
                     $caminhoTemp = $imagem['tmp_name'];
 
-                    $cImagem = consultarImagens($con, $idImagem);
+                    $cImagem = cImagens($con, $idImagem);
 
                     foreach ($cImagem as $valor) {
                         $caminhoRelativoImagem = $valor['caminho_original'];

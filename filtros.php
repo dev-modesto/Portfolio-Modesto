@@ -60,8 +60,8 @@ function filtroProjetosDesk($con) {
 
             <?php 
                 $cCategoriaProjeto = cCategoriaProjeto($con);
-
-                foreach ($cCategoriaProjeto as $valor) {
+                $arrayCategoriaProjeto = mysqli_fetch_all($cCategoriaProjeto, MYSQLI_ASSOC); 
+                foreach ($arrayCategoriaProjeto as $valor) {
                     $idCategoria = $valor['id_categoria'];
                     $nomeCategoria = $valor['nome'];
                     $nomeCategoria = strtoupper($nomeCategoria);

@@ -22,6 +22,4 @@
     
     define('BASE_URL', $url);
     define('SEGURANCA', BASE_PATH . '/config/seguranca.php');
-  
-    define('FUNCAO_DATA', $_SERVER['DOCUMENT_ROOT'] . $caminhoProjeto ."/funcoes/funcaoData.php");
 ?>

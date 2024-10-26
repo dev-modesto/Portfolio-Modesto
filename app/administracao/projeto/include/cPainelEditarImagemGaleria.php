@@ -2,13 +2,13 @@
     include '../../../../config/base.php';
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
-    include BASE_PATH . '/funcoes/funcaoImagem.php';
+    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
 
     if(isset($_POST['click-editar-imagem-galeria'])) {
         $idProjeto = $_POST['idProjeto'];
         $idImagem = $_POST['idImagem'];
 
-        $consultaImagens = consultarImagens($con, $idImagem);
+        $consultaImagens = cImagens($con, $idImagem);
 
         foreach ($consultaImagens as $valor) {
             $nomeTitulo = $valor['nome_titulo'];
