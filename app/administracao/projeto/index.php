@@ -113,8 +113,8 @@
                             <?php 
 
                                 $cCategoriaProjeto = cCategoriaProjeto($con);
-
-                                foreach ($cCategoriaProjeto as $valor) {
+                                $arrayCategoriaProjeto = mysqli_fetch_all($cCategoriaProjeto, MYSQLI_ASSOC); 
+                                foreach ($arrayCategoriaProjeto as $valor) {
                                     $idCategoriaProjeto = $valor['id_categoria'];
                                     $nome = $valor['nome'];
 

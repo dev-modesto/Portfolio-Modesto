@@ -1,12 +1,14 @@
 <?php
     include '../../../../config/base.php';
+    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+
+   
     
     if (isset($_POST['click-editar-categoria-projeto'])) {
         $id = $_POST['idPrincipal'];
 
-        $sql = "SELECT * FROM tbl_categoria_projeto WHERE id_categoria = '$id'";
-        $consult = mysqli_query($con, $sql);
-        $array = mysqli_fetch_assoc($consult);
+        $cCategoriaProjeto = cCategoriaProjeto($con);
+        $array = mysqli_fetch_assoc($cCategoriaProjeto);
         $nome = $array['nome'];
 
     } else {
