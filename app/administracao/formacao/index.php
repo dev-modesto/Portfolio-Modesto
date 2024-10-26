@@ -3,6 +3,7 @@
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
     include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
 ?>
 
 <!DOCTYPE html>
@@ -213,10 +214,10 @@
                         <select class="form-select" name="img-formacao" id="img-formacao">
                             <option value="" selected>Escolha a imagem</option>
                             <?php 
-                                $sql = "SELECT * FROM tbl_imagem WHERE categoria = 'instituicao'";
-                                $consulta = mysqli_query($con, $sql);
+                                $categoriaImagem = ['instituicao'];
+                                $consultaImagens = cImagens($con, null, $categoriaImagem);
                                 
-                                while($row = mysqli_fetch_assoc($consulta)){
+                                while($row = mysqli_fetch_assoc($consultaImagens)){
                                     echo "<option value='" . $row['id_imagem'] . "'>" . $row['nome_titulo'] . "</option>";
                                 }
                             ?>

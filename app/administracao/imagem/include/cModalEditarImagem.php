@@ -1,17 +1,17 @@
 <?php
     include '../../../../config/base.php';
+    include BASE_PATH . '/funcoes/funcaoImagem.php';
     
     if (isset($_POST['click-editar-imagem'])) {
         $id = $_POST['idPrincipal'];
 
-        $sql = "SELECT * FROM tbl_imagem WHERE id_imagem = '$id'";
-        $consult = mysqli_query($con, $sql);
-        $array = mysqli_fetch_assoc($consult);
-        $nomeTitulo = $array['nome_titulo'];
-        $nomeOriginal = $array['nome_original'];
-        $caminhoOriginal = $array['caminho_original'];
-        $textoAlt = $array['texto_alt'];
-        $categoria = $array['categoria'];
+        $consultaImagens = cImagens($con, $id);
+        $arrayImagens = mysqli_fetch_assoc($consultaImagens);
+        $nomeTitulo = $arrayImagens['nome_titulo'];
+        $nomeOriginal = $arrayImagens['nome_original'];
+        $caminhoOriginal = $arrayImagens['caminho_original'];
+        $textoAlt = $arrayImagens['texto_alt'];
+        $categoria = $arrayImagens['categoria'];
 
     } else {
         header('Location: ../index.php');

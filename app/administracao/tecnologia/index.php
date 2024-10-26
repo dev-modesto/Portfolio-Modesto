@@ -59,7 +59,7 @@
                 $visibilidadeHabilidades = $valor['visibilidade_habilidades'];
                 $indicadorClass = $visibilidadeHabilidades === 'visivel' ? 'sim' : '';
                 
-                $consultaImagem = consultarImagens($con, $idImagem);
+                $consultaImagem = cImagens($con, $idImagem);
                 foreach ($consultaImagem as $valor) {
                     $caminhoOriginal = $valor['caminho_original'];
                 }

@@ -8,7 +8,7 @@
         $idProjeto = $_POST['idProjeto'];
         $idImagem = $_POST['idImagem'];
 
-        $consultaImagens = consultarImagens($con, $idImagem);
+        $consultaImagens = cImagens($con, $idImagem);
 
         foreach ($consultaImagens as $valor) {
             $nomeTitulo = $valor['nome_titulo'];

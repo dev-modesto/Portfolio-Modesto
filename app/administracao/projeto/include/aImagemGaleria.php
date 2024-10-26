@@ -13,7 +13,7 @@
         $categoria = 'projeto';
         $tipoImagem = $_POST['tipo-imagem-projeto'];
 
-        $cImagemVerifica = consultarImagens($con, $idImagem);
+        $cImagemVerifica = cImagens($con, $idImagem);
 
         try {
 
@@ -45,7 +45,7 @@
                     $imagem = $_FILES['imagem-projeto'];
                     $caminhoTemp = $imagem['tmp_name'];
 
-                    $cImagem = consultarImagens($con, $idImagem);
+                    $cImagem = cImagens($con, $idImagem);
 
                     foreach ($cImagem as $valor) {
                         $caminhoRelativoImagem = $valor['caminho_original'];
