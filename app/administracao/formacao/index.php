@@ -2,8 +2,8 @@
     include '../../../config/base.php';
     include SEGURANCA;
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
-    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
-    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/imagem.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
 </head>
 <body>
 <?php
-    include BASE_PATH . '/include/pre-load/pre-load.php';
+    include BASE_PATH . '/include/preLoad/preLoad.php';
     include BASE_PATH . "/include/menu/sidebar.php";
 ?>
 
@@ -253,5 +253,5 @@
 </div>
 
 <?php 
-    include BASE_PATH . '/include/footer/footer-administracao.php';
+    include BASE_PATH . '/include/footer/footerAdministracao.php';
 ?>

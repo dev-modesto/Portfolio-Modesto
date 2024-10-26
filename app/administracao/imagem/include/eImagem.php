@@ -1,6 +1,6 @@
 <?php 
     include '../../../../config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/imagem.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/imagem.php';
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] = 'POST') {

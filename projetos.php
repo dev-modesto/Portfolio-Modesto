@@ -1,8 +1,8 @@
 <?php
     include 'config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
-    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
-    include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
     include BASE_PATH . '/filtros.php';
 
 ?>
@@ -295,7 +295,7 @@
     </main>
 
 <?php 
-    include BASE_PATH . "/include/footer/footer-scripts.php";
+    include BASE_PATH . "/include/footer/footerScripts.php";
 ?>
 
 <script src="js/animacoes.js"></script>

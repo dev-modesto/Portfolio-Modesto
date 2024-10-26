@@ -1,8 +1,8 @@
 <?php 
     include '../../../../config/base.php';
-    include BASE_PATH . "/include/funcoes/db-queries/imagem.php";
-    include BASE_PATH . "/include/funcoes/db-queries/projeto.php";
-    include BASE_PATH . "/include/funcoes/db-queries/autor.php";
+    include BASE_PATH . "/include/funcoes/dbQuery/imagem.php";
+    include BASE_PATH . "/include/funcoes/dbQuery/projeto.php";
+    include BASE_PATH . "/include/funcoes/dbQuery/autor.php";
     include BASE_PATH . '/include/funcoes/diversas/respostaJson.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
