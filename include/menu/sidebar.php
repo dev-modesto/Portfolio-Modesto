@@ -1,5 +1,5 @@
 <?php 
-    include_once '../../../config/base.php';
+
 ?>
 
 <body class="body-conteudo">
