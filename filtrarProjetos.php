@@ -1,7 +1,7 @@
 <?php 
     include_once 'config/base.php';
-    include_once BASE_PATH . '/include/funcoes/db-queries/projeto.php';
-    include_once BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
+    include_once BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
+    include_once BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
 
     $idCategoria = 0;
 

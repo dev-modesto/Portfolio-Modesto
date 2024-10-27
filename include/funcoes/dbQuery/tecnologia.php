@@ -2,7 +2,7 @@
 
 function cTecnologia ($con, $idTecnologia = null, $visibilidadeHabilidade = null, $categoria = null) {
 
-    $where = '';
+    $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
 
@@ -19,7 +19,7 @@ function cTecnologia ($con, $idTecnologia = null, $visibilidadeHabilidade = null
     }
 
     if (!empty($categoria)) {
-        $where .= " AND I.categoria = ?";
+        $where .= " AND i.categoria = ?";
         $types .= 's';
         $vars[] = $categoria;
     }

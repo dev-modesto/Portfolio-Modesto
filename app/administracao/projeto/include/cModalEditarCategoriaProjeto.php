@@ -1,6 +1,6 @@
 <?php
     include '../../../../config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
 
    
     

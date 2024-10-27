@@ -1,6 +1,6 @@
 <?php
     include '../../../../config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/formacao.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
 
     if (isset($_POST['click-editar-area-formacao'])) {
         $id = $_POST['idPrincipal'];
