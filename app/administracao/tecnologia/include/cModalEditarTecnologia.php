@@ -1,6 +1,6 @@
 <?php
     include '../../../../config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/tecnologia.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
     
     if (isset($_POST['click-editar-tecnologia'])) {
         $idTecnologia = $_POST['idPrincipal'];

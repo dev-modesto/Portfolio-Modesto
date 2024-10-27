@@ -1,6 +1,6 @@
 <?php
     include '../../../../config/base.php';
-    include BASE_PATH . '/include/funcoes/db-queries/autor.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/autor.php';
     
     if (isset($_POST['click-editar-autor'])) {
         $id = $_POST['idPrincipal'];

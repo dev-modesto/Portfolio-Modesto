@@ -1,7 +1,7 @@
 <?php
     include '../../../../config/base.php';
     include SEGURANCA;
-    include BASE_PATH . '/include/funcoes/db-queries/projeto.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
 
     if(isset($_GET['click-galeria-projeto'])) {
@@ -44,7 +44,7 @@
 </head>
 <body>
 <?php
-    include BASE_PATH . '/include/pre-load/pre-load.php';
+    include BASE_PATH . '/include/preLoad/preLoad.php';
     include_once BASE_PATH . "/include/menu/sidebar.php";
 ?>
 
@@ -150,7 +150,7 @@
 </div>
 
 <?php 
-    include BASE_PATH . '/include/footer/footer-administracao.php';
+    include BASE_PATH . '/include/footer/footerAdministracao.php';
 ?>
 
 <script>
