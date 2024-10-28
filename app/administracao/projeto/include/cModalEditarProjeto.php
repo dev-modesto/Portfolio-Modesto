@@ -62,24 +62,8 @@
 
         $tecnologiasId = implode(',', $arrayTecProjeto);
 
-
-        function cAutorProjeto($con, $idProjeto) {
-            $sql = 
-                "SELECT 
-                    ap.id_projeto, 
-                    ap.id_autor,
-                    a.nome
-                FROM tbl_autor_projeto ap
-                INNER JOIN tbl_autor a
-                ON ap.id_autor = a.id_autor
-                WHERE ap.id_projeto = '$idProjeto' AND NOT a.nome  LIKE '%gabriel modesto%';
-            ";
-            $consulta = mysqli_query($con, $sql);
-            return $consulta;
-        }
-
         $arrayAutoresProjeto = [];
-        $cAutorProjeto = cAutorProjeto($con, $idProjeto);
+        $cAutorProjeto = cAutorProjeto($con, $idProjeto, 'sim');
         $consultaProjeto = mysqli_fetch_all($cAutorProjeto, MYSQLI_ASSOC);
 
         foreach ($consultaProjeto as $valor) {
@@ -321,6 +305,7 @@
                                         <?php
                                 
                                             $cAutorDiferenteGabriel = cAutorDiferenteGabriel($con);
+
                                             foreach ($cAutorDiferenteGabriel as $chave => $valor) {
                                                 $idAutor = $valor['id_autor'];
                                                 $nomeAutor = $valor['nome'];
