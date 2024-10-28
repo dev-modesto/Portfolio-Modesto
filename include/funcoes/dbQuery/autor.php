@@ -45,4 +45,34 @@ function cAutor($con, $idAutor = null) {
 
 }
 
+function cAutorProjeto($con, $idProjeto, $naoIncluirGabriel = null) {
+    $where = " WHERE ap.id_projeto = ?";
+    $types = 'i';
+    $vars = [$idProjeto];
+
+    if ($naoIncluirGabriel == 'sim') {
+        $where .= " AND NOT a.nome LIKE '%gabriel modesto%'";
+    }
+
+    $sql = mysqli_prepare(
+        $con, 
+        "SELECT 
+            ap.id_projeto, 
+            ap.id_autor,
+            a.nome,
+            a.link_linkedin,
+            a.link_github
+        FROM tbl_autor_projeto ap
+        INNER JOIN tbl_autor a
+        ON ap.id_autor = a.id_autor
+        $where
+    ");
+    
+    mysqli_stmt_bind_param($sql, $types, ...$vars);
+    mysqli_stmt_execute($sql);
+    $consulta = mysqli_stmt_get_result($sql);
+
+    return $consulta;
+}
+
 ?>
