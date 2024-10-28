@@ -53,16 +53,19 @@ function cTecnologia ($con, $idTecnologia = null, $visibilidadeHabilidade = null
 }
 
 function cTecnologiaProjeto ($con, $idProjeto) {
-    $sql = 
-        mysqli_prepare(
+    $sql = mysqli_prepare(
         $con,
         "SELECT 
-            t.id_tecnologia,
+            tp.id_tecnologia,
             t.nome,
-            t.id_imagem 
+            t.id_imagem,
+            i.caminho_original,
+            i.caminho_plain
         FROM tbl_tecnologia_projeto tp
         INNER JOIN tbl_tecnologia t
         ON tp.id_tecnologia = t.id_tecnologia
+        INNER JOIN tbl_imagem i
+        ON t.id_imagem = i.id_imagem
         WHERE tp.id_projeto = ?
         ORDER BY tp.id_tecnologia DESC
     ");
