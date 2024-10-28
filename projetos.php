@@ -3,6 +3,7 @@
     include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
     include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/autor.php';
     include BASE_PATH . '/filtros.php';
 
 ?>
@@ -115,7 +116,7 @@
                 <?php
                     $cProjeto = cProjeto($con, null, null, null, null, 'Ativo');
                     $arrayProjeto = mysqli_fetch_all($cProjeto, MYSQLI_ASSOC);
-            
+
                     $totalProjetos = mysqli_num_rows($cProjeto);
                     $totalProjetosFormatado = str_pad($totalProjetos, 2, 0, STR_PAD_LEFT);
                 
@@ -136,9 +137,15 @@
                             $descicaoTipoProjeto = $valorProjeto['descricao_tipo_projeto'];
                             $tipoProjeto = $valorProjeto['tipo_projeto'];
                             $dtDesenvolvimento = $valorProjeto['dt_desenvolvimento'];
+
+                            date_default_timezone_set('America/Sao_Paulo');
+                            $newDtDesenvolvimento = new DateTime($dtDesenvolvimento);
+                            $dtDesenvolvimentoFormatada = date_format($newDtDesenvolvimento, 'd/m/Y');
+
                             $linkDeploy = $valorProjeto['link_deploy'];
                             $linkFigma = $valorProjeto['link_figma'];
                             $linkRepositorio = $valorProjeto['link_repositorio'];
+                            $statusProgresso = $valorProjeto['status'];
 
                             $tipoImagem = ['thumbnail', 'extra'];
                             $cProjetoImagem = cProjetoImagem($con, $idProjeto, null, $tipoImagem);
@@ -155,6 +162,9 @@
 
                             $indiceProjetoFormatado = str_pad($indiceProjeto, 2, '0', STR_PAD_LEFT);
 
+                            $cAutorProjeto = cAutorProjeto($con, $idProjeto);
+                            $consultaAutorProjeto = mysqli_fetch_all($cAutorProjeto, MYSQLI_ASSOC);
+
                             ?>
 
                             <div class="container-card-projeto-completo">
@@ -164,21 +174,18 @@
                                         <div class="cabecalho-techs-cards">
                                             <?php
                                                 $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
+                                                $arrayTecnologiaProjeto = mysqli_fetch_all($cTecnologiaProjeto, MYSQLI_ASSOC);
 
-                                                while ($arrayTecnologia = mysqli_fetch_assoc($cTecnologiaProjeto)) {
-                                                    $nomeTecnologia = $arrayTecnologia['nome'];
-                                                    $idTecnologia = $arrayTecnologia['id_tecnologia'];
-                                                    $idImagem = $arrayTecnologia['id_imagem'];
+                                                foreach ($arrayTecnologiaProjeto as $chave => $valor) {
+                                                    $nomeTecnologia = $valor['nome'];
+                                                    $idImagem = $valor['id_imagem'];
+                                                    $caminhoPlain = $valor['caminho_plain'];
 
-                                                    $cTecnologiaInfoImagem = cTecnologiaInfoImagem($con, $idTecnologia);
-
-                                                    while ($arrayInfoImagem = mysqli_fetch_assoc($cTecnologiaInfoImagem)) {
-                                                        $caminhoPlain = $arrayInfoImagem['caminho_plain'];
-                                                        ?>
-                                                            <img src="<?= BASE_URL . $caminhoPlain ?>" alt="icone <?= $nomeTecnologia ?>">
-                                                        <?php
-                                                    }
+                                                    ?>
+                                                        <img src="<?= BASE_URL . $caminhoPlain ?>" alt="icone <?= $nomeTecnologia ?>">
+                                                    <?php
                                                 }
+                                                
                                             ?>
                                         </div>
                                     </div>
@@ -200,31 +207,63 @@
                                             <div class="accordion-container">
                                                 <div class="accordion-titulo ativo">Descrição<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo ativo">
-                                                    <p class="font-1-md-l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate maxime dolorum, velit saepe natus est hic accusantium nobis, neque cumque labore ducimus architecto. Natus, nesciunt ullam! Nulla autem dolorem voluptatibus.</p>
+                                                    <p class="font-1-md-l"><?= $descricao ?></p>
                                                 </div>
                                             </div>
                                             <div class="accordion-container">
                                                 <div class="accordion-titulo">Tecnologias utilzadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
-                                                <div class="accordion-conteudo">
+                                                <div class="accordion-conteudo tecnologias">
+                                                    <?php
 
+                                                        $cTecnologiaProjeto = cTecnologiaProjeto($con, $idProjeto);
+                                                        $arrayTecnologiaProjeto = mysqli_fetch_all($cTecnologiaProjeto, MYSQLI_ASSOC);
+
+                                                        foreach ($arrayTecnologiaProjeto as $chave => $valor) {
+                                                            $nomeTecnologia = $valor['nome'];
+                                                            $idImagem = $valor['id_imagem'];
+                                                            $caminhoOriginal = $valor['caminho_original'];
+
+                                                            ?>
+                                                                <div class="card-imagem-tecnologia-projeto">
+                                                                    <img src="<?= BASE_URL . $caminhoOriginal ?>" alt="icone <?= $nomeTecnologia ?>">
+                                                                    <p class="font-1-sm-r"><?= $nomeTecnologia ?></p>
+                                                                </div>
+                                                            <?php
+                                                        }
+
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="accordion-container">
                                                 <div class="accordion-titulo">Tipo de Projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo">
-
+                           
                                                 </div>
                                             </div>
                                             <div class="accordion-container">
                                                 <div class="accordion-titulo">Data de desenvolvimento<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo">
-
+                                                    <p class="font-1-md-l"><?php echo $statusProgresso == 'Andamento' ? 'Projeto em andamento' : $dtDesenvolvimentoFormatada ?></p>
                                                 </div>
                                             </div>
-                                            <div class="accordion-container">
+                                            <div class="accordion-container autores">
                                                 <div class="accordion-titulo">Autor (es)<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
-                                                <div class="accordion-conteudo">
+                                                <div class="accordion-conteudo autores">
+                                                    <?php
 
+                                                        foreach ($consultaAutorProjeto as $chave => $valor) {
+                                                            $nomeAutor = $valor['nome'];
+                                                            $linkLinkedin = $valor['link_linkedin'];
+                                                            $linkGithub = $valor['link_github'];
+
+                                                            ?>
+                                                                <a class="" href="<?= $linkLinkedin?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
+                                                                    <span class="material-symbols-rounded">person_pin</span><?= $nomeAutor ?>
+                                                                </a>
+
+                                                            <?php
+                                                        }
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -259,6 +298,8 @@
                                 window['indiceAtual<?= $indiceProjeto ?>'] = 0;
                             </script>
                             
+                            <hr>
+
                             <?php
                                 $indiceProjeto++;
                         }
@@ -323,26 +364,35 @@
         const titulosAccordion = document.querySelectorAll('.accordion-titulo');
 
         titulosAccordion.forEach(titulo => {
-            titulo.removeEventListener('click', accordionClickHandler); // Remove qualquer evento existente
-            titulo.addEventListener('click', accordionClickHandler); // Adiciona novamente
+            titulo.removeEventListener('click', accordionClickHandler);
+            titulo.addEventListener('click', accordionClickHandler);
         });
     }
 
     function accordionClickHandler() {
         const conteudo = this.nextElementSibling;
         const tituloAtual = this;
+        const containerAtual = this.closest('.accordion-container');
         
         const allTitulos = this.closest('.card-projeto-accordion').querySelectorAll('.accordion-titulo');
         allTitulos.forEach(titulo => {
             titulo.classList.remove('ativo');
         });
 
+        const allContainer = this.closest('.card-projeto-accordion').querySelectorAll('.accordion-container');
+        allContainer.forEach(containerAccordion => {
+            containerAccordion.classList.remove('ativo');
+        });
+
         const conteudoAtivo = conteudo.classList.contains('ativo');
 
         if (conteudoAtivo) {
             tituloAtual.classList.remove('ativo');
+            containerAtual.classList.remove('ativo');
+
         } else {
             tituloAtual.classList.add('ativo');
+            containerAtual.classList.add('ativo');
         }
 
         const allConteudos = this.closest('.card-projeto-accordion').querySelectorAll('.accordion-conteudo');
