@@ -4,6 +4,7 @@
     margin: 0px auto;
     margin-top: 76px;
     padding: 20px 20px;
+    margin-bottom: 120px;
 }
 
 .container-principal-todos-projetos {
@@ -11,7 +12,6 @@
     flex-direction: column;
     gap: 40px;
     margin-top: 40px;
-    /* background-color: tomato;  */
 }
 
 .container-marcador-total-projetos {
@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: column;
     gap: 120px;
-    /* background-color: tomato; */
 }
 
 .container-card-projeto-completo {
@@ -160,8 +159,8 @@
         align-items: center;
     }
 
-    .card-projeto-accordion .accordion-container:last-of-type {
-        border-bottom: 1px solid;
+    .card-projeto-accordion .accordion-container.autores.ativo {
+        border-bottom: 1px solid var(--color-c4);
     }
 
     .accordion-titulo {
@@ -209,10 +208,6 @@
             gap: 0px;
             flex-direction: column;
             align-items: baseline;
-        }
-
-        .accordion-conteudo.autores.ativo {
-            border-bottom: 1px solid;
         }
 
         .accordion-conteudo.autores a {
