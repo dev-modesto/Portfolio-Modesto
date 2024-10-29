@@ -17,6 +17,8 @@ $(document).ready(function () {
             success: function (response) {
                 $('.container-principal-todos-projetos').html(response);
                 initAccordion();
+                animaScroll();
+                window.addEventListener('scroll', animaScroll);
             }
         });
     });
