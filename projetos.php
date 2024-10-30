@@ -16,13 +16,13 @@
     <title>Portfólio | aaaa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- import das fontes -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/filtro-mobile.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/animacoes.css">
@@ -50,41 +50,26 @@
             </div>
             <nav class="menu">
                 <ul class="menu-itens">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="index.php#">Início</a></li>
+                    <li><a href="index.php#sobre">Sobre</a></li>
+                    <li><a href="index.php#habilidades">Habilidades</a></li>
                     <li>
-                        <a id="activedrop"> 
-                            Projetos         
-                            <span class="material-symbols-rounded" id="iconProjetos">
-                            keyboard_arrow_down
-                            </span>
-                        </a>
+                        <a id="activedrop">Projetos<span class="material-symbols-rounded" id="iconProjetos">keyboard_arrow_down</span></a>
                         <ul class="menu-itens-dropdown" id="dropdown-menu">
                             <li>
-                                <a href="#projetosDestaque">
-                                    <span class="material-symbols-rounded">
-                                        star
-                                    </span> <span class="menu-itens-dropdown-text">Em destaque</span>
-                                </a>
+                                <a href="index.php#projetosDestaque"><span class="material-symbols-rounded">star</span><span class="menu-itens-dropdown-text">Em destaque</span></a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="material-symbols-rounded">
-                                        folder_copy
-                                    </span><span class="menu-itens-dropdown-text">Visualizar todos</span>
-                                </a>
+                                <a href="#"><span class="material-symbols-rounded">folder_copy</span><span class="menu-itens-dropdown-text">Visualizar todos</span></a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#formacao">Formação</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="index.php#formacao">Formação</a></li>
+                    <li><a href="">Contato</a></li>
                 </ul>
             </nav>
             <nav class="menu-mobile" id="drop-mobile">
-                <span class="material-symbols-rounded" id="icon-mobile">
-                    menu
-                </span>
+                <span class="material-symbols-rounded" id="icon-mobile">menu</span>
                 <ul class="bg-line-mobile1">
                     <ul class="menu-mobile-itens" id="drop-menu-mobile">
                         <li><a href="#">Início</a></li>
@@ -109,6 +94,7 @@
             <div class="container-filtro-projetos">
                 <?php 
                     filtroProjetosDesk($con);
+                    filtroProjetosMobile($con);
                 ?>
             </div>
 
@@ -152,7 +138,6 @@
                             $arrayImagens = mysqli_fetch_all($cProjetoImagem, MYSQLI_ASSOC);
                             $imagens = [];
 
-
                             foreach ($arrayImagens as $valor) {
                                 $imagens[] = [
                                     'caminho' => BASE_URL . $valor['caminho_original'],
@@ -167,7 +152,7 @@
 
                             ?>
 
-                            <div class="container-card-projeto-completo">
+                            <div class="container-card-projeto-completo js-scroll">
                                 <div class="container-card-projeto-imagem">
                                     <div class="container-card-projeto-imagem-techs" data-name="<?= $nomeProjeto ?>">
                                         <p class="font-1-md-sb cor-c9">Tecs. utilizadas</p>
@@ -272,19 +257,19 @@
                                             <?php 
                                                 if (!$linkDeploy == "") {
                                                     ?>
-                                                        <a class="btn-links-cards projetos deploy font-1-md-l cor-c9" href="<?= $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
+                                                        <a class="btn-links-cards projetos deploy font-1-md-l cor-c12" href="<?= $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
                                                     <?php
                                                 }
                                                 
                                                 if (!$linkFigma == "") {
                                                     ?>
-                                                        <a class="btn-links-cards projetos font-1-md-l cor-c9" href="<?= $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
+                                                        <a class="btn-links-cards projetos font-1-md-l cor-c12" href="<?= $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
                                                     <?php
                                                 }
                                                 
                                                 if (!$linkRepositorio == "") {
                                                     ?>
-                                                        <a class="btn-links-cards projetos font-1-md-l cor-c9" href="<?= $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
+                                                        <a class="btn-links-cards projetos font-1-md-l cor-c12" href="<?= $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
                                                     <?php
                                                 }
                                             ?>
@@ -339,10 +324,8 @@
     include BASE_PATH . "/include/footer/footerScripts.php";
 ?>
 
-<script src="js/animacoes.js"></script>
-
 <script>
-    
+
     function atualizaImagem(valorIndice) {
         const imagemProjeto = document.getElementById('imagem-projeto-' + valorIndice);
         imagemProjeto.src = window['imagensProjeto' + valorIndice][window['indiceAtual' + valorIndice]].caminho;

@@ -75,4 +75,41 @@ function filtroProjetosDesk($con) {
 
 }
 
+function filtroProjetosMobile($con) {
+
+    ?>
+        <div class="filtro-mobile-projetos">
+
+           <div class="filtro-select">
+                <div class="container-select-cabecalho">
+                    <button class="btn-cabecalho-select peso-semi-bold">TODOS<span class="material-symbols-rounded ico-icodown-projetos">keyboard_arrow_down</span></button>
+                    <div class="container-select-conteudo">
+
+                        <?php 
+                            $cCategoriaProjeto = cCategoriaProjeto($con);
+                            $arrayCategoriaProjeto = mysqli_fetch_all($cCategoriaProjeto, MYSQLI_ASSOC); 
+
+                            ?>
+                                <button class="filtro-btn-conteudo-select ativo peso-semi-bold" value="0"> TODOS</button>
+                            <?php
+
+                            foreach ($arrayCategoriaProjeto as $valor) {
+
+                                $idCategoriaProjeto = $valor['id_categoria'];
+                                $nomeCategoriaProjeto = $valor['nome'];
+                                $nomeCategoriaUpperCase = strtoupper($nomeCategoriaProjeto);
+
+                                ?>
+                                    <button class="filtro-btn-conteudo-select peso-semi-bold" value="<?= $idCategoriaProjeto ?>"><?= $nomeCategoriaUpperCase ?></button>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                </div>
+           </div>
+        </div>
+    <?php
+
+}
+
 ?>

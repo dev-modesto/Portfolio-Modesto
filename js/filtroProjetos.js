@@ -17,7 +17,48 @@ $(document).ready(function () {
             success: function (response) {
                 $('.container-principal-todos-projetos').html(response);
                 initAccordion();
+                animaScroll();
+                window.addEventListener('scroll', animaScroll);
             }
         });
     });
+});
+
+$(document).ready(function () {
+    $('.filtro-btn-conteudo-select').click(function (e) { 
+        e.preventDefault(); 
+
+        const idCategoria = $(this).val();
+        const nomeCategoria = $(this).text();
+
+        $('.filtro-btn-conteudo-select').removeClass('ativo');
+        $(this).addClass('ativo');
+        
+        $('.btn-cabecalho-select').html(nomeCategoria + '<span class="material-symbols-rounded ico-icodown-projetos">keyboard_arrow_down</span>');
+
+        $.ajax({
+            type: "POST",
+            url: "filtrarProjetos.php",
+            data: {
+                'click-btn-filtro-projeto':true,
+                'idCategoria':idCategoria
+            },
+            success: function (response) {
+                $('.container-principal-todos-projetos').html(response);
+                initAccordion();
+                animaScroll();
+                window.addEventListener('scroll', animaScroll);
+
+                $('.container-select-conteudo').removeClass('ativo');
+                $('.btn-cabecalho-select').removeClass('ativo');
+            }
+        });
+    });
+});
+
+$('.btn-cabecalho-select').click(function (e) { 
+    e.preventDefault();
+    $('.container-select-conteudo').toggleClass('ativo');
+    $(this).toggleClass('ativo');
+    
 });
