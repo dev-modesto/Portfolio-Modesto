@@ -181,22 +181,21 @@
                                     </div>
                                 </div>
 
-                                <div class="card-projeto-completo-informacao">
                                     <div class="card-projeto-titulo">
-                                        <span class="card-projeto-numero-marcador font-1-h2-b cor-c4"><?=$indiceProjetoFormatado?></span>
-                                        <h1 class="font-1-h4-sb"><?=$nomeProjeto?></h1>
+                                        <span class="card-projeto-numero-marcador cor-c4"><?=$indiceProjetoFormatado?></span>
+                                        <h1 class="font-1-h2-b"><?=$nomeProjeto?></h1>
                                     </div>
 
                                     <div class="card-projeto-conteudo">
                                         <div class="card-projeto-accordion">
                                             <div class="accordion-container">
-                                                <div class="accordion-titulo ativo">Descrição<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                                <div class="accordion-titulo ativo font-2-md-r">Descrição<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo ativo">
-                                                    <p class="font-1-md-l"><?= $descricao ?></p>
+                                                    <p class="font-2-md-r peso-normal cor-c8"><?= $descricao ?></p>
                                                 </div>
                                             </div>
                                             <div class="accordion-container">
-                                                <div class="accordion-titulo">Tecnologias utilzadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                                <div class="accordion-titulo font-2-md-r">Tecnologias utilzadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo tecnologias">
                                                     <?php
 
@@ -211,7 +210,7 @@
                                                             ?>
                                                                 <div class="card-imagem-tecnologia-projeto">
                                                                     <img src="<?= BASE_URL . $caminhoOriginal ?>" alt="icone <?= $nomeTecnologia ?>">
-                                                                    <p class="font-1-sm-r"><?= $nomeTecnologia ?></p>
+                                                                    <p class="font-1-sm-r peso-normal cor-c8"><?= $nomeTecnologia ?></p>
                                                                 </div>
                                                             <?php
                                                         }
@@ -220,19 +219,19 @@
                                                 </div>
                                             </div>
                                             <div class="accordion-container">
-                                                <div class="accordion-titulo">Tipo de Projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                                <div class="accordion-titulo font-2-md-r">Tipo de Projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo">
                            
                                                 </div>
                                             </div>
                                             <div class="accordion-container">
-                                                <div class="accordion-titulo">Data de desenvolvimento<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                                <div class="accordion-titulo font-2-md-r">Data de desenvolvimento<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo">
-                                                    <p class="font-1-md-l"><?php echo $statusProgresso == 'Andamento' ? 'Projeto em andamento' : $dtDesenvolvimentoFormatada ?></p>
+                                                    <p class="font-2-md-r peso-normal cor-c8"><?php echo $statusProgresso == 'Andamento' ? 'Projeto em andamento' : $dtDesenvolvimentoFormatada ?></p>
                                                 </div>
                                             </div>
                                             <div class="accordion-container autores">
-                                                <div class="accordion-titulo">Autor (es)<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                                <div class="accordion-titulo font-2-md-r">Autor (es)<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                                 <div class="accordion-conteudo autores">
                                                     <?php
 
@@ -242,7 +241,7 @@
                                                             $linkGithub = $valor['link_github'];
 
                                                             ?>
-                                                                <a class="" href="<?= $linkLinkedin?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
+                                                                <a class="font-2-md-r peso-normal cor-c8" href="<?= $linkLinkedin?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
                                                                     <span class="material-symbols-rounded">person_pin</span><?= $nomeAutor ?>
                                                                 </a>
 
@@ -275,7 +274,6 @@
                                             ?>
                                         </div>
                                     </div>
-                                </div>
                             </div>
 
                             <script>
