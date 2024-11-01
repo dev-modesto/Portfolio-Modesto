@@ -50,10 +50,6 @@
     margin-bottom:30px ;
 }
     
-/* .form-container-button {
-
-} */
-
 .btn-primary {
     background-color: var(--color-s23);
     display: flex;
@@ -147,7 +143,6 @@ a[aria-disabled="true"] {
         width: 100px;
         height: 45px;
         font-size: .8em;
-        color: var(--color-c2);
     }
     
         .btn-links-cards:hover {
@@ -169,7 +164,6 @@ a[aria-disabled="true"] {
     .btn-links-cards {
         width: 120px;
         height: 55px;
-        color: var(--color-c2);
     }
 
 }
@@ -196,6 +190,12 @@ a[aria-disabled="true"] {
         width: 80px;
         height: 40px;
         font-size: .625em;
+    }
+
+    .btn-links-cards.projetos {
+        width: 90px;
+        height: 40px;
+        font-size: .75em;
     }
     
 }

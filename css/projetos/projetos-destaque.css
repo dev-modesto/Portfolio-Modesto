@@ -48,7 +48,7 @@
     max-width: 100%;
 }
 
-.projetoDestaque-cards--techs {
+.tec-etiqueta {
     width: 100%;
     background-color: #fff;
     border: 1px solid var(--color-c2);
@@ -73,17 +73,16 @@
     height: 23px;
 }
 
-.projetoDestaque-cards--techs .font-1-md-sb,
-.container-card-projeto-imagem-techs .font-1-md-sb {
+.tec-etiqueta .font-1-md-sb {
     font-weight: 300;
     line-gap-override: 15px;
 }
 
-.projetoDestaque-cards--techs p {
+.tec-etiqueta p {
     color: var(--color-c4);
 }
 
-.projetoDestaque-cards--techs::before {
+.tec-etiqueta::before {
     content: attr(data-name);
     position: absolute;
     background-color: #fff;
@@ -322,8 +321,7 @@
     }
 
 
-    .projetoDestaque-cards--techs .font-1-md-sb,
-    .container-card-projeto-imagem-techs .font-1-md-sb {
+    .tec-etiqueta .font-1-md-sb {
         color: var(--color-c6);
         font-size: .8em;
         line-gap-override: 15px;
@@ -343,7 +341,7 @@
     }
 
 
-    .projetoDestaque-cards--techs {
+    .tec-etiqueta {
         width: 100%;
         display: flex;
         text-align: center;
@@ -352,7 +350,7 @@
         position: relative;
     }
     
-    .projetoDestaque-cards--techs::before {
+    .tec-etiqueta::before {
         content: attr(data-name);
         position: absolute;
         border: 1px solid var(--color-c2);
@@ -419,11 +417,11 @@
         color: var(--color-c2);
     }
  
-    .projetoDestaque-cards--techs {
+    .tec-etiqueta {
         width: 100%;
     }
     
-    .projetoDestaque-cards--techs::before {
+    .tec-etiqueta::before {
         font-weight: 500;
     }
 
@@ -448,16 +446,15 @@
         font-weight: 500;
     }
     
-    .projetoDestaque-cards--conteudo-texto .font-1-md-sb,
-    .container-card-projeto-imagem-techs .font-1-md-sb {
+    .projetoDestaque-cards--conteudo-texto .font-1-md-sb {
         font-size: .95em;
     }
     
-    .projetoDestaque-cards--techs {
+    .tec-etiqueta {
         height: 30px;
     }
     
-    .projetoDestaque-cards--techs::before {
+    .tec-etiqueta::before {
         width: 178px;
         height: 34px;
         font-size: 1.5em;
@@ -522,8 +519,7 @@
     }
     
 
-    .projetoDestaque-cards--techs .font-1-md-sb,
-    .container-card-projeto-imagem-techs .font-1-md-sb {
+    .tec-etiqueta .font-1-md-sb {
         font-size: .625em;
     }
 
@@ -533,11 +529,11 @@
         flex-direction: column;
     }
 
-    .projetoDestaque-cards--techs {
+    .tec-etiqueta {
         height: 27px;
     }
     
-    .projetoDestaque-cards--techs::before {
+    .tec-etiqueta::before {
         width: 158px;
         height: 34px;
         font-size: 1.25em;
