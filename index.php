@@ -51,25 +51,19 @@
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#habilidades">Habilidades</a></li>
                     <li>
-                        <a id="activedrop"> 
-                            Projetos         
-                            <span class="material-symbols-rounded" id="iconProjetos">
-                            keyboard_arrow_down
-                            </span>
+                        <a id="activedrop"> Projetos<span class="material-symbols-rounded" id="iconProjetos">keyboard_arrow_down</span>
                         </a>
                         <ul class="menu-itens-dropdown" id="dropdown-menu">
                             <li>
                                 <a href="#projetosDestaque">
-                                    <span class="material-symbols-rounded">
-                                        star
-                                    </span> <span class="menu-itens-dropdown-text">Em destaque</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="menu-itens-dropdown-text">Em destaque</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="projetos.php">
-                                    <span class="material-symbols-rounded">
-                                        folder_copy
-                                    </span><span class="menu-itens-dropdown-text">Visualizar todos</span>
+                                    <span class="material-symbols-rounded">folder_copy</span>
+                                    <span class="menu-itens-dropdown-text">Visualizar todos</span>
                                 </a>
                             </li>
                         </ul>
@@ -79,17 +73,15 @@
                 </ul>
             </nav>
             <nav class="menu-mobile" id="drop-mobile">
-                <span class="material-symbols-rounded" id="icon-mobile">
-                    menu
-                </span>
+                <span class="material-symbols-rounded" id="icon-mobile">menu</span>
                 <ul class="bg-line-mobile1">
                     <ul class="menu-mobile-itens" id="drop-menu-mobile">
                         <li><a href="#">Início</a></li>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Habilidades</a></li>
-                        <li><a href="#">Projetos destaque</a></li>
-                        <li><a href="#">Todos os projetos</a></li>
-                        <li><a href="#">Formação</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#habilidades">Habilidades</a></li>
+                        <li><a href="#projetosDestaque">Projetos destaque</a></li>
+                        <li><a href="projetos.php">Todos os projetos</a></li>
+                        <li><a href="#formacao">Formação</a></li>
                         <li><a href="#">Contato</a></li>
                     </ul>
                 </ul>
@@ -228,7 +220,7 @@
                             ?>
                                 <div class="projetoDestaque-cards">
                                     <div class="projetoDestaque-cards-frontal">
-                                        <div class="projetoDestaque-cards--techs" data-name="<?= $nomeProjeto ?>">
+                                        <div class="tec-etiqueta" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
                                             <div class="cabecalho-techs-cards">
                                                 <?php
@@ -257,7 +249,7 @@
                                     </div>
 
                                     <div class="projetoDestaque-cards-verso">
-                                        <div class="projetoDestaque-cards--techs techs-verso" data-name="<?= $nomeProjeto ?>">
+                                        <div class="tec-etiqueta techs-verso" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
                                             <div class="cabecalho-techs-cards">
                                                 <?php 
