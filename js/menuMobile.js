@@ -1,5 +1,5 @@
-var dropdown = document.getElementById('dropdown-menu');
-var icon = document.getElementById('iconProjetos');
+const dropdown = document.getElementById('dropdown-menu');
+const icon = document.getElementById('iconProjetos');
 
 activedrop.onclick = () => {
     if(dropdown.style.display === 'block') {
@@ -11,29 +11,41 @@ activedrop.onclick = () => {
     }
 }
 
-var dropMobile = document.getElementById('drop-mobile');
-var iconMobile = document.getElementById('icon-mobile');
-var menuMobile = document.getElementById('drop-menu-mobile');
-var navbar = document.getElementById('navbar');
-var logo1 = document.getElementById('logo1');
-var logo2 = document.getElementById('logo2');
+const iconMobile = document.getElementById('icon-mobile');
+const menuMobile = document.getElementById('drop-menu-mobile');
+const navbar = document.getElementById('navbar');
+const logo1 = document.getElementById('logo1');
+const logo2 = document.getElementById('logo2');
 
 iconMobile.onclick = () => {
     
     if (menuMobile.classList.contains('ativo')){
-        iconMobile.innerHTML = 'menu';
-        iconMobile.style.color = 'var(--color-s6)';
-        navbar.style.backgroundColor = '#fff';
-        logo1.style.display = 'block';
-        logo2.style.display = 'none';
+        atribuirClassesMenuMobile('menu', 'var(--color-s6)', '#fff', 'block', 'none');
         menuMobile.classList.remove('ativo');
-        
+
     } else {
-        iconMobile.innerHTML = 'close';
-        iconMobile.style.color = '#77FCED';
-        navbar.style.backgroundColor = 'var(--color-s6)';
-        logo1.style.display = 'none';
-        logo2.style.display = 'block';
+        atribuirClassesMenuMobile('close', '#77FCED', 'var(--color-s6)', 'none', 'block');
         menuMobile.classList.add('ativo');
     }
+
+    fecharMenuMobile();
+}
+
+function atribuirClassesMenuMobile(icone, corIcone, backgroundColor, logoDisplay1, logoDisplay2) {
+    iconMobile.innerHTML = icone;
+    iconMobile.style.color = corIcone;
+    navbar.style.backgroundColor = backgroundColor;
+    logo1.style.display = logoDisplay1;
+    logo2.style.display = logoDisplay2;
+}
+
+function fecharMenuMobile() {
+    const itensMenuMobile = document.querySelectorAll('.menu-mobile-itens li');
+    itensMenuMobile.forEach((item) => {
+
+        item.addEventListener('click', () => {
+            atribuirClassesMenuMobile('menu', 'var(--color-s6)', '#fff', 'block', 'none');
+            menuMobile.classList.remove('ativo');
+        })
+    }) 
 }
