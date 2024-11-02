@@ -19,20 +19,31 @@ $(document).ready(function () {
         });
     });
 
-    $('.filtro-btn-min').change(function (e) { 
-        e.preventDefault();
+    $(document).ready(function () {
+        $('.filtro-btn-certificados-mobile').click(function (e) { 
+            e.preventDefault(); 
 
-        let idFiltro = $(this).val();
-        $.ajax({
-            type: "POST",
-            url: "filtrarCertificados.php",
-            data: {
-                'click-btn-filtrar': true,
-                'idFiltro': idFiltro
-            },
-            success: function (response) {
-                $('.certificados-cards').html(response);
-            }
+            const idFiltro = $(this).val();
+            const nomeCategoria = $(this).text();
+
+            $('.filtro-btn-certificados-mobile').removeClass('ativo');
+            $(this).addClass('ativo');
+            
+            $('.btn-cabecalho-select').html(nomeCategoria + '<span class="material-symbols-rounded ico-icodown-projetos">keyboard_arrow_down</span>');
+
+            $.ajax({
+                type: "POST",
+                url: "filtrarCertificados.php",
+                data: {
+                    'click-btn-filtrar': true,
+                    'idFiltro': idFiltro
+                },
+                success: function (response) {
+                    $('.certificados-cards').html(response);
+                    $('.container-select-conteudo').removeClass('ativo');
+                    $('.btn-cabecalho-select').removeClass('ativo');
+                }
+            });
         });
     });
 });

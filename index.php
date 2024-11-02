@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/filtros.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/animacoes.css">
@@ -309,7 +310,7 @@
                                                     <p class="font-2-md-r cor-c3"><?= $descricao ?></p>
                                                 </div>
                                                 <div class="container-button-saiba-mais">
-                                                    <a href="#" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
+                                                    <a href="projetos.php" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -321,7 +322,7 @@
                 ?>
             </div>
 
-            <a href="#" class="projetosDestaque-btn-visualizar-todos"><span class="material-symbols-rounded">folder_copy</span>Ver todos os projetos</a>
+            <a href="projetos.php" class="projetosDestaque-btn-visualizar-todos"><span class="material-symbols-rounded">folder_copy</span>Ver todos os projetos</a>
 
         </section>
 
