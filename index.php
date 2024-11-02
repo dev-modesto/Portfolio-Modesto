@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/filtros.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/global/animacoes.css">
