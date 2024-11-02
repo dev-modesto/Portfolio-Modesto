@@ -29,6 +29,7 @@ iconMobile.onclick = () => {
     }
 
     fecharMenuMobile();
+    fecharMenuScroll();
 }
 
 function atribuirClassesMenuMobile(icone, corIcone, backgroundColor, logoDisplay1, logoDisplay2) {
@@ -48,4 +49,16 @@ function fecharMenuMobile() {
             menuMobile.classList.remove('ativo');
         })
     }) 
+}
+
+function fecharMenuScroll() {
+    
+    function fecharMenu() {
+        atribuirClassesMenuMobile('menu', 'var(--color-s6)', '#fff', 'block', 'none');
+        menuMobile.classList.remove('ativo');
+        document.removeEventListener('scroll', fecharMenu);
+    }
+
+    document.removeEventListener('scroll', fecharMenu);
+    document.addEventListener('scroll', fecharMenu);
 }
