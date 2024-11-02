@@ -234,9 +234,6 @@
             gap: 10px;
         }
 
-
-    
-
 .card-formacao-verso {
     display: none;
     box-sizing: border-box;
@@ -272,7 +269,6 @@
     font-weight: bold;
     color: var(--color-c1);
 }
-
 
 
 /* certificados */
@@ -316,78 +312,6 @@
     }
 
 
-.form-filtro-certificados {
-    width: 100%;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 64px;
-}
-
-.filtro-certificados,
-.container-filtro {
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-}
-
-    
-
-
-.filtro-certificados-mobile {
-    display: none;
-}
-
-    #filtro-mobile-select {
-        height: 35px;
-        background-color: var(--color-s6);
-        border: none;
-        color: var(--color-c2);
-        font-family: poppins, sans-serif;
-        font-weight: 600;
-        border: 1px solid transparent;
-        box-sizing: border-box;
-        padding: 0px 10px;
-        width: 100%;
-    }
-
-    #filtro-mobile-select:focus-visible {
-        background-color: var(--color-s6);
-        outline: none;
-        border: 1px solid;
-        border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
-    }
-
-    /* #fitro-mobile-select  */
-
-    .filtro-mobile-button {
-        height: 35px;
-        border: 0px;
-        color: var(--color-c2);
-        background-color: var(--color-s6);
-        border: 1px solid transparent;
-        display: none;
-    }
-
-        .filtro-mobile-button:focus-visible {
-            border: 1px solid;
-            outline: none;
-            border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
-        }
-
-
-        #filtro-mobile-select option {
-            color: #000;
-            font-family: poppins, sans-serif;
-            font-weight: 600;
-            background-color: var(--color-c2);
-        }
-
-
-
 @media (min-width: 848px ) and (max-width: 1024px) {
     .formacao-academica-container {
         width: 100%;
@@ -398,7 +322,6 @@
         margin-top: 60px;
         padding-left: 0px;
     }
-
     
 .formacao-academica-cards {
     display: grid;
@@ -470,8 +393,6 @@
             z-index: 2;
         }
 
-
-
 .card-formacao {
     width: 100%;
     height: 100px;
@@ -515,10 +436,6 @@
     font-size: 2.2em;
 }
 
-.form-filtro-certificados {
-    margin-top: 36px;
-}
-
 .certificados-cards {
     margin-top: 64px;
     /* padding: 0px 20px; */
@@ -539,33 +456,6 @@
         left: 70px;
         z-index: 0;
         /* display: none; */
-    }
-
-
-#filtro-mobile-select {
-    height: 45px;
-    background-color: var(--color-s6);
-    border: none;
-    color: var(--color-c2);
-    font-family: poppins, sans-serif;
-    font-weight: 600;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    padding: 0px 10px;
-    width: 100%;
-    max-width: 490px;
-}
-
-    .filtro-certificados-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: calc(100% - 140px);
-    }
-
-    .filtro-certificados,
-    .container-filtro {
-        display: none;
     }
 }
 
@@ -646,8 +536,6 @@
     height: 130px;
 }
 
-
-
     .card-formacao::before {
         width: 108px;
         top: calc(-37px/2);
@@ -699,10 +587,6 @@
 }
         
 
-.form-filtro-certificados {
-    margin-top: 24px;
-}
-
 .certificados-cards {
     width: 100%;
     display: flex;
@@ -730,67 +614,6 @@
         left: 70px;
         z-index: 0;
     }
-
-
-#filtro-mobile-select {
-    height: 45px;
-    background-color: var(--color-s6);
-    border: none;
-    color: var(--color-c2);
-    font-family: poppins, sans-serif;
-    font-weight: 600;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    padding: 0px 10px;
-    width: 100%;
-    max-width: 490px;
-}
-
-
-
-    #filtro-mobile-select:focus-visible {
-        background-color: var(--color-s6);
-        outline: none;
-        border: 1px solid;
-        border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
-    }
-
-    /* #fitro-mobile-select  */
-
-    .filtro-mobile-button {
-        height: 35px;
-        border: 0px;
-        color: var(--color-c2);
-        background-color: var(--color-s6);
-        border: 1px solid transparent;
-        display: none;
-    }
-
-        .filtro-mobile-button:focus-visible {
-            border: 1px solid;
-            outline: none;
-            border-image: linear-gradient(to bottom right, var(--color-s22), var(--color-s23)) 10;
-        }
-
-
-        #filtro-mobile-select option {
-            color: #000;
-            font-family: poppins, sans-serif;
-            font-weight: 600;
-            background-color: var(--color-c2);
-        }
-
-        .filtro-certificados-mobile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: calc(100% - 140px);
-        }
-    
-        .filtro-certificados,
-        .container-filtro {
-            display: none;
-        }
 }
 
 
@@ -844,7 +667,6 @@
         z-index: 0;
     }
 
-
     .formacao-academica-lines {
             width: 0px;
             left: 10px;
@@ -870,8 +692,6 @@
     max-width: calc(100% - 60px);
     height: 100px;
 }
-
-
 
     .card-formacao::before {
         width: 88px;
@@ -899,10 +719,6 @@
         .card-formacao-horas {
             font-size: .71em;
         }
-
-.form-filtro-certificados {
-    margin-top: 36px;
-}
 
 .certificados-cards {
     width: 100%;
@@ -932,32 +748,6 @@
         z-index: 0;
     }
 
-
-#filtro-mobile-select {
-    height: 35px;
-    background-color: var(--color-s6);
-    border: none;
-    color: var(--color-c2);
-    font-family: poppins, sans-serif;
-    font-weight: 600;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    padding: 0px 10px;
-    width: 100%;
-    max-width: 490px;
-}
-
-    .filtro-certificados-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: calc(100% - 140px);
-    }
-
-    .filtro-certificados,
-    .container-filtro {
-        display: none;
-    }
 }
 
 @media (max-width:480px) {
@@ -1117,10 +907,6 @@
     position: relative;
 }
 
-.form-filtro-certificados {
-    margin-top: 10px;
-}
-
 .certificados-cards {
     width: 100%;
     display: flex;
@@ -1148,17 +934,5 @@
         left: 70px;
         z-index: 0;
     }
-
-    .filtro-certificados-mobile {
-        display: block;
-        width: 100%;
-        width: calc(100% - 140px);
-    }
-
-    .filtro-certificados,
-    .container-filtro {
-        display: none;
-    }
-
 
 }
