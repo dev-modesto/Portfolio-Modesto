@@ -527,17 +527,24 @@
 <script>
 
     document.addEventListener("DOMContentLoaded", function() {
-        const icons = document.querySelectorAll(".habilidades-icons");
 
-        icons.forEach(icon => {
-            icon.addEventListener("mouseover", function() {
-                this.src = this.getAttribute("data-original");
-            });
+        function mudarSrcImagensHabilidades() {
+            const icons = document.querySelectorAll(".habilidades-icons");
+            
+            icons.forEach(icon => {
+                icon.addEventListener("mouseover", function() {
+                    this.src = this.getAttribute("data-original");
+                });
 
-            icon.addEventListener("mouseout", function() {
-                this.src = this.getAttribute("data-plain");
+                icon.addEventListener("mouseout", function() {
+                    this.src = this.getAttribute("data-plain");
+                });
+                
             });
-        });
+        }
+
+        mudarSrcImagensHabilidades();
+
     });
 
 </script>

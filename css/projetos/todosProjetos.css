@@ -144,9 +144,18 @@
             }
 
             .btn-accordion {
-                font-size: 32px;
-                font-weight: 600;
+                font-size: 1.625em !important;
+                font-weight: 800 !important;
                 color: var(--color-s9);
+            }
+
+            .accordion-titulo.ativo span {
+                rotate: 180deg;
+                transition: all .3s;
+                background: linear-gradient(to bottom right, var(--color-p4), var(--color-s23));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                background-clip: text; 
             }
 
 .container-card-imagem { 
@@ -369,4 +378,22 @@
             height: 273px;
         }
 
+    }
+
+    .container-indice-marcador-imagem {
+        display: flex;
+        margin-top: 10px;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .marcador-imagem-projeto {
+        background-color: var(--color-c3);
+        width: 40px;
+        height: 6px;
+        border-radius: 3px;
+    }
+
+    .marcador-imagem-projeto.ativo {
+        background-color: var(--color-c6);
     }

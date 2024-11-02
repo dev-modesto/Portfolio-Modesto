@@ -106,6 +106,10 @@
 
     .btn-cabecalho-select.ativo span {
         color: var(--color-0);
+        background: linear-gradient(to bottom right, var(--color-p4), var(--color-s23));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text; 
         rotate: 180deg;
         transition: all .3s;
     }

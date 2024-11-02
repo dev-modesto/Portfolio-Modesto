@@ -90,6 +90,20 @@
                         <img id="imagem-projeto-<?= $indiceProjeto ?>" src="<?= $imagens[0]['caminho'] ?>" alt="">
                         <a class="btn-img-prox btn-img-prevnext" onclick="nextImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_right</span></a>
                     </div>
+                    <div class="container-indice-marcador-imagem indice-projeto-<?= $indiceProjeto ?>">
+                        <?php
+                            $indiceImagem = 0;
+                            foreach($imagens as $imagem) {
+                                $classeAtivo = $indiceImagem === 0 ? 'ativo' : '';
+
+                                ?>
+                                    <span class="marcador-imagem-projeto indice-imagem-<?= $indiceProjeto . $indiceImagem?> <?= $classeAtivo ?>"></span>
+                                <?php
+
+                                $indiceImagem++;
+                            }
+                        ?>
+                    </div>
                 </div>
 
                 <div class="card-projeto-titulo">
