@@ -136,14 +136,33 @@
                             $tipoImagem = ['thumbnail', 'extra'];
                             $cProjetoImagem = cProjetoImagem($con, $idProjeto, null, $tipoImagem);
                             $arrayImagens = mysqli_fetch_all($cProjetoImagem, MYSQLI_ASSOC);
-                            $imagens = [];
+                            $imagemThumbnail = [];
+                            $imagensExtras = [];
 
                             foreach ($arrayImagens as $valor) {
-                                $imagens[] = [
-                                    'caminho' => BASE_URL . $valor['caminho_original'],
-                                    'tipo' => $valor['tipo_imagem']
-                                ];
+                                if ($valor['tipo_imagem'] === 'thumbnail') {
+
+                                    $imagemThumbnail[] = [
+                                        'caminho' => BASE_URL . $valor['caminho_original'],
+                                        'tipo' => $valor['tipo_imagem']
+                                    ];
+
+                                } else {
+                                    
+                                    $imagensExtras[] = [
+                                        'caminho' => BASE_URL . $valor['caminho_original'],
+                                        'tipo' => $valor['tipo_imagem']
+                                    ];
+                                }
                             }
+
+                            $imagens = [];
+
+                            if ($imagemThumbnail) {
+                                $imagens = array_merge($imagemThumbnail);
+                            }
+
+                            $imagens = array_merge($imagens, $imagensExtras);
 
                             $indiceProjetoFormatado = str_pad($indiceProjeto, 2, '0', STR_PAD_LEFT);
 
