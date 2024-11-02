@@ -28,25 +28,34 @@ function filtroCertificadosDesk($con) {
 function filtroCertificadosMobile($con) {
 
     ?>
-        <div class="filtro-certificados-mobile">
-            <select name="filtro-mobile-select" class="filtro-btn-min" id="filtro-mobile-select">
-                <option class="" value="0">TODOS</option>
+        <div class="filtro-mobile certificados">
+           <div class="filtro-select">
+                <div class="container-select-cabecalho">
+                    <button class="btn-cabecalho-select peso-semi-bold">TODOS<span class="material-symbols-rounded ico-icodown-projetos">keyboard_arrow_down</span></button>
+                    <div class="container-select-conteudo">
 
-                <?php 
-                    $cAreaFormacao = cAreaFormacao($con);
+                        <?php 
+                            $cAreaFormacao = cAreaFormacao($con);
+                            $arrayAreaFormacaoMin = mysqli_fetch_all($cAreaFormacao, MYSQLI_ASSOC); 
 
-                    while ($arrayAreaFormacaoMin = mysqli_fetch_assoc($cAreaFormacao)) {
+                            ?>
+                                <button class="filtro-btn-certificados-mobile filtro-btn-conteudo-select ativo peso-semi-bold" value="0"> TODOS</button>
+                            <?php
 
-                        $idAreaFormacaoMin = $arrayAreaFormacaoMin['id_area_formacao'];
-                        $nomeAreaFormacaoMin = $arrayAreaFormacaoMin['nome'];
-                        $nomeAreaFormacaoMin = strtoupper($nomeAreaFormacaoMin);
+                            foreach ($arrayAreaFormacaoMin as $valor) {
+
+                                $idAreaFormacao = $valor['id_area_formacao'];
+                                $nomeFormacao = $valor['nome'];
+                                $nomeFormacaoUpperCase = strtoupper($nomeFormacao);
+
+                                ?>
+                                    <button class="filtro-btn-certificados-mobile filtro-btn-conteudo-select peso-semi-bold" value="<?= $idAreaFormacao ?>"><?= $nomeFormacaoUpperCase ?></button>
+                                <?php
+                            }
                         ?>
-                            <option class="" value="<?= $idAreaFormacaoMin ?>"><?= $nomeAreaFormacaoMin ?></option>
-                        <?php
-                    }
-                ?>
-            </select>
-            <button type="submit" class="filtro-mobile-button">Filtrar</button>
+                    </div>
+                </div>
+           </div>
         </div>
     <?php
 
@@ -90,7 +99,7 @@ function filtroProjetosMobile($con) {
                             $arrayCategoriaProjeto = mysqli_fetch_all($cCategoriaProjeto, MYSQLI_ASSOC); 
 
                             ?>
-                                <button class="filtro-btn-conteudo-select ativo peso-semi-bold" value="0"> TODOS</button>
+                                <button class="filtro-btn-projetos-mobile filtro-btn-conteudo-select ativo peso-semi-bold" value="0"> TODOS</button>
                             <?php
 
                             foreach ($arrayCategoriaProjeto as $valor) {
@@ -100,7 +109,7 @@ function filtroProjetosMobile($con) {
                                 $nomeCategoriaUpperCase = strtoupper($nomeCategoriaProjeto);
 
                                 ?>
-                                    <button class="filtro-btn-conteudo-select peso-semi-bold" value="<?= $idCategoriaProjeto ?>"><?= $nomeCategoriaUpperCase ?></button>
+                                    <button class="filtro-btn-projetos-mobile filtro-btn-conteudo-select peso-semi-bold" value="<?= $idCategoriaProjeto ?>"><?= $nomeCategoriaUpperCase ?></button>
                                 <?php
                             }
                         ?>
