@@ -115,7 +115,7 @@
                     <?php 
 
                         $indiceProjeto = 1;
-
+                        
                         foreach ($arrayProjeto as $chave => $valorProjeto) {
                             $idProjeto = $valorProjeto['id_projeto'];
                             $nomeProjeto = $valorProjeto['nome_projeto'];
@@ -178,6 +178,20 @@
                                         <a class="btn-img-ant btn-img-prevnext" onclick="prevImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_left</span></a>
                                         <img id="imagem-projeto-<?= $indiceProjeto ?>" src="<?= $imagens[0]['caminho'] ?>" alt="">
                                         <a class="btn-img-prox btn-img-prevnext" onclick="nextImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_right</span></a>
+                                    </div>
+                                    <div class="container-indice-marcador-imagem indice-projeto-<?= $indiceProjeto ?>">
+                                        <?php
+                                            $indiceImagem = 0;
+                                            foreach($imagens as $imagem) {
+                                                $classeAtivo = $indiceImagem === 0 ? 'ativo' : '';
+
+                                                ?>
+                                                    <span class="marcador-imagem-projeto indice-imagem-<?= $indiceProjeto . $indiceImagem?> <?= $classeAtivo ?>"></span>
+                                                <?php
+
+                                                $indiceImagem++;
+                                            }
+                                        ?>
                                     </div>
                                 </div>
 
@@ -285,6 +299,7 @@
 
                             <?php
                                 $indiceProjeto++;
+                                
                         }
 
                     ?>
@@ -322,84 +337,13 @@
     include BASE_PATH . "/include/footer/footerScripts.php";
 ?>
 
+<script src="<?= BASE_URL . '/js/imagensProjetos.js'?>"></script>
+<script src="<?= BASE_URL . '/js/accordion.js'?>"></script>
+
 <script>
 
-    function atualizaImagem(valorIndice) {
-        const imagemProjeto = document.getElementById('imagem-projeto-' + valorIndice);
-        imagemProjeto.src = window['imagensProjeto' + valorIndice][window['indiceAtual' + valorIndice]].caminho;
-    }
-
-    function prevImage(valorIndice) {
-        const indiceAtual = window['indiceAtual' + valorIndice];
-        window['indiceAtual' + valorIndice] = (indiceAtual > 0) ? indiceAtual - 1 : window['imagensProjeto' + valorIndice].length - 1;
-        atualizaImagem(valorIndice);
-    }
-
-    function nextImage(valorIndice) {
-        const indiceAtual = window['indiceAtual' + valorIndice];
-        window['indiceAtual' + valorIndice] = (indiceAtual < window['imagensProjeto' + valorIndice].length - 1) ? indiceAtual + 1 : 0;
-        atualizaImagem(valorIndice);
-    }
-
-    function initAccordion() {
-        const titulosAccordion = document.querySelectorAll('.accordion-titulo');
-
-        titulosAccordion.forEach(titulo => {
-            titulo.removeEventListener('click', accordionClickHandler);
-            titulo.addEventListener('click', accordionClickHandler);
-        });
-    }
-
-    function accordionClickHandler() {
-        const conteudo = this.nextElementSibling;
-        const tituloAtual = this;
-        const containerAtual = this.closest('.accordion-container');
-        
-        const allTitulos = this.closest('.card-projeto-accordion').querySelectorAll('.accordion-titulo');
-        allTitulos.forEach(titulo => {
-            titulo.classList.remove('ativo');
-        });
-
-        const allContainer = this.closest('.card-projeto-accordion').querySelectorAll('.accordion-container');
-        allContainer.forEach(containerAccordion => {
-            containerAccordion.classList.remove('ativo');
-        });
-
-        const conteudoAtivo = conteudo.classList.contains('ativo');
-
-        if (conteudoAtivo) {
-            tituloAtual.classList.remove('ativo');
-            containerAtual.classList.remove('ativo');
-
-        } else {
-            tituloAtual.classList.add('ativo');
-            containerAtual.classList.add('ativo');
-        }
-
-        const allConteudos = this.closest('.card-projeto-accordion').querySelectorAll('.accordion-conteudo');
-        allConteudos.forEach(item => {
-            if (item !== conteudo) {
-                item.classList.remove('ativo');
-            }
-        });
-
-        conteudo.classList.toggle('ativo');
-    }
-
-    initAccordion();
-
     document.addEventListener("DOMContentLoaded", function() {
-        const icons = document.querySelectorAll(".habilidades-icons");
-
-        icons.forEach(icon => {
-            icon.addEventListener("mouseover", function() {
-                this.src = this.getAttribute("data-original");
-            });
-
-            icon.addEventListener("mouseout", function() {
-                this.src = this.getAttribute("data-plain");
-            });
-        });
+        initAccordion();
     });
 
 </script>
