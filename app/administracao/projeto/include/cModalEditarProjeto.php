@@ -172,8 +172,9 @@
                                 <div class="col-md-6 mb-4">
                                     <label class="font-1-s" class="font-1-s" for="tipo-projeto">Tipo projeto <em>*</em></label>
                                     <select class="form-select" name="tipo-projeto" id="tipo-projeto" required>
-                                        <option value="livre" <?= $tipoProjeto == 'Livre' ? 'selected' : ''?>>Livre</option>
                                         <option value="academico" <?= $tipoProjeto == 'Acadêmico' ? 'selected' : ''?>>Acadêmico</option>
+                                        <option value="livre" <?= $tipoProjeto == 'Livre' ? 'selected' : ''?>>Livre</option>
+                                        <option value="pessoal" <?= $tipoProjeto == 'Pessoal' ? 'selected' : ''?>>Pessoal</option>
                                         <option value="profissional" <?= $tipoProjeto == 'Profissional' ? 'selected' : ''?>>Profissional</option>
                                     </select>
                                 </div>
