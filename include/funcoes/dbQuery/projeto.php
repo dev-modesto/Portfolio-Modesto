@@ -6,36 +6,43 @@ function cProjeto ($con, $idProjeto = null, $idCategoria = null, $tipoProjeto = 
     $vars = [];
 
     if (!empty($idProjeto)) {
-        $where .= " AND id_projeto = ?";
+        $where .= " AND p.id_projeto = ?";
         $types .= 'i';
         $vars[] = $idProjeto;
     }
 
     if (!empty($idCategoria)) {
-        $where .= " AND id_categoria = ?";
+        $where .= " AND p.id_categoria = ?";
         $types .= 'i';
         $vars[] = $idCategoria;
     }
 
     if (!empty($tipoProjeto)) {
-        $where .= " AND tipo_projeto = ?";
+        $where .= " AND p.tipo_projeto = ?";
         $types .= 's';
         $vars[] = $tipoProjeto;
     }
 
     if (!empty($destaque)) {
-        $where .= " AND destaque = ?";
+        $where .= " AND p.destaque = ?";
         $types .= 's';
         $vars[] = $destaque;
     }
 
     if (!empty($statusGeral)) {
-        $where .= " AND status_geral = ?";
+        $where .= " AND p.status_geral = ?";
         $types .= 's';
         $vars[] = $statusGeral;
     }
 
-    $sql = mysqli_prepare($con, "SELECT * FROM tbl_projeto $where ");
+    $sql = mysqli_prepare(
+        $con, 
+        "SELECT p.*, c.nome as nome_categoria_projeto
+        FROM tbl_projeto p 
+        INNER JOIN tbl_categoria_projeto c ON p.id_categoria = c.id_categoria
+        $where
+        ORDER BY p.dt_desenvolvimento DESC
+    ");
 
     if ($vars) {
         mysqli_stmt_bind_param($sql, $types, ...$vars);
