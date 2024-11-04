@@ -1,5 +1,6 @@
 <?php
 
+    date_default_timezone_set('America/Sao_Paulo');
     $caminhoProjetoLocal = "/portfolio-modesto";
     $protocolo = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
     $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
