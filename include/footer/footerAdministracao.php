@@ -19,6 +19,7 @@
             language: {
                 url: '<?php echo BASE_URL ?>/config/pt_br.json'
             },
+            order: []
         });
 
         $(document).ready( function () {
