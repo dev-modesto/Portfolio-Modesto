@@ -124,7 +124,6 @@
                             $tipoProjeto = $valorProjeto['tipo_projeto'];
                             $dtDesenvolvimento = $valorProjeto['dt_desenvolvimento'];
 
-                            date_default_timezone_set('America/Sao_Paulo');
                             $newDtDesenvolvimento = new DateTime($dtDesenvolvimento);
                             $dtDesenvolvimentoFormatada = date_format($newDtDesenvolvimento, 'd/m/Y');
 

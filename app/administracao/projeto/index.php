@@ -66,21 +66,32 @@
                             <tr>
                                 <th scope="col">Nome Projeto</th>
                                 <th scope="col">Tipo projeto</th>
+                                <th scope="col">Categoria</th>
                                 <th scope="col">Data lançamento</th>
+                                <th scope="col">Destaque</th>
+                                <th scope="col">Status geral</th>
+                                <th scope="col">Progresso</th>
                                 <th scope="col">Controle</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
                             <?php 
                                 $cProjeto = cProjeto($con);
+
                                 while($exibe = mysqli_fetch_array($cProjeto)){
                                         $idProjeto = $exibe['id_projeto'];
+                                        $newDtDesenvolvimento = new DateTime($exibe['dt_desenvolvimento']);
+                                        $dataFormatada = date_format($newDtDesenvolvimento, 'd/m/Y');
 
                                     ?>
                                     <tr data-id-projeto="<?= $idProjeto ?>">
                                         <td><?= $exibe['nome_projeto']?></td>
                                         <td><?= $exibe['tipo_projeto']?></td>
-                                        <td><?= $exibe['dt_desenvolvimento']?></td>
+                                        <td><?= $exibe['nome_categoria_projeto']?></td>
+                                        <td><?= $dataFormatada?></td>
+                                        <td><?= $exibe['destaque']?></td>
+                                        <td><?= $exibe['status_geral']?></td>
+                                        <td><?= $exibe['status']?></td>
                                         <td class="td-icons">
                                             <a class="btn-galeria-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">photo_library</span></a>
                                             <a class="btn-editar-projeto icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
@@ -229,8 +240,9 @@
                                         <label class="font-1-s" class="font-1-s" for="tipo-projeto">Tipo projeto <em>*</em></label>
                                         <select class="form-select" name="tipo-projeto" id="tipo-projeto" required>
                                             <option value="" selected>Escolha o tipo de projeto</option>
-                                            <option value="livre">Livre</option>
                                             <option value="academico">Acadêmico</option>
+                                            <option value="livre">Livre</option>
+                                            <option value="pessoal">Pessoal</option>
                                             <option value="profissional">Profissional</option>
                                         </select>
                                     </div>
