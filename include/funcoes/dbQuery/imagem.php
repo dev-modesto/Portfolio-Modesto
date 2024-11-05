@@ -30,7 +30,6 @@
 
             $path = pathinfo($nomeImagemOriginal);
             $extensao = $path['extension'];
-            date_default_timezone_set('America/Sao_Paulo');
             $data = new DateTime();
             $dataFormatada = date_format($data, 'dmyHms');
             
