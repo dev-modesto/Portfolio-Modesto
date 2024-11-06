@@ -14,6 +14,7 @@ html {
 
 .font-1-h2-b {
     font: 700 2.5rem/3.5rem "Poppins", sans-serif;
+    margin-bottom: 20px;
 }
 
 .font-1-h3-b {
@@ -48,6 +49,10 @@ html {
 .font-1-s {
     font: 400 1rem/1.5 "Poppins", sans-serif;
   }
+
+.font-1-s-2 {
+    font: 400 1rem/1.5 "Poppins", sans-serif;
+}
 
 .font-1-sm-sb {
     font: 500 .81rem/1 "Poppins", sans-serif;
@@ -140,6 +145,10 @@ html {
     .font-2-lg-r {
         font-size: .875rem;
         line-height: 1.6;
+    }
+
+    .font-1-s-2 {
+        font-size: .875rem;
     }
 
 }
