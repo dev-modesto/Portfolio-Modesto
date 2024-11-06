@@ -71,7 +71,8 @@
 .js-scroll.ativo .formacao-academica-lines,
 .js-scroll.ativo .formacao-academica-container-certificados,
 .js-scroll.ativo.todosProjetos,
-.js-scroll.ativo.container-card-projeto-completo {
+.js-scroll.ativo.container-card-projeto-completo, 
+.js-scroll.ativo.contato {
     animation: animarCimaBaixo 1s forwards;
     animation-timing-function: cubic-bezier(0.25, 1.5, 0.5, 1);
 }

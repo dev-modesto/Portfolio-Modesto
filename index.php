@@ -70,7 +70,7 @@
                         </ul>
                     </li>
                     <li><a href="#formacao">Formação</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="contato.php">Contato</a></li>
                 </ul>
             </nav>
             <nav class="menu-mobile" id="drop-mobile">
@@ -83,7 +83,7 @@
                         <li><a href="#projetosDestaque">Projetos destaque</a></li>
                         <li><a href="projetos.php">Todos os projetos</a></li>
                         <li><a href="#formacao">Formação</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="contato.php">Contato</a></li>
                     </ul>
                 </ul>
             </nav>

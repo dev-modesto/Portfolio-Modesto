@@ -6,10 +6,6 @@
     padding: 20px 20px;
 }
 
-#activedrop {
-    cursor: pointer;
-}
-
 .conteudo-img img {
     object-fit: cover;
     height: 100%;
