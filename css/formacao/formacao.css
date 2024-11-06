@@ -167,6 +167,7 @@
         color: var(--color-p4);
         font-size: 2rem;
         left: 0px;
+        font-weight: 600;
         bottom: 0px;
         position: absolute;
     }
