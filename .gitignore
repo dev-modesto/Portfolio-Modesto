@@ -2,3 +2,5 @@
 .env
 /vendor/
 *.sql
+/PHPMailer/
+/servicos/
