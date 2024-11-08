@@ -4,6 +4,8 @@
     gap: 20px;
     flex-wrap: wrap;
     align-content: start;
+    max-height: 152px;
+    overflow-y: auto;
 }
 
 #activedrop {
@@ -206,6 +208,7 @@ a[aria-disabled="true"] {
 @media (max-width: 480px) {
     .container-btn-links-cards {
         gap: 10px;
+        max-height: 96px;
     }
     
     .btn-links-cards {

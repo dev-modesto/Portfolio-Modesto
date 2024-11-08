@@ -307,7 +307,7 @@
                                             <div class="projetoDestaque-cards--conteudo-texto">
                                                 <div class="conteudo-texto">
                                                     <h3>Descrição</h3>
-                                                    <p class="font-2-md-r cor-c3"><?= $descricao ?></p>
+                                                    <p class="font-2-md-r descricao-destaque cor-c3"><?= $descricao ?></p>
                                                 </div>
                                                 <div class="container-button-saiba-mais">
                                                     <a href="projetos.php" class="font-2-md-r cor-p3">Saiba mais em todos os projetos</a>

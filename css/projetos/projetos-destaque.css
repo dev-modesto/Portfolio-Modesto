@@ -216,6 +216,15 @@
     /* background-color: blue; */
 }
 
+.descricao-destaque {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
 
 .projetosDestaque-btn-visualizar-todos {
     display: flex;
@@ -425,6 +434,14 @@
         background-repeat: repeat-y;
     }
 
+    .descricao-destaque {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-clamp: 5;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
 }
 
 
