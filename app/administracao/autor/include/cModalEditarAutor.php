@@ -34,13 +34,13 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="link-linkedin">LinkedIn<em>*</em></label><br>
-                        <input class="form-control" type="text" name="link-linkedin" id="link-linkedin" value="<?= $linkedin ?>" required>
+                        <label class="font-1-s" for="link-linkedin">LinkedIn</label><br>
+                        <input class="form-control" type="text" name="link-linkedin" id="link-linkedin" value="<?= $linkedin ?>">
                     </div>
                     
                     <div class="mb-4">
-                        <label class="font-1-s" for="link-github">GitHub<em>*</em></label><br>
-                        <input class="form-control" type="text" name="link-github" id="link-github" value="<?= $github ?>" required>
+                        <label class="font-1-s" for="link-github">GitHub</label><br>
+                        <input class="form-control" type="text" name="link-github" id="link-github" value="<?= $github ?>">
                     </div>
 
                     <div class="modal-footer form-container-button">
