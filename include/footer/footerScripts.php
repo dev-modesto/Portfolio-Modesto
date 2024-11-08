@@ -8,3 +8,9 @@
 <script src="<?= BASE_URL . '/js/filtroProjetos.js'?>"></script>
 <script src="<?= BASE_URL . '/js/menuMobile.js'?>"></script>
 <script src="<?= BASE_URL . '/js/animacoes.js'?>"></script>
+
+<script>
+
+    $('#telefone').mask('0000000000000');
+
+</script>
