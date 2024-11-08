@@ -31,6 +31,10 @@
     border: 1px solid transparent;
     margin: 0px;
     border-radius: .2rem;
+    min-width: 130px;
+    width: auto;
+    max-width: 250px;
+    padding: 0px 20px;
 }
 
 .btn-acao-contato:hover {
