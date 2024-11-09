@@ -30,7 +30,7 @@
             $idProjeto = $valorProjeto['id_projeto'];
             $nomeProjeto = $valorProjeto['nome_projeto'];
             $descricao = $valorProjeto['descricao'];
-            $descicaoTipoProjeto = $valorProjeto['descricao_tipo_projeto'];
+            $descricaoTipoProjeto = $valorProjeto['descricao_tipo_projeto'];
             $tipoProjeto = $valorProjeto['tipo_projeto'];
             $dtDesenvolvimento = $valorProjeto['dt_desenvolvimento'];
 
@@ -162,15 +162,15 @@
                             </div>
                         </div>
                         <div class="accordion-container">
-                        <div class="accordion-titulo font-2-md-r">Tipo de Projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                            <div class="accordion-titulo font-2-md-r">Tipo de Projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                             <div class="accordion-conteudo">
-        
+                                <p class="font-2-md-r peso-normal p-legenda"><span class="legenda-bg status-0"><?= $tipoProjeto ?></span><br><?= $descricaoTipoProjeto ?></p>
                             </div>
                         </div>
                         <div class="accordion-container">
-                        <div class="accordion-titulo font-2-md-r">Data de desenvolvimento<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                            <div class="accordion-titulo font-2-md-r">Data de desenvolvimento<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                             <div class="accordion-conteudo">
-                                <p class="font-1-md-l"><?php echo $statusProgresso == 'Andamento' ? 'Projeto em andamento' : $dtDesenvolvimentoFormatada ?></p>
+                                <p class="font-2-md-r peso-normal p-legenda"><span class="legenda-bg <?= $statusProgresso == 'Andamento' ? 'status-2' : 'status-1'?>"><?php echo $statusProgresso == 'Andamento' ? 'Projeto em andamento' : 'Concluído em: ' . $dtDesenvolvimentoFormatada ?></span></p>
                             </div>
                         </div>
                         <div class="accordion-container autores">

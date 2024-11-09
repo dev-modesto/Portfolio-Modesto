@@ -86,10 +86,9 @@
                                         <td><?= $exibe['instituicao']?></td>
                                         <td><?= $exibe['categoria_curso']?></td>
                                         <td><?= $exibe['total_horas']?></td>
-                                        <td><?= $exibe['status']?></td>
+                                        <td><span class="legenda-bg <?= $exibe['status'] == 'Andamento' ? 'status-2' : 'status-1'?>"><?= $exibe['status']?></span></td>
                                         <td class="td-icons">
-                                            <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
-                                            <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
+                                            <a class="btn-editar-formacao icone-controle-editar" href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                             <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                         </td>
                                     </tr>
@@ -128,9 +127,8 @@
                                         <td><?= $exibe['instituicao']?></td>
                                         <td><?= $exibe['categoria_curso']?></td>
                                         <td><?= $exibe['total_horas']?></td>
-                                        <td><?= $exibe['status']?></td>
+                                        <td><span class="legenda-bg <?= $exibe['status'] == 'Andamento' ? 'status-2' : 'status-1'?>"><?= $exibe['status']?></span></td>
                                         <td class="td-icons">
-                                            <a class="btn-visualizar-info-formacao icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
                                             <a class="btn-editar-formacao icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                             <a class="btn-excluir-formacao icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                         </td>

@@ -90,11 +90,37 @@
     padding: 3px;
     display: inline-flex;
     margin: 0px 2px;
-    border: 1px solid var(--cor-4);
-    border-radius: 4px;
+    border: 1px solid var(--color-c4);
+    border-radius: .2rem;
     transition: all .3s;
 }
 
   .icon-btn-controle {
-    color: var(--cor-7);
+    color: var(--color-c7);
+}
+
+.icone-controle-editar:hover {
+  background-color: var(--color-a-yellow1);
+  border: 1px solid var(--color-a-yellow4);
+}
+
+.icone-controle-excluir:hover {
+  background-color: var(--color-a-red2);
+  border: 1px solid var(--color-a-red4);
+}
+
+.icone-controle-galeria:hover {
+  border: 1px solid var(--color-a-blue4);
+}
+
+.icone-controle-editar:hover span {
+  color: var(--color-a-yellow4);
+}
+
+.icone-controle-excluir:hover span {
+  color: var(--color-a-red4);
+}
+
+.icone-controle-galeria:hover span {
+  color: var(--color-a-blue4);
 }

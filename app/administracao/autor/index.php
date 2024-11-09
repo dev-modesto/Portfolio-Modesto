@@ -69,7 +69,6 @@
                                 <td><?= $exibe['link_linkedin']?></td>
                                 <td><?= $exibe['link_github']?></td>
                                 <td class="td-icons">
-                                    <a class="btn-visualizar-info-autor icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">visibility</span></a>
                                     <a class="btn-editar-autor icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                     <a class="btn-excluir-autor icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                 </td>
