@@ -104,9 +104,9 @@
                         </div>
                     </div>
                     <div class="card-projeto-completo-imagem">
-                        <a class="btn-img-ant btn-img-prevnext" onclick="prevImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_left</span></a>
+                        <button class="btn-img-ant btn-img-prevnext" onclick="prevImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_left</span></button>
                         <img id="imagem-projeto-<?= $indiceProjeto ?>" src="<?= $imagens[0]['caminho'] ?>" alt="">
-                        <a class="btn-img-prox btn-img-prevnext" onclick="nextImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_right</span></a>
+                        <button class="btn-img-prox btn-img-prevnext" onclick="nextImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_right</span></button>
                     </div>
                     <div class="container-indice-marcador-imagem indice-projeto-<?= $indiceProjeto ?>">
                         <?php
@@ -184,7 +184,7 @@
                                         $linkGithub = $valor['link_github'];
 
                                         ?>
-                                            <a class="" href="<?= $linkLinkedin?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
+                                            <a class="font-2-md-r peso-normal" href="<?= $linkLinkedin == '' ? '#' : $linkLinkedin ?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
                                                 <span class="material-symbols-rounded">person_pin</span><?= $nomeAutor ?>
                                             </a>
 

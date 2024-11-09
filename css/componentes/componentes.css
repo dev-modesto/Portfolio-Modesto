@@ -360,6 +360,7 @@ a[aria-disabled="true"] {
 .filtro-btn:hover {
     background-color: var(--color-s3);
     transition: all .3s;
+    cursor: pointer;
 }
 
 .filtro-btn:focus {
@@ -468,13 +469,12 @@ a[aria-disabled="true"] {
 
 .nav-link {
     color: var(--color-c6);
-    margin-bottom: 2px solid !important;
 }
+
 
 .nav-link.active {
     background-color: transparent !important;
     border: 1px solid var(--color-c4) !important;
-    margin-bottom: 2px solid !important;
     border-radius: .2rem;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -488,4 +488,10 @@ a[aria-disabled="true"] {
 .nav-link:hover {
     color: var(--color-c6);
     color: var(--color-c10);
+}
+
+.nav-link.active.nav-modal{
+    border: none !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid !important;
 }

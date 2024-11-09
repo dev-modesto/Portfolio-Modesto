@@ -75,6 +75,7 @@
             width: 30px;
             height: 36px;
             background-color: rgba(8, 9, 14, 20%);
+            border: none;
         }
 
         .btn-img-prevnext:hover {
