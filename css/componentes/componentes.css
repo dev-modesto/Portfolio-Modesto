@@ -360,6 +360,7 @@ a[aria-disabled="true"] {
 .filtro-btn:hover {
     background-color: var(--color-s3);
     transition: all .3s;
+    cursor: pointer;
 }
 
 .filtro-btn:focus {
