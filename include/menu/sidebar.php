@@ -13,7 +13,7 @@
             </div>
             
             <div class="container-titulo-cabecalho">
-                <h1 class="font-1-xxl-1">--</h1>
+                <h1 class="font-1-xxl-1 peso-semi-bold"><?= isset($tituloPagina) == '' ? '-' : $tituloPagina ?></h1>
             </div>
         </div>
 
