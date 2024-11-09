@@ -16,9 +16,9 @@
                     <p class="font-1-xxl-1">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
                 </div>
                 <div class="icones-sociais">
-                    <a class="cor-c6" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
-                    <a class="cor-c6" href="https://github.com/dev-modesto"><i class='bx bxl-github'></i></a>
-                    <a class="cor-c6" href="mailto:gabriel26_outlook.com.br"><i class='bx bxs-envelope'></i></a>
+                    <a class="cor-c6" aria-label="Perfil do Linkedin" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
+                    <a class="cor-c6" aria-label="Perfil do GitHub" href="https://github.com/dev-modesto"><i class='bx bxl-github'></i></a>
+                    <a class="cor-c6" aria-label="Endereço de e-mail para contato" href="mailto:contato@devmodesto.com.br"><i class='bx bxs-envelope'></i></a>
                 </div>
             </div>
             <div class="home-foto order1">
