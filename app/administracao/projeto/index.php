@@ -68,7 +68,7 @@
                                 <th scope="col">Tipo projeto</th>
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Data lançamento</th>
-                                <th scope="col">Destaque</th>
+                                <th scope="col">Projeto em destaque</th>
                                 <th scope="col">Status geral</th>
                                 <th scope="col">Progresso</th>
                                 <th scope="col">Controle</th>
@@ -86,14 +86,15 @@
                                     ?>
                                     <tr data-id-projeto="<?= $idProjeto ?>">
                                         <td><?= $exibe['nome_projeto']?></td>
-                                        <td><?= $exibe['tipo_projeto']?></td>
+                                        <td><span class="legenda-bg status-0"><?= $exibe['tipo_projeto']?></span></td>
+                                        
                                         <td><?= $exibe['nome_categoria_projeto']?></td>
                                         <td><?= $dataFormatada?></td>
-                                        <td><?= $exibe['destaque']?></td>
-                                        <td><?= $exibe['status_geral']?></td>
-                                        <td><?= $exibe['status']?></td>
+                                        <td class="td-legenda-bg-3"><?= $exibe['destaque'] == 'Sim' ? '<span class="material-symbols-rounded">star_rate</span>' : ''?></td>
+                                        <td class="td-legenda-bg-2"><span class="legenda-bg-2 <?= $exibe['status_geral'] == 'Inativo' ? 'status-3' : 'status-1'?>"><p class=""><?= $exibe['status_geral']?></p></span></td>
+                                        <td><span class="legenda-bg <?= $exibe['status'] == 'Andamento' ? 'status-2' : 'status-1'?>"><?= $exibe['status']?></span></td>
                                         <td class="td-icons">
-                                            <a class="btn-galeria-projeto icone-controle-visualizar " href="#"><span class="icon-btn-controle material-symbols-rounded">photo_library</span></a>
+                                            <a class="btn-galeria-projeto icone-controle-galeria " href="#"><span class="icon-btn-controle material-symbols-rounded">photo_library</span></a>
                                             <a class="btn-editar-projeto icone-controle-editar " href="#"><span class="icon-btn-controle material-symbols-rounded">edit</span></a>
                                             <a class="btn-excluir-projeto icone-controle-excluir" href="#"><span class="icon-btn-controle material-symbols-rounded">delete</span></a>
                                         </td>
