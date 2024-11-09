@@ -1,14 +1,42 @@
-const dropdown = document.getElementById('dropdown-menu');
+const dropdown = document.querySelector('.dropdown-menu');
 const icon = document.getElementById('iconProjetos');
 
 activedrop.onclick = () => {
     if(dropdown.style.display === 'block') {
         dropdown.style.display = 'none';
         icon.style.rotate = '0deg';
+
     } else {
         dropdown.style.display = 'block';
         icon.style.rotate = '180deg';
+
+        fecharMenuDropdownScroll();
     }
+
+    fecharMenuDropdownClick();
+
+}
+
+function fecharMenuDropdownScroll() {
+    
+    function fecharDrop() {
+        dropdown.style.display = 'none';
+        icon.style.rotate = '0deg';
+        document.removeEventListener('scroll', fecharDrop);
+    }
+
+    document.addEventListener('scroll', fecharDrop);
+}
+
+
+function fecharMenuDropdownClick() {
+    document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target) && !activedrop.contains(e.target)) {
+            dropdown.style.display = 'none';
+            icon.style.rotate = '0deg';
+            document.removeEventListener('scroll', fecharMenuDropdownScroll);
+        }   
+    })
 }
 
 const iconMobile = document.getElementById('icon-mobile');
