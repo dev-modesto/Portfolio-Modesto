@@ -41,7 +41,7 @@
                         <li><a href="index.php#habilidades">Habilidades</a></li>
                         <li>
                             <a id="activedrop">Projetos<span class="material-symbols-rounded" id="iconProjetos">keyboard_arrow_down</span></a>
-                            <ul class="menu-itens-dropdown" id="dropdown-menu">
+                            <ul class="menu-itens-dropdown dropdown-menu" id="dropdown-menu">
                                 <li>
                                     <a href="index.php#projetosDestaque"><span class="material-symbols-rounded">star</span><span class="menu-itens-dropdown-text">Em destaque</span></a>
                                 </li>
