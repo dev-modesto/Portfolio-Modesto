@@ -95,22 +95,22 @@
 
                     <ul class="nav nav-underline">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="informacoes-iniciais-tab-editar" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane-editar" type="button" role="tab" aria-controls="informacoes-iniciais-pane-editar" aria-selected="true">Início</button>
+                            <button class="nav-link nav-modal active" id="informacoes-iniciais-tab-editar" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane-editar" type="button" role="tab" aria-controls="informacoes-iniciais-pane-editar" aria-selected="true">Início</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="imagens-tab-editar" data-bs-toggle="tab" data-bs-target="#imagens-pane-editar" type="button" role="tab" aria-controls="imagens-pane-editar" aria-selected="true">Imagens</button>
+                            <button class="nav-link nav-modal" id="imagens-tab-editar" data-bs-toggle="tab" data-bs-target="#imagens-pane-editar" type="button" role="tab" aria-controls="imagens-pane-editar" aria-selected="true">Imagens</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="descricoes-tab-editar" data-bs-toggle="tab" data-bs-target="#descricoes-pane-editar" type="button" role="tab" aria-controls="descricoes-pane-editar" aria-selected="false">Descrições</button>
+                            <button class="nav-link nav-modal" id="descricoes-tab-editar" data-bs-toggle="tab" data-bs-target="#descricoes-pane-editar" type="button" role="tab" aria-controls="descricoes-pane-editar" aria-selected="false">Descrições</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="links-projeto-tab-editar" data-bs-toggle="tab" data-bs-target="#links-projeto-pane-editar" type="button" role="tab" aria-controls="links-projeto-pane-editar" aria-selected="false">Links</button>
+                            <button class="nav-link nav-modal" id="links-projeto-tab-editar" data-bs-toggle="tab" data-bs-target="#links-projeto-pane-editar" type="button" role="tab" aria-controls="links-projeto-pane-editar" aria-selected="false">Links</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tab-autores-projeto-editar" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane-editar" type="button" role="tab" aria-controls="autores-projeto-pane-editar" aria-selected="false">Autores</button>
+                            <button class="nav-link nav-modal" id="tab-autores-projeto-editar" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane-editar" type="button" role="tab" aria-controls="autores-projeto-pane-editar" aria-selected="false">Autores</button>
                             </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tecnologias-tab-editar" data-bs-toggle="tab" data-bs-target="#tecnolgias-pane-editar" type="button" role="tab" aria-controls="tecnolgias-pane-editar" aria-selected="false">Tecnologias</button>
+                            <button class="nav-link nav-modal" id="tecnologias-tab-editar" data-bs-toggle="tab" data-bs-target="#tecnolgias-pane-editar" type="button" role="tab" aria-controls="tecnolgias-pane-editar" aria-selected="false">Tecnologias</button>
                         </li>
                     </ul>
                     <br>
