@@ -5,32 +5,11 @@
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
     include BASE_PATH . '/include/funcoes/dbQuery/autor.php';
 
+    $tituloPaginaHead = 'Projetos | Administração | devModesto';
+    $tituloPagina = 'Projetos';
+    include BASE_PATH . '/include/head/headPagAdministracao.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>-</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
-
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-lateral.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-top.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/projetos/projetos.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
-</head>
 <body>
 <?php
     include BASE_PATH . '/include/preLoad/preLoad.php';
@@ -163,22 +142,22 @@
 
                         <ul class="nav nav-underline">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="informacoes-iniciais" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane" type="button" role="tab" aria-controls="informacoes-iniciais-pane" aria-selected="true">Início</button>
+                                <button class="nav-link nav-modal active" id="informacoes-iniciais" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane" type="button" role="tab" aria-controls="informacoes-iniciais-pane" aria-selected="true">Início</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="imagens" data-bs-toggle="tab" data-bs-target="#imagens-pane" type="button" role="tab" aria-controls="imagens-pane" aria-selected="true">Imagens</button>
+                                <button class="nav-link nav-modal" id="imagens" data-bs-toggle="tab" data-bs-target="#imagens-pane" type="button" role="tab" aria-controls="imagens-pane" aria-selected="true">Imagens</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="descricoes-tab" data-bs-toggle="tab" data-bs-target="#descricoes-tab-pane" type="button" role="tab" aria-controls="descricoes-tab-pane" aria-selected="false">Descrições</button>
+                                <button class="nav-link nav-modal" id="descricoes-tab" data-bs-toggle="tab" data-bs-target="#descricoes-tab-pane" type="button" role="tab" aria-controls="descricoes-tab-pane" aria-selected="false">Descrições</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
+                                <button class="nav-link nav-modal" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tab-autores-projeto" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane" type="button" role="tab" aria-controls="autores-projeto-pane" aria-selected="false">Autores</button>
+                                <button class="nav-link nav-modal" id="tab-autores-projeto" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane" type="button" role="tab" aria-controls="autores-projeto-pane" aria-selected="false">Autores</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
+                                <button class="nav-link nav-modal" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
                             </li>
                         </ul>
                         <br>
