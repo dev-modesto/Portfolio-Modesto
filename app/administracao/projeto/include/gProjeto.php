@@ -40,6 +40,14 @@
 
             $tipoProjeto = $_POST['tipo-projeto'];
             $descricaoProjeto = $_POST['descricao-projeto'];
+
+            $radioDescFuncionalides = $_POST['radio-desc-funcionalidades'];
+            $descricaoFuncionalidades = '';
+    
+            if ($radioDescFuncionalides == 'Sim') {
+                $descricaoFuncionalidades = trim($_POST['descricao-funcionalidades']);
+            }
+    
             $descricaoTipoProjeto = $_POST['descricao-tipo-projeto'];
             $dataDesenvolvimento = trim($_POST['data-desenvolvimento']);
             $nomeTituloImgThumbnail = trim($_POST['nome-titulo-img-thumbnail']);
@@ -109,6 +117,7 @@
                 "INSERT INTO tbl_projeto (
                     nome_projeto, 
                     descricao, 
+                    descricao_funcionalidades,
                     descricao_tipo_projeto, 
                     id_categoria,
                     tipo_projeto, 
@@ -120,14 +129,15 @@
                     status_geral,
                     projeto_equipe,
                     status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
     
             mysqli_stmt_bind_param(
                 $sqlProjeto, 
-                "sssisssssssss", 
+                "ssssisssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
+                $descricaoFuncionalidades,
                 $descricaoTipoProjeto, 
                 $idCategoria,
                 $tipoProjeto, 

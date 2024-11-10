@@ -17,6 +17,14 @@
 
         $tipoProjeto = $_POST['tipo-projeto'];
         $descricaoProjeto = $_POST['descricao-projeto'];
+
+        $radioDescFuncionalides = $_POST['radio-desc-funcionalidades-editar'];
+        $descricaoFuncionalidades = '';
+
+        if ($radioDescFuncionalides == 'Sim') {
+            $descricaoFuncionalidades = trim($_POST['descricao-funcionalidades-editar']);
+        }
+
         $descricaoTipoProjeto = $_POST['descricao-tipo-projeto'];
 
         $idCategoria = $_POST['id-categoria-projeto'];
@@ -298,6 +306,7 @@
                 SET 
                     nome_projeto = ?, 
                     descricao = ?, 
+                    descricao_funcionalidades = ?,
                     descricao_tipo_projeto = ?, 
                     id_categoria = ?, 
                     tipo_projeto = ?,
@@ -315,9 +324,10 @@
     
             mysqli_stmt_bind_param(
                 $sql, 
-                "sssissssssssss", 
+                "ssssissssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
+                $descricaoFuncionalidades,
                 $descricaoTipoProjeto,
                 $idCategoria, 
                 $tipoProjeto, 
