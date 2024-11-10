@@ -44,6 +44,7 @@
                             $idProjeto = $valorProjeto['id_projeto'];
                             $nomeProjeto = $valorProjeto['nome_projeto'];
                             $descricao = $valorProjeto['descricao'];
+                            $descricaoFuncionalidades = $valorProjeto['descricao_funcionalidades'];
                             $descricaoTipoProjeto = $valorProjeto['descricao_tipo_projeto'];
                             $tipoProjeto = $valorProjeto['tipo_projeto'];
                             $dtDesenvolvimento = $valorProjeto['dt_desenvolvimento'];
@@ -150,6 +151,20 @@
                                                 <p class="font-2-md-r peso-normal"><?= $descricao ?></p>
                                             </div>
                                         </div>
+                                        <?php
+
+                                            if (strlen($descricaoFuncionalidades) > 0) {
+                                                ?>
+                                                    <div class="accordion-container">
+                                                        <div class="accordion-titulo font-2-md-r">Funcionalidades do projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                                        <div class="accordion-conteudo">
+                                                            <p class="font-2-md-r peso-normal p-legenda"><?= $descricaoFuncionalidades ?></p>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                            }
+                                        
+                                        ?>
                                         <div class="accordion-container">
                                             <div class="accordion-titulo font-2-md-r">Tecnologias utilizadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                                             <div class="accordion-conteudo tecnologias">
