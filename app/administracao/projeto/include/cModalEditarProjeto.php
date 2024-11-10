@@ -11,6 +11,7 @@
 
         $nomeProjeto = $arrayProjeto['nome_projeto'];
         $descricaoProjeto = $arrayProjeto['descricao'];
+        $radioDescFuncionalides = $arrayProjeto['descricao_funcionalidades'];
         $descricaoTipoProjeto = $arrayProjeto['descricao_tipo_projeto'];
         $idCategoria = $arrayProjeto['id_categoria'];
         $tipoProjeto = $arrayProjeto['tipo_projeto'];
@@ -254,14 +255,37 @@
                         <div class="tab-pane fade" id="descricoes-pane-editar" role="tabpanel" aria-labelledby="descricoes-tab-editar" tabindex="0">
                             <div class="mb-1">
                                 <label class="font-1-s" for="descricao-projeto">Descrição <em>*</em></label>
-                                <textarea class="form-control descricao-projeto" name="descricao-projeto" id="descricao-projeto"><?= $descricaoProjeto?></textarea>
-                                <div class="feedback-qnt-invalida" style="display: flex; justify-content: end; padding: 5px">
-                                    <span class="feedback-invalido">0</span>/190 caracteres
+                                <textarea class="form-control descricao-projeto-editar desc-projeto" name="descricao-projeto" id="descricao-projeto"><?= $descricaoProjeto?></textarea>
+                                <div class="feedback-qnt-caracteres descricao-projeto-feedback" style="display: flex; justify-content: end; padding: 5px">
+                                    <span class="feedback-caracteres">0 caracteres</span>
                                 </div>
                             </div>
+
+                            <div class="mb-4">
+                                <label class="font-1-s" for="radio-desc-funcionalidades-editar">Adicionar descrição de funcionalidades?</label><br>
+                                <div class="container-check funcionalidades">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="radio-desc-funcionalidades-editar-nao">Não</label>
+                                        <input class="form-check-input radio-desc-funcionalidades-editar" type="radio" name="radio-desc-funcionalidades-editar" id="radio-desc-funcionalidades-editar-nao" value="Nao" <?= strlen($radioDescFuncionalides) == 0 ? 'checked' : ''?>>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="radio-desc-funcionalidades-editar-sim">Sim</label>
+                                        <input class="form-check-input radio-desc-funcionalidades-editar" type="radio" name="radio-desc-funcionalidades-editar" id="radio-desc-funcionalidades-editar-sim" value="Sim" <?= strlen($radioDescFuncionalides) > 0 ? 'checked' : ''?>>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 container-descricao-funcionalidades-editar">
+                                <label class="font-1-s" for="descricao-funcionalidades-editar">Descrição de funcionalidades</label>
+                                <textarea class="form-control descricao-funcionalidades-editar desc-funcionalidades" name="descricao-funcionalidades-editar" id="descricao-funcionalidades-editar"><?= strlen($radioDescFuncionalides) > 0 ? $radioDescFuncionalides : ''?></textarea>
+                                <div class="feedback-qnt-caracteres descricao-funcionalidades-feedback" style="display: flex; justify-content: end; padding: 5px">
+                                    <span class="feedback-caracteres">0 caracteres</span>
+                                </div>
+                            </div>
+                            
                             <div class="mb-4">
                                 <label class="font-1-s" for="descricao-tipo-projeto">Descrição tipo de projeto <em>*</em></label>
-                                <textarea class="form-control" name="descricao-tipo-projeto" id="descricao-tipo-projeto"><?= $descricaoTipoProjeto?></textarea>
+                                <textarea class="form-control descricao-tipo-projeto desc-tipo-projeto" name="descricao-tipo-projeto" id="descricao-tipo-projeto"><?= $descricaoTipoProjeto?></textarea>
                             </div>
                         </div>
     
