@@ -93,3 +93,22 @@
     background-color: var(--color-a-green3) !important;
     border-color: inherit;
 }
+
+.feedback-qnt-caracteres.alert-1 {
+    color: var(--color-a-yellow4);
+}
+
+.desc-projeto, 
+.desc-tipo-projeto {
+    min-height: 120px !important;
+    max-height: 180px !important;
+}
+
+.desc-funcionalidades {
+    min-height: 200px !important;
+    max-height: 400px !important;
+}
+
+.container-descricao-funcionalidades {
+    display: none;
+}
