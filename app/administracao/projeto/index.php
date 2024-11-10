@@ -282,15 +282,37 @@
                             <div class="tab-pane fade" id="descricoes-tab-pane" role="tabpanel" aria-labelledby="descricoes" tabindex="0">
                                 <div class="mb-1">
                                     <label class="font-1-s" for="descricao-projeto">Descrição <em>*</em></label>
-                                    <textarea class="form-control descricao-projeto" name="descricao-projeto" id="descricao-projeto"></textarea>
-                                    <div class="feedback-qnt-invalida" style="display: flex; justify-content: end; padding: 5px">
-                                        <span class="feedback-invalido">0</span>/190 caracteres
+                                    <textarea class="form-control descricao-projeto desc-projeto" name="descricao-projeto" id="descricao-projeto"></textarea>
+                                    <div class="feedback-qnt-caracteres descricao-projeto-feedback" style="display: flex; justify-content: end; padding: 5px">
+                                        <span class="feedback-caracteres">0 caracteres</span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="font-1-s" for="radio-desc-funcionalidades">Adicionar descrição de funcionalidades?</label><br>
+                                    <div class="container-check funcionalidades">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="radio-desc-funcionalidades-nao">Não</label>
+                                            <input class="form-check-input radio-desc-funcionalidades" type="radio" name="radio-desc-funcionalidades" id="radio-desc-funcionalidades-nao" value="Nao" checked>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="radio-desc-funcionalidades-sim">Sim</label>
+                                            <input class="form-check-input radio-desc-funcionalidades" type="radio" name="radio-desc-funcionalidades" id="radio-desc-funcionalidades-sim" value="Sim">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4 container-descricao-funcionalidades">
+                                    <label class="font-1-s" for="descricao-funcionalidades">Descrição de funcionalidades</label>
+                                    <textarea class="form-control descricao-funcionalidades desc-funcionalidades" name="descricao-funcionalidades" id="descricao-funcionalidades"></textarea>
+                                    <div class="feedback-qnt-caracteres descricao-funcionalidades-feedback" style="display: flex; justify-content: end; padding: 5px">
+                                        <span class="feedback-caracteres">0 caracteres</span>
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="font-1-s" for="descricao-tipo-projeto">Descrição tipo de projeto <em>*</em></label>
-                                    <textarea class="form-control" name="descricao-tipo-projeto" id="descricao-tipo-projeto"></textarea>
+                                    <textarea class="form-control descricao-tipo-projeto desc-tipo-projeto" name="descricao-tipo-projeto" id="descricao-tipo-projeto"></textarea>
                                 </div>
                             </div>
         
@@ -491,23 +513,12 @@
             });
         });
         
-        fedbackInvalido = $('.feedback-invalido').val();
-        btnCadastrar = $('.btn-primary.cadastrar')[0];
-
-        $('.descricao-projeto').keyup(function (e) { 
-            var texto = $(this).val();
-            var qntCaractere = texto.length;
-            $('.feedback-invalido').text(qntCaractere);
-            
-            if (qntCaractere > 190) {
-                $('.feedback-qnt-invalida').addClass('invalid');
-                $(btnCadastrar).attr('disabled', true);
-
-            } else {
-                $('.feedback-qnt-invalida').removeClass('invalid');
-                $(btnCadastrar).removeAttr('disabled', true);
-            }
-        });
+        const classeTextAreaDescricaoProjeto = '.descricao-projeto';
+        const classeTextAreaDescricaoFuncionalidades = '.descricao-funcionalidades';
+        const classeContainerFeedbackDescricaoProjeto  = '.descricao-projeto-feedback';
+        const classeContainerFeedbackDescricaoFuncionalidades  = '.descricao-funcionalidades-feedback';
+        quantidadeCaracteres(classeTextAreaDescricaoProjeto, classeContainerFeedbackDescricaoProjeto);
+        quantidadeCaracteres(classeTextAreaDescricaoFuncionalidades, classeContainerFeedbackDescricaoFuncionalidades);
 
         var arrayAutores = [];
 
@@ -566,9 +577,7 @@
         });
 
         visibilidadeContainerAutores(projetoEquipe);
-    });
 
-    $(document).ready(function () {
         $('.btn-galeria-projeto').click(function (e) { 
             e.preventDefault();
             const idProjeto = $(this).closest('tr').data('id-projeto');
@@ -580,5 +589,30 @@
             window.location.href = 'include/galeriaProjeto.php?' + queryString;
             
         });
+
+        $('.radio-desc-funcionalidades').click(function (e) { 
+            const descricaoFuncionalidades = $(this).val();
+            const containerTextoFuncionalidades = $('.container-descricao-funcionalidades')[0];
+
+            function visibilidadeContainerTextFuncionalidades(descricaoFuncionalidades) {
+                if (descricaoFuncionalidades == 'Nao') {
+                    containerTextoFuncionalidades.style.display = 'none';
+
+                } else {
+                    containerTextoFuncionalidades.style.display = 'block';
+                }
+            }
+            
+            visibilidadeContainerTextFuncionalidades(descricaoFuncionalidades);
+            
+        });
+
+        $('#staticBackdrop').on('shown.bs.modal', function() {
+            resetarFeedbackCaracteres('.descricao-projeto-feedback');
+            resetarFeedbackCaracteres('.descricao-funcionalidades-feedback');
+        });
+
     });
 </script>
+
+<script src="<?= BASE_URL . '/js/quantidadeCaracteres.js'?>"></script>
