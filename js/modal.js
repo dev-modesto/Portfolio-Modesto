@@ -150,6 +150,35 @@ function abrirModalEditarProjeto(botaoClick, classIdTabela, idDataPesquisa, urlC
                     var projetoEquipeEditar = $(this).val();
                     visibilidadeContainerAutoresEditar(projetoEquipeEditar);
                 });
+
+                const descricaoFuncionalidades = $('input[name="radio-desc-funcionalidades-editar"]:checked').val();
+                const containerTextoFuncionalidades = $('.container-descricao-funcionalidades-editar')[0];
+
+                function visibilidadeContainerTextFuncionalidadesEditar(descricaoFuncionalidades) {
+
+                    if (descricaoFuncionalidades == 'Nao') {
+                        containerTextoFuncionalidades.style.display = 'none';
+    
+                    } else {
+                        containerTextoFuncionalidades.style.display = 'block';
+                    }
+                }
+
+                visibilidadeContainerTextFuncionalidadesEditar(descricaoFuncionalidades);
+
+                $('.radio-desc-funcionalidades-editar').change(function (e) { 
+                    e.preventDefault();
+        
+                    var radioDescFuncionalidadesEditar = $(this).val();
+                    visibilidadeContainerTextFuncionalidadesEditar(radioDescFuncionalidadesEditar);
+                });
+
+                const classeTextAreaDescricaoProjetoEditar = '.descricao-projeto-editar';
+                const classeContainerFeedbackDescricaoProjeto  = '.descricao-projeto-feedback';
+                const classeTextAreaDescricaoFuncionalidadesEditar = '.descricao-funcionalidades-editar';
+                const classeContainerFeedbackDescricaoFuncionalidades  = '.descricao-funcionalidades-feedback';
+                quantidadeCaracteresEditar(classeTextAreaDescricaoProjetoEditar, classeContainerFeedbackDescricaoProjeto);
+                quantidadeCaracteresEditar(classeTextAreaDescricaoFuncionalidadesEditar, classeContainerFeedbackDescricaoFuncionalidades);
             }
         });
     });

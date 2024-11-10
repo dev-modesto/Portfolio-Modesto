@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="<?=BASE_URL?>/css/login/login.css">
 </head>
 <body>
-    
-    <div class="container-forma">
+    <div class="conteudo-login">
+        <div class="container-forma">
+        </div>
         <div class="container-login">
             <div>      
                 <div class="container-img">

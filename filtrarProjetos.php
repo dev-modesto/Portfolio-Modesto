@@ -30,6 +30,7 @@
             $idProjeto = $valorProjeto['id_projeto'];
             $nomeProjeto = $valorProjeto['nome_projeto'];
             $descricao = $valorProjeto['descricao'];
+            $descricaoFuncionalidades = $valorProjeto['descricao_funcionalidades'];
             $descricaoTipoProjeto = $valorProjeto['descricao_tipo_projeto'];
             $tipoProjeto = $valorProjeto['tipo_projeto'];
             $dtDesenvolvimento = $valorProjeto['dt_desenvolvimento'];
@@ -104,9 +105,9 @@
                         </div>
                     </div>
                     <div class="card-projeto-completo-imagem">
-                        <a class="btn-img-ant btn-img-prevnext" onclick="prevImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_left</span></a>
+                        <button class="btn-img-ant btn-img-prevnext" onclick="prevImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_left</span></button>
                         <img id="imagem-projeto-<?= $indiceProjeto ?>" src="<?= $imagens[0]['caminho'] ?>" alt="">
-                        <a class="btn-img-prox btn-img-prevnext" onclick="nextImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_right</span></a>
+                        <button class="btn-img-prox btn-img-prevnext" onclick="nextImage(<?= $indiceProjeto ?>)"><span class="material-symbols-rounded">chevron_right</span></button>
                     </div>
                     <div class="container-indice-marcador-imagem indice-projeto-<?= $indiceProjeto ?>">
                         <?php
@@ -137,8 +138,22 @@
                                 <p class="font-2-md-r peso-normal"><?= $descricao ?></p>
                             </div>
                         </div>
+                        <?php
+
+                            if (strlen($descricaoFuncionalidades) > 0) {
+                                ?>
+                                    <div class="accordion-container">
+                                        <div class="accordion-titulo font-2-md-r">Funcionalidades do projeto<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                                        <div class="accordion-conteudo">
+                                            <p class="font-2-md-r peso-normal p-legenda"><?= $descricaoFuncionalidades ?></p>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
+
+                        ?>
                         <div class="accordion-container">
-                            <div class="accordion-titulo">Tecnologias utilzadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                            <div class="accordion-titulo">Tecnologias utilizadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                             <div class="accordion-conteudo tecnologias">
                                 <?php
 
@@ -184,7 +199,7 @@
                                         $linkGithub = $valor['link_github'];
 
                                         ?>
-                                            <a class="" href="<?= $linkLinkedin?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
+                                            <a class="font-2-md-r peso-normal" href="<?= $linkLinkedin == '' ? '#' : $linkLinkedin ?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
                                                 <span class="material-symbols-rounded">person_pin</span><?= $nomeAutor ?>
                                             </a>
 

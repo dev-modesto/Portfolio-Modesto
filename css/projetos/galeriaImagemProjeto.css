@@ -7,8 +7,7 @@
 }
 
 .container-galeria {
-    border: 1px solid var(--color-c4);
-    border-radius: .7rem;
+    border-radius: .2rem;
     min-height: 75dvh;
     height: auto;
     display: grid;
@@ -19,6 +18,7 @@
     ;
     max-width: 1450px;
     background-color: white;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 5%);
 }
 
 .conteudo-imagem {
@@ -48,6 +48,20 @@
 }
 
 .container-header-titulo-galeria {
-    max-width: 1440px;
-    padding: 10px 0px;
+    max-width: 1448px;
+    padding: 10px 20px;
+    background-color: var(--color-c0);
+    border-radius: .2rem;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 5%);
 }
+
+.container-tabela {
+    margin-top: 30px;
+    background-color: #fff;
+    box-sizing: border-box;
+    overflow-x: auto;
+    padding: 5px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 5%);
+  }
+  

@@ -5,32 +5,11 @@
     include BASE_PATH . '/include/funcoes/diversas/mensagem.php';
     include BASE_PATH . '/include/funcoes/dbQuery/autor.php';
 
+    $tituloPaginaHead = 'Projetos | Administração | devModesto';
+    $tituloPagina = 'Projetos';
+    include BASE_PATH . '/include/head/headPagAdministracao.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>-</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Poppins:wght@200;300;400;500;600;700&family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
-
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/fonts.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/cor.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/componentes.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/global.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/global/navbar.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-lateral.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/navbar/navbar-top.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/projetos/projetos.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
-</head>
 <body>
 <?php
     include BASE_PATH . '/include/preLoad/preLoad.php';
@@ -163,22 +142,22 @@
 
                         <ul class="nav nav-underline">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="informacoes-iniciais" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane" type="button" role="tab" aria-controls="informacoes-iniciais-pane" aria-selected="true">Início</button>
+                                <button class="nav-link nav-modal active" id="informacoes-iniciais" data-bs-toggle="tab" data-bs-target="#informacoes-iniciais-pane" type="button" role="tab" aria-controls="informacoes-iniciais-pane" aria-selected="true">Início</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="imagens" data-bs-toggle="tab" data-bs-target="#imagens-pane" type="button" role="tab" aria-controls="imagens-pane" aria-selected="true">Imagens</button>
+                                <button class="nav-link nav-modal" id="imagens" data-bs-toggle="tab" data-bs-target="#imagens-pane" type="button" role="tab" aria-controls="imagens-pane" aria-selected="true">Imagens</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="descricoes-tab" data-bs-toggle="tab" data-bs-target="#descricoes-tab-pane" type="button" role="tab" aria-controls="descricoes-tab-pane" aria-selected="false">Descrições</button>
+                                <button class="nav-link nav-modal" id="descricoes-tab" data-bs-toggle="tab" data-bs-target="#descricoes-tab-pane" type="button" role="tab" aria-controls="descricoes-tab-pane" aria-selected="false">Descrições</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
+                                <button class="nav-link nav-modal" id="links-projeto" data-bs-toggle="tab" data-bs-target="#links-projeto-pane" type="button" role="tab" aria-controls="links-projeto-pane" aria-selected="false">Links</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tab-autores-projeto" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane" type="button" role="tab" aria-controls="autores-projeto-pane" aria-selected="false">Autores</button>
+                                <button class="nav-link nav-modal" id="tab-autores-projeto" data-bs-toggle="tab" data-bs-target="#autores-projeto-pane" type="button" role="tab" aria-controls="autores-projeto-pane" aria-selected="false">Autores</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
+                                <button class="nav-link nav-modal" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
                             </li>
                         </ul>
                         <br>
@@ -303,15 +282,37 @@
                             <div class="tab-pane fade" id="descricoes-tab-pane" role="tabpanel" aria-labelledby="descricoes" tabindex="0">
                                 <div class="mb-1">
                                     <label class="font-1-s" for="descricao-projeto">Descrição <em>*</em></label>
-                                    <textarea class="form-control descricao-projeto" name="descricao-projeto" id="descricao-projeto"></textarea>
-                                    <div class="feedback-qnt-invalida" style="display: flex; justify-content: end; padding: 5px">
-                                        <span class="feedback-invalido">0</span>/190 caracteres
+                                    <textarea class="form-control descricao-projeto desc-projeto" name="descricao-projeto" id="descricao-projeto"></textarea>
+                                    <div class="feedback-qnt-caracteres descricao-projeto-feedback" style="display: flex; justify-content: end; padding: 5px">
+                                        <span class="feedback-caracteres">0 caracteres</span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="font-1-s" for="radio-desc-funcionalidades">Adicionar descrição de funcionalidades?</label><br>
+                                    <div class="container-check funcionalidades">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="radio-desc-funcionalidades-nao">Não</label>
+                                            <input class="form-check-input radio-desc-funcionalidades" type="radio" name="radio-desc-funcionalidades" id="radio-desc-funcionalidades-nao" value="Nao" checked>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="radio-desc-funcionalidades-sim">Sim</label>
+                                            <input class="form-check-input radio-desc-funcionalidades" type="radio" name="radio-desc-funcionalidades" id="radio-desc-funcionalidades-sim" value="Sim">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4 container-descricao-funcionalidades">
+                                    <label class="font-1-s" for="descricao-funcionalidades">Descrição de funcionalidades</label>
+                                    <textarea class="form-control descricao-funcionalidades desc-funcionalidades" name="descricao-funcionalidades" id="descricao-funcionalidades"></textarea>
+                                    <div class="feedback-qnt-caracteres descricao-funcionalidades-feedback" style="display: flex; justify-content: end; padding: 5px">
+                                        <span class="feedback-caracteres">0 caracteres</span>
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="font-1-s" for="descricao-tipo-projeto">Descrição tipo de projeto <em>*</em></label>
-                                    <textarea class="form-control" name="descricao-tipo-projeto" id="descricao-tipo-projeto"></textarea>
+                                    <textarea class="form-control descricao-tipo-projeto desc-tipo-projeto" name="descricao-tipo-projeto" id="descricao-tipo-projeto"></textarea>
                                 </div>
                             </div>
         
@@ -512,23 +513,12 @@
             });
         });
         
-        fedbackInvalido = $('.feedback-invalido').val();
-        btnCadastrar = $('.btn-primary.cadastrar')[0];
-
-        $('.descricao-projeto').keyup(function (e) { 
-            var texto = $(this).val();
-            var qntCaractere = texto.length;
-            $('.feedback-invalido').text(qntCaractere);
-            
-            if (qntCaractere > 190) {
-                $('.feedback-qnt-invalida').addClass('invalid');
-                $(btnCadastrar).attr('disabled', true);
-
-            } else {
-                $('.feedback-qnt-invalida').removeClass('invalid');
-                $(btnCadastrar).removeAttr('disabled', true);
-            }
-        });
+        const classeTextAreaDescricaoProjeto = '.descricao-projeto';
+        const classeTextAreaDescricaoFuncionalidades = '.descricao-funcionalidades';
+        const classeContainerFeedbackDescricaoProjeto  = '.descricao-projeto-feedback';
+        const classeContainerFeedbackDescricaoFuncionalidades  = '.descricao-funcionalidades-feedback';
+        quantidadeCaracteres(classeTextAreaDescricaoProjeto, classeContainerFeedbackDescricaoProjeto);
+        quantidadeCaracteres(classeTextAreaDescricaoFuncionalidades, classeContainerFeedbackDescricaoFuncionalidades);
 
         var arrayAutores = [];
 
@@ -587,9 +577,7 @@
         });
 
         visibilidadeContainerAutores(projetoEquipe);
-    });
 
-    $(document).ready(function () {
         $('.btn-galeria-projeto').click(function (e) { 
             e.preventDefault();
             const idProjeto = $(this).closest('tr').data('id-projeto');
@@ -601,5 +589,30 @@
             window.location.href = 'include/galeriaProjeto.php?' + queryString;
             
         });
+
+        $('.radio-desc-funcionalidades').click(function (e) { 
+            const descricaoFuncionalidades = $(this).val();
+            const containerTextoFuncionalidades = $('.container-descricao-funcionalidades')[0];
+
+            function visibilidadeContainerTextFuncionalidades(descricaoFuncionalidades) {
+                if (descricaoFuncionalidades == 'Nao') {
+                    containerTextoFuncionalidades.style.display = 'none';
+
+                } else {
+                    containerTextoFuncionalidades.style.display = 'block';
+                }
+            }
+            
+            visibilidadeContainerTextFuncionalidades(descricaoFuncionalidades);
+            
+        });
+
+        $('#staticBackdrop').on('shown.bs.modal', function() {
+            resetarFeedbackCaracteres('.descricao-projeto-feedback');
+            resetarFeedbackCaracteres('.descricao-funcionalidades-feedback');
+        });
+
     });
 </script>
+
+<script src="<?= BASE_URL . '/js/quantidadeCaracteres.js'?>"></script>
