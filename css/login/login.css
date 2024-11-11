@@ -118,6 +118,7 @@ body {
 
 .btn-entrar:disabled {
     background-color: var(--color-s1);
+    cursor: not-allowed;
 }
 
 .container-input-usuario,

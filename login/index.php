@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="container-button">
-                        <button class="btn-entrar font-1-s peso-semi-bold" type="submit">Entrar</button>
+                        <button class="btn-entrar font-1-s peso-semi-bold" type="submit" disabled="true">Entrar</button>
                     </div>
                 </form>
                 <?php
