@@ -27,42 +27,11 @@ ativarMenu.addEventListener('click', function(){
 })
 
 
-const linksSubHeader = document.querySelectorAll('.container-header-itens li a');
-    function ativarLinkSubMenu(link){
-        const url = window.location.href;
-        const href = link.href;
-
-        if (url.includes(href)){
-            link.classList.add('link-ativo-sub-menu');
-        }
-    }
-
-linksSubHeader.forEach(ativarLinkSubMenu);
-
-
-var dropdownAcomodacoes = document.querySelector(".dropdown-acomodacoes");
-var cotainerDropdownAcomodacoes = document.querySelector(".container-dropwdown-acomodacoes");
-
-if (dropdownAcomodacoes) {
-    dropdownAcomodacoes.addEventListener('click', function() {
-
-        if(cotainerDropdownAcomodacoes.style.display === 'block'){
-            cotainerDropdownAcomodacoes.style.display = 'none';
-            icon.style.rotate = '0deg';
-        } else {
-            cotainerDropdownAcomodacoes.style.display = 'block';
-            icon.style.rotate = '180deg';
-        }
-
-    })
-}
-
 var botaoMinMenu = document.querySelector(".botao-menu");
 var botaoMinMenuIcone = document.querySelector(".botao-menu span");
 var menuLateral = document.querySelector(".container-navbar-lateral");
 var bodyMin = document.querySelector("body");
 var menuPrincipalMin = document.querySelector(".principal-container-header");
-var menuTopMin = document.querySelector(".container-header-itens");
 var textoNav = document.querySelectorAll(".texto-nav");
 var imgLogo = document.querySelector(".img-logo");
 

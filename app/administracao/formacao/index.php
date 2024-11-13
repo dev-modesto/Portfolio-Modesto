@@ -175,7 +175,7 @@
                     <div class="row mb-4">
                         <div class="col-md-6 mb-4">
                             <label class="font-1-s" for="categoria-curso">Categoria do Curso <em>*</em></label><br>
-                            <select class="form-select" name="categoria-curso" id="">
+                            <select class="form-select" name="categoria-curso" required>
                                 <option value="" selected>Escolha a area de formacao</option>
                                 <option value="Curso Livre">Curso Livre</option>
                                 <option value="Técnico">Técnico</option>

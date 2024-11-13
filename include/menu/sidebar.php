@@ -1,5 +1,8 @@
 <?php 
 
+    if(session_status() == PHP_SESSION_ACTIVE){
+        $nomeUsuario = $_SESSION['nome'];
+    }
 ?>
 
 <body class="body-conteudo">
@@ -20,8 +23,8 @@
         <div class="container-usuario-logado">
             <div class="usuario-info">
                 <div class="usuario-logado-texto">
-                    <p></p>
-                    <span></span>
+                    <p><?= $nomeUsuario ?></p>
+                    <span>Administrador</span>
                 </div>
                 <div class="usuario-logado-icodown">
                     <span class="material-symbols-rounded ico-icodown">keyboard_arrow_down</span>
@@ -38,7 +41,7 @@
 
 <nav class="container-navbar-lateral">
     <div class="logo sidebar">
-        <img class="img-logo" src="<?=BASE_URL?>/assets/img/logo/logo-white.svg"  data-logoMax="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMin="<?=BASE_URL?>/assets/img/logo/logo-white-min.svg" alt="">
+        <a href="<?= BASE_URL . "/index.php#"?>"><img class="img-logo" src="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMax="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMin="<?=BASE_URL?>/assets/img/logo/logo-white-min.svg" alt=""></a>
     </div>
 
     <ul class="navbar-itens">
