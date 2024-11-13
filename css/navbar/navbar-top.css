@@ -36,24 +36,19 @@
     .usuario-logado-texto p {
         font-size: .82rem;
         font-weight: 400;
-        color: var(--cor-3);
     }
 
     .usuario-logado-texto span {
         font-size: .72rem;
         font-weight: 300;
-        color: var(--cor-3);
     }
 
 .usuario-logado-icodown {
-    color: var(--cor-1);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0px 10px 0px 10px;
-    /* border-left: 2px solid; */
-    border-color: var(--cor-s7);
 }
 
 .usuario-info {
@@ -62,14 +57,15 @@
     position: relative;
     cursor: pointer;
     transition: all .2s;
+    border-left: 1px solid var(--color-c2);
 }
+
 .usuario-info:hover {
-    background-color: var(--cor-p4);
+    background-color: #F2F5FA;
 }
 
 .usuario-info:hover .ico-icodown  {
-    background-color: var(--cor-p4);
-    color: var(--cor-s2);
+    color: var(--color-s2);
 }
 
 .ico-icodown {
@@ -83,13 +79,12 @@
 }
 
 .usuario-logado-texto {
-    color: var(--cor-1);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0px 10px 0px 10px;
-    border-color: var(--cor-s7);
+    border-color: var(--color-s7);
 }
 
 .usuario-logado-foto {
@@ -107,8 +102,8 @@
 
 /* dropdown usuario logado */
 .usuario-logado-dropdown {
-    background-color: var(--cor-0);
-    border: 1px solid var(--cor-3);
+    background-color: var(--color-c0);
+    border: 1px solid var(--color-c3);
     border-radius: 0.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 5%);
     padding: 10px;
@@ -137,23 +132,21 @@
         font-size: .82rem;
         transition: all .2s;
         gap: 5px;
-        color: var(--cor-6);
+        color: var(--color-c10);
         transition: ease-out .2s;
     }
 
     .dropwdown-logado li a span {
-        color: var(--cor-6);
+        color: var(--color-c10);
         transition: ease-out .2s;
     }
     
     .dropwdown-logado li a:hover {
-        background-color: var(--cor-1);
-        color: var(--cor-10);
+        color: var(--color-10);
     }
 
     .dropwdown-logado li a:hover span {
-        background-color: var(--cor-1);
-        color: var(--cor-10);
+        color: var(--color-10);
     }
 
 
@@ -163,106 +156,11 @@
 }
 
 .container-titulo-cabecalho h1 {
-    color: var(--cor-0);
+    color: var(--color-0);
 }
-
-.sub-container-header {
-    background-color: var(--cor-0);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0px 30px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 10%);
-    border: 1px solid #dee2e6;
-    position: fixed;
-    z-index: 5;
-    top: 60px;
-    width: 100%;
-}
-
-    .container-header-itens {
-        display: flex;
-        gap: 5px;
-        height: 100%;
-        padding-left: 226px;
-    }
-
     .header-sub-min {
         padding-left: 70px;
     }
         .header-sub-min-pequeno {
             padding-left: 0px;
         }
-
-    .container-header-itens li {
-        display: flex;
-        align-items: center;
-        height: 100%;
-    }
-
-    .container-header-itens li a {
-        box-sizing: border-box;
-        padding: 0px 10px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        font-weight: 400;
-        color: var(--cor-6);
-    }
-
-    .container-header-itens li:hover {
-        background-color: var(--cor-1);
-        transition: all .2s;
-    }
-
-    .container-header-itens li a:hover {
-        color: var(--cor-8);
-    }
-
-    .container-header-itens li a {
-        border-bottom: 2px solid transparent;
-    }
-
-    .link-ativo-sub-menu {
-        background-color: var(--cor-1);
-        transition: all .2s;
-        border-bottom: 2px solid var(--cor-s5) !important;
-    }
-
-.container-dropwdown-acomodacoes {
-    background-color: var(--cor-0);
-    border: 1px solid var(--cor-3);
-    border-radius: 0.5rem;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 5%);
-    padding: 10px;
-    position: absolute;
-    width: 50px;
-    width: auto;
-    box-sizing: border-box;
-    top: 60px;
-    z-index: 2;
-    display: none;
-}
-
-.container-dropwdown-itens {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.container-dropwdown-itens li {
-    height: 30px;
-}
-
-.container-dropwdown-itens li a {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    width: 100%;
-    height: auto;
-    font-size: .82rem;
-    transition: all .2s;
-    gap: 5px;
-    color: var(--cor-6);
-    transition: ease-out .2s;
-}

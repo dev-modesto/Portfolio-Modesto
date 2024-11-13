@@ -58,11 +58,6 @@
         display: none;
     }
 
-/* .container-navbar-lateral.menu-min.menu-oculto + .container-botao-menu {
-    left: 5px;
-} */
-
-
 .logo.administracao {
     display: flex;
     align-items: center;
@@ -137,8 +132,6 @@
         'aside sub-header'
         'aside conteudo'
     ;
-    background-color: var(--cor-1);
-    background-color: #EEF2F5;
     background-color: #F2F5FA;
 }
 
