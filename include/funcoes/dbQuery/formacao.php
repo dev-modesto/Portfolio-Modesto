@@ -1,6 +1,6 @@
 <?php
 
-function cFormacaoAcademica ($con, $idFormacao = null, $categoriaFormacao = []) {
+function cFormacaoAcademica ($con, $idFormacao = null, $idAreaFormacao = null, $categoriaFormacao = []) {
     $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
@@ -11,11 +11,17 @@ function cFormacaoAcademica ($con, $idFormacao = null, $categoriaFormacao = []) 
         $vars[] = $idFormacao;
     }
 
+    if (!empty($idAreaFormacao)) {
+        $where .= " AND f.id_area_formacao = ?";
+        $types .= 'i';
+        $vars[] = $idAreaFormacao;
+    }
+
     if (!empty($categoriaFormacao)) {
         $placeholders = str_repeat('?,', count($categoriaFormacao) -1) . '?';
         $where .= " AND f.categoria_curso IN($placeholders)";
-        $types = str_repeat('s', count($categoriaFormacao));
-        $vars = $categoriaFormacao;
+        $types .= str_repeat('s', count($categoriaFormacao));
+        $vars = array_merge($vars, $categoriaFormacao);
     }
 
     $sql = mysqli_prepare(
@@ -62,7 +68,7 @@ function cAreaFormacao ($con, $idAreaFormacao = null) {
         $vars[] = $idAreaFormacao; 
     }
 
-    $sql = mysqli_prepare($con, "SELECT * FROM tbl_area_formacao $where");
+    $sql = mysqli_prepare($con, "SELECT * FROM tbl_area_formacao $where order by nome asc");
 
     if ($vars) {
         mysqli_stmt_bind_param($sql, $types, ...$vars);

@@ -56,7 +56,7 @@
                             <?php 
 
                                 $categorias = ['Tecnólogo', 'Técnico'];
-                                $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                                $cFormacaoAcademica = cFormacaoAcademica($con, null, null, $categorias);
                                 $retorno = mysqli_fetch_all($cFormacaoAcademica, MYSQLI_ASSOC);
 
                                 foreach ($retorno as $chave => $exibe) {
@@ -97,7 +97,7 @@
                         <tbody class="table-group-divider">
                             <?php 
                                 $categorias = ['Curso livre'];
-                                $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                                $cFormacaoAcademica = cFormacaoAcademica($con, null, null, $categorias);
                                 $retorno = mysqli_fetch_all($cFormacaoAcademica, MYSQLI_ASSOC);
 
                                 foreach ($retorno as $chave => $exibe) {
@@ -212,8 +212,8 @@
                         <label class="font-1-s" for="status-curso">Status <em>*</em></label><br>
                         <select class="form-select" name="status" id="" required>
                             <option value="" selected>Defina um status</option>
-                            <option value="Concluído">Concluído</option>
                             <option value="Andamento">Andamento</option>
+                            <option value="Concluído">Concluído</option>
                         </select>
                     </div>
 

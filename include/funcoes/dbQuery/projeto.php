@@ -114,7 +114,7 @@ function cCategoriaProjeto($con, $idCategoria = null){
         $vars[] = $idCategoria;
     }
     
-    $sql = mysqli_prepare($con, "SELECT * FROM tbl_categoria_projeto $where");
+    $sql = mysqli_prepare($con, "SELECT * FROM tbl_categoria_projeto $where order by nome asc");
 
     if ($vars) {
         mysqli_stmt_bind_param($sql, $types, ...$vars);

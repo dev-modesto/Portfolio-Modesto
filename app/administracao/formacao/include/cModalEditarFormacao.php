@@ -111,8 +111,8 @@
                 <div class="mb-4">
                     <label class="font-1-s" for="status-curso">Status <em>*</em></label><br>
                     <select class="form-select" name="status" id="" required>
-                        <option value="Concluído" <?= ($status == 'Concluído') ? 'selected' : '' ?>>Concluído</option>
                         <option value="Andamento" <?= ($status == 'Andamento') ? 'selected' : ''?>>Andamento</option>
+                        <option value="Concluído" <?= ($status == 'Concluído') ? 'selected' : '' ?>>Concluído</option>
                     </select>
                 </div>
 
