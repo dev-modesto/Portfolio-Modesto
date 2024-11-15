@@ -336,8 +336,6 @@
                     <div class="certificados-cards">
                         <?php 
 
-                            $cFormacaoAcademica = cFormacaoAcademica($con);
-
                             $categorias = ['Curso Livre'];
                             $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
                             foreach ($cFormacaoAcademica as $chave => $resultado) {
