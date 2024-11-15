@@ -83,7 +83,7 @@
             $vars = array_merge($vars, $categoriaImagem);
         }
 
-        $sql = mysqli_prepare($con, "SELECT * FROM tbl_imagem $where");
+        $sql = mysqli_prepare($con, "SELECT * FROM tbl_imagem $where order by nome_titulo asc");
 
         if ($vars) {
             mysqli_stmt_bind_param($sql, $types, ...$vars);
