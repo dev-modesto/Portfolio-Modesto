@@ -1,9 +1,15 @@
 <?php
 
-function cFormacaoAcademica ($con, $idAreaFormacao = null, $categoriaFormacao = []) {
+function cFormacaoAcademica ($con, $idFormacao = null, $idAreaFormacao = null, $categoriaFormacao = []) {
     $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
+
+    if (!empty($idFormacao)) {
+        $where .= " AND f.id_formacao = ?";
+        $types .= 'i';
+        $vars[] = $idFormacao;
+    }
 
     if (!empty($idAreaFormacao)) {
         $where .= " AND f.id_area_formacao = ?";
@@ -62,7 +68,7 @@ function cAreaFormacao ($con, $idAreaFormacao = null) {
         $vars[] = $idAreaFormacao; 
     }
 
-    $sql = mysqli_prepare($con, "SELECT * FROM tbl_area_formacao $where");
+    $sql = mysqli_prepare($con, "SELECT * FROM tbl_area_formacao $where order by nome asc");
 
     if ($vars) {
         mysqli_stmt_bind_param($sql, $types, ...$vars);

@@ -7,7 +7,7 @@
         $idFiltro = $_POST['idFiltro'];
             
         $categorias = ['Curso Livre'];
-        $cFormacaoAcademica = cFormacaoAcademica($con, $idFiltro, $categorias);
+        $cFormacaoAcademica = cFormacaoAcademica($con, null, $idFiltro, $categorias);
 
         foreach($cFormacaoAcademica as $chave => $resultado) {
             $idFormacao = $resultado['id_formacao'];

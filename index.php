@@ -257,7 +257,7 @@
                     <?php
 
                         $categorias = ['Tecnólogo', 'Técnico'];
-                        $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                        $cFormacaoAcademica = cFormacaoAcademica($con, null, null, $categorias);
                         foreach ($cFormacaoAcademica as $chave => $arrayFormacao) {
                   
                             $idFormacao = $arrayFormacao['id_formacao'];
@@ -337,7 +337,7 @@
                         <?php 
 
                             $categorias = ['Curso Livre'];
-                            $cFormacaoAcademica = cFormacaoAcademica($con, null, $categorias);
+                            $cFormacaoAcademica = cFormacaoAcademica($con, null, null, $categorias);
                             foreach ($cFormacaoAcademica as $chave => $resultado) {
 
                                 $idFormacao = $resultado['id_formacao'];
