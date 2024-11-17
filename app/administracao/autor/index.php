@@ -77,7 +77,7 @@
                 <div class="modal-body">
                     <form class="form-container" action="include/gAutor.php" method="post">
                         <div class="mb-4">
-                            <label class="font-1-s" for="instituicao-ensino">Nome Autor<em>*</em></label><br>
+                            <label class="font-1-s" for="nome-autor">Nome Autor<em>*</em></label><br>
                             <input class="form-control" type="text" name="nome-autor" id="nome-autor" required>
                         </div>
 

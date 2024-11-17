@@ -1,5 +1,20 @@
+let windowMetade; 
+
+function tamanhoJanela() {
+    if (window.innerHeight <= 1000) {
+        windowMetade = window.innerHeight * 0.7; 
+
+    } else {
+        windowMetade = window.innerHeight * 0.5; 
+    }
+}
+
+tamanhoJanela();
+window.addEventListener('resize', () => {
+    tamanhoJanela();
+});
+
 function animaScroll() {
-    const windowMetade = window.innerHeight * .5;
     const section = document.querySelectorAll('.js-scroll');
 
     section.forEach((section) => {

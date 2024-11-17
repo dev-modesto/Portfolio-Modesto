@@ -57,7 +57,7 @@ function cFormacaoAcademica ($con, $idFormacao = null, $idAreaFormacao = null, $
     return $consulta;
 }
  
-function cAreaFormacao ($con, $idAreaFormacao = null) {
+function cAreaFormacao ($con, $idAreaFormacao = null, $exibirFiltro = null) {
     $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
@@ -66,6 +66,12 @@ function cAreaFormacao ($con, $idAreaFormacao = null) {
         $where .= ' AND id_area_formacao = ?';
         $types .= 'i';
         $vars[] = $idAreaFormacao; 
+    }
+
+    if (!empty($exibirFiltro)) {
+        $where .= ' AND exibir_filtro = ?';
+        $types .= 's';
+        $vars[] = $exibirFiltro; 
     }
 
     $sql = mysqli_prepare($con, "SELECT * FROM tbl_area_formacao $where order by nome asc");

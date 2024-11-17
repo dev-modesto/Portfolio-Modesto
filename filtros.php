@@ -8,7 +8,7 @@ function filtroCertificadosDesk($con) {
             <button class="filtro-btn filtro-btn-certificado active" name="categoria" value="0">TODOS</button>
 
             <?php 
-                $cAreaFormacao = cAreaFormacao($con);
+                $cAreaFormacao = cAreaFormacao($con, null, 'Sim');
 
                 while ($arrayAreaFormacao = mysqli_fetch_assoc($cAreaFormacao)) {
 
@@ -35,7 +35,7 @@ function filtroCertificadosMobile($con) {
                     <div class="container-select-conteudo">
 
                         <?php 
-                            $cAreaFormacao = cAreaFormacao($con);
+                            $cAreaFormacao = cAreaFormacao($con, null, 'Sim');
                             $arrayAreaFormacaoMin = mysqli_fetch_all($cAreaFormacao, MYSQLI_ASSOC); 
 
                             ?>
