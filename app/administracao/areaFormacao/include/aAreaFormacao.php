@@ -4,6 +4,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_POST['id'];
         $nomeAreaFormacao = $_POST['area-formacao'];
+        isset($_POST['exibir-filtro']) == null ? $exibirFiltro = 'Nao' : $exibirFiltro = 'Sim'; 
 
         mysqli_begin_transaction($con);
 
@@ -13,11 +14,12 @@
                 $con, 
                 "UPDATE tbl_area_formacao
                 SET 
-                    nome = ?
+                    nome = ?,
+                    exibir_filtro = ?
                 WHERE id_area_formacao = '$id'
             ");
 
-            mysqli_stmt_bind_param($sql, 's', $nomeAreaFormacao);
+            mysqli_stmt_bind_param($sql, 'ss', $nomeAreaFormacao, $exibirFiltro);
             mysqli_stmt_execute($sql);
             mysqli_commit($con);
             $mensagem = 'Alterado com sucesso!';

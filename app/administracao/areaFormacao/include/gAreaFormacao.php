@@ -3,6 +3,7 @@
 
     if ($_POST['area-formacao']) {
         $nomeAreaFormacao = trim($_POST['area-formacao']);
+        isset($_POST['exibir-filtro']) == null ? $exibirFiltro = 'Nao' : $exibirFiltro = 'Sim'; 
 
         mysqli_begin_transaction($con);
 
@@ -10,11 +11,11 @@
 
             $sql = mysqli_prepare(
                 $con,
-                "INSERT INTO tbl_area_formacao(nome)
-                VALUES(?)
+                "INSERT INTO tbl_area_formacao(nome, exibir_filtro)
+                VALUES(?, ?)
             ");
 
-            mysqli_stmt_bind_param($sql, "s", $nomeAreaFormacao);
+            mysqli_stmt_bind_param($sql, "ss", $nomeAreaFormacao, $exibirFiltro);
             mysqli_stmt_execute($sql);
             mysqli_commit($con);
             $mensagem = "Gravado com sucesso!";

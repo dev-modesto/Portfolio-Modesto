@@ -34,8 +34,8 @@
                 <input type="text" name="id-tecnologia" id="id-tecnologia" value="<?= $idTecnologia ?>" hidden>
                 <input type="text" name="id-imagem" id="id-imagem" value="<?= $idImagem ?>" hidden>
                 <div class="mb-4">
-                    <label class="font-1-s" for="nome-tecnologia">Nome <em>*</em></label>
-                    <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia" value="<?= $nomeTecnologia ?>" required>
+                    <label class="font-1-s" for="nome-tecnologia-editar">Nome <em>*</em></label>
+                    <input class="form-control" type="text" name="nome-tecnologia" id="nome-tecnologia-editar" value="<?= $nomeTecnologia ?>" required>
                 </div>
 
                 <div class="mb-4">
