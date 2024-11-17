@@ -153,7 +153,7 @@
 
                         ?>
                         <div class="accordion-container">
-                            <div class="accordion-titulo">Tecnologias utilizadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                            <div class="accordion-titulo font-2-md-r">Tecnologias utilizadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                             <div class="accordion-conteudo tecnologias">
                                 <?php
 
