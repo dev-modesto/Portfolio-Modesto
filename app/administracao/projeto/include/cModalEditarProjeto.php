@@ -130,12 +130,12 @@
 
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s nome-projeto" for="nome-projeto">Nome projeto <em>*</em></label><br>
-                                    <input class="form-control" type="text" name="nome-projeto" id="nome-projeto" value="<?= $nomeProjeto ?>" required>
+                                    <label class="font-1-s nome-projeto" for="nome-projeto-editar">Nome projeto <em>*</em></label><br>
+                                    <input class="form-control" type="text" name="nome-projeto" id="nome-projeto-editar" value="<?= $nomeProjeto ?>" required>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="data-desenvolvimento">Data desenvolvimento <em>*</em></label><br>
-                                    <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento" value="<?= $dtLancamento?>">
+                                    <label class="font-1-s" for="data-desenvolvimento-editar">Data desenvolvimento <em>*</em></label><br>
+                                    <input class="form-control" type="date" name="data-desenvolvimento" id="data-desenvolvimento-editar" value="<?= $dtLancamento?>">
                                 </div>
                             </div>
 
@@ -171,8 +171,8 @@
     
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" class="font-1-s" for="tipo-projeto">Tipo projeto <em>*</em></label>
-                                    <select class="form-select" name="tipo-projeto" id="tipo-projeto" required>
+                                    <label class="font-1-s" class="font-1-s" for="tipo-projeto-editar">Tipo projeto <em>*</em></label>
+                                    <select class="form-select" name="tipo-projeto" id="tipo-projeto-editar" required>
                                         <option value="academico" <?= $tipoProjeto == 'Acadêmico' ? 'selected' : ''?>>Acadêmico</option>
                                         <option value="livre" <?= $tipoProjeto == 'Livre' ? 'selected' : ''?>>Livre</option>
                                         <option value="pessoal" <?= $tipoProjeto == 'Pessoal' ? 'selected' : ''?>>Pessoal</option>
@@ -180,8 +180,8 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="categoria-projeto">Categoria projeto<em>*</em></label><br>
-                                    <select class="form-select" name="id-categoria-projeto" id="categoria-projeto">
+                                    <label class="font-1-s" for="categoria-projeto-editar">Categoria projeto<em>*</em></label><br>
+                                    <select class="form-select" name="id-categoria-projeto" id="categoria-projeto-editar">
                                         <?php
                                             $cCategoriaProjeto = cCategoriaProjeto($con);
                                             $arrayCategoriaProjeto = mysqli_fetch_all($cCategoriaProjeto, MYSQLI_ASSOC); 
@@ -232,30 +232,30 @@
                                             
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="nome-titulo-img-thumbnail">Título img thumbnail<em>*</em></label><br>
-                                    <input class="form-control" type="text" name="nome-titulo-img-thumbnail" id="nome-titulo-img-thumbnail" value="<?= $nomeTituloImgThumbnail?>" required>
+                                    <label class="font-1-s" for="nome-titulo-img-thumbnail-editar">Título img thumbnail<em>*</em></label><br>
+                                    <input class="form-control" type="text" name="nome-titulo-img-thumbnail" id="nome-titulo-img-thumbnail-editar" value="<?= $nomeTituloImgThumbnail?>" required>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="nome-titulo-img-logo">Título img logo<em>*</em></label><br>
-                                    <input class="form-control" type="text" name="nome-titulo-img-logo" id="nome-titulo-img-logo" value="<?= $nomeTituloImgLogo?>" required>
+                                    <label class="font-1-s" for="nome-titulo-img-logo-editar">Título img logo<em>*</em></label><br>
+                                    <input class="form-control" type="text" name="nome-titulo-img-logo" id="nome-titulo-img-logo-editar" value="<?= $nomeTituloImgLogo?>" required>
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="texto-alt-thumbnail">Texto Alt. thumbnail<em>*</em></label>
-                                    <input class="form-control" type="text" name="texto-alt-thumbnail" id="texto-alt-thumbnail" value="<?= $textoAltImgThumbnail?>" required>
+                                    <label class="font-1-s" for="texto-alt-thumbnail-editar">Texto Alt. thumbnail<em>*</em></label>
+                                    <input class="form-control" type="text" name="texto-alt-thumbnail" id="texto-alt-thumbnail-editar" value="<?= $textoAltImgThumbnail?>" required>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="font-1-s" for="texto-alt-logo">Texto Alt. logo<em>*</em></label>
-                                    <input class="form-control" type="text" name="texto-alt-logo" id="texto-alt-logo" value="<?= $textoAltImgLogo?>" required>
+                                    <label class="font-1-s" for="texto-alt-logo-editar">Texto Alt. logo<em>*</em></label>
+                                    <input class="form-control" type="text" name="texto-alt-logo" id="texto-alt-logo-editar" value="<?= $textoAltImgLogo?>" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="descricoes-pane-editar" role="tabpanel" aria-labelledby="descricoes-tab-editar" tabindex="0">
                             <div class="mb-1">
-                                <label class="font-1-s" for="descricao-projeto">Descrição <em>*</em></label>
-                                <textarea class="form-control descricao-projeto-editar desc-projeto" name="descricao-projeto" id="descricao-projeto"><?= $descricaoProjeto?></textarea>
+                                <label class="font-1-s" for="descricao-projeto-editar">Descrição <em>*</em></label>
+                                <textarea class="form-control descricao-projeto-editar desc-projeto" name="descricao-projeto" id="descricao-projeto-editar"><?= $descricaoProjeto?></textarea>
                                 <div class="feedback-qnt-caracteres descricao-projeto-feedback" style="display: flex; justify-content: end; padding: 5px">
                                     <span class="feedback-caracteres">0 caracteres</span>
                                 </div>
@@ -284,25 +284,25 @@
                             </div>
                             
                             <div class="mb-4">
-                                <label class="font-1-s" for="descricao-tipo-projeto">Descrição tipo de projeto <em>*</em></label>
-                                <textarea class="form-control descricao-tipo-projeto desc-tipo-projeto" name="descricao-tipo-projeto" id="descricao-tipo-projeto"><?= $descricaoTipoProjeto?></textarea>
+                                <label class="font-1-s" for="descricao-tipo-projeto-editar">Descrição tipo de projeto <em>*</em></label>
+                                <textarea class="form-control descricao-tipo-projeto desc-tipo-projeto" name="descricao-tipo-projeto" id="descricao-tipo-projeto-editar"><?= $descricaoTipoProjeto?></textarea>
                             </div>
                         </div>
     
                         <div class="tab-pane fade" id="links-projeto-pane-editar" role="tabpanel" aria-labelledby="links-projeto-tab-editar" tabindex="0">
                             <div class="mb-4">
-                                <label class="font-1-s" for="link-deploy">Link Deploy</label>
-                                <input class="form-control" type="text" name="link-deploy" id="link-deploy" value="<?= $linkDeploy ?>">
+                                <label class="font-1-s" for="link-deploy-editar">Link Deploy</label>
+                                <input class="form-control" type="text" name="link-deploy" id="link-deploy-editar" value="<?= $linkDeploy ?>">
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-1-s" for="link-figma">Link Figma</label>
-                                <input class="form-control" type="text" name="link-figma" id="link-figma" value="<?= $linkFigma ?>">
+                                <label class="font-1-s" for="link-figma-editar">Link Figma</label>
+                                <input class="form-control" type="text" name="link-figma" id="link-figma-editar" value="<?= $linkFigma ?>">
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-1-s" for="link-repositorio">Link repositório Github</label>
-                                <input class="form-control" type="text" name="link-repositorio" id="link-repositorio" value="<?= $linkDeploy ?>">
+                                <label class="font-1-s" for="link-repositorio-editar">Link repositório Github</label>
+                                <input class="form-control" type="text" name="link-repositorio" id="link-repositorio-editar" value="<?= $linkDeploy ?>">
                             </div>
                         </div>
 

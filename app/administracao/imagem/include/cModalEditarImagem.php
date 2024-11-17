@@ -38,20 +38,20 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="categoria-tipo-imagem">Categoria tipo da imagem <em>*</em></label>
-                        <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem" value="" required>
+                        <label class="font-1-s" for="categoria-tipo-imagem-editar">Categoria tipo da imagem <em>*</em></label>
+                        <select class="form-select" name="categoria-tipo-imagem" id="categoria-tipo-imagem-editar" value="" required>
                             <option value="instituicao" <?= $categoria == 'instituicao' ? 'selected' : '' ?>>Instituição</option>
                         </select>
                     </div>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="titulo-imagem">Título img logo<em>*</em></label>
-                        <input class="form-control" type="text" name="titulo-imagem" id="titulo-imagem" value="<?= $nomeTitulo ?>" required>
+                        <label class="font-1-s" for="titulo-imagem-editar">Título img logo<em>*</em></label>
+                        <input class="form-control" type="text" name="titulo-imagem" id="titulo-imagem-editar" value="<?= $nomeTitulo ?>" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="imagem">Alterar imagem atual<em>*</em></label>
-                        <input class="form-control" type="file" name="imagem" id="imagem" value="<?= $nomeOriginal ?>">
+                        <label class="font-1-s" for="imagem-editar">Alterar imagem atual<em>*</em></label>
+                        <input class="form-control" type="file" name="imagem" id="imagem-editar" value="<?= $nomeOriginal ?>">
                     </div>
 
                     <div class="modal-footer form-container-button">

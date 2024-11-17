@@ -29,18 +29,18 @@
                     <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="instituicao-ensino">Nome Autor<em>*</em></label><br>
-                        <input class="form-control" type="text" name="nome-autor" id="nome-autor" value="<?= $nome ?>" required>
+                        <label class="font-1-s" for="nome-autor-editar">Nome Autor<em>*</em></label><br>
+                        <input class="form-control" type="text" name="nome-autor" id="nome-autor-editar" value="<?= $nome ?>" required>
                     </div>
 
                     <div class="mb-4">
-                        <label class="font-1-s" for="link-linkedin">LinkedIn</label><br>
-                        <input class="form-control" type="text" name="link-linkedin" id="link-linkedin" value="<?= $linkedin ?>">
+                        <label class="font-1-s" for="link-linkedin-editar">LinkedIn</label><br>
+                        <input class="form-control" type="text" name="link-linkedin" id="link-linkedin-editar" value="<?= $linkedin ?>">
                     </div>
                     
                     <div class="mb-4">
-                        <label class="font-1-s" for="link-github">GitHub</label><br>
-                        <input class="form-control" type="text" name="link-github" id="link-github" value="<?= $github ?>">
+                        <label class="font-1-s" for="link-github-editar">GitHub</label><br>
+                        <input class="form-control" type="text" name="link-github" id="link-github-editar" value="<?= $github ?>">
                     </div>
 
                     <div class="modal-footer form-container-button">

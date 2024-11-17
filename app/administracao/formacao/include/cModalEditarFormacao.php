@@ -37,12 +37,12 @@
                 <input type="text" name="id" id="id" value="<?= $id ?>" hidden>
                 <div class="row mb-4">
                     <div class="col-md-6 mb-4">
-                        <label class="font-1-s" for="nome-formacao">Nome formação <em>*</em></label><br>
-                        <input class="form-control" type="text" name="nome-formacao" id="nome-formacao" value="<?= $nome ?>" required>
+                        <label class="font-1-s" for="nome-formacao-editar">Nome formação <em>*</em></label><br>
+                        <input class="form-control" type="text" name="nome-formacao" id="nome-formacao-editar" value="<?= $nome ?>" required>
                     </div>
                     <div class="col-md-6">
-                        <label class="font-1-s" class="font-1-s" for="area-formacao">Área formação <em>*</em></label><br>
-                        <select class="form-select" name="area-formacao" id="area-formacao" required>
+                        <label class="font-1-s" class="font-1-s" for="area-formacao-editar">Área formação <em>*</em></label><br>
+                        <select class="form-select" name="area-formacao" id="area-formacao-editar" required>
                             <?php 
 
                                 $consultaAreaFormacao = cAreaFormacao($con);
@@ -56,41 +56,41 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="font-1-s" for="instituicao-ensino">Instituição de ensino <em>*</em></label><br>
-                    <input class="form-control" type="text" name="instituicao-ensino" id="instituicao-ensino" value="<?= $instituicao ?>" required>
+                    <label class="font-1-s" for="instituicao-ensino-editar">Instituição de ensino <em>*</em></label><br>
+                    <input class="form-control" type="text" name="instituicao-ensino" id="instituicao-ensino-editar" value="<?= $instituicao ?>" required>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col-md-6 mb-4">
-                        <label class="font-1-s" for="data-inicio">Data Inicio</label><br>
-                        <input class="form-control" type="date" name="data-inicio" id="data-inicio" value="<?= $dtInicio ?>">
+                        <label class="font-1-s" for="data-inicio-editar">Data Inicio</label><br>
+                        <input class="form-control" type="date" name="data-inicio" id="data-inicio-editar" value="<?= $dtInicio ?>">
                     </div>
 
                     <div class="col-md-6">
-                        <label class="font-1-s" for="data-fim">Data Fim</label><br>
-                        <input class="form-control" type="date" name="data-fim" id="data-fim" value="<?= $dtConclusao ?>">
+                        <label class="font-1-s" for="data-fim-editar">Data Fim</label><br>
+                        <input class="form-control" type="date" name="data-fim" id="data-fim-editar" value="<?= $dtConclusao ?>">
                     </div>
                 </div>
 
                 <div class="row mb-4">
                     <div class="col-md-6 mb-4">
-                        <label class="font-1-s" for="categoria-curso">Categoria do Curso <em>*</em></label><br>
-                        <select class="form-select" name="categoria-curso" required >
+                        <label class="font-1-s" for="categoria-curso-editar">Categoria do Curso <em>*</em></label><br>
+                        <select class="form-select" name="categoria-curso" id="categoria-curso-editar" required >
                             <option value="Curso Livre" <?= ($categoriaCurso == 'Curso livre') ? 'selected' : ''; ?>>Curso Livre</option>
                             <option value="Técnico" <?= ($categoriaCurso == 'Técnico') ? 'selected' : ''; ?>>Técnico</option>
                             <option value="Tecnólogo" <?= ($categoriaCurso == 'Tecnólogo') ? 'selected' : ''; ?>>Tecnólogo</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label class="font-1-s" for="total-horas">Total horas <em>*</em></label><br>
-                        <input class="form-control" type="text" name="total-horas" id="total-horas" value="<?= $totalHoras ?>" required>
+                        <label class="font-1-s" for="total-horas-editar">Total horas <em>*</em></label><br>
+                        <input class="form-control" type="text" name="total-horas" id="total-horas-editar" value="<?= $totalHoras ?>" required>
                     </div>
 
                 </div>
 
                 <div class="mb-4">
-                    <label class="font-1-s" for="img-formacao">Imagem <em>*</em></label><br>
-                    <select class="form-select" name="img-formacao" id="img-formacao">
+                    <label class="font-1-s" for="img-formacao-editar">Imagem <em>*</em></label><br>
+                    <select class="form-select" name="img-formacao" id="img-formacao-editar" required>
                         <?php 
                             $categoriaImagem = ['instituicao'];
                             $consultaImagens = cImagens($con, null, $categoriaImagem);
@@ -104,13 +104,13 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="font-1-s" for="link-certificado">Link Certificado</label><br>
-                    <input class="form-control" type="text" name="link-certificado" id="link-certificado" value="<?= $linkCertificado ?>">
+                    <label class="font-1-s" for="link-certificado-editar">Link Certificado</label><br>
+                    <input class="form-control" type="text" name="link-certificado" id="link-certificado-editar" value="<?= $linkCertificado ?>">
                 </div>
 
                 <div class="mb-4">
-                    <label class="font-1-s" for="status-curso">Status <em>*</em></label><br>
-                    <select class="form-select" name="status" id="" required>
+                    <label class="font-1-s" for="status-curso-editar">Status <em>*</em></label><br>
+                    <select class="form-select" name="status" id="status-curso-editar" required>
                         <option value="Andamento" <?= ($status == 'Andamento') ? 'selected' : ''?>>Andamento</option>
                         <option value="Concluído" <?= ($status == 'Concluído') ? 'selected' : '' ?>>Concluído</option>
                     </select>

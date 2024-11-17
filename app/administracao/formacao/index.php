@@ -175,7 +175,7 @@
                     <div class="row mb-4">
                         <div class="col-md-6 mb-4">
                             <label class="font-1-s" for="categoria-curso">Categoria do Curso <em>*</em></label><br>
-                            <select class="form-select" name="categoria-curso" required>
+                            <select class="form-select" name="categoria-curso" id="categoria-curso" required>
                                 <option value="" selected>Escolha a area de formacao</option>
                                 <option value="Curso Livre">Curso Livre</option>
                                 <option value="Técnico">Técnico</option>
@@ -190,7 +190,7 @@
 
                     <div class="mb-4">
                         <label class="font-1-s" for="img-formacao">Imagem <em>*</em></label><br>
-                        <select class="form-select" name="img-formacao" id="img-formacao">
+                        <select class="form-select" name="img-formacao" id="img-formacao" required>
                             <option value="" selected>Escolha a imagem</option>
                             <?php 
                                 $categoriaImagem = ['instituicao'];
@@ -210,7 +210,7 @@
 
                     <div class="mb-4">
                         <label class="font-1-s" for="status-curso">Status <em>*</em></label><br>
-                        <select class="form-select" name="status" id="" required>
+                        <select class="form-select" name="status" id="status-curso" required>
                             <option value="" selected>Defina um status</option>
                             <option value="Andamento">Andamento</option>
                             <option value="Concluído">Concluído</option>
