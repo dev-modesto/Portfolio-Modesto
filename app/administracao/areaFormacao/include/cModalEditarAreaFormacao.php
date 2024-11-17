@@ -8,6 +8,7 @@
         $consultaAreaFormacao = cAreaFormacao($con, $id);
         $arrayConsultaAreaFormacao = mysqli_fetch_assoc($consultaAreaFormacao);
         $nome = $arrayConsultaAreaFormacao['nome'];
+        $exibirFiltro = $arrayConsultaAreaFormacao['exibir_filtro'];
 
     } else {
         header('Location: ../index.php');
@@ -28,6 +29,13 @@
                     <div class="mb-4">
                         <label class="font-1-s" for="area-formacao">Nome área de formação<em>*</em></label><br>
                         <input class="form-control" type="text" name="area-formacao" id="area-formacao" value="<?= $nome ?>" required>
+                    </div>
+
+                    <div class="mb-4 container-check">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="exibir-filtro" id="exibir-filtro-editar" value="<?= $exibirFiltro == 'Sim' ? 'Sim' : 'Nao' ?>" <?= $exibirFiltro == 'Sim' ? 'checked' : '' ?>>
+                            <label for="exibir-filtro-editar">Mostrar como filtro?</label><br>
+                        </div>
                     </div>
 
                     <div class="modal-footer form-container-button">

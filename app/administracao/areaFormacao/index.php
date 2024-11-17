@@ -73,6 +73,13 @@
                             <label class="font-1-s" for="area-formacao">Nome área de formação<em>*</em></label><br>
                             <input class="form-control" type="text" name="area-formacao" id="area-formacao" required>
                         </div>
+                        
+                        <div class="mb-4 container-check">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="exibir-filtro" id="exibir-filtro" value="Sim">
+                                <label for="exibir-filtro">Mostrar como filtro?</label><br>
+                            </div>
+                        </div>
 
                         <div class="modal-footer form-container-button">
                             <button type="button" class="col btn btn-secondary btn-modal-cancelar" data-bs-dismiss="modal">Cancelar</button>
