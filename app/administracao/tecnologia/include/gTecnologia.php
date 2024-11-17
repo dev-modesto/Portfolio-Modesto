@@ -24,17 +24,19 @@
             $sqlImagem = mysqli_prepare(
                 $con,
                 "INSERT INTO tbl_imagem (
+                    nome_titulo,
                     nome_original, 
                     caminho_original, 
                     nome_plain, 
                     caminho_plain, 
                     categoria)
-                VALUES (?, ?, ?, ?, ?)"
+                VALUES (?, ?, ?, ?, ?, ?)"
             );
     
             mysqli_stmt_bind_param(
                 $sqlImagem, 
-                "sssss", 
+                "ssssss",
+                $nomeTecnologia, 
                 $imagens['imagem-original']['nome'], 
                 $imagens['imagem-original']['caminho'], 
                 $imagens['imagem-plain']['nome'], 
