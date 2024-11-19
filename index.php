@@ -1,12 +1,20 @@
 <?php
     include 'config/base.php';
+
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+        $login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
+    }
+
+    $visibilidade = $login == null ? 'Publico' : null;
+
     include BASE_PATH . '/include/funcoes/calendarioData/data.php';
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
     include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
     include BASE_PATH . '/filtros.php';
-
     include BASE_PATH . "/include/header/headerPagIndex.php";
+
 ?>
     <main>
         <section class="home js-scroll">
@@ -98,7 +106,7 @@
 
                 <?php
 
-                    $cProjeto = cProjeto($con, null, null, null, 'Sim', 'Ativo');
+                    $cProjeto = cProjeto($con, null, null, null, 'Sim', $visibilidade, 'Ativo');
 
                     if (mysqli_num_rows($cProjeto) > 0) {
                         while ($arrayProjeto = mysqli_fetch_assoc($cProjeto)) {

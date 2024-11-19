@@ -1,5 +1,11 @@
 <?php
     include 'config/base.php';
+
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+        $login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
+    }
+
     include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
     include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
@@ -24,7 +30,8 @@
 
             <div class="container-principal-todos-projetos">
                 <?php
-                    $cProjeto = cProjeto($con, null, null, null, null, 'Ativo');
+                    $visibilidade = $login == null ? 'Publico' : null;
+                    $cProjeto = cProjeto($con, null, null, null, null, $visibilidade, 'Ativo');
                     $arrayProjeto = mysqli_fetch_all($cProjeto, MYSQLI_ASSOC);
 
                     $totalProjetos = mysqli_num_rows($cProjeto);
