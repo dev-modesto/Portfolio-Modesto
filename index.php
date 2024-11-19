@@ -119,6 +119,7 @@
                             $linkDeploy = $arrayProjeto['link_deploy'];
                             $linkFigma = $arrayProjeto['link_figma'];
                             $linkRepositorio = $arrayProjeto['link_repositorio'];
+                            $visibilidadeProjeto = $arrayProjeto['visibilidade'];
 
                             $tipoImagemProjeto = ['thumbnail'];
                             $cProjetoImagemProjeto = cProjetoImagem($con, $idProjeto, 'projeto', $tipoImagemProjeto);
@@ -145,7 +146,7 @@
                             }
 
                             ?>
-                                <div class="projetoDestaque-cards">
+                                <div class="projetoDestaque-cards <?= $visibilidadeProjeto == 'Administrador' ? 'visibilidade-administrador' : '' ?> ">
                                     <div class="projetoDestaque-cards-frontal">
                                         <div class="tec-etiqueta" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
