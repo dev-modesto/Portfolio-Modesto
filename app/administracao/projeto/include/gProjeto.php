@@ -55,6 +55,7 @@
             $textoAltImgLogo = trim($_POST['texto-alt-logo']);
             $textoAltImgThumbnail = trim($_POST['texto-alt-thumbnail']);
 
+            $visibilidade = $_POST['visibilidade-projeto'];
             $statusGeralProjeto = $_POST['status-geral-projeto'];
             $projetoDestaque = $_POST['projeto-destaque'];
             $statusProjeto = $_POST['status-progresso-projeto'];
@@ -126,15 +127,16 @@
                     link_figma,
                     link_repositorio,
                     destaque,
+                    visibilidade,
                     status_geral,
                     projeto_equipe,
                     status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
     
             mysqli_stmt_bind_param(
                 $sqlProjeto, 
-                "ssssisssssssss", 
+                "ssssissssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
                 $descricaoFuncionalidades,
@@ -146,6 +148,7 @@
                 $linkFigma, 
                 $linkRepositorio,
                 $projetoDestaque,
+                $visibilidade,
                 $statusGeralProjeto,
                 $projetoEquipe,
                 $statusProjeto
