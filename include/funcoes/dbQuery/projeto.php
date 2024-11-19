@@ -1,6 +1,6 @@
 <?php
 
-function cProjeto ($con, $idProjeto = null, $idCategoria = null, $tipoProjeto = null, $destaque = null, $statusGeral = null) {
+function cProjeto ($con, $idProjeto = null, $idCategoria = null, $tipoProjeto = null, $destaque = null, $visibilidade = null, $statusGeral = null) {
     $where = 'WHERE 1=1';
     $types = '';
     $vars = [];
@@ -27,6 +27,12 @@ function cProjeto ($con, $idProjeto = null, $idCategoria = null, $tipoProjeto = 
         $where .= " AND p.destaque = ?";
         $types .= 's';
         $vars[] = $destaque;
+    }
+
+    if (!empty($visibilidade)) {
+        $where .= " AND p.visibilidade = ?";
+        $types .= 's';
+        $vars[] = $visibilidade;
     }
 
     if (!empty($statusGeral)) {
