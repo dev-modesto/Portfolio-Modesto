@@ -4,12 +4,18 @@
     include_once BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
     include_once BASE_PATH . '/include/funcoes/dbQuery/autor.php';
 
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+        $login = isset($_SESSION['login']) ? $_SESSION['login'] : '';
+    }
+
     $idCategoria = 0;
 
     if (isset($_POST['click-btn-filtro-projeto'])) {
         $idCategoria = $_POST['idCategoria'];
-   
-        $cProjeto = cProjeto($con, null, $idCategoria, null, null, 'Ativo');
+
+        $visibilidade = $login == null ? 'Publico' : null;
+        $cProjeto = cProjeto($con, null, $idCategoria, null, null, $visibilidade, 'Ativo');
         $arrayProjeto = mysqli_fetch_all($cProjeto, MYSQLI_ASSOC);
 
         $totalProjetos = mysqli_num_rows($cProjeto);
@@ -153,7 +159,7 @@
 
                         ?>
                         <div class="accordion-container">
-                            <div class="accordion-titulo">Tecnologias utilizadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
+                            <div class="accordion-titulo font-2-md-r">Tecnologias utilizadas<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
                             <div class="accordion-conteudo tecnologias">
                                 <?php
 

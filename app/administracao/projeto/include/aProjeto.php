@@ -13,6 +13,8 @@
         $projetoDestaque = $_POST['projeto-destaque'];
         $statusProjeto = $_POST['status-progresso-projeto'];
         $projetoEquipe = $_POST['projeto-equipe-editar'];
+        $visibilidade = $_POST['visibilidade-projeto-editar'];
+
         $statusGeralProjeto = $_POST['status-geral-projeto-editar'];
 
         $tipoProjeto = $_POST['tipo-projeto'];
@@ -316,6 +318,7 @@
                     link_figma = ?,
                     link_repositorio = ?,
                     destaque = ?,
+                    visibilidade = ?,
                     status_geral = ?,
                     projeto_equipe = ?,
                     status = ?
@@ -324,7 +327,7 @@
     
             mysqli_stmt_bind_param(
                 $sql, 
-                "ssssissssssssss", 
+                "ssssisssssssssss", 
                 $nomeProjeto, 
                 $descricaoProjeto, 
                 $descricaoFuncionalidades,
@@ -337,6 +340,7 @@
                 $linkFigma, 
                 $linkRepositorio,
                 $projetoDestaque,
+                $visibilidade,
                 $statusGeralProjeto,
                 $projetoEquipe,
                 $statusProjeto
