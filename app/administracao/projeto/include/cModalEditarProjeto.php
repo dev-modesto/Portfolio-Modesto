@@ -20,6 +20,7 @@
         $linkFigma = $arrayProjeto['link_figma'];
         $linkRepositorio = $arrayProjeto['link_repositorio'];
         $projetoDestaque = $arrayProjeto['destaque'];
+        $visibilidade = $arrayProjeto['visibilidade'];
         $statusGeral = $arrayProjeto['status_geral'];
         $projetoEquipe = $arrayProjeto['projeto_equipe'];
         $statusProgresso = $arrayProjeto['status'];
@@ -112,6 +113,9 @@
                             </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link nav-modal" id="tecnologias-tab-editar" data-bs-toggle="tab" data-bs-target="#tecnolgias-pane-editar" type="button" role="tab" aria-controls="tecnolgias-pane-editar" aria-selected="false">Tecnologias</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link nav-modal" id="tab-outros-tab-editar" data-bs-toggle="tab" data-bs-target="#tab-outros-tab-pane-editar" type="button" role="tab" aria-controls="tab-outros-tab-pane-editar" aria-selected="false">Outros</button>
                         </li>
                     </ul>
                     <br>
@@ -403,6 +407,24 @@
                                     </div>
                                 <?php
                             ?>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-outros-tab-pane-editar" role="tabpanel" aria-labelledby="tab-outros-tab-editar" tabindex="0">
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-4">
+                                    <label class="font-1-s" for="status-progresso-projeto">Visibilidade do projeto<em>*</em></label><br>
+                                    <div class="container-check">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="visibilidade-publico-editar">Público</label>
+                                            <input class="form-check-input" type="radio" name="visibilidade-projeto-editar" id="visibilidade-publico-editar" value="Publico" <?= $visibilidade == 'Publico' ? 'checked' : '' ?>>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="visibilidade-somente-eu-editar">Somente eu</label>
+                                            <input class="form-check-input" type="radio" name="visibilidade-projeto-editar" id="visibilidade-somente-eu-editar" value="Administrador" <?= $visibilidade == 'Administrador' ? 'checked' : '' ?>>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

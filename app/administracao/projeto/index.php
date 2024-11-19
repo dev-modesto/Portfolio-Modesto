@@ -159,6 +159,9 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link nav-modal" id="tab-tecnologias-tab" data-bs-toggle="tab" data-bs-target="#tab-tecnologias-tab-pane" type="button" role="tab" aria-controls="tab-tecnologias-tab-pane" aria-selected="false">Tecnologias</button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link nav-modal" id="tab-outros-tab" data-bs-toggle="tab" data-bs-target="#tab-outros-tab-pane" type="button" role="tab" aria-controls="tab-outros-tab-pane" aria-selected="false">Outros</button>
+                            </li>
                         </ul>
                         <br>
 
@@ -173,7 +176,7 @@
                                         <label class="btn btn-outline-success" for="success-outlined">Ativo</label>
                                     </div>
                                 </div>
-
+                                
                                 <div class="row mb-4">
                                     <div class="col-md-6 mb-4">
                                         <label class="font-1-s nome-projeto" for="nome-projeto">Nome projeto <em>*</em></label><br>
@@ -377,6 +380,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="tab-tecnologias-tab-pane" role="tabpanel" aria-label="tab-tecnologias" tabindex="0">
                                 <?php 
 
@@ -415,6 +419,24 @@
                                         </div>
                                     <?php
                                 ?>
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-outros-tab-pane" role="tabpanel" aria-labelledby="tab-outros-tab" tabindex="0">
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="font-1-s" for="status-progresso-projeto">Visibilidade do projeto<em>*</em></label><br>
+                                        <div class="container-check">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="visibilidade-publico">Público</label>
+                                                <input class="form-check-input" type="radio" name="visibilidade-projeto" id="visibilidade-publico" value="Publico" checked>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="visibilidade-somente-eu">Somente eu</label>
+                                                <input class="form-check-input" type="radio" name="visibilidade-projeto" id="visibilidade-somente-eu" value="Administrador">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
