@@ -96,7 +96,7 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <?php 
-                                $categorias = ['Curso livre'];
+                                $categorias = ['Curso livre', 'Acadêmico'];
                                 $cFormacaoAcademica = cFormacaoAcademica($con, null, null, $categorias);
                                 $retorno = mysqli_fetch_all($cFormacaoAcademica, MYSQLI_ASSOC);
 
@@ -177,6 +177,7 @@
                             <label class="font-1-s" for="categoria-curso">Categoria do Curso <em>*</em></label><br>
                             <select class="form-select" name="categoria-curso" id="categoria-curso" required>
                                 <option value="" selected>Escolha a area de formacao</option>
+                                <option value="Acadêmico">Acadêmico</option>
                                 <option value="Curso Livre">Curso Livre</option>
                                 <option value="Técnico">Técnico</option>
                                 <option value="Tecnólogo">Tecnólogo</option>
