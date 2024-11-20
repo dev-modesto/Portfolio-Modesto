@@ -85,14 +85,14 @@
     animation-timing-function: cubic-bezier(0.25, 1.5, 0.5, 1);
 }
 
-.js-scroll.ativo .home-foto,
-.js-scroll.ativo .formacao-academica-cards::before,
-.js-scroll.ativo .formacao-academica-cards::after {
+.js-scroll.ativo .home-foto {
     animation: animarDireitaEsquerda 1s forwards;
     animation-timing-function: cubic-bezier(0.25, 1.5, 0.5, 1);
 }
 
-.js-scroll.ativo .font-1-h1-b::before {
+.js-scroll.ativo .font-1-h1-b::before,
+.js-scroll.ativo .formacao-academica-cards::before,
+.js-scroll.ativo .formacao-academica-cards::after {
     animation: animarEsquerdaDireita 1s forwards;
     animation-timing-function: cubic-bezier(0.25, 1.5, 0.5, 1);
 }
