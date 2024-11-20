@@ -1,5 +1,5 @@
-<?php 
-    include_once 'config/base.php';
+<?php
+    include '../../config/base.php';
     include_once BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include_once BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
     include_once BASE_PATH . '/include/funcoes/dbQuery/autor.php';

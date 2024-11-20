@@ -1,12 +1,13 @@
 <?php 
-    include 'config/base.php';
+    include '../../config/base.php';
+
     include BASE_PATH . '/include/funcoes/calendarioData/data.php';
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
 
     if (isset($_POST['click-btn-filtrar'])) {
         $idFiltro = $_POST['idFiltro'];
             
-        $categorias = ['Curso Livre'];
+        $categorias = ['Curso Livre', 'Acadêmico'];
         $cFormacaoAcademica = cFormacaoAcademica($con, null, $idFiltro, $categorias);
 
         foreach($cFormacaoAcademica as $chave => $resultado) {
