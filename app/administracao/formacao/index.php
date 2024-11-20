@@ -34,7 +34,7 @@
                 <button class="nav-link active" id="educacao-formal-tab" data-bs-toggle="tab" data-bs-target="#educacao-formal" type="button" role="tab" aria-controls="educacao-formal" aria-selected="true">Educação Formal</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="cursos-livres-tab" data-bs-toggle="tab" data-bs-target="#cursos-livres" type="button" role="tab" aria-controls="cursos-livres" aria-selected="false">Cursos Livres</button>
+                <button class="nav-link" id="cursos-livres-tab" data-bs-toggle="tab" data-bs-target="#cursos-livres" type="button" role="tab" aria-controls="cursos-livres" aria-selected="false">Cursos Livres e Acadêmicos</button>
             </li>
         </ul>
 
