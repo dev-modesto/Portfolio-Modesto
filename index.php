@@ -12,7 +12,7 @@
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
     include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
-    include BASE_PATH . '/filtros.php';
+    include BASE_PATH . '/include/filtros/filtros.php';
     include BASE_PATH . "/include/header/headerPagIndex.php";
 
 ?>
@@ -345,7 +345,7 @@
                     <div class="certificados-cards">
                         <?php 
 
-                            $categorias = ['Curso Livre'];
+                            $categorias = ['Curso Livre', 'Acadêmico'];
                             $cFormacaoAcademica = cFormacaoAcademica($con, null, null, $categorias);
                             foreach ($cFormacaoAcademica as $chave => $resultado) {
 

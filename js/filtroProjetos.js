@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "filtrarProjetos.php",
+            url: "include/filtros/filtrarProjetos.php",
             data: {
                 'click-btn-filtro-projeto':true,
                 'idCategoria':idCategoria
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "filtrarProjetos.php",
+            url: "include/filtros/filtrarProjetos.php",
             data: {
                 'click-btn-filtro-projeto':true,
                 'idCategoria':idCategoria
