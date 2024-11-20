@@ -48,6 +48,7 @@
                                 <th scope="col">Categoria</th>
                                 <th scope="col">Data lançamento</th>
                                 <th scope="col">Projeto em destaque</th>
+                                <th scope="col">Visibilidade</th>
                                 <th scope="col">Status geral</th>
                                 <th scope="col">Progresso</th>
                                 <th scope="col">Controle</th>
@@ -70,6 +71,7 @@
                                         <td><?= $exibe['nome_categoria_projeto']?></td>
                                         <td><?= $dataFormatada?></td>
                                         <td class="td-legenda-bg-3"><?= $exibe['destaque'] == 'Sim' ? '<span class="material-symbols-rounded">star_rate</span>' : ''?></td>
+                                        <td class="td-legenda-visibilidade"><span class="material-symbols-rounded"><?= $exibe['visibilidade'] == 'Publico' ? 'public' : 'person'?></span></td>
                                         <td class="td-legenda-bg-2"><span class="legenda-bg-2 <?= $exibe['status_geral'] == 'Inativo' ? 'status-3' : 'status-1'?>"><p class=""><?= $exibe['status_geral']?></p></span></td>
                                         <td><span class="legenda-bg <?= $exibe['status'] == 'Andamento' ? 'status-2' : 'status-1'?>"><?= $exibe['status']?></span></td>
                                         <td class="td-icons">

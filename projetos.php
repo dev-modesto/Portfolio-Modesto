@@ -63,6 +63,7 @@
                             $linkFigma = $valorProjeto['link_figma'];
                             $linkRepositorio = $valorProjeto['link_repositorio'];
                             $statusProgresso = $valorProjeto['status'];
+                            $visibilidadeProjeto = $valorProjeto['visibilidade'];
 
                             $tipoImagem = ['thumbnail', 'extra'];
                             $cProjetoImagem = cProjetoImagem($con, $idProjeto, null, $tipoImagem);
@@ -102,7 +103,7 @@
 
                             ?>
 
-                            <div class="container-card-projeto-completo js-scroll">
+                            <div class="container-card-projeto-completo js-scroll <?= $visibilidadeProjeto == 'Administrador' ? 'visibilidade-administrador' : '' ?>">
                                 <div class="container-card-projeto-imagem">
                                     <div class="tec-etiqueta todos-projetos" data-name="<?= $nomeProjeto ?>">
                                         <p class="font-1-md-sb cor-c9">Tecs. utilizadas</p>

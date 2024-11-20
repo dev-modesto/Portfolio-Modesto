@@ -35,6 +35,11 @@
     'card-projeto-imagem card-projeto-titulo'
     'card-projeto-imagem card-projeto-conteudo'
     ;
+
+}
+
+.container-card-projeto-completo.visibilidade-administrador{
+    border: 4px solid greenyellow;
 }
 
     .container-card-projeto-imagem {

@@ -467,6 +467,10 @@ a[aria-disabled="true"] {
     color: var(--color-a-yellow3);
 }
 
+.td-legenda-visibilidade span{
+    color: var(--color-c4);
+}
+
 .nav-link {
     color: var(--color-c6);
 }
