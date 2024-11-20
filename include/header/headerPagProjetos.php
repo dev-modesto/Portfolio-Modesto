@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Projetos | devModesto </title>
         <meta name="description" content="Confira os projetos desenvolvidos por Gabriel Modesto, desenvolvedor Web FullStack com foco em FrontEnd. Veja como crio interfaces web interativas, responsivas e focadas na melhor experiência do usuário.">
-        <link rel="shortcut icon" href="<?= BASE_URL . '/assets/img/logo/logo-white-min.svg'?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?= BASE_URL . '/assets/img/logo/logo-pingo-minimizado.svg'?>" type="image/x-icon">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

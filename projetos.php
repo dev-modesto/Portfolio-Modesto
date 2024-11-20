@@ -10,7 +10,7 @@
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
     include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
     include BASE_PATH . '/include/funcoes/dbQuery/autor.php';
-    include BASE_PATH . '/filtros.php';
+    include BASE_PATH . '/include/filtros/filtros.php';
     include BASE_PATH . '/include/header/headerPagProjetos.php';
 
 ?>

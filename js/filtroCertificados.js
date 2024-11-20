@@ -8,7 +8,7 @@ $(document).ready(function () {
         let idFiltro = $(this).val();
         $.ajax({
             type: "POST",
-            url: "filtrarCertificados.php",
+            url: "include/filtros/filtrarCertificados.php",
             data: {
                 'click-btn-filtrar': true,
                 'idFiltro': idFiltro
@@ -33,7 +33,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                url: "filtrarCertificados.php",
+                url: "include/filtros/filtrarCertificados.php",
                 data: {
                     'click-btn-filtrar': true,
                     'idFiltro': idFiltro

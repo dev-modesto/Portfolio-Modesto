@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contato | devModesto</title>
         <meta name="description" content="Entre em contato com Gabriel Modesto, Desenvolvedor Web FullStack com foco em Front End. Se você tem um projeto em mente ou quer discutir ideias, estou à disposição para ajudar a criar experiências web de alta qualidade.">
-        <link rel="shortcut icon" href="<?= BASE_URL . '/assets/img/logo/logo-white-min.svg'?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?= BASE_URL . '/assets/img/logo/logo-pingo-minimizado.svg'?>" type="image/x-icon">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

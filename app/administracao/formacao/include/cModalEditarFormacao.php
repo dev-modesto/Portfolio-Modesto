@@ -76,6 +76,7 @@
                     <div class="col-md-6 mb-4">
                         <label class="font-1-s" for="categoria-curso-editar">Categoria do Curso <em>*</em></label><br>
                         <select class="form-select" name="categoria-curso" id="categoria-curso-editar" required >
+                            <option value="Acadêmico" <?= ($categoriaCurso == 'Acadêmico') ? 'selected' : ''; ?>>Acadêmico</option>
                             <option value="Curso Livre" <?= ($categoriaCurso == 'Curso livre') ? 'selected' : ''; ?>>Curso Livre</option>
                             <option value="Técnico" <?= ($categoriaCurso == 'Técnico') ? 'selected' : ''; ?>>Técnico</option>
                             <option value="Tecnólogo" <?= ($categoriaCurso == 'Tecnólogo') ? 'selected' : ''; ?>>Tecnólogo</option>
