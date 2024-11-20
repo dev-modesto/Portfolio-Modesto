@@ -1,5 +1,3 @@
-let windowMetade; 
-
 function tamanhoJanela() {
     if (window.innerHeight <= 1000) {
         windowMetade = window.innerHeight * 0.7; 
