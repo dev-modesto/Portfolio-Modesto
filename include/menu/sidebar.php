@@ -31,6 +31,7 @@
                 </div>
                 <div class="usuario-logado-dropdown">
                     <ul class="dropwdown-logado" class="font-2-xs">
+                        <li><a href="<?= BASE_URL ?>/app/administracao/perfil/index.php"><span class="material-symbols-rounded">account_circle</span>Meu perfil</a></li>
                         <li><a href="<?=BASE_URL?>/config/logoff.php"><span class="material-symbols-rounded">logout</span>Sair</a></li>
                     </ul>
                 </div>

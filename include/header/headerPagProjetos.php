@@ -29,7 +29,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
     </head>
     <body>
-    <header>
+    <header class="header-menu-principal">
         <div class="navbar fixed-top" id="navbar">
             <div class="logo">
                 <a href="index.php#"><img src="./assets/img/logo/logo-black.svg" id="logo1" alt="logo"></a>

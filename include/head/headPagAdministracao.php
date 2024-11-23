@@ -22,4 +22,5 @@
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/tabela.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/modal.css">
     <link rel="stylesheet" href="<?=BASE_URL?>/css/componentes/pre-loader.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>/css/perfil/perfil.css">
 </head>
