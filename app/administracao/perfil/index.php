@@ -30,7 +30,7 @@
     <div class="container-principal perfil">
 
         <section class="container-perfil">
-            <header class="info-perfil">
+            <div class="info-perfil">
 
                 <div class="info-perfil-imagem">
                     <img src="" alt="">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-            </header>
+            </div>
         </section>
         
     </div>
@@ -68,7 +68,7 @@
                         <div class="mb-4">
                             <label class="font-1-s" for="nova-senha">Nova senha <em>*</em></label><br>
                             <input class="form-control" type="password" name="nova-senha" id="nova-senha" required>
-                            <div class="container-feedback perfil nova-senha" style="">
+                            <div class="container-feedback perfil nova-senha">
                                 <span class="feedback-nova-senha font-1-sm-r cor-a-red4"></span>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="mb-4">
                             <label class="font-1-s" for="repetir-nova-senha">Repita a nova senha <em>*</em></label><br>
                             <input class="form-control" type="password" name="repetir-nova-senha" id="repetir-nova-senha" required>
-                            <div class="container-feedback perfil repetir-senha" style="">
+                            <div class="container-feedback perfil repetir-senha">
                                 <span class="feedback-repetir-senha font-1-sm-r cor-a-red4"></span>
                             </div>
                         </div>
