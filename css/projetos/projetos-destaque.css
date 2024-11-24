@@ -92,7 +92,7 @@
     bottom: 85%;
     left: 20px;
     display: flex;
-    font-size: 2em;
+    font-size: 1.4em;
     font-family: poppins;
     font-weight: 600;
     color: var(--color-c12);
@@ -124,7 +124,6 @@
     bottom: 85%;
     left: 20px;
     display: flex;
-    font-size: 2em;
     font-family: poppins;
     font-weight: 600;
     color: var(--color-c2);
@@ -366,6 +365,7 @@
         bottom: 85%;
         left: 20px;
         display: flex;
+        font-size: 1.2em;
         font-family: poppins;
         font-weight: 500;
         justify-content: center;
@@ -432,6 +432,7 @@
     
     .tec-etiqueta::before {
         font-weight: 500;
+        font-size: 1.4em;
     }
 
     .projetosDestaque-container-cards::before {
@@ -474,7 +475,7 @@
     .tec-etiqueta::before {
         width: 178px;
         height: 34px;
-        font-size: 1.5em;
+        font-size: 1em;
         font-weight: 500;
     }
 
@@ -553,7 +554,7 @@
     .tec-etiqueta::before {
         width: 158px;
         height: 34px;
-        font-size: 1.25em;
+        font-size: 1em;
     }
 
     .conteudo-buttons-link-logo {
