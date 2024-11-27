@@ -8,6 +8,7 @@
 <script src="<?= BASE_URL . '/js/filtroProjetos.js'?>"></script>
 <script src="<?= BASE_URL . '/js/menuMobile.js'?>"></script>
 <script src="<?= BASE_URL . '/js/animacoes.js'?>"></script>
+<script src="<?= BASE_URL . '/js/touchCards.js'?>"></script>
 
 <script>
 
