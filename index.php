@@ -146,7 +146,7 @@
                             }
 
                             ?>
-                                <div class="projetoDestaque-cards <?= $visibilidadeProjeto == 'Administrador' ? 'visibilidade-administrador' : '' ?> ">
+                                <div class="projetoDestaque-cards <?= $visibilidadeProjeto == 'Administrador' ? 'visibilidade-administrador' : '' ?> " onclick="telaTouchProjetosDestaques(event, this)">
                                     <div class="projetoDestaque-cards-frontal">
                                         <div class="tec-etiqueta" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
@@ -283,7 +283,7 @@
                             $dataFormacaoFimFormatada = dataFormatadaMesAno($dt_fim);
 
                             ?>
-                                <div class="card-formacao card-grid-academico" data-tag-name-course="<?= $categoriaCursoFormacao ?>">
+                                <div class="card-formacao card-grid-academico" data-tag-name-course="<?= $categoriaCursoFormacao ?>" onclick="telaTouchCardFormacao(event, this)">
                                     <div class="card-formacao-frontal">
                                         <div class="card-formacao-img-logo">
                                             <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
@@ -361,7 +361,7 @@
                                 $status = $resultado['status'];
 
                                 ?>
-                                    <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>">
+                                    <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>" onclick="telaTouchCardFormacao(event, this)">
                                         <div class="card-formacao-frontal">
                                             <div class="card-formacao-img-logo">
                                                 <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
@@ -445,6 +445,9 @@
             }
 
             mudarSrcImagensHabilidades();
+
+            verificaTouch();
+            window.addEventListener('resize', verificaTouch);
 
         });
 

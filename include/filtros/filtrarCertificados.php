@@ -23,7 +23,7 @@
             $status = $resultado['status'];
             
             ?>
-                <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>">
+                <div class="card-formacao" data-tag-name-course="<?= $categoriaCurso ?>" onclick="telaTouchCardFormacao(event, this)">
                     <div class="card-formacao-frontal">
                         <div class="card-formacao-img-logo">
                             <img src="<?= BASE_URL . $caminhoImagem ?>" alt="">
