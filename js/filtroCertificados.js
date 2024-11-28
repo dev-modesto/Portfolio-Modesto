@@ -15,6 +15,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('.certificados-cards').html(response);
+
+                verificaTouch();
             }
         });
     });

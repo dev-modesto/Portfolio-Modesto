@@ -6,9 +6,9 @@
                 <p class="font-2-lg-r peso-leve cor-c1 ">Fique à vontade para contactar-me. Se gostou do meu trabalho, me envie um feedback. Ficarei feliz em ouvir.</p>
             </div>
             <div class="icones-sociais container-icones-footer">
-                <a class="cor-c6" aria-label="Perfil do Linkedin" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
-                <a class="cor-c6" aria-label="Perfil do GitHub" href="https://github.com/dev-modesto"><i class='bx bxl-github'></i></a>
-                <a class="cor-c6" aria-label="Endereço de e-mail para contato" href="mailto:contato@devmodesto.com.br"><i class='bx bxs-envelope'></i></a>
+                <a class="cor-c6" aria-label="Perfil do Linkedin" href="https://www.linkedin.com/in/gabrielm-oliveira/" target="_blank" rel="noopener noreferrer"><i class='bx bxl-linkedin'></i></a>
+                <a class="cor-c6" aria-label="Perfil do GitHub" href="https://github.com/dev-modesto" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
+                <a class="cor-c6" aria-label="Endereço de e-mail para contato" href="mailto:contato@devmodesto.com.br" target="_blank" rel="noopener noreferrer"><i class='bx bxs-envelope'></i></a>
             </div>
         </div>
         

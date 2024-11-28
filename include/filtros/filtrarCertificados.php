@@ -43,7 +43,7 @@
                             <?php 
                                 if ($status == 'Concluído') {
                                     ?>
-                                        <a href="<?= $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
+                                        <a href="<?= $linkCertificadoCurso ?>" target="_blank" rel="noopener noreferrer"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
                                     <?php
                                 } else {
                                     ?>
