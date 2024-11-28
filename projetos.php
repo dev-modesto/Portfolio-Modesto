@@ -220,7 +220,7 @@
                                                         $linkGithub = $valor['link_github'];
 
                                                         ?>
-                                                            <a class="font-2-md-r peso-normal" href="<?= $linkLinkedin == '' ? '#' : $linkLinkedin ?>" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
+                                                            <a class="font-2-md-r peso-normal" href="<?= $linkLinkedin == '' ? '#' : $linkLinkedin ?>" target="_blank" rel="noopener noreferrer" aria-disabled="<?php echo $linkLinkedin == '' ? 'true' : 'false' ?>">
                                                                 <span class="material-symbols-rounded">person_pin</span><?= $nomeAutor ?>
                                                             </a>
 
@@ -235,19 +235,19 @@
                                         <?php 
                                             if (!$linkDeploy == "") {
                                                 ?>
-                                                    <a class="btn-links-cards projetos deploy font-1-md-l cor-c12" href="<?= $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
+                                                    <a class="btn-links-cards projetos deploy font-1-md-l cor-c12" href="<?= $linkDeploy ?>" target="_blank" rel="noopener noreferrer"><i class='bx bxs-pointer '></i>DEPLOY</a>
                                                 <?php
                                             }
                                             
                                             if (!$linkFigma == "") {
                                                 ?>
-                                                    <a class="btn-links-cards projetos font-1-md-l cor-c12" href="<?= $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
+                                                    <a class="btn-links-cards projetos font-1-md-l cor-c12" href="<?= $linkFigma ?>" target="_blank" rel="noopener noreferrer"><i class='bx bxl-figma'></i>FIGMA</a>
                                                 <?php
                                             }
                                             
                                             if (!$linkRepositorio == "") {
                                                 ?>
-                                                    <a class="btn-links-cards projetos font-1-md-l cor-c12" href="<?= $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
+                                                    <a class="btn-links-cards projetos font-1-md-l cor-c12" href="<?= $linkRepositorio ?>" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i>GITHUB</a>
                                                 <?php
                                             }
                                         ?>

@@ -24,9 +24,9 @@
                     <p class="font-1-xxl-1">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
                 </div>
                 <div class="icones-sociais">
-                    <a class="cor-c6" aria-label="Perfil do Linkedin" href="https://www.linkedin.com/in/gabrielm-oliveira/"><i class='bx bxl-linkedin'></i></a>
-                    <a class="cor-c6" aria-label="Perfil do GitHub" href="https://github.com/dev-modesto"><i class='bx bxl-github'></i></a>
-                    <a class="cor-c6" aria-label="Endereço de e-mail para contato" href="mailto:contato@devmodesto.com.br"><i class='bx bxs-envelope'></i></a>
+                    <a class="cor-c6" aria-label="Perfil do Linkedin" href="https://www.linkedin.com/in/gabrielm-oliveira/" target="_blank" rel="noopener noreferrer"><i class='bx bxl-linkedin'></i></a>
+                    <a class="cor-c6" aria-label="Perfil do GitHub" href="https://github.com/dev-modesto" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
+                    <a class="cor-c6" aria-label="Endereço de e-mail para contato" href="mailto:contato@devmodesto.com.br" target="_blank" rel="noopener noreferrer"><i class='bx bxs-envelope'></i></a>
                 </div>
             </div>
             <div class="home-foto order1">
@@ -206,19 +206,19 @@
                                                     <?php 
                                                         if (!$linkDeploy == "") {
                                                             ?>
-                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkDeploy ?>"><i class='bx bxs-pointer '></i>DEPLOY</a>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkDeploy ?>" target="_blank" rel="noopener noreferrer"><i class='bx bxs-pointer '></i>DEPLOY</a>
                                                             <?php
                                                         }
                                                         
                                                         if (!$linkFigma == "") {
                                                             ?>
-                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkFigma ?>"><i class='bx bxl-figma'></i>FIGMA</a>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkFigma ?>" target="_blank" rel="noopener noreferrer"><i class='bx bxl-figma'></i>FIGMA</a>
                                                             <?php
                                                         }
                                                         
                                                         if (!$linkRepositorio == "") {
                                                             ?>
-                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkRepositorio ?>"><i class='bx bxl-github'></i>GITHUB</a>
+                                                                <a class="btn-links-cards font-1-md-l cor-c2" href="<?= $linkRepositorio ?>" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i>GITHUB</a>
                                                             <?php
                                                         }
                                                     ?>
@@ -302,7 +302,7 @@
                                             <?php 
                                                 if ($status == 'Concluído') {
                                                     ?>
-                                                        <a href="<?= $linkDiploma ?>"><span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
+                                                        <a href="<?= $linkDiploma ?>" target="_blank" rel="noopener noreferrer"><span class="material-symbols-rounded">school</span>VISUALIZAR DIPLOMA</a>    
                                                         <?php
                                                 } else {
                                                     ?>
@@ -381,7 +381,7 @@
                                                 <?php 
                                                     if ($status == 'Concluído') {
                                                         ?>
-                                                            <a href="<?= $linkCertificadoCurso ?>"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
+                                                            <a href="<?= $linkCertificadoCurso ?>" target="_blank" rel="noopener noreferrer"><span class="material-symbols-rounded">workspace_premium</span>VISUALIZAR CERTIFICADO</a>
                                                         <?php
                                                     } else {
                                                         ?>
