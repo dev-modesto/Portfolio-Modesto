@@ -42,7 +42,7 @@
 
 <nav class="container-navbar-lateral">
     <div class="logo sidebar">
-        <a href="<?= BASE_URL . "/index.php#"?>"><img class="img-logo" src="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMax="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMin="<?=BASE_URL?>/assets/img/logo/logo-pingo-minimizado.svg" alt=""></a>
+        <a href="<?= BASE_URL . "/index.php#"?>" target="_blank" rel="noopener noreferrer"><img class="img-logo" src="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMax="<?=BASE_URL?>/assets/img/logo/logo-white.svg" data-logoMin="<?=BASE_URL?>/assets/img/logo/logo-pingo-minimizado.svg" alt="" ></a>
     </div>
 
     <ul class="navbar-itens">
