@@ -144,14 +144,25 @@
                                             }
                                         ?>
                                     </div>
-                                </div>
 
+                                    <?php
+                                        if ($statusProgresso == 'Andamento') {
+                                            ?>
+                                                <div class="container-projeto-andamento">
+                                                    <span class="material-symbols-rounded">construction</span>
+                                                    <p class="font-2-md-r">Projeto em andamento.</p>
+                                                </div>
+                                            <?php
+                                        }
+                                    ?>
+              
+                                </div>
                                 <div class="card-projeto-titulo">
                                     <span class="card-projeto-numero-marcador cor-c4"><?=$indiceProjetoFormatado?></span>
                                     <h1 class="card-projeto-nome-titulo font-1-h2-b"><?=$nomeProjeto?></h1>
                                 </div>
 
-                                <div class="card-projeto-conteudo">
+                                <div class="card-projeto-conteudo <?= $statusProgresso == 'Andamento' ? 'andamento' : ''?>">
                                     <div class="card-projeto-accordion">
                                         <div class="accordion-container">
                                             <div class="accordion-titulo ativo font-2-md-r">Descrição<span class="material-symbols-rounded btn-accordion">keyboard_arrow_down</span></div>
