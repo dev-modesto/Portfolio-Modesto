@@ -1,6 +1,9 @@
 <?php
 
     date_default_timezone_set('America/Sao_Paulo');
+    $data = new DateTime();
+    $anoAtual = date_format($data, 'Y');
+    
     $caminhoProjetoLocal = "/portfolio-modesto";
     $protocolo = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
     $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';

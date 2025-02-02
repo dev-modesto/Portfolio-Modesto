@@ -15,7 +15,7 @@
     </div>
     <div class="container-copyright">
         <div class="container-info-corpyright">
-            <p>© 2024 · Desenvolvido por <span>devModesto</span></p>
+            <p>© <?= $anoAtual ?> · Desenvolvido por <span>devModesto</span></p>
             <div class="container-logo-footer">
                 <img src="./assets/img/logo/logo-white.svg" alt="logo">
             </div>

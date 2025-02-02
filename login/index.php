@@ -52,7 +52,7 @@
             </div>
             <div class="rodape-login">
                 <span class="versao-portfolio">versão 2.0.0</span>
-                <p>© 2024 · Desenvolvido por <span>devModesto</span></p>
+                <p>© <?= $anoAtual ?> · Desenvolvido por <span>devModesto</span></p>
             </div>
         </div>
     </div>
