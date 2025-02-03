@@ -119,6 +119,7 @@
                             $linkDeploy = $arrayProjeto['link_deploy'];
                             $linkFigma = $arrayProjeto['link_figma'];
                             $linkRepositorio = $arrayProjeto['link_repositorio'];
+                            $statusProgresso = $arrayProjeto['status'];
                             $visibilidadeProjeto = $arrayProjeto['visibilidade'];
 
                             $tipoImagemProjeto = ['thumbnail'];
@@ -242,6 +243,17 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <?php
+                                        if ($statusProgresso == 'Andamento') {
+                                            ?>
+                                                <div class="container-projeto-andamento-index">
+                                                    <span class="material-symbols-rounded">construction</span>
+                                                    <p class="font-2-md-r">Projeto em andamento.</p>
+                                                </div>
+                                            <?php
+                                        }
+                                    ?>
                                 </div>
                             <?php
                         }

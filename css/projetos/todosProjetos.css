@@ -315,22 +315,6 @@
             display: none;
         }
 
-        .container-projeto-andamento {
-            background-color: var(--color-a-yellow2);
-            color: var(--color-a-yellow4);
-            margin-top: 20px;
-            padding: 10px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            grid-area: container-projeto-andamento;
-            border: 1px solid var(--color-a-yellow4);
-        }
-
-        .container-projeto-andamento span{
-            color: var(--color-a-yellow4);
-        }
-
     @media (min-width: 769px) {
 
         .tec-etiqueta.todos-projetos::before {
