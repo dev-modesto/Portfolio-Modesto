@@ -157,6 +157,34 @@ a[aria-disabled="true"] {
     margin-left: 0px;
 }
 
+.container-projeto-andamento,
+.container-projeto-andamento-index {
+    background-color: var(--color-a-yellow2);
+    color: var(--color-a-yellow4);
+    padding: 10px;
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid var(--color-a-yellow4);
+}
+
+.container-projeto-andamento {
+    margin-top: 20px;
+}
+.container-projeto-andamento-index {
+    margin-top: 20px;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container-projeto-andamento span,
+.container-projeto-andamento-index span{
+    color: var(--color-a-yellow4);
+}
+
 @media (min-width: 769px) and (max-width: 1023px) {
 
     .container-btn-links-cards {
