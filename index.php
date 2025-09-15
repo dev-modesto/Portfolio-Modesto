@@ -12,16 +12,22 @@
     include BASE_PATH . '/include/funcoes/dbQuery/formacao.php';
     include BASE_PATH . '/include/funcoes/dbQuery/projeto.php';
     include BASE_PATH . '/include/funcoes/dbQuery/tecnologia.php';
+    include BASE_PATH . '/include/funcoes/dbQuery/identidadePerfil.php';
     include BASE_PATH . '/include/filtros/filtros.php';
     include BASE_PATH . "/include/header/headerPagIndex.php";
+
+    $dadosConsulta = cIdentidadePerfil($con);
+    $tituloPerfil = $dadosConsulta['titulo_perfil'];
+    $descricaoTitulo = $dadosConsulta['texto_aux_titulo'];
+    $textoSobre = $dadosConsulta['sobre'];
 
 ?>
     <main>
         <section class="home js-scroll">
             <div class="home-info order2">
                 <div class="texto-home">
-                    <h1 class="font-1-h1-b">Web Developer Front End</h1>
-                    <p class="font-1-xxl-1">Me chamo <strong>Gabriel Modesto</strong> e eu sou fascinado por desenvolver interfaces web.</p>
+                    <h1 class="font-1-h1-b"><?= $tituloPerfil ?></h1>
+                    <p class="font-1-xxl-1"><?= $descricaoTitulo ?></p>
                 </div>
                 <div class="icones-sociais">
                     <a class="cor-c6" aria-label="Perfil do Linkedin" href="https://www.linkedin.com/in/gabrielm-oliveira/" target="_blank" rel="noopener noreferrer"><i class='bx bxl-linkedin'></i></a>
@@ -36,10 +42,7 @@
 
         <section class="sobre js-scroll" id="sobre">
             <h1 class="font-1-h2-b">Sobre</h1>
-            <p class="font-2-lg-r">Estudante de Análise e Desenvolvimento de Sistemas na Faculdade Digital Descomplica e formado em Técnico em Informática (voltado ao desenvolvimento web) na instituição de ensino SENAC RJ.</p>
-            <br>
-            <p class="font-2-lg-r">
-            Como desenvolvedor Web, atuante em ambas as vertentes de desenvolvimento, meu foco principal está voltado ao <strong>Front-end</strong>, onde meu objetivo é o desenvolvimento de <strong>interfaces funcionais, seguras, otimizadas</strong> e, é claro, <strong>agradáveis.</strong> Viso a <strong>excelência</strong>, buscando superar sempres às expectativas das das partes interessadas, estando em constante aprendizado e aperfeiçoando técnicas a fim de oferecer ao usuário final uma <strong>melhor experiência</strong>.</p>
+            <?= $textoSobre ?>
             <div class="sobre-localizacao">
                 <span  class="material-symbols-rounded cor-c13">location_on</span>
                 <p class="font-2-lg-r">Rio de Janeiro, RJ.</p>
