@@ -101,6 +101,11 @@
     align-items: center;
 }
 
+.tec-etiqueta.andamento::before { 
+    color: var(--color-a-yellow4);
+    border: 1px solid var(--color-a-yellow4);
+}
+
 .projetoDestaque-cards-frontal {
     position: relative;
     transition: all .3s;
