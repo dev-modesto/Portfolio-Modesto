@@ -152,7 +152,7 @@
                             ?>
                                 <div class="projetoDestaque-cards <?= $visibilidadeProjeto == 'Administrador' ? 'visibilidade-administrador' : '' ?> " onclick="telaTouchProjetosDestaques(event, this)">
                                     <div class="projetoDestaque-cards-frontal">
-                                        <div class="tec-etiqueta" data-name="<?= $nomeProjeto ?>">
+                                        <div class="tec-etiqueta <?= $statusProgresso == 'Andamento' ? 'andamento' : ''?>" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
                                             <div class="cabecalho-techs-cards">
                                                 <?php
@@ -173,6 +173,8 @@
                                                         }
                                                     }
                                                 ?>
+
+                                                
                                             </div>
                                         </div>
                                         <div class="projetoDestaque-cards--conteudo conteudo-img">
@@ -181,7 +183,7 @@
                                     </div>
 
                                     <div class="projetoDestaque-cards-verso">
-                                        <div class="tec-etiqueta techs-verso" data-name="<?= $nomeProjeto ?>">
+                                        <div class="tec-etiqueta techs-verso <?= $statusProgresso == 'Andamento' ? 'andamento' : ''?>" data-name="<?= $nomeProjeto ?>">
                                             <p class="font-1-md-sb cor-c2">Tecs. utilizadas</p>
                                             <div class="cabecalho-techs-cards">
                                                 <?php 
